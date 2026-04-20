@@ -406,20 +406,19 @@ export default function App() {
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
                   <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-4 text-[12px]">Borger & Fritch, TX</p>
                   
-                  <div className="flex items-center gap-3 mb-8">
-                    <span className="text-3xl font-display text-[#F5F5F5]">4.5</span>
+                  <div className="flex items-center gap-4 mb-10 bg-white/5 backdrop-blur-sm px-6 py-3 border border-white/10 rounded-full shadow-2xl">
+                    <span className="text-4xl font-display text-[#F5F5F5]">4.6</span>
                     <div className="flex gap-1 text-[#B8F000]">
-                      <Star size={20} fill="#B8F000" />
-                      <Star size={20} fill="#B8F000" />
-                      <Star size={20} fill="#B8F000" />
-                      <Star size={20} fill="#B8F000" />
-                      <div className="relative w-[10px] overflow-hidden">
-                        <Star size={20} fill="#B8F000" />
+                      <Star size={22} fill="#B8F000" />
+                      <Star size={22} fill="#B8F000" />
+                      <Star size={22} fill="#B8F000" />
+                      <Star size={22} fill="#B8F000" />
+                      <div className="relative w-[13px] overflow-hidden">
+                        <Star size={22} fill="#B8F000" />
                       </div>
-                      <Star size={20} className="text-white/20 -ml-[10px]" />
+                      <Star size={22} className="text-white/20 -ml-[13px]" />
                     </div>
-                    <span className="text-[14px] font-bold uppercase tracking-widest text-[#F5F5F5] opacity-60">274 REVIEWS</span>
-                    <Info size={14} className="text-[#F5F5F5] opacity-40" />
+                    <span className="text-[14px] font-bold uppercase tracking-widest text-[#F5F5F5]">867 COMBINED REVIEWS</span>
                   </div>
                   
                   <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-none uppercase text-[#B8F000] flex flex-col items-center">
@@ -838,20 +837,19 @@ export default function App() {
                 <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
                   <p className="text-brand-white font-black uppercase tracking-[0.4em] mb-4 text-sm">Borger & Fritch, TX</p>
                   
-                  <div className="flex items-center gap-3 mb-8">
-                    <span className="text-3xl font-display text-brand-white">4.5</span>
+                  <div className="flex items-center gap-4 mb-10 bg-white/5 backdrop-blur-sm px-6 py-3 border border-white/10 rounded-full shadow-2xl">
+                    <span className="text-4xl font-display text-brand-white">4.6</span>
                     <div className="flex gap-1 text-brand-neon">
-                      <Star size={20} fill="currentColor" />
-                      <Star size={20} fill="currentColor" />
-                      <Star size={20} fill="currentColor" />
-                      <Star size={20} fill="currentColor" />
-                      <div className="relative w-[10px] overflow-hidden">
-                        <Star size={20} fill="currentColor" />
+                      <Star size={22} fill="currentColor" />
+                      <Star size={22} fill="currentColor" />
+                      <Star size={22} fill="currentColor" />
+                      <Star size={22} fill="currentColor" />
+                      <div className="relative w-[13px] overflow-hidden">
+                        <Star size={22} fill="currentColor" />
                       </div>
-                      <Star size={20} className="text-white/20 -ml-[10px]" />
+                      <Star size={22} className="text-white/20 -ml-[13px]" />
                     </div>
-                    <span className="text-[14px] font-bold uppercase tracking-widest text-brand-white opacity-60">274 REVIEWS</span>
-                    <Info size={14} className="text-brand-white opacity-40" />
+                    <span className="text-[14px] font-bold uppercase tracking-widest text-brand-white">867 COMBINED REVIEWS</span>
                   </div>
                   <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] mb-8 leading-none uppercase text-brand-neon flex flex-col items-center">
                     <span>THE MENU.</span>
