@@ -479,7 +479,7 @@ export default function App() {
           >
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-screen flex items-center justify-center bg-brand-black px-6 pt-32 pb-20 noise-overlay">
+              <section className="relative min-h-screen bg-brand-black px-6 pt-8 pb-20 noise-overlay">
                 <div className="absolute inset-0 z-0">
                   <img 
                     src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
