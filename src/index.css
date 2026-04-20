@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap');
+
+@theme {
+  --font-display: "Inter", sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-charcoal: #121212;
+  --color-burnt-red: #C62828;
+  --color-warm-cream: #F5E6D3;
+  --color-hot-orange: #FF6A00;
+}
+
+@layer base {
+  body {
+    @apply bg-charcoal text-warm-cream font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold uppercase tracking-tighter;
+  }
+}
+
+.grid-border {
+  @apply border border-warm-cream/10;
+}
+
+.btn-orange {
+  @apply bg-hot-orange text-charcoal font-bold uppercase transition-colors hover:bg-orange-600 rounded-sm;
+}
