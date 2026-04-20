@@ -386,244 +386,309 @@ export default function App() {
               />
             </nav>
 
-            <main>
+            <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="bg-brand-black px-6 py-20 md:py-40 border-b border-white/5 overflow-hidden noise-overlay">
-                <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-brand-neon font-black uppercase tracking-[0.4em] mb-6 text-xs md:text-sm">Borger & Fritch, TX</p>
-                  <h1 className="font-display text-4xl md:text-7xl lg:text-8xl mb-8 leading-[0.85] uppercase text-brand-neon break-words">
-                    TIRED OF PIZZA THAT DISAPPOINTS?
-                  </h1>
-                  <p className="text-xl md:text-3xl max-w-2xl mx-auto opacity-90 font-bold text-brand-white mb-16 leading-tight uppercase tracking-tight">
-                    Jesse's doesn't do light toppings, frozen shortcuts, or food that makes you regret ordering. This is the real thing.
+              <section className="relative min-h-[90vh] flex items-center justify-center bg-brand-black px-6 py-20 overflow-hidden noise-overlay border-b border-white/5">
+                {/* Full screen dark background with close-up food image - placeholder since I can't guarantee a specific image, but I'll use a high-quality one from Unsplash */}
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
+                    alt="Loaded Pizza"
+                    className="w-full h-full object-cover opacity-20 grayscale"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-transparent" />
+                </div>
+                
+                <motion.div 
+                  className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10"
+                  initial="hidden"
+                  animate="show"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    show: {
+                      opacity: 1,
+                      transition: { staggerChildren: 0.2 }
+                    }
+                  }}
+                >
+                  <motion.p 
+                    variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+                    className="text-brand-white font-black uppercase tracking-[0.4em] mb-6 text-sm"
+                  >
+                    Borger & Fritch, TX
+                  </motion.p>
+                  
+                  <motion.h1 
+                    variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+                    className="font-display text-6xl md:text-8xl lg:text-[10rem] mb-8 leading-[0.8] uppercase text-brand-neon flex flex-col items-center"
+                  >
+                    <span>BORGER'S</span>
+                    <span>MOST LOADED</span>
+                    <span>PIZZA.</span>
+                    <span className="text-brand-white">PERIOD.</span>
+                  </motion.h1>
+                  
+                  <motion.p 
+                    variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+                    className="text-xl md:text-3xl max-w-2xl mx-auto text-brand-white mb-16 leading-tight uppercase tracking-tight font-bold"
+                  >
+                    18 inches. Edge to edge toppings.<br />
+                    Ready in 20 minutes.<br />
+                    Two locations. Zero shortcuts.
+                  </motion.p>
+                  
+                  <motion.div 
+                    variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+                    className="flex flex-col sm:flex-row gap-6"
+                  >
+                    <button onClick={startOrder} className="bg-brand-red text-brand-white px-12 py-8 text-3xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                      Order Now — Borger & Fritch
+                    </button>
+                    <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="btn-secondary px-8 py-8 text-2xl font-display uppercase tracking-widest hover:bg-white/10 transition-all">
+                      See What Everyone's Ordering
+                    </button>
+                  </motion.div>
+                </motion.div>
+              </section>
+
+              {/* SECTION 2: NAME THE ENEMY */}
+              <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
+                <motion.div 
+                  className="max-w-4xl mx-auto text-center"
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  variants={{
+                    hidden: { opacity: 0 },
+                    show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+                  }}
+                >
+                  <motion.h2 
+                    variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+                    className="font-display text-5xl md:text-7xl mb-16 text-brand-neon leading-none"
+                  >
+                    YOU ALREADY KNOW<br />WHAT BAD PIZZA TASTES LIKE.
+                  </motion.h2>
+                  
+                  <motion.div 
+                    variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
+                    className="text-brand-white text-xl md:text-2xl font-bold uppercase tracking-wide leading-relaxed space-y-8"
+                  >
+                    <p>You've ordered it.</p>
+                    <p>Waited 45 minutes for it.</p>
+                    <p>Opened the box and thought<br />"this is what I paid for?"</p>
+                    <div className="space-y-2 opacity-60 italic">
+                      <p>Light toppings.</p>
+                      <p>Lukewarm crust.</p>
+                      <p>Food that felt like an afterthought.</p>
+                    </div>
+                    <p>That's what happens when a pizza place<br />cares more about order volume<br />than what's actually in the box.</p>
+                    <p className="text-brand-neon">Jesse's is built for people<br />who are done settling for that.</p>
+                  </motion.div>
+                </motion.div>
+              </section>
+
+              {/* SECTION 3: THE OFFER (HORMOZI) */}
+              <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
+                <div className="max-w-7xl mx-auto text-center">
+                  <h2 className="font-display text-5xl md:text-8xl mb-4 text-brand-neon">HERE'S EXACTLY WHAT</h2>
+                  <h2 className="font-display text-5xl md:text-8xl mb-8 text-brand-neon">YOU'RE GETTING.</h2>
+                  <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-widest mb-24">
+                    Not "great pizza." Here's what that actually means.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-6">
-                    <button onClick={startOrder} className="btn-primary px-20 py-8 text-3xl font-display uppercase tracking-widest shadow-[0_20px_50px_rgba(214,40,40,0.3)] hover:scale-105 active:scale-95 transition-all">
-                      Order Now
-                    </button>
-                    <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="btn-secondary px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-white/10 transition-all">
-                      See the Menu
-                    </button>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+                    {/* Block 1 */}
+                    <div className="bg-brand-concrete p-10 text-left flex flex-col noise-overlay">
+                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase">The 18" Jumbo Pizza</h3>
+                      <div className="text-brand-white space-y-4 flex-1">
+                        <p className="font-bold text-lg uppercase leading-tight">18 inches. Loaded edge to edge.</p>
+                        <p className="opacity-80">Enough to feed a family of five with slices left over.</p>
+                        <p className="opacity-80">Built with the same toppings as every other size — because skimping based on size isn't something we do.</p>
+                      </div>
+                      <p className="text-brand-white text-2xl font-display mt-8">From $21.50</p>
+                    </div>
+                    
+                    {/* Block 2 */}
+                    <div className="bg-brand-concrete p-10 text-left flex flex-col noise-overlay">
+                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase">The Jalapeño Popper Pizza</h3>
+                      <div className="text-brand-white space-y-4 flex-1">
+                        <p className="font-bold text-lg uppercase leading-tight">Creamy base. Fresh jalapeños. Loaded toppings.</p>
+                        <p className="opacity-80">The most reordered pizza on the menu.</p>
+                        <p className="opacity-80">Not because of the name. Because of what's on it.</p>
+                      </div>
+                      <p className="text-brand-white text-2xl font-display mt-8">12" — $18.29 | 14" — $23.29</p>
+                    </div>
+                    
+                    {/* Block 3 */}
+                    <div className="bg-brand-concrete p-10 text-left flex flex-col noise-overlay">
+                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase">The Chicken Bacon Ranch</h3>
+                      <div className="text-brand-white space-y-4 flex-1">
+                        <p className="font-bold text-lg uppercase leading-tight">Bacon. Ranch. Chicken. All of it.</p>
+                        <p className="opacity-80">Not a suggestion of those things.</p>
+                        <p className="opacity-80">Actually loaded with them.</p>
+                      </div>
+                      <p className="text-brand-white text-2xl font-display mt-8">12" — $18.29 | 14" — $23.29 | 18" — $26.99</p>
+                    </div>
+                    
+                    {/* Block 4 */}
+                    <div className="bg-brand-concrete p-10 text-left flex flex-col noise-overlay">
+                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase">The Family Deal</h3>
+                      <div className="text-brand-white space-y-4 flex-1">
+                        <p className="font-bold text-lg uppercase leading-tight">18" Jumbo + Cheezy Bread + 2 Liter Drink</p>
+                        <p className="opacity-80">Because ordering separately shouldn't cost more than feeding everyone well.</p>
+                      </div>
+                      <p className="text-brand-white text-4xl font-display mt-8">$34.99</p>
+                    </div>
                   </div>
+                  
+                  <button onClick={startOrder} className="bg-brand-red text-brand-white px-24 py-8 text-3xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                    Order Now
+                  </button>
                 </div>
               </section>
 
-              {/* SECTION 2: TRUST STRIP */}
-              <div className="bg-brand-neon py-8 px-6 relative z-20 shadow-2xl skew-y-[-1deg] -mt-8 mb-32 origin-left border-y-4 border-brand-black">
-                <div className="max-w-7xl mx-auto flex flex-wrap justify-around items-center gap-12 md:gap-4 skew-y-[1deg]">
+              {/* SECTION 4: SPECIFICITY STRIP */}
+              <section className="bg-brand-concrete overflow-hidden border-y border-white/5 whitespace-nowrap py-10">
+                <div className="flex gap-12 px-6 animate-marquee">
                   {[
-                    "Loaded Every Time",
-                    "No Chain. No Shortcuts.",
-                    "Borger's Go-To Since Day One",
-                    "Fast Pickup. Real Flavor."
+                    "47 Jalapeño Poppers ordered last Friday alone.",
+                    "The Jumbo feeds five. Most people order two anyway.",
+                    "Same toppings on the 8\" as the 18\". No skimping by size.",
+                    "Ready in 20 minutes or we'll tell you before you order."
                   ].map((text, i) => (
-                    <div key={i} className="flex items-center gap-3 text-brand-black font-black uppercase tracking-[0.3em] text-xs md:text-sm lg:text-base italic">
-                      <Pizza size={20} className="hidden sm:block" />
-                      <span>{text}</span>
+                    <div key={i} className="text-brand-neon font-bold uppercase tracking-widest text-lg md:text-2xl shrink-0">
+                      {text}
+                    </div>
+                  ))}
+                  {/* Duplicate for seamless marquee if needed, or simple horizontal scroll on mobile */}
+                  {[
+                    "47 Jalapeño Poppers ordered last Friday alone.",
+                    "The Jumbo feeds five. Most people order two anyway.",
+                    "Same toppings on the 8\" as the 18\". No skimping by size.",
+                    "Ready in 20 minutes or we'll tell you before you order."
+                  ].map((text, i) => (
+                    <div key={i + 10} className="text-brand-neon font-bold uppercase tracking-widest text-lg md:text-2xl shrink-0 hidden md:block">
+                      {text}
                     </div>
                   ))}
                 </div>
-              </div>
+              </section>
 
-              {/* SECTION 3: MOST POPULAR */}
+              {/* SECTION 5: REMOVE THE OBJECTION */}
+              <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
+                <div className="max-w-4xl mx-auto text-center">
+                  <h2 className="font-display text-5xl md:text-8xl mb-16 text-brand-neon uppercase">STILL NOT SURE?</h2>
+                  
+                  <div className="text-brand-white text-xl md:text-2xl font-bold uppercase tracking-wide leading-relaxed space-y-12 mb-20">
+                    <p>That's fair.</p>
+                    <p>Most pizza places have trained you to expect the same thing: looks good online, disappoints in person.</p>
+                    <p className="text-brand-neon">So here's what we'll say:</p>
+                    <p>Order once.<br />If it's not the best pizza you've had in Borger or Fritch, call us and tell us.</p>
+                    <p>We'd rather hear it than lose you.</p>
+                    <p className="opacity-60 italic">That's not a guarantee written by a lawyer.<br />That's just how we operate.</p>
+                  </div>
+                  
+                  <button onClick={startOrder} className="bg-brand-red text-brand-white px-16 py-8 text-2xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                    Order Now and Find Out
+                  </button>
+                </div>
+              </section>
+
+              {/* SECTION 6: SOCIAL PROOF */}
               <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
-                <div className="max-w-7xl mx-auto relative z-10 text-center">
-                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase mb-6 text-brand-neon">START HERE</h2>
-                  <p className="text-xl md:text-2xl text-brand-white/60 font-black uppercase tracking-widest mb-24 italic">
-                    These three keep people coming back. Order one and you'll know why.
+                <div className="max-w-7xl mx-auto text-center">
+                  <h2 className="font-display text-6xl md:text-9xl mb-6 text-brand-neon uppercase">DON'T TAKE OUR WORD FOR IT.</h2>
+                  <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-widest mb-32">
+                    Borger and Fritch have been eating here long enough to know.
                   </p>
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-20 text-left">
                     {[
-                      { 
-                        name: 'Jalapeño Popper Pizza', 
-                        desc: 'Creamy heat. Real kick. Nobody leaves disappointed.', 
-                        img: 'https://images.unsplash.com/photo-1574071318508-1cdbad80ad50?auto=format&fit=crop&q=80&w=800' 
-                      },
-                      { 
-                        name: 'Chicken Bacon Ranch', 
-                        desc: 'Heavy. Savory. Loaded the way it should be.', 
-                        img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800' 
-                      },
-                      { 
-                        name: '18" Jumbo Pizza', 
-                        desc: 'Feeds everyone. Best value on the menu.', 
-                        img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800',
-                        label: 'Best Value'
-                      }
-                    ].map((item, i) => (
-                      <div key={i} className="card-concrete group flex flex-col noise-overlay p-4">
-                        <div className="relative aspect-square overflow-hidden mb-8 border-2 border-brand-black">
-                          <img src={item.img} alt={item.name} className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer" />
-                          {item.label && (
-                             <div className="absolute top-6 left-6 bg-brand-neon text-brand-black font-black text-xs uppercase px-6 py-2 shadow-2xl skew-x-[-15deg] active:scale-110 transition-transform">
-                                {item.label}
-                             </div>
-                          )}
-                        </div>
-                        <div className="text-left px-4 pb-4 flex-1 flex flex-col">
-                          <h3 className="font-display text-3xl md:text-4xl uppercase mb-4 leading-none text-brand-white">{item.name}</h3>
-                          <p className="text-gray-400 font-bold uppercase text-xs tracking-wider mb-10 flex-1 italic">{item.desc}</p>
-                          <button onClick={startOrder} className="btn-primary w-full py-5 text-xl font-display">Order This</button>
-                        </div>
+                      "Best pizza in Borger. Not even close. I've tried everything else. This is the one.",
+                      "Ordered the Jalapeño Popper on a Friday. Ordered it again Sunday. That's all I need to say.",
+                      "Chains are done for me. Once you eat here you can't go back.",
+                      "Loaded every single time. Never once been disappointed."
+                    ].map((review, i) => (
+                      <div key={i} className="relative pl-12 border-l-8 border-brand-neon">
+                        <span className="absolute -left-6 -top-10 text-brand-neon text-9xl font-display opacity-20">"</span>
+                        <p className="text-brand-white text-3xl md:text-4xl font-display uppercase leading-tight italic">
+                          {review}
+                        </p>
                       </div>
                     ))}
-                  </div>
-                </div>
-              </section>
-
-              {/* SECTION 4: COMBOS */}
-              <section className="bg-brand-concrete px-6 py-32 border-b border-white/5 noise-overlay">
-                <div className="max-w-7xl mx-auto relative z-10 text-center">
-                  <h2 className="font-display text-5xl md:text-8xl lg:text-9xl uppercase mb-6 text-brand-neon">MAKE IT EASY ON YOURSELF</h2>
-                  <p className="text-xl md:text-2xl text-brand-white/40 font-black uppercase tracking-widest mb-24 italic">
-                    More food. Better value. No overthinking it.
-                  </p>
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                    {[
-                      { name: 'Family Deal', desc: '18" Jumbo + Cheezy Bread + 2 Liter', sub: 'Nobody goes home hungry.', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800' },
-                      { name: 'Game Night Pack', desc: '2 Large Pizzas + Wings (12 ct)', sub: 'Built for a crowd. Gone in minutes.', img: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=800' },
-                      { name: 'Quick Meal', desc: 'Medium Pizza + Drink', sub: 'In and out. No hassle.', img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800' }
-                    ].map((item, i) => (
-                      <div key={i} className="flex flex-col text-left group">
-                         <div className="relative aspect-[16/9] overflow-hidden mb-8 border border-white/5 bg-brand-black">
-                            <img src={item.img} alt={item.name} className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" />
-                         </div>
-                         <h3 className="font-display text-3xl uppercase mb-2 text-brand-white">{item.name}</h3>
-                         <p className="text-brand-neon font-black text-sm uppercase tracking-widest mb-2">{item.desc}</p>
-                         <p className="text-gray-500 text-sm font-bold uppercase italic mb-8">{item.sub}</p>
-                         <button onClick={startOrder} className="btn-primary w-full py-4 text-xs font-display">Order This</button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
-              {/* SECTION 5: WHY JESSE'S */}
-              <section className="bg-brand-black px-6 py-40 md:py-60 border-b border-white/5 noise-overlay overflow-hidden relative">
-                <div className="absolute -left-20 top-1/2 -translate-y-1/2 font-display text-[20rem] opacity-[0.02] pointer-events-none select-none text-brand-neon">JESSE'S</div>
-                <div className="max-w-4xl mx-auto relative z-10">
-                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl mb-16 leading-[0.8] uppercase text-brand-neon">WE DON'T DO MEDIOCRE</h2>
-                  <div className="space-y-12 text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-brand-white leading-tight">
-                    <p>Chains cut corners because nobody's watching.</p>
-                    <p className="text-brand-neon border-l-8 border-brand-neon pl-8 py-4 bg-brand-neon/5 italic">We cut corners because we don't cut corners.</p>
-                    <p>Every pizza that leaves this kitchen is loaded, fresh, and built to actually satisfy.</p>
-                    <p className="opacity-60">If that's what you want, you're in the right place.</p>
-                    <p className="text-brand-red decoration-brand-red underline decoration-4 underline-offset-8">If not, the chains are down the street.</p>
-                  </div>
-                </div>
-              </section>
-
-              {/* SECTION 6: MENU PREVIEW */}
-              <section className="bg-brand-black px-6 py-32 border-b border-white/10 noise-overlay">
-                <div className="max-w-7xl mx-auto relative z-10">
-                  <div className="text-center mb-24">
-                    <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase mb-6 text-brand-neon">WHAT WE'RE SERVING</h2>
-                    <p className="text-xl md:text-2xl text-brand-white/40 font-black uppercase tracking-widest italic">
-                      Built from scratch. Made to order. Worth every bite.
-                    </p>
-                  </div>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-20">
-                    {[
-                      { name: 'Jalapeño Popper', desc: 'Creamy, spicy, loaded.' },
-                      { name: 'Chicken Bacon Ranch', desc: 'Rich, savory, no regrets.' },
-                      { name: 'Pepperoni', desc: 'Classic. Never light. Always hits.' },
-                      { name: 'Build Your Own', desc: 'Exactly how you want it.' },
-                      { name: 'Cheezy Bread', desc: 'Hot, cheesy, made to share.' },
-                      { name: 'Wings', desc: 'Crispy. Hot. Full of flavor.' },
-                      { name: 'Cinna Bread', desc: 'Warm, sweet, finished right.' }
-                    ].map((item, i) => (
-                      <div key={i} className="border-b-2 border-white/5 pb-8 hover:bg-white/5 px-4 transition-colors group">
-                        <h3 className="font-display text-3xl md:text-4xl text-brand-white uppercase mb-2 group-hover:text-brand-neon transition-colors">{item.name}</h3>
-                        <p className="text-xs font-black uppercase tracking-widest text-gray-500 italic">{item.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-24 flex justify-center">
-                    <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="btn-secondary px-20 py-6 text-2xl font-display uppercase tracking-widest">
-                      View Full Menu
-                    </button>
                   </div>
                 </div>
               </section>
 
               {/* SECTION 7: LOCATIONS */}
-              <section id="locations" className="bg-brand-black px-6 py-40 border-b border-white/10 relative noise-overlay">
-                <div className="max-w-5xl mx-auto text-center relative z-10">
-                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase mb-8 leading-none text-brand-neon">FIND YOUR LOCATION</h2>
-                  <p className="text-xl md:text-3xl text-brand-white/40 font-black uppercase tracking-[0.2em] mb-32 italic">
-                    Two spots. Same standard. Always worth the drive.
-                  </p>
+              <section id="locations" className="bg-brand-black px-6 py-40 border-b border-white/5 noise-overlay">
+                <div className="max-w-5xl mx-auto text-center">
+                  <h2 className="font-display text-6xl md:text-8xl mb-8 leading-none text-brand-neon uppercase">PICK YOUR LOCATION.<br />ORDER IN 30 SECONDS.</h2>
                   
-                  <div className="grid md:grid-cols-2 gap-24 text-left">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-32">
                     {/* Borger */}
-                    <div className="card-concrete noise-overlay p-10 border-l-8 border-brand-neon">
-                       <h3 className="font-display text-5xl uppercase mb-6 text-brand-white">Borger</h3>
-                       <div className="text-lg font-black uppercase tracking-widest space-y-2 mb-12 text-gray-400">
+                    <div className="bg-brand-concrete p-12 text-left noise-overlay border-l-8 border-brand-neon">
+                       <h3 className="font-display text-5xl uppercase mb-6 text-brand-neon">Borger</h3>
+                       <div className="text-brand-white text-xl font-bold uppercase tracking-widest space-y-2 mb-12">
                           <p>Jesse's Pizza Company</p>
                           <p>530 W 3rd St, Borger, TX 79007</p>
-                          <a href="tel:8062747200" className="text-brand-neon block mt-8 text-3xl font-display">(806) 274-7200</a>
+                          <p className="text-3xl font-display mt-8 text-brand-neon">(806) 274-7200</p>
+                          <p className="opacity-60 italic">Ready in 20 minutes.</p>
                        </div>
-                       <div className="grid grid-cols-2 gap-4">
-                          <button onClick={startOrder} className="bg-brand-neon text-brand-black py-5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-all">Order Online</button>
-                          <a href="tel:8062747200" className="border-2 border-brand-neon text-brand-neon py-5 font-display text-sm uppercase tracking-widest text-center hover:bg-brand-neon/10 transition-all">Call Now</a>
+                       <div className="flex flex-col sm:flex-row gap-4">
+                          <button onClick={startOrder} className="bg-brand-red text-brand-white py-5 px-8 font-display text-lg uppercase tracking-widest hover:scale-105 transition-all flex-1">Order Online</button>
+                          <a href="tel:8062747200" className="bg-brand-red text-brand-white py-5 px-8 font-display text-lg uppercase tracking-widest hover:scale-105 transition-all text-center flex-1">Call Now</a>
                        </div>
                     </div>
 
                     {/* Fritch */}
-                    <div className="card-concrete noise-overlay p-10 border-l-8 border-brand-red">
-                       <h3 className="font-display text-5xl uppercase mb-6 text-brand-white">Fritch</h3>
-                       <div className="text-lg font-black uppercase tracking-widest space-y-2 mb-12 text-gray-400">
+                    <div className="bg-brand-concrete p-12 text-left noise-overlay border-l-8 border-brand-neon">
+                       <h3 className="font-display text-5xl uppercase mb-6 text-brand-neon">Fritch</h3>
+                       <div className="text-brand-white text-xl font-bold uppercase tracking-widest space-y-2 mb-12">
                           <p>Jesse's Pizza Company</p>
                           <p>424 E Broadway St, Fritch, TX 79036</p>
-                          <a href="tel:8068570098" className="text-brand-neon block mt-8 text-3xl font-display">(806) 857-0098</a>
+                          <p className="text-3xl font-display mt-8 text-brand-neon">(806) 857-0098</p>
+                          <p className="opacity-60 italic">Ready in 20 minutes.</p>
                        </div>
-                       <div className="grid grid-cols-2 gap-4">
-                          <button onClick={startOrder} className="bg-brand-neon text-brand-black py-5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-all">Order Online</button>
-                          <a href="tel:8068570098" className="border-2 border-brand-neon text-brand-neon py-5 font-display text-sm uppercase tracking-widest text-center hover:bg-brand-neon/10 transition-all">Call Now</a>
+                       <div className="flex flex-col sm:flex-row gap-4">
+                          <button onClick={startOrder} className="bg-brand-red text-brand-white py-5 px-8 font-display text-lg uppercase tracking-widest hover:scale-105 transition-all flex-1">Order Online</button>
+                          <a href="tel:8068570098" className="bg-brand-red text-brand-white py-5 px-8 font-display text-lg uppercase tracking-widest hover:scale-105 transition-all text-center flex-1">Call Now</a>
                        </div>
                     </div>
                   </div>
                 </div>
               </section>
 
-              {/* SECTION 8: REVIEWS */}
-              <section className="bg-brand-concrete px-6 py-32 border-b border-white/5 noise-overlay">
-                <div className="max-w-7xl mx-auto relative z-10 text-center">
-                  <h2 className="font-display text-5xl md:text-8xl lg:text-9xl uppercase mb-6 text-brand-neon leading-none tracking-tighter">DON'T TAKE OUR WORD FOR IT</h2>
-                  <p className="text-xl md:text-2xl text-brand-white/40 font-black uppercase tracking-widest mb-32 italic">
-                    Borger and Fritch have been eating here long enough to know.
-                  </p>
-                  <div className="grid md:grid-cols-2 gap-16 text-left px-4">
-                    {[
-                      "Best pizza in Borger. Not even close.",
-                      "Loaded every single time. Never disappointed.",
-                      "Way better than any chain. Always fresh.",
-                      "Once you try it the chains are done for you."
-                    ].map((review, i) => (
-                      <div key={i} className="flex gap-8 group">
-                         <div className="w-2 bg-brand-neon shrink-0 group-hover:scale-y-110 transition-transform origin-top" />
-                         <p className="font-display text-4xl md:text-6xl uppercase italic text-brand-white/80 group-hover:text-brand-neon leading-[0.9] transition-all">
-                            "{review}"
-                         </p>
-                      </div>
-                    ))}
+              {/* SECTION 8: FINAL CLOSE */}
+              <section className="bg-brand-black px-6 py-48 md:py-72 noise-overlay border-b border-white/5">
+                <div className="max-w-4xl mx-auto text-center">
+                  <h1 className="font-display text-6xl md:text-9xl lg:text-[10rem] mb-12 leading-[0.8] uppercase text-brand-neon flex flex-col items-center">
+                    <span>YOU'RE GOING</span>
+                    <span>TO EAT</span>
+                    <span>TONIGHT</span>
+                    <span>ANYWAY.</span>
+                  </h1>
+                  
+                  <div className="text-brand-white text-xl md:text-3xl font-bold uppercase tracking-wide leading-tight mb-24">
+                    <p className="mb-12">The only real question is whether it's going to be worth it.</p>
+                    <div className="space-y-6 opacity-80">
+                      <p>You already know what the chains are going to give you.</p>
+                      <p>You've had it a hundred times.</p>
+                    </div>
+                    <div className="mt-12 text-brand-neon">
+                      <p>This is different.</p>
+                      <p>And the only way to know that is to order.</p>
+                    </div>
+                    <p className="mt-12 text-4xl">So order.</p>
                   </div>
-                </div>
-              </section>
-
-              {/* SECTION 9: FINAL CTA */}
-              <section className="bg-brand-black py-40 md:py-60 px-6 overflow-hidden relative border-y-4 border-brand-red noise-overlay">
-                <div className="absolute inset-0 bg-brand-red/5 noise-overlay pointer-events-none" />
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase leading-[0.8] mb-12 text-brand-neon">YOU ALREADY KNOW WHAT YOU WANT.</h2>
-                  <p className="text-xl md:text-3xl font-black uppercase tracking-[0.4em] mb-20 opacity-90 text-brand-white">
-                    Stop thinking about it. Order now and have it ready when you get here.
-                  </p>
+                  
                   <div className="flex flex-col sm:flex-row justify-center gap-8">
-                    <button onClick={startOrder} className="btn-primary px-24 py-8 text-3xl font-display uppercase tracking-widest hover:scale-105 transition-all shadow-[0_20px_50px_rgba(214,40,40,0.3)]">
+                    <button onClick={startOrder} className="bg-brand-red text-brand-white px-24 py-10 text-4xl font-display uppercase tracking-widest hover:scale-105 transition-all shadow-2xl">
                       Order Now
                     </button>
-                    <a href="tel:8062747200" className="btn-secondary px-24 py-8 text-3xl font-display uppercase tracking-widest text-center hover:bg-white/10 transition-all">
+                    <a href="tel:8062747200" className="bg-brand-red text-brand-white px-24 py-10 text-4xl font-display uppercase tracking-widest hover:scale-105 transition-all text-center">
                       Call Now
                     </a>
                   </div>
@@ -633,10 +698,10 @@ export default function App() {
 
             <footer className="bg-black py-12 px-8 border-t border-white/5 flex flex-col items-center gap-8">
               <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 text-[10px] font-black uppercase tracking-[0.3em]">
-                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-hot-orange transition-colors opacity-60 hover:opacity-100">Home</button>
-                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-hot-orange transition-colors opacity-60 hover:opacity-100">Browse Menu</button>
-                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-hot-orange transition-colors opacity-60 hover:opacity-100">About Our Story</button>
-                <a href="#locations" className="hover:text-hot-orange transition-colors opacity-60 hover:opacity-100">Locations</a>
+                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100">Home</button>
+                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100">Browse Menu</button>
+                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100">About Our Story</button>
+                <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100">Locations</a>
               </div>
               <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20">
                 © 2026 Jesse's Pizza Co. • All Rights Reserved
