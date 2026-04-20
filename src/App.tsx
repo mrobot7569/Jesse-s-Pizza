@@ -8,6 +8,7 @@ import {
   MapPin, 
   Phone, 
   Star, 
+  Info,
   CheckCircle2, 
   ChevronRight, 
   Pizza, 
@@ -401,12 +402,28 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-2 text-[12px]">Borger & Fritch, TX</p>
+                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-4 text-[12px]">Borger & Fritch, TX</p>
                   
-                  <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.85] uppercase text-[#B8F000] flex flex-col items-center">
+                  <div className="flex items-center gap-3 mb-8">
+                    <span className="text-3xl font-display text-[#F5F5F5]">4.5</span>
+                    <div className="flex gap-1 text-[#B8F000]">
+                      <Star size={20} fill="#B8F000" />
+                      <Star size={20} fill="#B8F000" />
+                      <Star size={20} fill="#B8F000" />
+                      <Star size={20} fill="#B8F000" />
+                      <div className="relative w-[10px] overflow-hidden">
+                        <Star size={20} fill="#B8F000" />
+                      </div>
+                      <Star size={20} className="text-white/20 -ml-[10px]" />
+                    </div>
+                    <span className="text-[14px] font-bold uppercase tracking-widest text-[#F5F5F5] opacity-60">274 REVIEWS</span>
+                    <Info size={14} className="text-[#F5F5F5] opacity-40" />
+                  </div>
+                  
+                  <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-none uppercase text-[#B8F000] flex flex-col items-center">
                     <span>BORGER'S</span>
                     <span>MOST LOADED</span>
-                    <span>PIZZA. PERIOD.</span>
+                    <span>PIZZA. <span className="text-[#D62828]">PERIOD.</span></span>
                   </h1>
                   
                   <p className="text-[18px] md:text-[22px] max-w-[400px] mx-auto text-[#F5F5F5] mb-16 leading-relaxed uppercase font-bold tracking-tight">
@@ -449,7 +466,7 @@ export default function App() {
               {/* SECTION 3: ENEMY SECTION */}
               <section className="bg-[#0D0D0D] px-6 py-[140px] noise-overlay relative">
                 <div className="max-w-[1200px] mx-auto text-center flex flex-col gap-10">
-                  <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase mb-12">YOU ALREADY KNOW.</h2>
+                  <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase mb-16 leading-tight">YOU ALREADY KNOW.</h2>
                   
                   <div className="flex flex-col gap-24">
                     <p className="text-[60px] md:text-[80px] text-[#F5F5F5] font-display uppercase tracking-tight leading-none bg-[#0D0D0D]">
@@ -482,8 +499,8 @@ export default function App() {
               {/* SECTION 5: OFFER SECTION */}
               <section className="bg-[#2A2A2A] px-6 py-32 md:py-[120px] noise-overlay relative">
                 <div className="max-w-[1200px] mx-auto">
-                  <div className="text-center mb-24">
-                    <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase mb-6">HERE'S WHAT YOU'RE GETTING.</h2>
+                  <div className="text-center mb-32">
+                    <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase mb-12 leading-tight">HERE'S WHAT YOU'RE GETTING.</h2>
                     <p className="text-lg md:text-xl text-[#F5F5F5] uppercase tracking-widest font-bold">
                       Not "great pizza." Here's what that actually means.
                     </p>
@@ -591,8 +608,8 @@ export default function App() {
 
               {/* SECTION 7: OBJECTION REMOVAL */}
               <section className="bg-[#0D0D0D] px-6 py-40 md:py-[160px] noise-overlay relative">
-                <div className="max-w-[600px] mx-auto text-center flex flex-col gap-12">
-                  <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase">STILL NOT SURE?</h2>
+                <div className="max-w-[600px] mx-auto text-center flex flex-col gap-16">
+                  <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase leading-tight">STILL NOT SURE?</h2>
                   
                   <div className="flex flex-col gap-8 text-[#F5F5F5] font-bold text-[20px] uppercase leading-tight">
                     <p>Order once.</p>
@@ -613,7 +630,7 @@ export default function App() {
               {/* SECTION 8: SOCIAL PROOF */}
               <section className="bg-[#2A2A2A] px-6 py-32 md:py-[120px] noise-overlay relative">
                 <div className="max-w-[1200px] mx-auto text-center">
-                  <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase mb-6">DON'T TAKE OUR WORD FOR IT.</h2>
+                  <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase mb-12 leading-tight">DON'T TAKE OUR WORD FOR IT.</h2>
                   <p className="text-lg md:text-xl text-[#F5F5F5] uppercase tracking-widest font-bold mb-32 italic">
                     Borger and Fritch have been eating here long enough to know.
                   </p>
@@ -718,7 +735,7 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-[400px] md:max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
-                  <h1 className="font-display text-6xl md:text-[8rem] lg:text-[10rem] mb-12 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center">
+                  <h1 className="font-display text-6xl md:text-[8rem] lg:text-[10rem] mb-12 leading-none uppercase text-[#B8F000] flex flex-col items-center">
                     <span>YOU'RE GOING</span>
                     <span>TO EAT TONIGHT</span>
                     <span>ANYWAY.</span>
@@ -816,8 +833,24 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-brand-white font-black uppercase tracking-[0.4em] mb-2 text-sm">Borger & Fritch, TX</p>
-                  <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] mb-8 leading-[0.95] uppercase text-brand-neon flex flex-col items-center">
+                  <p className="text-brand-white font-black uppercase tracking-[0.4em] mb-4 text-sm">Borger & Fritch, TX</p>
+                  
+                  <div className="flex items-center gap-3 mb-8">
+                    <span className="text-3xl font-display text-brand-white">4.5</span>
+                    <div className="flex gap-1 text-brand-neon">
+                      <Star size={20} fill="currentColor" />
+                      <Star size={20} fill="currentColor" />
+                      <Star size={20} fill="currentColor" />
+                      <Star size={20} fill="currentColor" />
+                      <div className="relative w-[10px] overflow-hidden">
+                        <Star size={20} fill="currentColor" />
+                      </div>
+                      <Star size={20} className="text-white/20 -ml-[10px]" />
+                    </div>
+                    <span className="text-[14px] font-bold uppercase tracking-widest text-brand-white opacity-60">274 REVIEWS</span>
+                    <Info size={14} className="text-brand-white opacity-40" />
+                  </div>
+                  <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] mb-8 leading-none uppercase text-brand-neon flex flex-col items-center">
                     <span>THE MENU.</span>
                     <span>NO SHORTCUTS.</span>
                     <span>NO SKIMPING.</span>
@@ -839,8 +872,8 @@ export default function App() {
               {/* SECTION 2: MOST POPULAR */}
               <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
                 <div className="max-w-7xl mx-auto">
-                  <div className="text-center mb-24">
-                    <h2 className="font-display text-6xl md:text-9xl mb-6 text-brand-neon uppercase">START HERE.</h2>
+                  <div className="text-center mb-32">
+                    <h2 className="font-display text-6xl md:text-9xl mb-12 text-brand-neon uppercase leading-tight">START HERE.</h2>
                     <p className="text-xl md:text-3xl text-brand-white font-black uppercase tracking-widest italic">
                       These are the ones people order on repeat. There's a reason for that.
                     </p>
