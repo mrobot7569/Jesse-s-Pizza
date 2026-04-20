@@ -299,8 +299,24 @@ export default function App() {
   const marketingViews = ['home', 'menu-browse', 'about', 'careers', 'contact'];
   const isMarketingView = marketingViews.includes(view);
 
+  const PromoStrip = () => (
+    <div className="hidden lg:flex bg-brand-neon h-10 items-center justify-center sticky top-0 z-[60] noise-overlay border-b border-brand-black/20">
+      <div className="flex items-center gap-8">
+        <span className="font-display text-brand-black text-xs uppercase tracking-[0.4em] font-black italic">
+          READY TO EAT THE BEST PIZZA IN THE TEXAS PANHANDLE?
+        </span>
+        <button 
+          onClick={startOrder} 
+          className="bg-brand-red text-brand-white px-5 py-1 flex items-center text-[10px] font-black uppercase tracking-[.25em] hover:bg-brand-black hover:text-brand-neon transition-all shadow-xl active:scale-95"
+        >
+          ORDER NOW
+        </button>
+      </div>
+    </div>
+  );
+
   const MainNavigation = () => (
-    <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 noise-overlay">
+    <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 lg:top-10 z-50 noise-overlay">
       <div className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0" onClick={() => { window.scrollTo(0, 0); setView('home'); }}>
         <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8 shrink-0" />
         <span className="font-display text-base sm:text-2xl md:text-3xl uppercase truncate text-brand-neon">
@@ -446,6 +462,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-brand-black text-brand-white selection:bg-brand-neon selection:text-brand-black font-sans overflow-x-hidden">
       
+      {isMarketingView && <PromoStrip />}
       {isMarketingView && <MainNavigation />}
       {isMarketingView && <ScrollToTop />}
 
@@ -460,7 +477,7 @@ export default function App() {
           >
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-screen flex items-center justify-center bg-brand-black px-6 pt-16 pb-20 overflow-hidden noise-overlay">
+              <section className="relative min-h-screen flex items-center justify-center bg-brand-black px-6 pt-32 pb-20 noise-overlay">
                 <div className="absolute inset-0 z-0">
                   <img 
                     src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
@@ -474,7 +491,7 @@ export default function App() {
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
                   <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-4 text-[12px]">Borger & Fritch, TX</p>
                   
-                  <div className="flex items-center gap-4 mb-10 bg-white/5 backdrop-blur-sm px-6 py-3 border border-white/10 rounded-full shadow-2xl">
+                  <div className="flex items-center gap-4 mb-2 bg-white/5 backdrop-blur-sm px-6 py-3 border border-white/10 rounded-full shadow-2xl">
                     <span className="text-4xl font-display text-[#F5F5F5]">4.6</span>
                     <div className="flex gap-1 text-[#B8F000]">
                       <Star size={22} fill="#B8F000" />
@@ -489,7 +506,7 @@ export default function App() {
                     <span className="text-[14px] font-bold uppercase tracking-widest text-[#F5F5F5]">867 COMBINED REVIEWS</span>
                   </div>
                   
-                  <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-none uppercase text-[#B8F000] flex flex-col items-center">
+                  <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center pt-2">
                     <span>BORGER'S</span>
                     <span>MOST LOADED</span>
                     <span>PIZZA. <span className="text-[#D62828]">PERIOD.</span></span>
@@ -555,19 +572,14 @@ export default function App() {
                 </div>
               </section>
 
-              {/* SECTION 4: IMAGE BREAK */}
-              <section className="w-full bg-brand-black flex items-center justify-center p-8 md:p-24 border-b border-white/5 overflow-hidden noise-overlay">
-                <div className="max-w-xl md:max-w-3xl w-full">
-                  <img 
-                    src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
-                    alt="Pizza Fresh from Oven"
-                    className="w-full h-auto block shadow-2xl border border-white/10"
-                    referrerPolicy="no-referrer"
-                  />
-                  <p className="mt-8 text-center text-xs font-black uppercase tracking-[0.4em] opacity-30 text-brand-white">
-                    SETTLING FOR PIZZA THAT DOESN'T DELIVER.
-                  </p>
-                </div>
+              {/* SECTION 4: FULL BLEED IMAGE BREAK */}
+              <section className="w-full relative h-[250px] md:h-[400px]">
+                <img 
+                  src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
+                  alt="Pizza Fresh from Oven"
+                  className="w-full h-full object-cover grayscale-[0.2]"
+                  referrerPolicy="no-referrer"
+                />
               </section>
 
               {/* SECTION 5: OFFER SECTION */}
@@ -797,7 +809,7 @@ export default function App() {
               </section>
 
               {/* SECTION 11: FINAL CLOSE */}
-              <section className="relative h-screen flex items-center justify-center bg-[#0D0D0D] px-6 py-20 overflow-hidden noise-overlay">
+              <section className="relative min-h-screen flex items-center justify-center bg-[#0D0D0D] px-6 py-32 noise-overlay">
                 <div className="absolute inset-0 z-0">
                   <img 
                     src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
@@ -809,7 +821,7 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-[400px] md:max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
-                  <h1 className="font-display text-6xl md:text-[8rem] lg:text-[10rem] mb-12 leading-none uppercase text-[#B8F000] flex flex-col items-center">
+                  <h1 className="font-display text-6xl md:text-[8rem] lg:text-[10rem] mb-12 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center pt-20">
                     <span>YOU'RE GOING</span>
                     <span>TO EAT TONIGHT</span>
                     <span>ANYWAY.</span>
@@ -1512,7 +1524,7 @@ export default function App() {
             {/* SECTION 1: HERO */}
             <section className="px-6 pt-24 pb-32 md:pt-48 md:pb-60 bg-brand-black noise-overlay border-b border-white/5 overflow-hidden relative">
               <div className="max-w-6xl mx-auto flex flex-col items-center text-center relative z-10">
-                <h1 className="font-display text-7xl md:text-[10rem] lg:text-[12rem] mb-12 leading-[0.85] uppercase text-brand-neon flex flex-col italic">
+                <h1 className="font-display text-7xl md:text-[10rem] lg:text-[12rem] mb-12 leading-[0.95] uppercase text-brand-neon flex flex-col italic">
                   <span>COME WORK</span>
                   <span>WHERE THE PIZZA</span>
                   <span>ACTUALLY HITS.</span>
@@ -1762,7 +1774,7 @@ export default function App() {
               {/* SECTION 1: HERO */}
               <section className="relative min-h-[60vh] flex items-center justify-center bg-brand-black px-6 pt-16 pb-20 overflow-hidden noise-overlay">
                 <div className="max-w-4xl mx-auto text-center relative z-10">
-                  <h1 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-12 leading-[0.85] uppercase text-brand-neon flex flex-col items-center">
+                  <h1 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-12 leading-[0.95] uppercase text-brand-neon flex flex-col items-center">
                     <span>GET IN TOUCH.</span>
                     <span>OR JUST ORDER.</span>
                   </h1>
