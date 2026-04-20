@@ -300,8 +300,9 @@ export default function App() {
   const isMarketingView = marketingViews.includes(view);
 
   const PromoStrip = () => (
-    <div className="hidden lg:flex bg-brand-neon h-10 items-center justify-center sticky top-0 z-[60] noise-overlay border-b border-brand-black/20">
-      <div className="flex items-center gap-8">
+    <div className="hidden lg:flex fixed bottom-0 left-0 right-0 z-[100] bg-brand-neon h-10 items-center justify-center border-t border-brand-black/20 overflow-hidden">
+      <div className="absolute inset-0 noise-overlay pointer-events-none" />
+      <div className="flex items-center gap-8 relative z-10">
         <span className="font-display text-brand-black text-xs uppercase tracking-[0.4em] font-black italic">
           READY TO EAT THE BEST PIZZA IN THE TEXAS PANHANDLE?
         </span>
@@ -316,8 +317,9 @@ export default function App() {
   );
 
   const MainNavigation = () => (
-    <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 lg:top-10 z-50 noise-overlay">
-      <div className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0" onClick={() => { window.scrollTo(0, 0); setView('home'); }}>
+    <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 overflow-hidden">
+      <div className="absolute inset-0 noise-overlay pointer-events-none" />
+      <div className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0 relative z-10" onClick={() => { window.scrollTo(0, 0); setView('home'); }}>
         <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8 shrink-0" />
         <span className="font-display text-base sm:text-2xl md:text-3xl uppercase truncate text-brand-neon">
           Jesse's Pizza Co.
@@ -436,7 +438,8 @@ export default function App() {
   );
 
   const FunnelHeader = ({ title, showBack = true, onBack }: { title: string, showBack?: boolean, onBack?: () => void }) => (
-    <header className="px-6 py-8 border-b border-white/5 bg-brand-black sticky top-0 z-40 noise-overlay">
+    <header className="px-6 py-8 border-b border-white/5 bg-brand-black sticky top-0 z-40 overflow-hidden">
+      <div className="absolute inset-0 noise-overlay pointer-events-none" />
       <div className="max-w-4xl mx-auto flex items-center justify-between relative z-10">
         <div className="flex items-center gap-4">
           {showBack && (
@@ -462,7 +465,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-brand-black text-brand-white selection:bg-brand-neon selection:text-brand-black font-sans overflow-x-hidden">
       
-      {isMarketingView && <PromoStrip />}
       {isMarketingView && <MainNavigation />}
       {isMarketingView && <ScrollToTop />}
 
@@ -2556,6 +2558,7 @@ export default function App() {
           </button>
         </div>
       )}
+      {isMarketingView && <PromoStrip />}
     </div>
   );
 }
