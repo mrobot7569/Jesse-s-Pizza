@@ -5,26 +5,55 @@
   --font-display: "Inter", sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --color-charcoal: #121212;
-  --color-burnt-red: #C62828;
-  --color-warm-cream: #F5E6D3;
-  --color-hot-orange: #FF6A00;
+  --color-brand-black: #0D0D0D;
+  --color-brand-neon: #B8F000;
+  --color-brand-white: #F5F5F5;
+  --color-brand-red: #D62828;
+  --color-brand-concrete: #2A2A2A;
 }
 
 @layer base {
   body {
-    @apply bg-charcoal text-warm-cream font-sans antialiased;
+    @apply bg-brand-black text-brand-white font-sans antialiased selection:bg-brand-neon selection:text-brand-black;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold uppercase tracking-tighter;
+  h1 {
+    @apply font-display font-black uppercase tracking-tighter text-brand-neon;
+  }
+
+  h2 {
+    @apply font-display font-bold uppercase tracking-tighter text-brand-white;
+  }
+
+  h3 {
+    @apply font-display font-bold uppercase tracking-tighter text-brand-white;
   }
 }
 
-.grid-border {
-  @apply border border-warm-cream/10;
+.noise-overlay {
+  position: relative;
 }
 
-.btn-orange {
-  @apply bg-hot-orange text-charcoal font-bold uppercase transition-colors hover:bg-orange-600 rounded-sm;
+.noise-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.btn-primary {
+  @apply bg-brand-red text-brand-white font-bold uppercase px-8 py-4 tracking-widest transition-all hover:bg-red-700 active:scale-95 rounded-md;
+}
+
+.btn-secondary {
+  @apply bg-transparent border-2 border-brand-neon text-brand-neon font-bold uppercase px-8 py-4 tracking-widest transition-all hover:bg-brand-neon hover:text-brand-black active:scale-95 rounded-md;
+}
+
+.card-concrete {
+  @apply bg-brand-concrete border-none shadow-xl transition-all;
 }
