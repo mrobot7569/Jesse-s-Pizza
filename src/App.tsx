@@ -389,7 +389,7 @@ export default function App() {
 
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative h-screen flex items-center justify-center bg-brand-black px-6 py-20 overflow-hidden noise-overlay">
+              <section className="relative min-h-screen flex items-center justify-center bg-brand-black px-6 pt-32 pb-20 overflow-hidden noise-overlay">
                 <div className="absolute inset-0 z-0">
                   <img 
                     src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
@@ -401,7 +401,7 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-8 text-[12px]">Borger & Fritch, TX</p>
+                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-5 text-[12px]">Borger & Fritch, TX</p>
                   
                   <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.85] uppercase text-[#B8F000] flex flex-col items-center">
                     <span>BORGER'S</span>
@@ -802,7 +802,7 @@ export default function App() {
 
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-[80vh] flex items-center justify-center bg-brand-black px-6 py-20 overflow-hidden noise-overlay border-b border-white/5">
+              <section className="relative min-h-[80vh] flex items-center justify-center bg-brand-black px-6 pt-32 pb-20 overflow-hidden noise-overlay border-b border-white/5">
                 <div className="absolute inset-0 z-0">
                   <img 
                     src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000" 
@@ -814,7 +814,7 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-brand-white font-black uppercase tracking-[0.4em] mb-6 text-sm">Borger & Fritch, TX</p>
+                  <p className="text-brand-white font-black uppercase tracking-[0.4em] mb-5 text-sm">Borger & Fritch, TX</p>
                   <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] mb-8 leading-[0.95] uppercase text-brand-neon flex flex-col items-center">
                     <span>THE MENU.</span>
                     <span>NO SHORTCUTS.</span>
