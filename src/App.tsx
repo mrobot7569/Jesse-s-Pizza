@@ -43,136 +43,146 @@ type CartItem = {
 const MENU_CATEGORIES = [
   {
     id: 'popular',
-    title: 'Start Here',
-    description: 'These are the pizzas everyone keeps coming back for.',
+    title: 'START HERE',
+    subtext: 'These are the ones people order on repeat.',
     items: [
       { 
         id: 'pop-jal', 
         name: 'Jalapeño Popper Pizza', 
-        desc: 'Creamy, spicy, and loaded with flavor.', 
+        desc: 'Creamy heat. Serious kick. Loaded every time.', 
         prices: { '12"': 18.29, '14"': 23.29 },
         displayPrice: '$18.29+',
-        image: 'https://picsum.photos/seed/jalpop/600/600', 
+        image: 'https://picsum.photos/seed/poppizza/600/600', 
+        label: 'Most Popular',
         type: 'pizza' 
       },
       { 
         id: 'pop-cbr', 
         name: 'Chicken Bacon Ranch', 
-        desc: 'Savory, rich, and always satisfying.', 
+        desc: 'Savory, rich, and never disappoints.', 
         prices: { '12"': 18.29, '14"': 23.29, '18"': 26.99 },
         displayPrice: '$18.29+',
+        label: 'Most Popular',
         bestValue: '18"',
-        image: 'https://picsum.photos/seed/cbr1/600/600', 
+        image: 'https://picsum.photos/seed/ranchpizza/600/600', 
         type: 'pizza' 
       },
       { 
         id: 'pop-jumbo', 
         name: '18" Jumbo Pizza', 
-        desc: 'Big, loaded, and built to feed everyone.', 
-        prices: { '1-Topping': 21.50, 'Specialty': 25.99 },
-        displayPrice: '$21.50+',
+        desc: 'Feeds everyone. Best value on the menu.', 
+        prices: { 'Starts at': 21.50 },
+        displayPrice: 'From $21.50',
+        label: 'Best Value',
         bestValue: true,
-        image: 'https://picsum.photos/seed/jumbo/600/600', 
+        image: 'https://picsum.photos/seed/jumbo18/600/600', 
         type: 'pizza' 
       }
     ]
   },
   {
     id: 'combos',
-    title: 'Make It Easy',
-    description: 'Better value than ordering separately.',
+    title: 'MORE FOOD. BETTER VALUE.',
+    subtext: 'Built to make the decision easy.',
     items: [
       { 
         id: 'combo-family', 
         name: 'Family Deal', 
-        desc: '18" Jumbo Pizza + Cheezy Bread + 2 Liter Drink. Enough for everyone.', 
+        desc: '18" Jumbo + Cheezy Bread + 2 Liter Drink', 
+        subDesc: 'Nobody goes home hungry.',
         basePrice: 34.99,
-        image: 'https://picsum.photos/seed/family/600/600',
+        image: 'https://picsum.photos/seed/famdeal/600/600',
+        cta: 'Order This',
         type: 'combo'
       },
       { 
         id: 'combo-game', 
         name: 'Game Night Pack', 
-        desc: '2 Large Pizzas + Wings (12 ct). Built for sharing.', 
+        desc: '2 Large Pizzas + Wings (12 ct)', 
+        subDesc: 'Built for a crowd. Gone fast.',
         basePrice: 45.99,
-        image: 'https://picsum.photos/seed/gamenight/600/600',
+        image: 'https://picsum.photos/seed/gamenightp/600/600',
+        cta: 'Order This',
         type: 'combo'
       },
       { 
         id: 'combo-quick', 
         name: 'Quick Meal', 
-        desc: '12" Pizza + Drink. Fast, simple, and hits the spot.', 
+        desc: 'Medium Pizza + Drink', 
+        subDesc: 'Fast, simple, hits the spot.',
         basePrice: 19.99,
-        image: 'https://picsum.photos/seed/quick/600/600',
+        image: 'https://picsum.photos/seed/quickmealp/600/600',
+        cta: 'Order This',
         type: 'combo'
       }
     ]
   },
   {
     id: 'specialty',
-    title: 'Specialty Pizzas',
-    description: 'Built heavy. Built right.',
+    title: 'SPECIALTY PIZZAS',
+    subtext: 'Made to order. Built to impress.',
     items: [
-      { id: 'sp1', name: 'Jalapeño Popper', desc: 'Creamy, spicy, and loaded with flavor.', prices: { '8"': 10.29, '12"': 18.29, '14"': 23.29 }, displayPrice: '$10.29+', type: 'pizza' },
-      { id: 'sp2', name: 'Chicken Bacon Ranch', desc: 'Ranch base, tender chicken, crispy bacon.', prices: { '8"': 10.29, '12"': 18.29, '14"': 23.29, '18"': 26.99 }, displayPrice: '$10.29+', type: 'pizza' },
-      { id: 'sp3', name: 'Closed on Sunday', desc: 'Loaded with premium chicken and secret sauce.', prices: { '12"': 18.29, '14"': 23.29, '18"': 26.99 }, displayPrice: '$18.29+', type: 'pizza' },
-      { id: 'sp4', name: 'Meat Eater', desc: 'Pepperoni, sausage, bacon, and ham.', prices: { '12"': 18.29, '14"': 23.29, '18"': 26.99 }, displayPrice: '$18.29+', type: 'pizza' },
-      { id: 'sp5', name: 'Classic Pepperoni', desc: 'Double layer of premium pepperoni.', prices: { '12"': 16.50, '14"': 18.50, '18"': 21.50 }, displayPrice: '$16.50+', type: 'pizza' }
+      { id: 'sp1', name: 'Jalapeño Popper', desc: 'Creamy heat with a serious kick.', prices: { '8"': 10.29, '12"': 18.29, '14"': 23.29 }, displayPrice: '$10.29+', type: 'pizza' },
+      { id: 'sp2', name: 'Chicken Bacon Ranch', desc: 'Loaded with bacon and creamy ranch flavor.', prices: { '8"': 10.29, '12"': 18.29, '14"': 23.29, '18"': 26.99 }, displayPrice: '$10.29+', type: 'pizza' },
+      { id: 'sp3', name: 'Closed on Sunday', desc: 'Bold, hearty, and packed with toppings.', prices: { '12"': 18.29, '14"': 23.29, '18"': 26.99 }, displayPrice: '$18.29+', type: 'pizza' },
+      { id: 'sp4', name: 'Meat Eater', desc: 'All the meat. No holding back.', prices: { '12"': 18.29, '14"': 23.29, '18"': 26.99 }, displayPrice: '$18.29+', type: 'pizza' },
+      { id: 'sp5', name: 'Pepperoni', desc: 'Classic. Loaded. Always hits.', prices: { '12"': 16.50, '14"': 18.50, '18"': 21.50 }, displayPrice: '$16.50+', type: 'pizza' }
     ]
   },
   {
     id: 'byo',
-    title: 'Build Your Own',
-    description: 'Pick your size. Add your toppings. Make it yours.',
+    title: 'BUILD YOUR OWN',
+    subtext: 'Pick your size. Pick your toppings. Make it yours.',
     items: [
       { 
         id: 'byo1', 
-        name: 'Build Your Own Pizza', 
+        name: 'Pick Your Size', 
         desc: 'Exactly how you want it. Every time.', 
         prices: { '8"': 7.25, '12"': 16.50, '14"': 18.50, '18"': 21.50 },
         bestValue: '18"',
-        displayPrice: '$7.25+',
+        displayPrice: 'From $7.25',
         type: 'byo-pizza' 
       }
     ]
   },
   {
     id: 'sides-wings',
-    title: 'Sides & Wings',
-    description: 'Hot, fresh, and ready to go.',
+    title: 'SIDES AND WINGS',
+    subtext: 'Hot, fresh, and ready to go.',
     items: [
-      { id: 'side1', name: 'Cheezy Bread', desc: 'Mozzarella and garlic butter.', prices: { '10"': 9.00, '12"': 14.00, '14"': 16.00 }, displayPrice: '$9.00+', type: 'side-sized' },
-      { id: 'wing1', name: 'Wings', desc: 'Classic bone-in wings.', prices: { '8 ct': 11.99, '12 ct': 16.99, '18 ct': 23.99 }, displayPrice: '$11.99+', type: 'wings' }
+      { id: 'side-cb', name: 'Cheezy Bread', desc: 'Hot, cheesy, and made to share.', prices: { '10"': 9.00, '12"': 14.00, '14"': 16.00 }, type: 'side' },
+      { id: 'side-wn', name: 'Wings', desc: 'Crispy, hot, and full of flavor.', prices: { '8 ct': 11.99, '12 ct': 16.99, '18 ct': 23.99 }, type: 'side' },
+      { id: 'side-cz', name: 'Calzones', desc: 'Packed, baked, and loaded inside.', prices: { '2-Topping Med': 12.00, '2-Topping Lrg': 15.00, 'Specialty Med': 14.00, 'Specialty Lrg': 18.00 }, type: 'side' }
     ]
   },
   {
     id: 'salads',
-    title: 'Salads',
-    description: 'Guilt-free green.',
+    title: 'SALADS',
+    subtext: 'Fresh and built to fill you up.',
     items: [
-      { id: 'sal1', name: 'Garden Salad', desc: 'Fresh local veggies.', basePrice: 7.75, type: 'salad' },
-      { id: 'sal2', name: 'Chicken Salad', desc: 'Loaded with premium chicken.', basePrice: 9.00, type: 'salad' },
-      { id: 'sal3', name: 'Chef Salad', desc: 'A meat-lover\'s garden.', basePrice: 8.25, type: 'salad' }
+      { id: 'sal-garden', name: 'Garden Salad', desc: 'Fresh and simple.', basePrice: 7.75, type: 'salad' },
+      { id: 'sal-chicken', name: 'Chicken Salad', desc: 'Fresh greens with hearty chicken.', basePrice: 9.00, type: 'salad' },
+      { id: 'sal-chef', name: 'Chef Salad', desc: 'Loaded and built to fill you up.', basePrice: 8.25, type: 'salad' },
+      { id: 'sal-byo', name: 'Build Your Own Salad', desc: 'Make it exactly how you want it.', basePrice: 0.00, type: 'salad' }
     ]
   },
   {
     id: 'dessert',
-    title: 'Dessert',
-    description: 'The final move.',
+    title: 'DESSERT',
+    subtext: 'Warm, sweet, and finished just right.',
     items: [
-      { id: 'des1', name: 'Cinna Bread', desc: 'Cinnamon, sugar, and icing.', prices: { '10"': 9.00, '12"': 14.00, '14"': 16.00 }, displayPrice: '$9.00+', type: 'side-sized' }
+      { id: 'des-cb', name: 'Cinna Bread', desc: 'Warm, sweet, and finished just right.', prices: { '10"': 9.00, '12"': 14.00, '14"': 16.00 }, type: 'dessert' }
     ]
   },
   {
     id: 'drinks',
-    title: 'Drinks & Extras',
-    description: 'Ice cold and extras.',
+    title: 'DRINKS AND EXTRAS',
+    subtext: 'Ice cold and extras.',
     items: [
-      { id: 'drk1', name: '2 Liter Drinks', desc: 'Pepsi products.', basePrice: 3.25, type: 'drink' },
-      { id: 'ext1', name: 'Ranch', desc: 'The gold stuff.', basePrice: 0.75, type: 'extra' },
-      { id: 'ext3', name: 'Marinara', desc: 'House red sauce.', basePrice: 0.75, type: 'extra' },
-      { id: 'ext2', name: 'Garlic Butter', desc: 'Liquid gold.', basePrice: 0.75, type: 'extra' },
-      { id: 'ext4', name: 'Jalapeños', desc: 'Fresh slices.', basePrice: 1.99, type: 'extra' }
+      { id: 'drk-2l', name: '2 Liter Drinks', desc: 'Pepsi products.', basePrice: 3.25, type: 'drink' },
+      { id: 'ext-sauce', name: 'Dipping Sauces', desc: 'Ranch, Garlic Butter, Marinara, Jalapeño Ranch, Italian, BBQ.', basePrice: 0.75, type: 'extra' },
+      { id: 'ext-jal', name: 'Side of Jalapeños', desc: 'Fresh slices.', basePrice: 1.99, type: 'extra' },
+      { id: 'ext-pkg', name: 'Plates (2 Pack) | Cups (2 Pack)', desc: 'Everything you need.', basePrice: 0.50, type: 'extra' }
     ]
   }
 ];
@@ -246,7 +256,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-brand-black text-brand-white selection:bg-brand-neon selection:text-brand-black font-sans">
+    <div className="min-h-screen bg-brand-black text-brand-white selection:bg-brand-neon selection:text-brand-black font-sans overflow-x-hidden">
       
       <AnimatePresence mode="wait">
         {view === 'home' ? (
@@ -285,130 +295,96 @@ export default function App() {
               {/* MOBILE MENU */}
               {isMenuOpen && (
                 <motion.div 
-                  initial={{ opacity: 0, y: -10 }}
+                  initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="md:hidden absolute top-full left-0 right-0 bg-brand-black border-b border-brand-neon/20 p-6 flex flex-col gap-6 font-display text-2xl uppercase text-brand-white noise-overlay"
+                  className="md:hidden absolute top-full left-0 right-0 bg-brand-black border-b border-brand-neon/40 p-12 flex flex-col items-center text-center gap-10 font-display text-4xl uppercase text-brand-white noise-overlay z-[100] shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
                 >
-                  <button onClick={() => { setIsMenuOpen(false); setView('menu-browse'); }} className="text-left font-bold text-brand-neon">MENU</button>
-                  <button onClick={() => { setIsMenuOpen(false); setView('about'); }} className="text-left font-bold">ABOUT</button>
-                  <a href="#locations" onClick={() => setIsMenuOpen(false)} className="font-bold">Locations</a>
-                  <button onClick={() => { setIsMenuOpen(false); startOrder(); }} className="btn-primary py-4 font-bold">Order Online</button>
+                  <button onClick={() => { setIsMenuOpen(false); setView('menu-browse'); window.scrollTo(0,0); }} className="font-bold text-brand-neon active:scale-95 transition-transform">MENU</button>
+                  <button onClick={() => { setIsMenuOpen(false); setView('about'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">ABOUT</button>
+                  <a href="#locations" onClick={() => setIsMenuOpen(false)} className="font-bold active:scale-95 transition-transform">Locations</a>
+                  <button onClick={() => { setIsMenuOpen(false); startOrder(); }} className="btn-primary w-full py-6 font-bold text-2xl">Order Online</button>
                 </motion.div>
               )}
             </nav>
 
             <main>
               {/* SECTION 1: HERO */}
-              <section className="bg-brand-black px-6 py-12 md:py-24 border-b border-white/5 overflow-hidden noise-overlay">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-24 relative z-10">
-                  {/* Food Image - Mobile First */}
-                  <div className="w-full md:w-1/2 order-1 md:order-2">
-                    <motion.div 
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 0.8 }}
-                      className="relative"
-                    >
-                      <div className="absolute inset-0 bg-brand-neon blur-[120px] opacity-10 rounded-full" />
-                      <img 
-                        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=1200" 
-                        alt="Hot Pizza" 
-                        className="relative z-10 w-full aspect-square object-cover border-4 border-white/5 shadow-3xl grayscale-[20%] hover:grayscale-0 transition-all duration-700"
-                        referrerPolicy="no-referrer"
-                      />
-                    </motion.div>
-                  </div>
-
-                  {/* Hero Text */}
-                  <div className="w-full md:w-1/2 order-2 md:order-1 text-left">
-                    <p className="text-brand-neon font-black uppercase tracking-[0.4em] mb-4 text-xs md:text-sm">Borger & Fritch, TX</p>
-                    <h1 className="font-display text-6xl md:text-[8rem] lg:text-[11rem] mb-6 leading-[0.8] uppercase text-brand-neon">
-                      Pizza Done Right.
-                    </h1>
-                    <p className="text-lg md:text-2xl max-w-md opacity-90 font-medium text-brand-white mb-12 leading-relaxed">
-                      Big portions. Loaded toppings. Fast pickup. <span className="text-brand-neon font-bold">No shortcuts.</span>
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-6">
-                      <button onClick={startOrder} className="btn-primary px-16 py-6 text-2xl font-display">Order Now</button>
-                      <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="btn-secondary px-16 py-6 text-2xl font-display">
-                        View Menu
-                      </button>
-                    </div>
+              <section className="bg-brand-black px-6 py-20 md:py-40 border-b border-white/5 overflow-hidden noise-overlay">
+                <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+                  <p className="text-brand-neon font-black uppercase tracking-[0.4em] mb-6 text-xs md:text-sm">Borger & Fritch, TX</p>
+                  <h1 className="font-display text-5xl md:text-7xl lg:text-8xl mb-8 leading-[0.85] uppercase text-brand-neon break-words">
+                    TIRED OF PIZZA THAT DISAPPOINTS?
+                  </h1>
+                  <p className="text-xl md:text-3xl max-w-2xl mx-auto opacity-90 font-bold text-brand-white mb-16 leading-tight uppercase tracking-tight">
+                    Jesse's doesn't do light toppings, frozen shortcuts, or food that makes you regret ordering. This is the real thing.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-6">
+                    <button onClick={startOrder} className="btn-primary px-20 py-8 text-3xl font-display uppercase tracking-widest shadow-[0_20px_50px_rgba(214,40,40,0.3)] hover:scale-105 active:scale-95 transition-all">
+                      Order Now
+                    </button>
+                    <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="btn-secondary px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-white/10 transition-all">
+                      See the Menu
+                    </button>
                   </div>
                 </div>
               </section>
 
-              {/* SECTION: TRUST STRIP */}
-              <div className="bg-brand-neon py-6 px-6 relative z-20 shadow-2xl skew-y-[-1deg] -mt-8 mb-20 origin-left">
-                <div className="max-w-7xl mx-auto flex flex-wrap justify-center md:justify-between items-center gap-8 md:gap-4 skew-y-[1deg]">
+              {/* SECTION 2: TRUST STRIP */}
+              <div className="bg-brand-neon py-8 px-6 relative z-20 shadow-2xl skew-y-[-1deg] -mt-8 mb-32 origin-left border-y-4 border-brand-black">
+                <div className="max-w-7xl mx-auto flex flex-wrap justify-around items-center gap-12 md:gap-4 skew-y-[1deg]">
                   {[
-                    { icon: <Clock size={20} />, text: "Fast Pickup Guaranteed" },
-                    { icon: <Check size={20} />, text: "Loaded with Toppings" },
-                    { icon: <MapPin size={20} />, text: "Borger & Fritch Local" },
-                    { icon: <Flame size={20} />, text: "Built for Real People" }
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 text-brand-black font-black uppercase tracking-[0.2em] text-[10px] md:text-xs">
-                      {item.icon}
-                      <span>{item.text}</span>
+                    "Loaded Every Time",
+                    "No Chain. No Shortcuts.",
+                    "Borger's Go-To Since Day One",
+                    "Fast Pickup. Real Flavor."
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-center gap-3 text-brand-black font-black uppercase tracking-[0.3em] text-xs md:text-sm lg:text-base italic">
+                      <Pizza size={20} className="hidden sm:block" />
+                      <span>{text}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* SECTION 2: MENU PREVIEW */}
-              <section id="menu" className="bg-brand-black px-6 py-20 border-b border-white/5 noise-overlay">
-                <div className="max-w-7xl mx-auto relative z-10">
-                  <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                    <h2 className="font-display text-5xl md:text-8xl uppercase text-left text-brand-neon">What We’re Serving</h2>
-                    <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="text-brand-white font-black uppercase tracking-widest flex items-center gap-2 group hover:text-brand-neon transition-colors">
-                      View Full Menu <ChevronRight className="group-hover:translate-x-2 transition-transform" />
-                    </button>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {[
-                      { name: 'Pepperoni Pizza', desc: 'Classic. Loaded. Always hits.', img: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&q=80&w=800' },
-                      { name: 'Chicken Bacon Ranch', desc: 'Savory, creamy, and packed with flavor.', img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800' },
-                      { name: 'Jalapeño Popper Pizza', desc: 'Spicy, creamy, and a local favorite.', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800' },
-                      { name: 'Build Your Own', desc: 'Exactly how you want it. Every time.', img: 'https://images.unsplash.com/photo-1593504049359-74330189a355?auto=format&fit=crop&q=80&w=800' }
-                    ].map((item, i) => (
-                      <div key={i} className="card-concrete group flex flex-col items-start text-left noise-overlay">
-                        <div className="aspect-square w-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
-                          <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerPolicy="no-referrer" />
-                        </div>
-                        <div className="p-8 flex flex-col flex-1 relative z-10 w-full">
-                          <h3 className="font-display text-2xl uppercase mb-2 tracking-tighter leading-none text-brand-white">{item.name}</h3>
-                          <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mb-8 leading-snug flex-1 italic">{item.desc}</p>
-                          <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="btn-secondary w-full py-4 text-xs">
-                            View Options
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-
-              {/* SECTION 3: MOST POPULAR (Combos / Best Sellers) */}
-              <section className="bg-brand-concrete px-6 py-32 border-b border-white/5 noise-overlay">
-                <div className="max-w-7xl mx-auto relative z-10">
-                  <h2 className="font-display text-5xl md:text-8xl uppercase mb-20 text-center text-brand-neon">Most Ordered Local</h2>
+              {/* SECTION 3: MOST POPULAR */}
+              <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
+                <div className="max-w-7xl mx-auto relative z-10 text-center">
+                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase mb-6 text-brand-neon">START HERE</h2>
+                  <p className="text-xl md:text-2xl text-brand-white/60 font-black uppercase tracking-widest mb-24 italic">
+                    These three keep people coming back. Order one and you'll know why.
+                  </p>
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {[
-                      { name: 'Jalapeño Popper Pizza', desc: 'Creamy heat with real kick.', img: 'https://images.unsplash.com/photo-1574071318508-1cdbad80ad50?auto=format&fit=crop&q=80&w=800' },
-                      { name: 'Chicken Bacon Ranch', desc: 'Rich, savory, and always satisfying.', img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800' },
-                      { name: '18" Jumbo Pizza', desc: 'Big enough to feed everyone.', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800' }
+                      { 
+                        name: 'Jalapeño Popper Pizza', 
+                        desc: 'Creamy heat. Real kick. Nobody leaves disappointed.', 
+                        img: 'https://images.unsplash.com/photo-1574071318508-1cdbad80ad50?auto=format&fit=crop&q=80&w=800' 
+                      },
+                      { 
+                        name: 'Chicken Bacon Ranch', 
+                        desc: 'Heavy. Savory. Loaded the way it should be.', 
+                        img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800' 
+                      },
+                      { 
+                        name: '18" Jumbo Pizza', 
+                        desc: 'Feeds everyone. Best value on the menu.', 
+                        img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800',
+                        label: 'Best Value'
+                      }
                     ].map((item, i) => (
-                      <div key={i} className="flex flex-col items-center group">
-                        <div className="bg-brand-black border border-white/5 p-4 mb-10 w-full overflow-hidden shadow-2xl relative">
-                          <div className="aspect-square relative overflow-hidden">
-                            <img src={item.img} alt={item.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer" />
-                            <div className="absolute top-4 left-4 bg-brand-neon text-brand-black font-black text-[10px] uppercase tracking-widest px-4 py-2">Customer Favorite</div>
-                          </div>
+                      <div key={i} className="card-concrete group flex flex-col noise-overlay p-4">
+                        <div className="relative aspect-square overflow-hidden mb-8 border-2 border-brand-black">
+                          <img src={item.img} alt={item.name} className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" referrerPolicy="no-referrer" />
+                          {item.label && (
+                             <div className="absolute top-6 left-6 bg-brand-neon text-brand-black font-black text-xs uppercase px-6 py-2 shadow-2xl skew-x-[-15deg] active:scale-110 transition-transform">
+                                {item.label}
+                             </div>
+                          )}
                         </div>
-                        <div className="text-center px-4 w-full">
-                          <h3 className="font-display text-3xl md:text-4xl uppercase mb-4 tracking-tighter text-brand-white">{item.name}</h3>
-                          <p className="text-gray-400 font-medium mb-10 text-lg leading-relaxed">{item.desc}</p>
-                          <button onClick={startOrder} className="btn-primary w-full py-6 text-xl">Order This</button>
+                        <div className="text-left px-4 pb-4 flex-1 flex flex-col">
+                          <h3 className="font-display text-3xl md:text-4xl uppercase mb-4 leading-none text-brand-white">{item.name}</h3>
+                          <p className="text-gray-400 font-bold uppercase text-xs tracking-wider mb-10 flex-1 italic">{item.desc}</p>
+                          <button onClick={startOrder} className="btn-primary w-full py-5 text-xl font-display">Order This</button>
                         </div>
                       </div>
                     ))}
@@ -416,79 +392,159 @@ export default function App() {
                 </div>
               </section>
 
-              {/* SECTION 4: LOCATIONS */}
-              <section id="locations" className="bg-brand-black px-6 py-32 border-b border-white/10 noise-overlay">
+              {/* SECTION 4: COMBOS */}
+              <section className="bg-brand-concrete px-6 py-32 border-b border-white/5 noise-overlay">
+                <div className="max-w-7xl mx-auto relative z-10 text-center">
+                  <h2 className="font-display text-5xl md:text-8xl lg:text-9xl uppercase mb-6 text-brand-neon">MAKE IT EASY ON YOURSELF</h2>
+                  <p className="text-xl md:text-2xl text-brand-white/40 font-black uppercase tracking-widest mb-24 italic">
+                    More food. Better value. No overthinking it.
+                  </p>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    {[
+                      { name: 'Family Deal', desc: '18" Jumbo + Cheezy Bread + 2 Liter', sub: 'Nobody goes home hungry.', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800' },
+                      { name: 'Game Night Pack', desc: '2 Large Pizzas + Wings (12 ct)', sub: 'Built for a crowd. Gone in minutes.', img: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=800' },
+                      { name: 'Quick Meal', desc: 'Medium Pizza + Drink', sub: 'In and out. No hassle.', img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800' }
+                    ].map((item, i) => (
+                      <div key={i} className="flex flex-col text-left group">
+                         <div className="relative aspect-[16/9] overflow-hidden mb-8 border border-white/5 bg-brand-black">
+                            <img src={item.img} alt={item.name} className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" />
+                         </div>
+                         <h3 className="font-display text-3xl uppercase mb-2 text-brand-white">{item.name}</h3>
+                         <p className="text-brand-neon font-black text-sm uppercase tracking-widest mb-2">{item.desc}</p>
+                         <p className="text-gray-500 text-sm font-bold uppercase italic mb-8">{item.sub}</p>
+                         <button onClick={startOrder} className="btn-primary w-full py-4 text-xs font-display">Order This</button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 5: WHY JESSE'S */}
+              <section className="bg-brand-black px-6 py-40 md:py-60 border-b border-white/5 noise-overlay overflow-hidden relative">
+                <div className="absolute -left-20 top-1/2 -translate-y-1/2 font-display text-[20rem] opacity-[0.02] pointer-events-none select-none text-brand-neon">JESSE'S</div>
+                <div className="max-w-4xl mx-auto relative z-10">
+                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl mb-16 leading-[0.8] uppercase text-brand-neon">WE DON'T DO MEDIOCRE</h2>
+                  <div className="space-y-12 text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-brand-white leading-tight">
+                    <p>Chains cut corners because nobody's watching.</p>
+                    <p className="text-brand-neon border-l-8 border-brand-neon pl-8 py-4 bg-brand-neon/5 italic">We cut corners because we don't cut corners.</p>
+                    <p>Every pizza that leaves this kitchen is loaded, fresh, and built to actually satisfy.</p>
+                    <p className="opacity-60">If that's what you want, you're in the right place.</p>
+                    <p className="text-brand-red decoration-brand-red underline decoration-4 underline-offset-8">If not, the chains are down the street.</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 6: MENU PREVIEW */}
+              <section className="bg-brand-black px-6 py-32 border-b border-white/10 noise-overlay">
+                <div className="max-w-7xl mx-auto relative z-10">
+                  <div className="text-center mb-24">
+                    <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase mb-6 text-brand-neon">WHAT WE'RE SERVING</h2>
+                    <p className="text-xl md:text-2xl text-brand-white/40 font-black uppercase tracking-widest italic">
+                      Built from scratch. Made to order. Worth every bite.
+                    </p>
+                  </div>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-20">
+                    {[
+                      { name: 'Jalapeño Popper', desc: 'Creamy, spicy, loaded.' },
+                      { name: 'Chicken Bacon Ranch', desc: 'Rich, savory, no regrets.' },
+                      { name: 'Pepperoni', desc: 'Classic. Never light. Always hits.' },
+                      { name: 'Build Your Own', desc: 'Exactly how you want it.' },
+                      { name: 'Cheezy Bread', desc: 'Hot, cheesy, made to share.' },
+                      { name: 'Wings', desc: 'Crispy. Hot. Full of flavor.' },
+                      { name: 'Cinna Bread', desc: 'Warm, sweet, finished right.' }
+                    ].map((item, i) => (
+                      <div key={i} className="border-b-2 border-white/5 pb-8 hover:bg-white/5 px-4 transition-colors group">
+                        <h3 className="font-display text-3xl md:text-4xl text-brand-white uppercase mb-2 group-hover:text-brand-neon transition-colors">{item.name}</h3>
+                        <p className="text-xs font-black uppercase tracking-widest text-gray-500 italic">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-24 flex justify-center">
+                    <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="btn-secondary px-20 py-6 text-2xl font-display uppercase tracking-widest">
+                      View Full Menu
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 7: LOCATIONS */}
+              <section id="locations" className="bg-brand-black px-6 py-40 border-b border-white/10 relative noise-overlay">
                 <div className="max-w-5xl mx-auto text-center relative z-10">
-                  <h2 className="font-display text-5xl md:text-8xl uppercase mb-24 leading-[0.85] text-brand-neon">Nearest Location</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 w-full">
+                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase mb-8 leading-none text-brand-neon">FIND YOUR LOCATION</h2>
+                  <p className="text-xl md:text-3xl text-brand-white/40 font-black uppercase tracking-[0.2em] mb-32 italic">
+                    Two spots. Same standard. Always worth the drive.
+                  </p>
+                  
+                  <div className="grid md:grid-cols-2 gap-24 text-left">
                     {/* Borger */}
-                    <div className="flex flex-col items-start text-left">
-                      <div className="w-20 h-2 bg-brand-neon mb-10" />
-                      <h3 className="font-display text-4xl uppercase mb-6 tracking-tight text-brand-white">Borger</h3>
-                      <div className="text-xl font-bold uppercase tracking-widest text-gray-400 space-y-2 mb-12">
-                        <p>530 W 3rd St</p>
-                        <p>Borger, TX 79007</p>
-                        <p className="text-brand-neon mt-4 font-black">(806) 274-7200</p>
-                      </div>
-                      <div className="flex flex-col gap-4 w-full">
-                        <button onClick={startOrder} className="btn-primary py-6 text-xl">Order Online</button>
-                        <a href="tel:8062747200" className="btn-secondary py-6 text-xl text-center">Call Now</a>
-                      </div>
+                    <div className="card-concrete noise-overlay p-10 border-l-8 border-brand-neon">
+                       <h3 className="font-display text-5xl uppercase mb-6 text-brand-white">Borger</h3>
+                       <div className="text-lg font-black uppercase tracking-widest space-y-2 mb-12 text-gray-400">
+                          <p>Jesse's Pizza Company</p>
+                          <p>530 W 3rd St, Borger, TX 79007</p>
+                          <a href="tel:8062747200" className="text-brand-neon block mt-8 text-3xl font-display">(806) 274-7200</a>
+                       </div>
+                       <div className="grid grid-cols-2 gap-4">
+                          <button onClick={startOrder} className="bg-brand-neon text-brand-black py-5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-all">Order Online</button>
+                          <a href="tel:8062747200" className="border-2 border-brand-neon text-brand-neon py-5 font-display text-sm uppercase tracking-widest text-center hover:bg-brand-neon/10 transition-all">Call Now</a>
+                       </div>
                     </div>
 
                     {/* Fritch */}
-                    <div className="flex flex-col items-start text-left">
-                      <div className="w-20 h-2 bg-brand-neon mb-10" />
-                      <h3 className="font-display text-4xl uppercase mb-6 tracking-tight text-brand-white">Fritch</h3>
-                      <div className="text-xl font-bold uppercase tracking-widest text-gray-400 space-y-2 mb-12">
-                        <p>424 E Broadway St</p>
-                        <p>Fritch, TX 79036</p>
-                        <p className="text-brand-neon mt-4 font-black">(806) 857-0098</p>
-                      </div>
-                      <div className="flex flex-col gap-4 w-full">
-                        <button onClick={startOrder} className="btn-primary py-6 text-xl">Order Online</button>
-                        <a href="tel:8068570098" className="btn-secondary py-6 text-xl text-center">Call Now</a>
-                      </div>
+                    <div className="card-concrete noise-overlay p-10 border-l-8 border-brand-red">
+                       <h3 className="font-display text-5xl uppercase mb-6 text-brand-white">Fritch</h3>
+                       <div className="text-lg font-black uppercase tracking-widest space-y-2 mb-12 text-gray-400">
+                          <p>Jesse's Pizza Company</p>
+                          <p>424 E Broadway St, Fritch, TX 79036</p>
+                          <a href="tel:8068570098" className="text-brand-neon block mt-8 text-3xl font-display">(806) 857-0098</a>
+                       </div>
+                       <div className="grid grid-cols-2 gap-4">
+                          <button onClick={startOrder} className="bg-brand-neon text-brand-black py-5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-all">Order Online</button>
+                          <a href="tel:8068570098" className="border-2 border-brand-neon text-brand-neon py-5 font-display text-sm uppercase tracking-widest text-center hover:bg-brand-neon/10 transition-all">Call Now</a>
+                       </div>
                     </div>
                   </div>
                 </div>
               </section>
 
-              {/* SECTION 5: REVIEWS */}
+              {/* SECTION 8: REVIEWS */}
               <section className="bg-brand-concrete px-6 py-32 border-b border-white/5 noise-overlay">
-                <div className="max-w-7xl mx-auto relative z-10">
-                  <h2 className="font-display text-5xl md:text-8xl uppercase mb-24 text-center text-brand-neon">Real Talk</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-16 px-4">
+                <div className="max-w-7xl mx-auto relative z-10 text-center">
+                  <h2 className="font-display text-5xl md:text-8xl lg:text-9xl uppercase mb-6 text-brand-neon leading-none tracking-tighter">DON'T TAKE OUR WORD FOR IT</h2>
+                  <p className="text-xl md:text-2xl text-brand-white/40 font-black uppercase tracking-widest mb-32 italic">
+                    Borger and Fritch have been eating here long enough to know.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-16 text-left px-4">
                     {[
-                      "“Best pizza in town. Always loaded.”",
-                      "“Consistently good every single time.”",
-                      "“Way better than the chains.”",
-                      "“Fast, fresh, and worth it.”"
+                      "Best pizza in Borger. Not even close.",
+                      "Loaded every single time. Never disappointed.",
+                      "Way better than any chain. Always fresh.",
+                      "Once you try it the chains are done for you."
                     ].map((review, i) => (
-                      <div key={i} className="flex items-start gap-8 group">
-                        <div className="h-full w-2 bg-brand-neon group-hover:scale-y-110 transition-transform origin-top shadow-[0_0_20px_rgba(184,240,0,0.4)]" />
-                        <p className="font-display text-3xl md:text-6xl uppercase leading-[0.9] italic text-brand-white transition-all opacity-90 group-hover:opacity-100 group-hover:text-brand-neon">
-                          {review}
-                        </p>
+                      <div key={i} className="flex gap-8 group">
+                         <div className="w-2 bg-brand-neon shrink-0 group-hover:scale-y-110 transition-transform origin-top" />
+                         <p className="font-display text-4xl md:text-6xl uppercase italic text-brand-white/80 group-hover:text-brand-neon leading-[0.9] transition-all">
+                            "{review}"
+                         </p>
                       </div>
                     ))}
                   </div>
                 </div>
               </section>
 
-              {/* SECTION 6: FINAL CTA */}
-              <section className="bg-brand-black py-40 md:py-60 px-6 overflow-hidden relative noise-overlay">
-                <div className="absolute inset-0 bg-brand-neon/5 opacity-30 pointer-events-none" />
+              {/* SECTION 9: FINAL CTA */}
+              <section className="bg-brand-black py-40 md:py-60 px-6 overflow-hidden relative border-y-4 border-brand-red noise-overlay">
+                <div className="absolute inset-0 bg-brand-red/5 noise-overlay pointer-events-none" />
                 <div className="max-w-4xl mx-auto text-center relative z-10">
-                  <h2 className="font-display text-7xl md:text-[14rem] uppercase leading-[0.75] mb-12 text-brand-neon">Ready to Order?</h2>
+                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase leading-[0.8] mb-12 text-brand-neon">YOU ALREADY KNOW WHAT YOU WANT.</h2>
                   <p className="text-xl md:text-3xl font-black uppercase tracking-[0.4em] mb-20 opacity-90 text-brand-white">
-                    Skip the chains. Get pizza that actually delivers.
+                    Stop thinking about it. Order now and have it ready when you get here.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-8">
-                    <button onClick={startOrder} className="btn-primary px-20 py-8 text-3xl font-display">
+                    <button onClick={startOrder} className="btn-primary px-24 py-8 text-3xl font-display uppercase tracking-widest hover:scale-105 transition-all shadow-[0_20px_50px_rgba(214,40,40,0.3)]">
                       Order Now
                     </button>
-                    <a href="tel:8062747200" className="btn-secondary px-20 py-8 text-3xl font-display text-center">
+                    <a href="tel:8062747200" className="btn-secondary px-24 py-8 text-3xl font-display uppercase tracking-widest text-center hover:bg-white/10 transition-all">
                       Call Now
                     </a>
                   </div>
@@ -514,8 +570,18 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="pb-32"
+            className="pb-32 bg-brand-black min-h-screen overflow-x-hidden"
           >
+            {/* STICKY ORDER BUTTON FOR MOBILE */}
+            <div className="fixed bottom-6 left-6 right-6 z-[100] md:hidden">
+              <button 
+                onClick={startOrder}
+                className="w-full bg-brand-red text-brand-white py-6 font-display text-2xl uppercase tracking-widest shadow-[0_20px_50px_rgba(214,40,40,0.4)] active:scale-95 transition-all"
+              >
+                Order Now
+              </button>
+            </div>
+
             {/* STANDALONE MENU HEADER */}
             <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 noise-overlay">
               <div className="flex items-center gap-2 md:gap-3 cursor-pointer" onClick={() => setView('home')}>
@@ -524,9 +590,9 @@ export default function App() {
                   Jesse's Pizza Co.
                 </span>
               </div>
-              <div className="flex items-center gap-4">
-                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hidden sm:block text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">About</button>
-                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hidden sm:block text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Back to Home</button>
+              <div className="hidden md:flex items-center gap-4">
+                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">About</button>
+                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Back to Home</button>
                 <button 
                   onClick={startOrder} 
                   className="btn-primary py-3 px-6 text-xs"
@@ -534,120 +600,171 @@ export default function App() {
                   Order Now
                 </button>
               </div>
+
+              <button 
+                className="md:hidden text-brand-neon p-2 hover:bg-white/5 rounded-sm transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
+              </button>
+
+              {isMenuOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="md:hidden absolute top-full left-0 right-0 bg-brand-black border-b border-brand-neon/40 p-12 flex flex-col items-center text-center gap-10 font-display text-4xl uppercase text-brand-white noise-overlay z-[100] shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+                >
+                  <button onClick={() => { setIsMenuOpen(false); setView('home'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">HOME</button>
+                  <button onClick={() => { setIsMenuOpen(false); setView('about'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">ABOUT</button>
+                  <button onClick={() => { setIsMenuOpen(false); startOrder(); }} className="btn-primary w-full py-6 font-bold text-2xl">Order Online</button>
+                </motion.div>
+              )}
             </nav>
 
             <div className="max-w-7xl mx-auto p-6 lg:p-12 relative z-10">
-              {/* HERO SECTION FOR MENU */}
-              <div className="text-center mb-32 max-w-4xl mx-auto pt-10">
-                <h1 className="font-display text-7xl md:text-8xl lg:text-[12rem] mb-8 leading-[0.8] uppercase text-brand-neon">Pick Your Pizza. <br/>We’ll Handle the Rest.</h1>
-                <p className="text-xl md:text-3xl text-brand-white opacity-80 font-medium mb-16 uppercase tracking-wider">Loaded toppings. Big portions. Built to satisfy.</p>
+              {/* SECTION 1: HERO */}
+              <div className="text-center mb-32 max-w-4xl mx-auto pt-10 px-4">
+                <h1 className="font-display text-6xl md:text-8xl lg:text-9xl mb-8 leading-[0.8] uppercase text-brand-neon break-words">
+                  THE MENU. <br/>BUILT TO SATISFY.
+                </h1>
+                <p className="text-xl md:text-3xl text-brand-white opacity-90 font-medium mb-16 uppercase tracking-wider leading-tight">
+                  No skimpy portions. No shortcuts. Just pizza and sides<br className="hidden md:block" /> that actually deliver every time.
+                </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
-                  <button onClick={startOrder} className="btn-primary px-16 py-6 text-2xl font-display">Order Now</button>
-                  <a href="tel:8062747200" className="btn-secondary px-16 py-6 text-2xl font-display text-center">
+                  <button onClick={startOrder} className="bg-brand-red text-brand-white px-16 py-6 text-2xl font-display uppercase tracking-widest hover:bg-red-700 transition-all font-bold">Order Now</button>
+                  <a href="tel:8062747200" className="bg-transparent border-4 border-brand-neon text-brand-neon px-16 py-6 text-2xl font-display uppercase tracking-widest text-center hover:bg-brand-neon hover:text-brand-black transition-all font-bold">
                     Call Now
                   </a>
                 </div>
               </div>
 
-              <div className="space-y-40">
-                {MENU_CATEGORIES.map((category) => (
-                  <section key={category.id}>
-                    <div className="text-center mb-24 lg:mb-32">
-                      <h2 className="font-display text-6xl md:text-8xl lg:text-[10rem] uppercase leading-[0.8] mb-6 text-brand-neon">{category.title}</h2>
-                      <p className="text-sm font-black uppercase tracking-[0.4em] text-brand-white opacity-60">{category.description}</p>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-                      {category.items.map(item => {
-                        const isPop = category.id === 'popular';
-                        const isCombo = category.id === 'combos';
-                        return (
-                          <div 
-                            key={item.id}
-                            className={`card-concrete transition-all group flex flex-col relative noise-overlay ${isPop || item.bestValue ? 'ring-2 ring-brand-neon/20' : ''}`}
-                          >
-                            {item.bestValue && (
-                              <div className="absolute -top-4 -right-4 bg-brand-neon text-brand-black font-black text-[10px] uppercase px-6 py-3 z-20 shadow-2xl skew-x-[-15deg]">
-                                Best Value
-                              </div>
-                            )}
-                            
-                            {item.image && (
-                              <div className="relative aspect-[4/3] overflow-hidden bg-brand-black">
-                                <img src={item.image} alt={item.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" referrerPolicy="no-referrer" />
-                                {isPop && <span className="absolute top-6 left-6 bg-brand-red text-brand-white font-black text-[11px] uppercase px-5 py-2 z-10 italic">Most Popular</span>}
-                              </div>
-                            )}
-                            
-                            <div className="p-10 lg:p-14 flex flex-col flex-1 relative z-10">
-                              <div className="flex justify-between items-start mb-6">
-                                <h3 className="font-display text-4xl lg:text-5xl uppercase leading-none text-brand-white">{item.name}</h3>
-                                <span className="text-2xl font-black text-brand-neon">
-                                  {item.displayPrice || (item.basePrice ? `$${item.basePrice.toFixed(2)}` : '')}
-                                </span>
-                              </div>
-                              
-                              <p className="text-base text-gray-400 font-bold mb-10 italic flex-1 leading-snug">
-                                {item.desc}
-                              </p>
-
-                              {item.prices && (
-                                <div className="space-y-4 mb-12 pt-8 border-t-2 border-white/5">
-                                  {Object.entries(item.prices).map(([size, price]) => (
-                                    <div key={size} className="flex justify-between items-center text-sm font-black uppercase tracking-widest">
-                                      <span className="opacity-30 text-brand-white">{size}</span>
-                                      <span className={item.bestValue === size ? "text-brand-neon" : "text-brand-white"}>
-                                        ${(price as number).toFixed(2)} {item.bestValue === size && "(Best Value)"}
-                                      </span>
-                                    </div>
-                                  ))}
+              <div className="space-y-48">
+                {MENU_CATEGORIES.map((category) => {
+                  const isPop = category.id === 'popular';
+                  const isCombo = category.id === 'combos';
+                  
+                  return (
+                    <section key={category.id} className={isPop ? "scroll-mt-32" : ""}>
+                      <div className="mb-16 md:mb-24 px-4">
+                        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.8] mb-6 text-brand-neon break-words">
+                          {category.title}
+                        </h2>
+                        {category.subtext && (
+                          <p className="text-lg md:text-2xl font-black uppercase tracking-[0.2em] text-brand-white opacity-80 max-w-2xl">
+                            {category.subtext}
+                          </p>
+                        )}
+                      </div>
+                      
+                      <div className={`grid gap-8 lg:gap-12 ${isPop || isCombo ? 'grid-cols-1 lg:grid-cols-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}>
+                        {category.items.map(item => {
+                          const isSpecialty = category.id === 'specialty';
+                          const cardBg = isSpecialty ? 'bg-brand-concrete' : 'bg-brand-concrete/40';
+                          
+                          return (
+                            <div 
+                              key={item.id}
+                              className={`group flex flex-col relative transition-all duration-300 hover:translate-y-[-8px] noise-overlay ${cardBg} ${isPop || item.bestValue === true ? 'ring-2 ring-brand-neon shadow-2xl' : ''}`}
+                            >
+                              {/* Labels */}
+                              {item.label && (
+                                <div className="absolute top-0 right-0 bg-brand-neon text-brand-black font-black text-xs uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-x-2 translate-y-[-50%] shadow-xl">
+                                  {item.label}
                                 </div>
                               )}
+                              
+                              {item.image && (
+                                <div className="relative aspect-[16/10] overflow-hidden bg-brand-black border-b border-white/5">
+                                  <img src={item.image} alt={item.name} className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000" referrerPolicy="no-referrer" />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 pointer-events-none" />
+                                </div>
+                              )}
+                              
+                              <div className="p-8 lg:p-12 flex flex-col flex-1 relative z-10">
+                                <div className="flex justify-between items-start gap-4 mb-6">
+                                  <h3 className="font-display text-3xl lg:text-4xl uppercase leading-none text-brand-white break-words">{item.name}</h3>
+                                  {item.displayPrice && (
+                                    <span className="text-xl lg:text-2xl font-black text-brand-neon whitespace-nowrap">
+                                      {item.displayPrice}
+                                    </span>
+                                  )}
+                                </div>
+                                
+                                <p className="text-lg text-brand-white opacity-80 font-medium mb-10 flex-1 leading-snug">
+                                  {item.desc}
+                                </p>
 
-                              <button onClick={() => { 
-                                setSelectedProduct({ ...item, price: item.basePrice || Object.values(item.prices || {})[0] }); 
-                                setView('order-start'); 
-                              }} className={`w-full py-6 font-display text-2xl uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-95 ${isPop || isCombo || item.bestValue ? 'bg-brand-red text-brand-white' : 'btn-secondary'}`}>
-                                {item.type === 'byo-pizza' ? 'Start Building' : 'Order Now'}
-                              </button>
+                                {item.subDesc && (
+                                  <p className="text-sm font-black uppercase text-brand-neon mb-8 tracking-widest italic">
+                                    — {item.subDesc}
+                                  </p>
+                                )}
+
+                                {item.prices && (
+                                  <div className="space-y-4 mb-10 pt-8 border-t-2 border-white/5">
+                                    {Object.entries(item.prices).map(([size, price]) => (
+                                      <div key={size} className="flex justify-between items-center text-xs font-black uppercase tracking-widest">
+                                        <span className="opacity-40 text-brand-white">{size}</span>
+                                        <span className={item.bestValue === size ? "text-brand-neon scale-110" : "text-brand-white"}>
+                                          ${typeof price === 'number' ? price.toFixed(2) : price} {item.bestValue === size && "(Best Value)"}
+                                        </span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+
+                                <button 
+                                  onClick={() => { 
+                                    setSelectedProduct({ ...item, price: item.basePrice || Object.values(item.prices || {})[0] }); 
+                                    setView('order-start'); 
+                                    window.scrollTo(0,0);
+                                  }} 
+                                  className="w-full bg-brand-red text-brand-white py-6 font-display text-2xl uppercase tracking-[0.2em] transition-all hover:bg-red-700 active:scale-95 shadow-xl font-bold"
+                                >
+                                  {item.cta || (item.type === 'byo-pizza' ? 'Start Building' : 'Order Now')}
+                                </button>
+                              </div>
                             </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </section>
-                ))}
+                          );
+                        })}
+                      </div>
+                    </section>
+                  );
+                })}
               </div>
 
-              {/* FINAL CTA ON MENU */}
-              <div className="bg-brand-neon py-40 md:py-60 px-6 mt-60 overflow-hidden text-center relative skew-y-[-1deg]">
-                <div className="absolute inset-0 bg-brand-black/5 opacity-10 pointer-events-none" />
-                <div className="max-w-4xl mx-auto relative z-10 skew-y-[1deg]">
-                  <h2 className="font-display text-7xl md:text-[14rem] lg:text-[16rem] uppercase leading-[0.75] mb-8 text-brand-black">Ready to Order?</h2>
-                  <p className="text-2xl md:text-4xl font-black uppercase tracking-[0.2em] mb-20 opacity-80 text-brand-black">
-                    Skip the chains. Get pizza that actually delivers.
-                  </p>
-                  <div className="flex flex-col sm:flex-row justify-center gap-8">
-                    <button onClick={startOrder} className="bg-brand-black text-brand-white px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-gray-900 transition-all shadow-3xl">
-                      Order Now
-                    </button>
-                    <a href="tel:8062747200" className="bg-transparent border-4 border-brand-black text-brand-black px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-black/10 transition-all text-center">
-                      Call Now
-                    </a>
+              {/* SECTION 10: FINAL CTA */}
+              <section className="mt-60 mb-20 px-4">
+                <div className="bg-brand-neon py-32 md:py-48 px-6 text-center relative overflow-hidden ring-8 ring-brand-neon ring-offset-8 ring-offset-brand-black">
+                  <div className="absolute inset-0 bg-brand-black/5 opacity-10 pointer-events-none" />
+                  <div className="max-w-4xl mx-auto relative z-10">
+                    <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase leading-[0.75] mb-8 text-brand-black">READY TO ORDER?</h2>
+                    <p className="text-xl md:text-4xl font-black uppercase tracking-[0.1em] mb-16 opacity-80 text-brand-black leading-tight">
+                      Skip the chains. Get pizza that<br className="hidden md:block" /> actually delivers on flavor.
+                    </p>
+                    <div className="flex flex-col sm:flex-row justify-center gap-8">
+                      <button onClick={startOrder} className="bg-brand-black text-brand-white px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-gray-900 transition-all shadow-3xl font-bold">
+                        Order Now
+                      </button>
+                      <a href="tel:8062747200" className="bg-transparent border-4 border-brand-black text-brand-black px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-black/10 transition-all text-center font-bold">
+                        Call Now
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </section>
             </div>
             
-            <footer className="bg-brand-black py-12 px-8 border-t border-white/5 flex flex-col items-center gap-8">
-              <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 text-[10px] font-black uppercase tracking-[0.3em]">
+            <footer className="bg-brand-black py-20 px-8 border-t border-white/5 flex flex-col items-center gap-12">
+              <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-xs font-black uppercase tracking-[0.4em]">
                 <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Home</button>
                 <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Browse Menu</button>
                 <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">About Our Story</button>
                 <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Locations</a>
               </div>
-              <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20 text-brand-white">
-                © 2026 Jesse's Pizza Co. • Built for the Panhandle
+              <div className="text-[12px] font-black uppercase tracking-[0.3em] opacity-30 text-brand-white">
+                © 2026 Jesse's Pizza Co. • Built for the Texas Panhandle
               </div>
             </footer>
           </motion.div>
@@ -667,9 +784,9 @@ export default function App() {
                   Jesse's Pizza Co.
                 </span>
               </div>
-              <div className="flex items-center gap-4">
-                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hidden sm:block text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Menu</button>
-                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hidden sm:block text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Back to Home</button>
+              <div className="hidden md:flex items-center gap-4">
+                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Menu</button>
+                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Back to Home</button>
                 <button 
                   onClick={startOrder} 
                   className="btn-primary py-3 px-6 text-xs"
@@ -677,12 +794,31 @@ export default function App() {
                   Order Now
                 </button>
               </div>
+
+              <button 
+                className="md:hidden text-brand-neon p-2 hover:bg-white/5 rounded-sm transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
+              </button>
+
+              {isMenuOpen && (
+                <motion.div 
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="md:hidden absolute top-full left-0 right-0 bg-brand-black border-b border-brand-neon/40 p-12 flex flex-col items-center text-center gap-10 font-display text-4xl uppercase text-brand-white noise-overlay z-[100] shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+                >
+                  <button onClick={() => { setIsMenuOpen(false); setView('home'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">HOME</button>
+                  <button onClick={() => { setIsMenuOpen(false); setView('menu-browse'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">MENU</button>
+                  <button onClick={() => { setIsMenuOpen(false); startOrder(); }} className="btn-primary w-full py-6 font-bold text-2xl">Order Online</button>
+                </motion.div>
+              )}
             </nav>
 
             {/* SECTION 1: HERO */}
             <section className="px-6 py-24 md:py-40 text-center border-b border-white/5 bg-[radial-gradient(circle_at_top,rgba(184,240,0,0.05),transparent)]">
               <div className="max-w-4xl mx-auto">
-                <h1 className="font-display text-7xl md:text-8xl lg:text-[10rem] mb-8 leading-[0.85] uppercase text-brand-neon">
+                <h1 className="font-display text-6xl md:text-8xl lg:text-9xl mb-8 leading-[0.85] uppercase text-brand-neon">
                   Not a Chain. <br/>Not Average. <br/>Just Pizza Done Right.
                 </h1>
                 <p className="text-xl md:text-3xl text-brand-white opacity-80 font-medium max-w-2xl mx-auto leading-relaxed uppercase tracking-wide">
@@ -756,7 +892,7 @@ export default function App() {
             {/* SECTION 5: LOCAL ROOTS */}
             <section id="locations-about" className="px-6 py-32 md:py-48 bg-brand-neon text-brand-black border-b border-black">
               <div className="max-w-7xl mx-auto">
-                <h2 className="font-display text-6xl md:text-8xl lg:text-[10rem] mb-16 uppercase leading-[0.8] tracking-tighter text-brand-black">Proudly Serving <br/>Borger & Fritch</h2>
+                <h2 className="font-display text-6xl md:text-8xl lg:text-9xl mb-16 uppercase leading-[0.8] tracking-tighter text-brand-black">Proudly Serving <br/>Borger & Fritch</h2>
                 <div className="grid md:grid-cols-2 gap-12">
                    <div className="border-4 border-brand-black p-10 flex flex-col justify-between h-full bg-brand-white/10">
                       <div>
@@ -812,7 +948,7 @@ export default function App() {
             {/* SECTION 8: FINAL HIT */}
             <section className="px-6 py-60 text-center relative overflow-hidden bg-brand-black noise-overlay">
                <div className="max-w-5xl mx-auto relative z-10">
-                  <h2 className="font-display text-8xl md:text-[15rem] leading-none uppercase mb-12 tracking-tighter text-brand-neon">If You Know, <br/>You Know.</h2>
+                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl leading-none uppercase mb-12 tracking-tighter text-brand-neon">If You Know, <br/>You Know.</h2>
                   <div className="space-y-8 text-2xl md:text-4xl font-black uppercase tracking-tight text-brand-white opacity-90">
                     <p>If you’ve had great pizza, you know the difference.</p>
                     <p className="text-brand-white underline decoration-brand-neon decoration-8 underline-offset-8">If you haven’t yet, now’s a good time to fix that.</p>
@@ -823,7 +959,7 @@ export default function App() {
             {/* SECTION 9: CTA */}
             <div className="bg-brand-red py-40 md:py-60 px-6 text-center relative border-y-4 border-brand-black">
                 <div className="max-w-4xl mx-auto">
-                  <h2 className="font-display text-7xl md:text-[12rem] uppercase leading-[0.75] mb-8 text-brand-white">Ready to Order?</h2>
+                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase leading-[0.75] mb-8 text-brand-white">Ready to Order?</h2>
                   <p className="text-2xl md:text-4xl font-black uppercase tracking-[0.2em] mb-20 opacity-90 text-brand-white">
                     Skip the chains. Get pizza that actually delivers.
                   </p>
@@ -922,7 +1058,7 @@ export default function App() {
                   
                   {/* HERO SECTION FOR MENU */}
                   <div className="text-center mb-20 max-w-3xl mx-auto">
-                    <h1 className="font-display text-6xl md:text-8xl lg:text-[10rem] mb-4 leading-none uppercase text-brand-neon">Pick Your Pizza. We’ll Handle the Rest.</h1>
+                    <h1 className="font-display text-5xl md:text-7xl lg:text-8xl mb-4 leading-none uppercase text-brand-neon">Pick Your Pizza. We’ll Handle the Rest.</h1>
                     <p className="text-xl md:text-2xl text-brand-white/60 font-medium mb-12 uppercase tracking-wide">Loaded toppings. Big portions. Built to actually satisfy.</p>
                   </div>
 
@@ -931,7 +1067,7 @@ export default function App() {
                       <section key={category.id}>
                         <div className="text-center mb-16 px-4">
                           <h2 className="font-display text-5xl md:text-8xl lg:text-9xl uppercase mb-3 text-brand-neon">{category.title}</h2>
-                          <p className="text-sm font-black uppercase tracking-[0.3em] opacity-40 text-brand-white">{category.description}</p>
+                          <p className="text-sm font-black uppercase tracking-[0.3em] opacity-40 text-brand-white">{category.subtext}</p>
                         </div>
                         
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -1005,7 +1141,7 @@ export default function App() {
                   {/* FINAL CTA ON MENU */}
                   <div className="bg-brand-red text-brand-white py-32 px-6 mt-40 overflow-hidden text-center relative noise-overlay">
                     <div className="max-w-4xl mx-auto relative z-10">
-                      <h2 className="font-display text-6xl md:text-[8rem] lg:text-[10rem] uppercase leading-[0.8] mb-6">Ready to Order?</h2>
+                      <h2 className="font-display text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.8] mb-6">Ready to Order?</h2>
                       <p className="text-xl md:text-2xl font-black uppercase tracking-widest mb-16 opacity-80">
                         Skip the chains. Get pizza that actually delivers.
                       </p>
@@ -1167,7 +1303,7 @@ export default function App() {
               <div className="min-h-screen bg-brand-black noise-overlay flex items-center">
                 <div className="max-w-4xl mx-auto p-6 md:p-12 w-full py-20 text-center relative z-10">
                   <ProgressSteps current={3} />
-                  <h1 className="font-display text-6xl md:text-9xl mb-4 leading-none uppercase italic text-brand-neon">Wait!</h1>
+                  <h1 className="font-display text-6xl md:text-8xl mb-4 leading-none uppercase italic text-brand-neon">Wait!</h1>
                   <p className="text-2xl md:text-4xl uppercase font-black tracking-widest mb-20 text-brand-white">Add Something to Your Order?</p>
                   
                   <div className="grid sm:grid-cols-3 gap-6 mb-20">
@@ -1400,7 +1536,7 @@ export default function App() {
                   <div className="w-32 h-32 bg-brand-neon mx-auto rounded-full flex items-center justify-center text-brand-black mb-12 shadow-[0_0_50px_rgba(184,240,0,0.3)]">
                     <Check size={80} strokeWidth={4} />
                   </div>
-                  <h1 className="font-display text-8xl md:text-[12rem] mb-6 leading-[0.8] uppercase italic text-brand-neon">ORDER FIRE!</h1>
+                  <h1 className="font-display text-7xl md:text-9xl mb-6 leading-[0.8] uppercase italic text-brand-neon">ORDER FIRE!</h1>
                   <h2 className="text-2xl md:text-4xl font-black uppercase tracking-[0.2em] mb-12 text-brand-white opacity-80">We're on it.</h2>
                   
                   <div className="grid md:grid-cols-2 gap-4 bg-white/5 p-8 border border-white/5 mb-16 text-left relative z-10">
