@@ -555,14 +555,19 @@ export default function App() {
                 </div>
               </section>
 
-              {/* SECTION 4: FULL BLEED IMAGE BREAK */}
-              <section className="w-full relative h-[250px] md:h-[400px]">
-                <img 
-                  src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
-                  alt="Pizza Fresh from Oven"
-                  className="w-full h-full object-cover grayscale-[0.2]"
-                  referrerPolicy="no-referrer"
-                />
+              {/* SECTION 4: IMAGE BREAK */}
+              <section className="w-full bg-brand-black flex items-center justify-center p-8 md:p-24 border-b border-white/5 overflow-hidden noise-overlay">
+                <div className="max-w-xl md:max-w-3xl w-full">
+                  <img 
+                    src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
+                    alt="Pizza Fresh from Oven"
+                    className="w-full h-auto block shadow-2xl border border-white/10"
+                    referrerPolicy="no-referrer"
+                  />
+                  <p className="mt-8 text-center text-xs font-black uppercase tracking-[0.4em] opacity-30 text-brand-white">
+                    SETTLING FOR PIZZA THAT DOESN'T DELIVER.
+                  </p>
+                </div>
               </section>
 
               {/* SECTION 5: OFFER SECTION */}
