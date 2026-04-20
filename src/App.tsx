@@ -307,35 +307,35 @@ export default function App() {
         </span>
       </div>
 
-      <div className="hidden md:flex items-center gap-8 lg:gap-10 font-bold text-sm uppercase tracking-[0.2em] text-brand-white">
+      <div className="hidden md:flex items-center gap-8 lg:gap-10 font-display text-lg uppercase tracking-wider text-brand-white">
         <button 
           onClick={() => { window.scrollTo(0, 0); setView('menu-browse'); }} 
-          className={`hover:text-brand-neon transition-colors font-bold tracking-widest ${view === 'menu-browse' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
+          className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'menu-browse' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
         >
           MENU
         </button>
         <button 
           onClick={() => { window.scrollTo(0, 0); setView('about'); }} 
-          className={`hover:text-brand-neon transition-colors font-bold tracking-widest ${view === 'about' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
+          className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'about' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
         >
           ABOUT
         </button>
         <button 
           onClick={() => { window.scrollTo(0, 0); setView('careers'); }} 
-          className={`hover:text-brand-neon transition-colors font-bold tracking-widest ${view === 'careers' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
+          className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'careers' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
         >
           CAREERS
         </button>
-        <a href="#locations" className="hover:text-brand-neon transition-colors font-bold tracking-widest" onClick={(e) => { if(view !== 'home') { e.preventDefault(); setView('home'); setTimeout(() => document.getElementById('locations')?.scrollIntoView({behavior: 'smooth'}), 100); } }}>
+        <a href="#locations" className="hover:text-brand-neon transition-colors tracking-widest" onClick={(e) => { if(view !== 'home') { e.preventDefault(); setView('home'); setTimeout(() => document.getElementById('locations')?.scrollIntoView({behavior: 'smooth'}), 100); } }}>
           LOCATIONS
         </a>
         <button 
           onClick={() => { window.scrollTo(0, 0); setView('contact'); }} 
-          className={`hover:text-brand-neon transition-colors font-bold tracking-widest ${view === 'contact' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
+          className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'contact' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
         >
           CONTACT
         </button>
-        <button onClick={startOrder} className="bg-brand-red text-brand-white font-bold uppercase px-8 py-3 tracking-widest transition-all hover:bg-red-700 active:scale-95 rounded-md">
+        <button onClick={startOrder} className="bg-brand-red text-brand-white font-display uppercase px-8 py-3 tracking-widest transition-all hover:bg-red-700 active:scale-95 rounded-md text-lg">
           Order Now
         </button>
       </div>
