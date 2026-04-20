@@ -401,7 +401,7 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-5 text-[12px]">Borger & Fritch, TX</p>
+                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-2 text-[12px]">Borger & Fritch, TX</p>
                   
                   <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.85] uppercase text-[#B8F000] flex flex-col items-center">
                     <span>BORGER'S</span>
@@ -427,19 +427,21 @@ export default function App() {
               </section>
 
               {/* SECTION 2: TRUST STRIP */}
-              <section className="bg-[#2A2A2A] border-y border-white/5 overflow-hidden">
-                <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 whitespace-nowrap">
-                  <div className="flex items-center justify-center py-12 md:py-16 px-4 border-r border-[#B8F000]/30 last:border-r-0 md:border-r border-b md:border-b-0">
-                    <span className="text-[20px] font-black text-[#F5F5F5] uppercase tracking-wider">"Loaded Every Time"</span>
-                  </div>
-                  <div className="flex items-center justify-center py-12 md:py-16 px-4 border-none md:border-r border-[#B8F000]/30 border-b md:border-b-0">
-                    <span className="text-[20px] font-black text-[#F5F5F5] uppercase tracking-wider">"No Chain. No Shortcuts."</span>
-                  </div>
-                  <div className="flex items-center justify-center py-12 md:py-16 px-4 border-r border-[#B8F000]/30 last:border-r-0">
-                    <span className="text-[20px] font-black text-[#F5F5F5] uppercase tracking-wider">"Borger's Go-To Pizza Spot"</span>
-                  </div>
-                  <div className="flex items-center justify-center py-12 md:py-16 px-4">
-                    <span className="text-[20px] font-black text-[#F5F5F5] uppercase tracking-wider">"Ready in 20 Minutes"</span>
+              <section className="bg-brand-neon py-10 md:py-14 border-y-4 border-brand-red/20 overflow-hidden relative z-20">
+                <div className="max-w-[1400px] mx-auto px-6">
+                  <div className="flex flex-wrap items-center justify-center gap-y-8 md:gap-y-0">
+                    <div className="w-full sm:w-1/2 md:w-1/4 px-4 text-center border-brand-red/10 md:border-r border-b md:border-b-0 pb-8 md:pb-0">
+                      <span className="text-2xl md:text-3xl font-black text-brand-red uppercase leading-none tracking-tighter">"LOADED EVERY TIME"</span>
+                    </div>
+                    <div className="w-full sm:w-1/2 md:w-1/4 px-4 text-center border-brand-red/10 sm:border-r-0 md:border-r border-b sm:border-b-0 md:border-b-0 pb-8 sm:pb-0 md:pb-0">
+                      <span className="text-2xl md:text-3xl font-black text-brand-red uppercase leading-none tracking-tighter">"NO CHAIN. NO SHORTCUTS."</span>
+                    </div>
+                    <div className="w-full sm:w-1/2 md:w-1/4 px-4 text-center border-brand-red/10 border-r border-b sm:border-b-0 md:border-b-0 pt-8 sm:pt-0 md:pt-0">
+                      <span className="text-2xl md:text-3xl font-black text-brand-red uppercase leading-none tracking-tighter">"BORGER'S GO-TO SPOT"</span>
+                    </div>
+                    <div className="w-full sm:w-1/2 md:w-1/4 px-4 text-center pt-8 sm:pt-0 md:pt-0">
+                      <span className="text-2xl md:text-3xl font-black text-brand-red uppercase leading-none tracking-tighter">"READY IN 20 MINS"</span>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -814,7 +816,7 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-brand-white font-black uppercase tracking-[0.4em] mb-5 text-sm">Borger & Fritch, TX</p>
+                  <p className="text-brand-white font-black uppercase tracking-[0.4em] mb-2 text-sm">Borger & Fritch, TX</p>
                   <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] mb-8 leading-[0.95] uppercase text-brand-neon flex flex-col items-center">
                     <span>THE MENU.</span>
                     <span>NO SHORTCUTS.</span>
