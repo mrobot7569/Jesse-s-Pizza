@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 
-type FunnelStep = 'home' | 'menu-browse' | 'about' | 'order-start' | 'menu' | 'product' | 'upsell' | 'cart' | 'checkout' | 'success';
+type FunnelStep = 'home' | 'menu-browse' | 'about' | 'contact' | 'order-start' | 'menu' | 'product' | 'upsell' | 'cart' | 'checkout' | 'success';
 
 type CartItem = {
   id: string;
@@ -76,7 +76,7 @@ const MENU_CATEGORIES = [
         displayPrice: 'From $21.50',
         label: 'Best Value',
         bestValue: true,
-        image: 'https://picsum.photos/seed/jumbo18/600/600', 
+        image: 'https://i.imgur.com/oz3N4dm.jpeg', 
         type: 'pizza' 
       }
     ]
@@ -193,6 +193,7 @@ const MobileMenu = ({ isOpen, onClose, setView, currentView }: { isOpen: boolean
     { label: 'HOME', id: 'home' as FunnelStep },
     { label: 'MENU', id: 'menu-browse' as FunnelStep },
     { label: 'ABOUT', id: 'about' as FunnelStep },
+    { label: 'CONTACT', id: 'contact' as FunnelStep },
   ];
 
   return (
@@ -366,7 +367,8 @@ export default function App() {
               <div className="hidden md:flex items-center gap-10 font-bold text-sm uppercase tracking-[0.2em] text-brand-white">
                 <button onClick={() => { window.scrollTo(0, 0); setView('menu-browse'); }} className="hover:text-brand-neon transition-colors font-bold tracking-widest">MENU</button>
                 <button onClick={() => { window.scrollTo(0, 0); setView('about'); }} className="hover:text-brand-neon transition-colors font-bold tracking-widest">ABOUT</button>
-                <a href="#locations" className="hover:text-brand-neon transition-colors font-bold tracking-widest">Locations</a>
+                <button onClick={() => { window.scrollTo(0, 0); setView('contact'); }} className="hover:text-brand-neon transition-colors font-bold tracking-widest">CONTACT</button>
+                <a href="#locations" className="hover:text-brand-neon transition-colors font-bold tracking-widest">LOCATIONS</a>
                 <button onClick={startOrder} className="bg-brand-red text-brand-white font-bold uppercase px-8 py-3 tracking-widest transition-all hover:bg-red-700 active:scale-95 rounded-md">
                   Order Now
                 </button>
@@ -511,7 +513,7 @@ export default function App() {
                     <div className="bg-[#0D0D0D] shadow-2xl relative overflow-hidden flex flex-col group border-none">
                       <div className="h-[240px] md:h-[300px] relative overflow-hidden">
                         <img 
-                          src="https://images.unsplash.com/photo-1574071318508-1cdbad80ad38?auto=format&fit=crop&q=80&w=1000" 
+                          src="https://i.imgur.com/oz3N4dm.jpeg" 
                           alt="18 inch Jumbo Pizza"
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                           referrerPolicy="no-referrer"
@@ -794,6 +796,7 @@ export default function App() {
               </div>
               <div className="hidden md:flex items-center gap-4">
                 <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">About</button>
+                <button onClick={() => { setView('contact'); window.scrollTo(0,0); }} className="text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Contact</button>
                 <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Back to Home</button>
                 <button 
                   onClick={startOrder} 
@@ -1174,6 +1177,7 @@ export default function App() {
                 <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Home</button>
                 <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Browse Menu</button>
                 <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">About Our Story</button>
+                <button onClick={() => { setView('contact'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Contact Us</button>
                 <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white" onClick={(e) => { e.preventDefault(); setView('home'); setTimeout(() => { document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}>Locations</a>
               </div>
               <div className="text-[12px] font-black uppercase tracking-[0.3em] opacity-30 text-brand-white">
@@ -1416,6 +1420,7 @@ export default function App() {
                 <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Home</button>
                 <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Browse Menu</button>
                 <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white border-b border-brand-neon pb-1">About Our Story</button>
+                <button onClick={() => { setView('contact'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Contact Us</button>
                 <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white" onClick={(e) => { e.preventDefault(); setView('home'); setTimeout(() => { document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}>Locations</a>
               </div>
               <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20 text-brand-white">
@@ -1423,6 +1428,254 @@ export default function App() {
               </div>
             </footer>
           </motion.div>
+
+        ) : view === 'contact' ? (
+          <motion.div 
+            key="contact"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="bg-brand-black min-h-screen noise-overlay"
+          >
+            {/* Nav */}
+            <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 noise-overlay">
+              <div className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0" onClick={() => setView('home')}>
+                <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8 shrink-0" />
+                <span className="font-display text-base sm:text-2xl md:text-3xl uppercase truncate text-brand-neon">
+                  Jesse's Pizza Co.
+                </span>
+              </div>
+              <div className="hidden md:flex items-center gap-4">
+                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Menu</button>
+                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="text-brand-white font-bold uppercase text-xs tracking-widest opacity-60 hover:opacity-100 transition-opacity">Back to Home</button>
+                <button 
+                  onClick={startOrder} 
+                  className="bg-brand-red text-brand-white font-bold uppercase px-6 py-3 text-xs tracking-widest transition-all hover:bg-red-700 active:scale-95"
+                >
+                  Order Now
+                </button>
+              </div>
+
+              <button 
+                className="md:hidden text-brand-neon p-2 hover:bg-white/5 rounded-sm transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
+              </button>
+
+              <MobileMenu 
+                isOpen={isMenuOpen} 
+                onClose={() => setIsMenuOpen(false)} 
+                setView={setView}
+                currentView={view}
+              />
+            </nav>
+
+            <main className="bg-brand-black">
+              {/* SECTION 1: HERO */}
+              <section className="relative min-h-[60vh] flex items-center justify-center bg-brand-black px-6 pt-32 pb-20 overflow-hidden noise-overlay">
+                <div className="max-w-4xl mx-auto text-center relative z-10">
+                  <h1 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-12 leading-[0.85] uppercase text-brand-neon flex flex-col items-center">
+                    <span>GET IN TOUCH.</span>
+                    <span>OR JUST ORDER.</span>
+                  </h1>
+                  
+                  <p className="text-xl md:text-3xl font-black uppercase tracking-[0.2em] mb-16 text-brand-white opacity-90 leading-tight">
+                    Fastest way to reach us is a phone call.<br/>
+                    Fastest way to eat is ordering online.<br/>
+                    Either way we've got you covered.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row justify-center gap-6">
+                    <button onClick={startOrder} className="bg-brand-red text-brand-white px-16 py-6 text-2xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                      Order Now
+                    </button>
+                    <a href="tel:8062747200" className="bg-brand-red text-brand-white px-16 py-6 text-2xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl text-center">
+                      Call Now
+                    </a>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 2: LOCATION CONTACT BLOCKS */}
+              <section className="bg-brand-black px-6 py-32 md:py-48 border-y border-white/5 noise-overlay">
+                <div className="max-w-7xl mx-auto">
+                  <div className="text-center mb-24">
+                    <h2 className="font-display text-6xl md:text-8xl text-brand-neon uppercase mb-8 leading-tight">FIND YOUR LOCATION.</h2>
+                    <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-widest italic">Two locations. Both ready to hear from you.</p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-12">
+                    {/* Borger */}
+                    <div className="flex flex-col gap-10">
+                      <div className="bg-brand-concrete p-10 border border-white/5">
+                        <h3 className="font-display text-4xl mb-6 text-brand-neon uppercase tracking-widest">Borger Location</h3>
+                        <div className="text-brand-white text-xl font-bold uppercase tracking-widest space-y-2 mb-10">
+                          <p>Jesse's Pizza Company</p>
+                          <p>530 W 3rd St</p>
+                          <p>Borger, TX 79007</p>
+                          <p className="text-3xl font-display mt-6 pt-6 border-t border-white/10">(806) 274-7200</p>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                          <a href="tel:8062747200" className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all text-center">Call Now</a>
+                          <button onClick={startOrder} className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all">Order Online</button>
+                          <a href="https://maps.google.com/?q=Jesse's+Pizza+Company+Borger" target="_blank" rel="noopener noreferrer" className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all text-center">Get Directions</a>
+                        </div>
+                      </div>
+                      <div className="aspect-video w-full bg-brand-concrete relative overflow-hidden grayscale brightness-50">
+                        <iframe 
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.062828282828!2d-101.389!3d35.66!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDM5JzM2LjAiTiAxMDHCsDIzJzIwLjQiVw!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                          className="w-full h-full border-0"
+                          allowFullScreen
+                          loading="lazy"
+                          title="Jesse's Pizza Borger Map"
+                        ></iframe>
+                      </div>
+                    </div>
+
+                    {/* Fritch */}
+                    <div className="flex flex-col gap-10">
+                      <div className="bg-brand-concrete p-10 border border-white/5">
+                        <h3 className="font-display text-4xl mb-6 text-brand-neon uppercase tracking-widest">Fritch Location</h3>
+                        <div className="text-brand-white text-xl font-bold uppercase tracking-widest space-y-2 mb-10">
+                          <p>Jesse's Pizza Company</p>
+                          <p>424 E Broadway St</p>
+                          <p>Fritch, TX 79036</p>
+                          <p className="text-3xl font-display mt-6 pt-6 border-t border-white/10">(806) 857-0098</p>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                          <a href="tel:8068570098" className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all text-center">Call Now</a>
+                          <button onClick={startOrder} className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all">Order Online</button>
+                          <a href="https://maps.google.com/?q=Jesse's+Pizza+Company+Fritch" target="_blank" rel="noopener noreferrer" className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all text-center">Get Directions</a>
+                        </div>
+                      </div>
+                      <div className="aspect-video w-full bg-brand-concrete relative overflow-hidden grayscale brightness-50">
+                        <iframe 
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.062828282828!2d-101.6!3d35.64!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDM4JzI0LjAiTiAxMDHCsDM2JzAwLjAiVw!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                          className="w-full h-full border-0"
+                          allowFullScreen
+                          loading="lazy"
+                          title="Jesse's Pizza Fritch Map"
+                        ></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 3: CONTACT FORM */}
+              <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
+                <div className="max-w-3xl mx-auto">
+                  <div className="text-center mb-16">
+                    <h2 className="font-display text-6xl md:text-8xl text-brand-neon uppercase mb-8 leading-tight">SEND US A MESSAGE.</h2>
+                    <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-widest italic leading-tight">
+                      Not the fastest way to reach us.<br/>
+                      But if you've got a question that needs more than a phone call,<br/>
+                      we'll get back to you.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-brand-concrete p-8 md:p-16 border border-white/5 shadow-2xl">
+                    <form className="space-y-8" onSubmit={(e) => { e.preventDefault(); alert('Message sent!'); }}>
+                      <div className="grid md:grid-cols-2 gap-8">
+                        <div className="flex flex-col gap-3">
+                          <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Name (Required)</label>
+                          <input required type="text" className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors" />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                          <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Email (Required)</label>
+                          <input required type="email" className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors" />
+                        </div>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-8">
+                        <div className="flex flex-col gap-3">
+                          <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Phone (Optional)</label>
+                          <input type="tel" className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors" />
+                        </div>
+                        <div className="flex flex-col gap-3">
+                          <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Location</label>
+                          <select className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors appearance-none px-4">
+                            <option>Borger</option>
+                            <option>Fritch</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-3">
+                        <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Message (Required)</label>
+                        <textarea required rows={6} className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors resize-none"></textarea>
+                      </div>
+                      <button type="submit" className="w-full bg-brand-red text-brand-white py-6 text-2xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-2xl mt-12">
+                        Send Message
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 4: HOURS */}
+              <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
+                <div className="max-w-4xl mx-auto">
+                  <div className="text-center mb-24">
+                    <h2 className="font-display text-6xl md:text-8xl text-brand-neon uppercase mb-8 leading-tight">HOURS.</h2>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-24">
+                    {/* Borger */}
+                    <div className="text-center md:text-left">
+                      <h3 className="font-display text-5xl mb-8 text-brand-neon uppercase tracking-widest">Borger</h3>
+                      <div className="text-brand-white text-2xl font-black uppercase tracking-widest space-y-4">
+                        <p>Monday through Saturday</p>
+                        <p className="text-brand-neon text-4xl">11:00 AM — 10:00 PM</p>
+                        <p className="mt-12 pt-8 border-t border-white/10 text-brand-red opacity-80">Sunday: Closed</p>
+                      </div>
+                    </div>
+                    {/* Fritch */}
+                    <div className="text-center md:text-left">
+                      <h3 className="font-display text-5xl mb-8 text-brand-neon uppercase tracking-widest">Fritch</h3>
+                      <div className="text-brand-white text-2xl font-black uppercase tracking-widest space-y-4">
+                        <p>Monday through Saturday</p>
+                        <p className="text-brand-neon text-4xl">11:00 AM — 9:00 PM</p>
+                        <p className="mt-12 pt-8 border-t border-white/10 text-brand-red opacity-80">Sunday: Closed</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 5: FINAL CTA */}
+              <section className="bg-brand-black py-40 md:py-60 px-6 noise-overlay border-t border-brand-red relative overflow-hidden">
+                <div className="max-w-4xl mx-auto text-center relative z-10">
+                  <h2 className="font-display text-7xl md:text-[10rem] uppercase leading-[0.95] mb-12 text-brand-neon italic">READY TO ORDER?</h2>
+                  <p className="text-xl md:text-3xl font-black uppercase tracking-[0.4em] mb-20 opacity-90 text-brand-white leading-tight">
+                    Skip the form. Just order.<br/>Pick it up in 20 minutes.
+                  </p>
+                  <div className="flex flex-col sm:flex-row justify-center gap-8">
+                    <button onClick={() => { setView('order-start'); window.scrollTo(0,0); }} className="bg-brand-red text-brand-white px-16 py-8 text-3xl font-display uppercase tracking-widest hover:bg-brand-red/90 transition-all shadow-2xl">
+                      Order Now — Borger
+                    </button>
+                    <button onClick={() => { setView('order-start'); window.scrollTo(0,0); }} className="bg-brand-red text-brand-white px-16 py-8 text-3xl font-display uppercase tracking-widest hover:bg-brand-red/90 transition-all shadow-2xl">
+                      Order Now — Fritch
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </main>
+
+            <footer className="bg-brand-black py-20 px-8 border-t border-white/5 flex flex-col items-center gap-12">
+              <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-xs font-black uppercase tracking-[0.4em]">
+                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Home</button>
+                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Browse Menu</button>
+                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">About Our Story</button>
+                <button onClick={() => { setView('contact'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white border-b border-brand-neon pb-1">Contact Us</button>
+                <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white" onClick={(e) => { e.preventDefault(); setView('home'); setTimeout(() => { document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}>Locations</a>
+              </div>
+              <div className="text-[12px] font-black uppercase tracking-[0.3em] opacity-30 text-brand-white">
+                © 2026 Jesse's Pizza Co. • Built for the Texas Panhandle
+              </div>
+            </footer>
+          </motion.div>
+
         ) : (
 
           <motion.div 
