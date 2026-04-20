@@ -1,9 +1,8 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap');
 
 @theme {
-  --font-display: "Inter", sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Anton', sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   --color-brand-black: #0D0D0D;
   --color-brand-neon: #B8F000;
@@ -18,15 +17,24 @@
   }
 
   h1 {
-    @apply font-display font-black uppercase tracking-tighter text-brand-neon;
+    font-family: 'Anton', sans-serif;
+    @apply uppercase tracking-tight text-brand-neon;
   }
 
   h2 {
-    @apply font-display font-bold uppercase tracking-tighter text-brand-white;
+    font-family: 'Anton', sans-serif;
+    @apply uppercase tracking-tight text-brand-white;
   }
 
   h3 {
-    @apply font-display font-bold uppercase tracking-tighter text-brand-white;
+    font-family: 'Anton', sans-serif;
+    @apply uppercase tracking-tight text-brand-white;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Anton', sans-serif;
   }
 }
 

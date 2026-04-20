@@ -187,6 +187,92 @@ const MENU_CATEGORIES = [
   }
 ];
 
+const MobileMenu = ({ isOpen, onClose, setView, currentView }: { isOpen: boolean, onClose: () => void, setView: (v: FunnelStep) => void, currentView: FunnelStep }) => {
+  const menuItems = [
+    { label: 'HOME', id: 'home' as FunnelStep },
+    { label: 'MENU', id: 'menu-browse' as FunnelStep },
+    { label: 'ABOUT', id: 'about' as FunnelStep },
+  ];
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="md:hidden fixed inset-0 bg-brand-black z-[300] flex flex-col overflow-hidden"
+        >
+          <div className="flex-1 flex flex-col p-8 sm:p-12 relative z-10">
+            <div className="flex justify-between items-center mb-16">
+              <div className="font-display text-xl tracking-tight text-brand-neon">JP CO.</div>
+              <button 
+                onClick={onClose}
+                className="group flex items-center gap-3 bg-white/5 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors border border-white/5"
+              >
+                <span className="font-black text-[10px] uppercase tracking-widest group-hover:text-brand-neon transition-colors">Close</span>
+                <X size={18} className="text-brand-neon" />
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-6">
+              {menuItems.map((item, i) => (
+                <motion.button
+                  key={item.id}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                  onClick={() => {
+                    onClose();
+                    setView(item.id);
+                    window.scrollTo(0, 0);
+                  }}
+                  className="flex items-baseline gap-4 text-left group"
+                >
+                  <span className="font-mono text-[10px] text-brand-neon opacity-40 font-bold">0{i + 1}</span>
+                  <span className={`font-display text-3xl sm:text-5xl uppercase leading-none transition-all ${currentView === item.id ? 'text-brand-neon' : 'text-brand-white group-hover:text-brand-neon'}`}>
+                    {item.label}
+                  </span>
+                </motion.button>
+              ))}
+              <motion.a
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: menuItems.length * 0.1 }}
+                href="#locations"
+                onClick={onClose}
+                className="flex items-baseline gap-4 text-left group"
+              >
+                <span className="font-mono text-[10px] text-brand-neon opacity-40 font-bold">0{menuItems.length + 1}</span>
+                <span className="font-display text-3xl sm:text-5xl uppercase leading-none text-brand-white group-hover:text-brand-neon transition-all">
+                  LOCATIONS
+                </span>
+              </motion.a>
+            </nav>
+
+            <div className="mt-auto pt-10 grid grid-cols-2 gap-8 border-t border-white/10">
+              <div>
+                <span className="block text-[9px] font-black uppercase tracking-widest text-brand-red mb-3">Socials</span>
+                <div className="flex flex-col gap-1.5 font-bold text-xs">
+                  <a href="#" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100">Instagram</a>
+                  <a href="#" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100">Facebook</a>
+                </div>
+              </div>
+              <div>
+                <span className="block text-[9px] font-black uppercase tracking-widest text-brand-neon mb-3">The Spot</span>
+                <div className="font-bold text-xs leading-tight text-white/40">
+                  Borger & Fritch, TX
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="h-1 bg-brand-neon w-full" />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [view, setView] = useState<FunnelStep>('home');
@@ -240,7 +326,7 @@ export default function App() {
               <ArrowLeft size={24} />
             </button>
           )}
-          <h1 className="font-display text-4xl lg:text-5xl uppercase leading-none text-brand-neon">{title}</h1>
+          <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl uppercase leading-none text-brand-neon">{title}</h1>
         </div>
         {cart.length > 0 && view !== 'cart' && view !== 'checkout' && (
           <button onClick={() => setView('cart')} className="relative group p-2 bg-brand-neon text-brand-black rounded-sm font-bold flex items-center gap-2">
@@ -268,9 +354,9 @@ export default function App() {
           >
             {/* NAVIGATION - Geometric Balance Style */}
             <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 noise-overlay">
-              <div className="flex items-center gap-2 md:gap-3 cursor-pointer" onClick={() => setView('home')}>
-                <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8" />
-                <span className="font-display text-xl sm:text-2xl md:text-3xl uppercase whitespace-nowrap text-brand-neon font-black">
+              <div className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0" onClick={() => setView('home')}>
+                <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8 shrink-0" />
+                <span className="font-display text-base sm:text-2xl md:text-3xl uppercase truncate text-brand-neon">
                   Jesse's Pizza Co.
                 </span>
               </div>
@@ -292,19 +378,12 @@ export default function App() {
                 {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
               </button>
 
-              {/* MOBILE MENU */}
-              {isMenuOpen && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="md:hidden absolute top-full left-0 right-0 bg-brand-black border-b border-brand-neon/40 p-12 flex flex-col items-center text-center gap-10 font-display text-4xl uppercase text-brand-white noise-overlay z-[100] shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-                >
-                  <button onClick={() => { setIsMenuOpen(false); setView('menu-browse'); window.scrollTo(0,0); }} className="font-bold text-brand-neon active:scale-95 transition-transform">MENU</button>
-                  <button onClick={() => { setIsMenuOpen(false); setView('about'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">ABOUT</button>
-                  <a href="#locations" onClick={() => setIsMenuOpen(false)} className="font-bold active:scale-95 transition-transform">Locations</a>
-                  <button onClick={() => { setIsMenuOpen(false); startOrder(); }} className="btn-primary w-full py-6 font-bold text-2xl">Order Online</button>
-                </motion.div>
-              )}
+              <MobileMenu 
+                isOpen={isMenuOpen} 
+                onClose={() => setIsMenuOpen(false)} 
+                setView={setView}
+                currentView={view}
+              />
             </nav>
 
             <main>
@@ -312,7 +391,7 @@ export default function App() {
               <section className="bg-brand-black px-6 py-20 md:py-40 border-b border-white/5 overflow-hidden noise-overlay">
                 <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
                   <p className="text-brand-neon font-black uppercase tracking-[0.4em] mb-6 text-xs md:text-sm">Borger & Fritch, TX</p>
-                  <h1 className="font-display text-5xl md:text-7xl lg:text-8xl mb-8 leading-[0.85] uppercase text-brand-neon break-words">
+                  <h1 className="font-display text-4xl md:text-7xl lg:text-8xl mb-8 leading-[0.85] uppercase text-brand-neon break-words">
                     TIRED OF PIZZA THAT DISAPPOINTS?
                   </h1>
                   <p className="text-xl md:text-3xl max-w-2xl mx-auto opacity-90 font-bold text-brand-white mb-16 leading-tight uppercase tracking-tight">
@@ -584,9 +663,9 @@ export default function App() {
 
             {/* STANDALONE MENU HEADER */}
             <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 noise-overlay">
-              <div className="flex items-center gap-2 md:gap-3 cursor-pointer" onClick={() => setView('home')}>
-                <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8" />
-                <span className="font-display text-xl sm:text-2xl md:text-3xl uppercase whitespace-nowrap text-brand-neon font-black">
+              <div className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0" onClick={() => setView('home')}>
+                <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8 shrink-0" />
+                <span className="font-display text-base sm:text-2xl md:text-3xl uppercase truncate text-brand-neon">
                   Jesse's Pizza Co.
                 </span>
               </div>
@@ -609,31 +688,26 @@ export default function App() {
                 {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
               </button>
 
-              {isMenuOpen && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="md:hidden absolute top-full left-0 right-0 bg-brand-black border-b border-brand-neon/40 p-12 flex flex-col items-center text-center gap-10 font-display text-4xl uppercase text-brand-white noise-overlay z-[100] shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-                >
-                  <button onClick={() => { setIsMenuOpen(false); setView('home'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">HOME</button>
-                  <button onClick={() => { setIsMenuOpen(false); setView('about'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">ABOUT</button>
-                  <button onClick={() => { setIsMenuOpen(false); startOrder(); }} className="btn-primary w-full py-6 font-bold text-2xl">Order Online</button>
-                </motion.div>
-              )}
+              <MobileMenu 
+                isOpen={isMenuOpen} 
+                onClose={() => setIsMenuOpen(false)} 
+                setView={setView}
+                currentView={view}
+              />
             </nav>
 
             <div className="max-w-7xl mx-auto p-6 lg:p-12 relative z-10">
               {/* SECTION 1: HERO */}
               <div className="text-center mb-32 max-w-4xl mx-auto pt-10 px-4">
-                <h1 className="font-display text-6xl md:text-8xl lg:text-9xl mb-8 leading-[0.8] uppercase text-brand-neon break-words">
-                  THE MENU. <br/>BUILT TO SATISFY.
+                <h1 className="font-display text-4xl md:text-8xl lg:text-9xl mb-8 leading-[0.8] uppercase text-brand-neon break-words">
+                  THE MENU<br/>BUILT TO SATISFY
                 </h1>
                 <p className="text-xl md:text-3xl text-brand-white opacity-90 font-medium mb-16 uppercase tracking-wider leading-tight">
                   No skimpy portions. No shortcuts. Just pizza and sides<br className="hidden md:block" /> that actually deliver every time.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-6">
-                  <button onClick={startOrder} className="bg-brand-red text-brand-white px-16 py-6 text-2xl font-display uppercase tracking-widest hover:bg-red-700 transition-all font-bold">Order Now</button>
-                  <a href="tel:8062747200" className="bg-transparent border-4 border-brand-neon text-brand-neon px-16 py-6 text-2xl font-display uppercase tracking-widest text-center hover:bg-brand-neon hover:text-brand-black transition-all font-bold">
+                  <button onClick={startOrder} className="bg-brand-red text-brand-white px-16 py-6 text-2xl font-display uppercase tracking-widest hover:bg-red-700 transition-all">Order Now</button>
+                  <a href="tel:8062747200" className="bg-transparent border-4 border-brand-neon text-brand-neon px-16 py-6 text-2xl font-display uppercase tracking-widest text-center hover:bg-brand-neon hover:text-brand-black transition-all">
                     Call Now
                   </a>
                 </div>
@@ -647,7 +721,7 @@ export default function App() {
                   return (
                     <section key={category.id} className={isPop ? "scroll-mt-32" : ""}>
                       <div className="mb-16 md:mb-24 px-4">
-                        <h2 className="font-display text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.8] mb-6 text-brand-neon break-words">
+                        <h2 className="font-display text-4xl md:text-7xl lg:text-8xl uppercase leading-[0.8] mb-6 text-brand-neon break-words">
                           {category.title}
                         </h2>
                         {category.subtext && (
@@ -720,7 +794,7 @@ export default function App() {
                                     setView('order-start'); 
                                     window.scrollTo(0,0);
                                   }} 
-                                  className="w-full bg-brand-red text-brand-white py-6 font-display text-2xl uppercase tracking-[0.2em] transition-all hover:bg-red-700 active:scale-95 shadow-xl font-bold"
+                                  className="w-full bg-brand-red text-brand-white py-6 font-display text-2xl uppercase tracking-[0.2em] transition-all hover:bg-red-700 active:scale-95 shadow-xl"
                                 >
                                   {item.cta || (item.type === 'byo-pizza' ? 'Start Building' : 'Order Now')}
                                 </button>
@@ -744,10 +818,10 @@ export default function App() {
                       Skip the chains. Get pizza that<br className="hidden md:block" /> actually delivers on flavor.
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-8">
-                      <button onClick={startOrder} className="bg-brand-black text-brand-white px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-gray-900 transition-all shadow-3xl font-bold">
+                      <button onClick={startOrder} className="bg-brand-black text-brand-white px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-gray-900 transition-all shadow-3xl">
                         Order Now
                       </button>
-                      <a href="tel:8062747200" className="bg-transparent border-4 border-brand-black text-brand-black px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-black/10 transition-all text-center font-bold">
+                      <a href="tel:8062747200" className="bg-transparent border-4 border-brand-black text-brand-black px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-black/10 transition-all text-center">
                         Call Now
                       </a>
                     </div>
@@ -778,9 +852,9 @@ export default function App() {
           >
             {/* Nav */}
             <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 noise-overlay">
-              <div className="flex items-center gap-2 md:gap-3 cursor-pointer" onClick={() => setView('home')}>
-                <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8" />
-                <span className="font-display text-xl sm:text-2xl md:text-3xl uppercase whitespace-nowrap text-brand-neon font-black">
+              <div className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0" onClick={() => setView('home')}>
+                <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8 shrink-0" />
+                <span className="font-display text-base sm:text-2xl md:text-3xl uppercase truncate text-brand-neon">
                   Jesse's Pizza Co.
                 </span>
               </div>
@@ -802,184 +876,207 @@ export default function App() {
                 {isMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
               </button>
 
-              {isMenuOpen && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="md:hidden absolute top-full left-0 right-0 bg-brand-black border-b border-brand-neon/40 p-12 flex flex-col items-center text-center gap-10 font-display text-4xl uppercase text-brand-white noise-overlay z-[100] shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-                >
-                  <button onClick={() => { setIsMenuOpen(false); setView('home'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">HOME</button>
-                  <button onClick={() => { setIsMenuOpen(false); setView('menu-browse'); window.scrollTo(0,0); }} className="font-bold active:scale-95 transition-transform">MENU</button>
-                  <button onClick={() => { setIsMenuOpen(false); startOrder(); }} className="btn-primary w-full py-6 font-bold text-2xl">Order Online</button>
-                </motion.div>
-              )}
+              <MobileMenu 
+                isOpen={isMenuOpen} 
+                onClose={() => setIsMenuOpen(false)} 
+                setView={setView}
+                currentView={view}
+              />
             </nav>
 
             {/* SECTION 1: HERO */}
-            <section className="px-6 py-24 md:py-40 text-center border-b border-white/5 bg-[radial-gradient(circle_at_top,rgba(184,240,0,0.05),transparent)]">
-              <div className="max-w-4xl mx-auto">
-                <h1 className="font-display text-6xl md:text-8xl lg:text-9xl mb-8 leading-[0.85] uppercase text-brand-neon">
-                  Not a Chain. <br/>Not Average. <br/>Just Pizza Done Right.
+            <section className="px-6 py-24 md:py-48 text-center bg-brand-black border-b border-white/5 noise-overlay relative">
+              <div className="max-w-4xl mx-auto relative z-10">
+                <h1 className="font-display text-4xl md:text-8xl lg:text-9xl mb-8 leading-[0.8] uppercase text-brand-neon break-words">
+                  THIS ISN'T A CHAIN.<br/>THIS IS JESSE'S.
                 </h1>
-                <p className="text-xl md:text-3xl text-brand-white opacity-80 font-medium max-w-2xl mx-auto leading-relaxed uppercase tracking-wide">
-                  Jesse’s Pizza Company serves Borger and Fritch with one goal: make pizza people actually want to come back for.
+                <p className="text-xl md:text-3xl text-brand-white opacity-90 font-medium max-w-2xl mx-auto uppercase tracking-wide leading-tight">
+                  Built from the ground up to do one thing better than anyone else in the area: make pizza people actually come back for.
                 </p>
               </div>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(184,240,0,0.03),transparent)] pointer-events-none" />
             </section>
 
-            {/* SECTION 2: THE PROBLEM */}
-            <section className="px-6 py-32 md:py-48 border-b border-white/5 noise-overlay">
+            {/* SECTION 2: THE OWNER STORY */}
+            <section className="px-6 py-32 md:py-48 bg-brand-black border-b border-white/5 noise-overlay">
               <div className="max-w-3xl mx-auto relative z-10">
-                <h2 className="font-display text-5xl md:text-7xl mb-12 uppercase tracking-tighter text-brand-neon">Why Jesse’s Exists</h2>
-                <div className="space-y-8 text-xl md:text-2xl text-brand-white opacity-90 leading-relaxed font-medium">
-                  <p>Most people have had pizza that looks good… until you take a bite.</p>
-                  <p className="text-brand-neon font-black italic">Light toppings. Bland flavor. Feels rushed.</p>
-                  <p>You eat it because it’s there, not because it’s good.</p>
-                  <p className="border-l-4 border-brand-neon pl-8 py-4 bg-white/5 uppercase font-bold tracking-widest text-brand-neon">That’s exactly what we don’t do.</p>
-                  <p>Jesse’s Pizza Company exists to give people a better option.</p>
-                  <p>Pizza that’s actually loaded. Actually satisfying. Actually worth ordering again.</p>
+                <h2 className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon">HOW IT STARTED</h2>
+                <div className="space-y-10 text-xl md:text-2xl text-brand-white leading-relaxed font-bold uppercase tracking-tight">
+                  <p>Jesse didn't set out to build a pizza brand.</p>
+                  <p className="text-brand-neon italic">He got tired of bad pizza.</p>
+                  <p>Tired of paying for food that looked good in photos and let you down the moment you opened the box. Tired of places that cut corners thinking nobody noticed.</p>
+                  <p className="text-brand-neon underline decoration-4 underline-offset-8">He noticed.</p>
+                  <p>So he did something about it.</p>
+                  <p className="opacity-40">No investors. No franchise playbook. No corporate rulebook.</p>
+                  <p>Just a decision to make pizza the way it should be made: loaded toppings, fresh dough, consistent quality, every single order.</p>
+                  <p className="pt-10 text-brand-neon">What happened next wasn't complicated.</p>
+                  <p>People tried it. They came back. They told their friends. And Jesse's became the spot.</p>
                 </div>
               </div>
             </section>
 
-            {/* SECTION 3: THE DIFFERENCE */}
+            {/* SECTION 3: THE STANDARD */}
             <section className="px-6 py-32 md:py-48 bg-brand-concrete border-b border-white/5 noise-overlay">
-              <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-16 md:items-center relative z-10">
-                <div className="flex-1">
-                  <h2 className="font-display text-5xl md:text-7xl mb-12 uppercase tracking-tighter text-brand-neon">What Makes Us Different</h2>
-                  <div className="space-y-8 text-xl text-gray-400 leading-relaxed">
-                    <p className="text-brand-white font-bold uppercase tracking-widest">We’re not trying to be fancy.</p>
-                    <p>We’re focused on doing the basics better than most:</p>
-                    <ul className="space-y-6">
-                      <li className="flex items-center gap-4 text-brand-white font-bold italic">
-                        <CheckCircle2 className="text-brand-neon" /> Generous toppings, not skimpy portions
-                      </li>
-                      <li className="flex items-center gap-4 text-brand-white font-bold italic">
-                        <CheckCircle2 className="text-brand-neon" /> Consistent quality every time
-                      </li>
-                      <li className="flex items-center gap-4 text-brand-white font-bold italic">
-                        <CheckCircle2 className="text-brand-neon" /> Simple menu, done right
-                      </li>
-                    </ul>
-                    <p className="pt-8 opacity-60 border-t border-white/10 uppercase tracking-widest text-sm text-brand-white">
-                      If it’s not something we’d eat ourselves, it doesn’t go out.
-                    </p>
+              <div className="max-w-4xl mx-auto relative z-10">
+                <h2 className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon">THE STANDARD HASN'T CHANGED</h2>
+                <div className="grid md:grid-cols-2 gap-16 items-center">
+                  <div className="space-y-8 text-xl md:text-2xl text-brand-white font-bold uppercase tracking-tight">
+                    <p>Every pizza that leaves this kitchen gets the same treatment as the first one.</p>
+                    <p className="text-brand-neon font-display text-4xl leading-none">If it's not something Jesse would eat himself, it doesn't go out.</p>
+                    <p>That's it.</p>
+                    <div className="space-y-4 opacity-60">
+                      <p>No corporate checklist.</p>
+                      <p>No cutting corners when it gets busy.</p>
+                      <p>No skimping because nobody's watching.</p>
+                    </div>
+                    <p className="pt-8 border-t border-white/10">The standard is simple. And it doesn't move.</p>
+                  </div>
+                  <div className="aspect-[4/5] bg-brand-black overflow-hidden border border-white/5 shadow-2xl relative group">
+                    <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" alt="Pizza quality" />
+                    <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-brand-black to-transparent">
+                      <span className="font-display text-2xl text-brand-neon">BUILT RIGHT</span>
+                    </div>
                   </div>
                 </div>
-                <div className="flex-1 relative aspect-square bg-brand-black overflow-hidden border border-white/5 shadow-2xl">
-                   <img src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=800" alt="Pizza Detail" className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 transition-all duration-700" referrerPolicy="no-referrer" />
-                   <div className="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent opacity-60" />
-                </div>
               </div>
             </section>
 
-            {/* SECTION 4: THE BRAND STORY */}
-            <section className="px-6 py-32 md:py-48 border-b border-white/5 noise-overlay">
+            {/* SECTION 4: WHY IT MATTERS */}
+            <section className="px-6 py-32 md:py-48 bg-brand-black border-b border-white/5 noise-overlay">
               <div className="max-w-3xl mx-auto text-center relative z-10">
-                <h2 className="font-display text-5xl md:text-7xl mb-12 uppercase tracking-tighter text-brand-neon">Our Story</h2>
-                <div className="space-y-8 text-xl md:text-2xl text-gray-400 leading-relaxed font-medium">
-                  <p>Jesse’s Pizza Company is built around a simple idea:</p>
-                  <p className="text-brand-white text-3xl md:text-5xl font-display uppercase leading-tight italic">
-                    Serve good food, do it consistently, and take care of the people who walk through the door.
-                  </p>
-                  <p>We’re part of the Borger and Fritch communities, and that matters.</p>
-                  <p>This isn’t a place trying to be something it’s not.</p>
-                  <p>It’s a local pizza spot focused on doing things right and keeping customers coming back.</p>
+                <h2 className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon">WHY WE'RE NOT LIKE THE REST</h2>
+                <div className="space-y-10 text-xl md:text-2xl text-brand-white font-bold uppercase tracking-tight">
+                  <p>Chains are built to be consistent across thousands of locations.</p>
+                  <p className="text-brand-red">That means everything gets optimized for cost, not quality.</p>
+                  <p className="opacity-50">Lighter toppings. Faster prep. Lower standards.</p>
+                  <p className="text-brand-neon text-3xl md:text-5xl font-display leading-[0.9] mt-20">Jesse's is built for one thing: the people in Borger and Fritch who want pizza that actually delivers.</p>
+                  <p className="pt-10">Not a national average. Not good enough.</p>
+                  <p className="text-brand-neon text-4xl md:text-6xl font-display uppercase tracking-widest italic">Actually good.</p>
                 </div>
               </div>
             </section>
 
-            {/* SECTION 5: LOCAL ROOTS */}
-            <section id="locations-about" className="px-6 py-32 md:py-48 bg-brand-neon text-brand-black border-b border-black">
-              <div className="max-w-7xl mx-auto">
-                <h2 className="font-display text-6xl md:text-8xl lg:text-9xl mb-16 uppercase leading-[0.8] tracking-tighter text-brand-black">Proudly Serving <br/>Borger & Fritch</h2>
-                <div className="grid md:grid-cols-2 gap-12">
-                   <div className="border-4 border-brand-black p-10 flex flex-col justify-between h-full bg-brand-white/10">
-                      <div>
-                        <h3 className="font-display text-5xl mb-4 uppercase">Borger</h3>
-                        <p className="text-2xl font-black uppercase mb-2">530 W 3rd St</p>
-                        <a href="tel:8062747200" className="text-4xl font-display">(806) 274-7200</a>
-                      </div>
-                      <button onClick={startOrder} className="mt-12 bg-brand-black text-brand-white py-6 text-2xl font-display uppercase tracking-widest hover:bg-gray-900 transition-all font-bold">Order Pickup</button>
-                   </div>
-                   <div className="border-4 border-brand-black p-10 flex flex-col justify-between h-full bg-brand-white/10">
-                      <div>
-                        <h3 className="font-display text-5xl mb-4 uppercase">Fritch</h3>
-                        <p className="text-2xl font-black uppercase mb-2">424 E Broadway St</p>
-                        <a href="tel:8068570098" className="text-4xl font-display">(806) 857-0098</a>
-                      </div>
-                      <button onClick={startOrder} className="mt-12 bg-brand-black text-brand-white py-6 text-2xl font-display uppercase tracking-widest hover:bg-gray-900 transition-all font-bold">Order Pickup</button>
-                   </div>
-                </div>
-              </div>
-            </section>
-
-            {/* SECTION 6: SOCIAL PROOF */}
-            <section className="px-6 py-32 border-b border-white/5 bg-brand-concrete noise-overlay">
+            {/* SECTION 5: LOCATIONS */}
+            <section className="px-6 py-32 md:py-48 bg-brand-concrete border-b border-white/5 noise-overlay">
               <div className="max-w-7xl mx-auto relative z-10">
-                <h2 className="font-display text-3xl mb-16 uppercase tracking-widest opacity-40 text-brand-white">What Locals Say</h2>
-                <div className="grid md:grid-cols-3 gap-12">
-                  <div className="text-3xl md:text-4xl font-display uppercase italic border-l-4 border-brand-neon pl-8 py-4 text-brand-white">“Best pizza in town.”</div>
-                  <div className="text-3xl md:text-4xl font-display uppercase italic border-l-4 border-brand-neon pl-8 py-4 text-brand-white">“Always loaded.”</div>
-                  <div className="text-3xl md:text-4xl font-display uppercase italic border-l-4 border-brand-neon pl-8 py-4 text-brand-white">“Consistently good every time.”</div>
+                <h2 className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon text-center">TWO LOCATIONS. ONE STANDARD.</h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Borger */}
+                  <div className="bg-brand-black p-10 flex flex-col justify-between border-4 border-brand-concrete">
+                    <div>
+                      <h3 className="font-display text-4xl mb-6 text-brand-neon uppercase tracking-widest">Borger</h3>
+                      <p className="text-2xl font-black text-brand-white uppercase mb-2">Jesse's Pizza Company</p>
+                      <p className="text-brand-white/60 uppercase font-bold tracking-widest mb-6">530 W 3rd St, Borger, TX 79007</p>
+                      <a href="tel:8062747200" className="text-3xl font-display text-brand-white hover:text-brand-neon transition-colors">(806) 274-7200</a>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-4 mt-12">
+                      <button onClick={startOrder} className="btn-primary flex-1 py-5 text-xl">Order Online</button>
+                      <a href="tel:8062747200" className="bg-transparent border-4 border-white text-white px-8 py-5 text-xl font-display uppercase tracking-widest hover:bg-white/10 transition-all text-center">Call Now</a>
+                    </div>
+                  </div>
+                  {/* Fritch */}
+                  <div className="bg-brand-black p-10 flex flex-col justify-between border-4 border-brand-concrete">
+                    <div>
+                      <h3 className="font-display text-4xl mb-6 text-brand-neon uppercase tracking-widest">Fritch</h3>
+                      <p className="text-2xl font-black text-brand-white uppercase mb-2">Jesse's Pizza Company</p>
+                      <p className="text-brand-white/60 uppercase font-bold tracking-widest mb-6">424 E Broadway St, Fritch, TX 79036</p>
+                      <a href="tel:8068570098" className="text-3xl font-display text-brand-white hover:text-brand-neon transition-colors">(806) 857-0098</a>
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-4 mt-12">
+                      <button onClick={startOrder} className="btn-primary flex-1 py-5 text-xl">Order Online</button>
+                      <a href="tel:8068570098" className="bg-transparent border-4 border-white text-white px-8 py-5 text-xl font-display uppercase tracking-widest hover:bg-white/10 transition-all text-center">Call Now</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
 
-            {/* SECTION 7: OUR APPROACH */}
-            <section className="px-6 py-32 bg-brand-black border-b border-white/5 noise-overlay">
-              <div className="max-w-4xl mx-auto text-left relative z-10">
-                <h2 className="font-display text-2xl mb-12 uppercase tracking-[0.4em] text-brand-neon">Our Approach</h2>
-                <div className="space-y-6">
-                   <div className="border-b border-white/10 pb-8 hover:bg-white/5 transition-colors group px-4">
-                      <h3 className="font-display text-5xl group-hover:pl-4 transition-all text-brand-white">Make food people actually enjoy</h3>
-                   </div>
-                   <div className="border-b border-white/10 pb-8 hover:bg-white/5 transition-colors group px-4">
-                      <h3 className="font-display text-5xl group-hover:pl-4 transition-all text-brand-white">Keep it consistent</h3>
-                   </div>
-                   <div className="border-b border-white/10 pb-8 hover:bg-white/5 transition-colors group px-4">
-                      <h3 className="font-display text-5xl group-hover:pl-4 transition-all text-brand-white">Don’t cut corners</h3>
-                   </div>
+            {/* SECTION 6: TEAM */}
+            <section className="px-6 py-32 md:py-48 bg-brand-black border-b border-white/5 noise-overlay">
+              <div className="max-w-7xl mx-auto relative z-10 text-center">
+                <h2 className="font-display text-5xl md:text-7xl mb-6 uppercase tracking-tight text-brand-neon">THE PEOPLE BEHIND IT</h2>
+                <p className="text-xl md:text-2xl text-brand-white/40 font-black uppercase tracking-widest mb-24 italic">Good pizza doesn't happen by accident. These are the people who make it happen every day.</p>
+                <div className="grid md:grid-cols-2 gap-10 text-left">
+                  {[
+                    { name: "Marcus \"Marc\" Alvarez", role: "General Manager, Borger", bio: "Marc runs the Borger location from open to close. Speed, consistency, and quality all run through him. If your order is right, it's because Marc made sure of it." },
+                    { name: "Tyler Jenkins", role: "General Manager, Fritch", bio: "Tyler keeps Fritch moving. From prep to pickup, nothing leaves the store unless it meets the standard." },
+                    { name: "Ashley Romero", role: "Operations Manager", bio: "Ashley oversees both locations. Processes, quality control, and consistency all run through her. If both stores run tight, that's Ashley's work showing." },
+                    { name: "Chris Dalton", role: "Kitchen Lead", bio: "Chris is behind the scenes on every order. He makes sure nothing leaves the kitchen unless it's built right." }
+                  ].map((member, i) => (
+                    <div key={i} className="bg-brand-concrete p-10 noise-overlay border border-white/5 relative group hover:border-brand-neon transition-colors">
+                      <h3 className="font-display text-3xl mb-2 text-brand-neon uppercase tracking-widest">{member.name}</h3>
+                      <p className="text-brand-white text-sm font-black uppercase tracking-widest mb-8 italic">{member.role}</p>
+                      <p className="text-brand-white leading-relaxed text-lg opacity-80 uppercase font-medium">{member.bio}</p>
+                      <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+                         <Pizza size={80} className="text-brand-white rotate-12" />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <p className="mt-12 text-2xl font-black uppercase text-gray-500 italic">No gimmicks. No shortcuts. Just solid pizza.</p>
               </div>
             </section>
 
-            {/* SECTION 8: FINAL HIT */}
-            <section className="px-6 py-60 text-center relative overflow-hidden bg-brand-black noise-overlay">
-               <div className="max-w-5xl mx-auto relative z-10">
-                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl leading-none uppercase mb-12 tracking-tighter text-brand-neon">If You Know, <br/>You Know.</h2>
-                  <div className="space-y-8 text-2xl md:text-4xl font-black uppercase tracking-tight text-brand-white opacity-90">
-                    <p>If you’ve had great pizza, you know the difference.</p>
-                    <p className="text-brand-white underline decoration-brand-neon decoration-8 underline-offset-8">If you haven’t yet, now’s a good time to fix that.</p>
+            {/* SECTION 7: TEAM PHOTOS */}
+            <section className="bg-brand-black border-b border-white/5 noise-overlay overflow-hidden">
+               <div className="relative group">
+                  <div className="absolute top-12 left-12 z-20">
+                     <h2 className="font-display text-4xl text-brand-neon uppercase tracking-tighter">OUR CREW</h2>
+                  </div>
+                  <div className="grid md:grid-cols-1 gap-0">
+                    <div className="relative group overflow-hidden">
+                      <div className="absolute top-8 right-8 z-20 px-6 py-3 bg-brand-neon text-brand-black font-black text-xs uppercase skew-x-[-12deg]">Borger Team</div>
+                      <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=1920" className="w-full h-[60vh] object-cover grayscale brightness-50 contrast-125 transition-all duration-700 group-hover:scale-105" referrerPolicy="no-referrer" alt="Borger Team" />
+                      <div className="absolute inset-0 bg-brand-black/20 mix-blend-overlay" />
+                    </div>
+                    <div className="relative group overflow-hidden">
+                      <div className="absolute top-8 right-8 z-20 px-6 py-3 bg-brand-neon text-brand-black font-black text-xs uppercase skew-x-[-12deg]">Fritch Team</div>
+                      <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&q=80&w=1920" className="w-full h-[60vh] object-cover grayscale brightness-50 contrast-125 transition-all duration-700 group-hover:scale-105" referrerPolicy="no-referrer" alt="Fritch Team" />
+                      <div className="absolute inset-0 bg-brand-black/20 mix-blend-overlay" />
+                    </div>
                   </div>
                </div>
             </section>
 
-            {/* SECTION 9: CTA */}
-            <div className="bg-brand-red py-40 md:py-60 px-6 text-center relative border-y-4 border-brand-black">
-                <div className="max-w-4xl mx-auto">
-                  <h2 className="font-display text-6xl md:text-8xl lg:text-9xl uppercase leading-[0.75] mb-8 text-brand-white">Ready to Order?</h2>
-                  <p className="text-2xl md:text-4xl font-black uppercase tracking-[0.2em] mb-20 opacity-90 text-brand-white">
-                    Skip the chains. Get pizza that actually delivers.
+            {/* SECTION 8: SOCIAL PROOF */}
+            <section className="px-6 py-32 md:py-48 bg-brand-black border-b border-white/5 noise-overlay">
+              <div className="max-w-5xl mx-auto relative z-10 text-center">
+                <h2 className="font-display text-5xl md:text-7xl mb-24 uppercase tracking-tight text-brand-neon">WHAT LOCALS SAY</h2>
+                <div className="space-y-20 font-display text-4xl md:text-6xl lg:text-7xl uppercase leading-none italic text-brand-white">
+                  <p className="hover:text-brand-neon transition-colors cursor-default">“Best pizza in Borger. Not even close.”</p>
+                  <p className="hover:text-brand-neon transition-colors cursor-default">“Loaded every single time. Never disappointed.”</p>
+                  <p className="hover:text-brand-neon transition-colors cursor-default">“Once you try it the chains are done for you.”</p>
+                  <p className="hover:text-brand-neon transition-colors cursor-default">“Consistently good. Every single visit.”</p>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 9: FINAL CTA */}
+            <section className="bg-brand-black py-40 md:py-60 px-6 overflow-hidden relative border-y-4 border-brand-red noise-overlay">
+                <div className="max-w-4xl mx-auto text-center relative z-10">
+                  <h2 className="font-display text-7xl md:text-[12rem] uppercase leading-[0.8] mb-12 text-brand-neon italic">IF YOU KNOW, YOU KNOW.</h2>
+                  <p className="text-xl md:text-3xl font-black uppercase tracking-[0.4em] mb-20 opacity-90 text-brand-white leading-tight">
+                    If you haven't tried it yet, now's a good time to fix that.
                   </p>
                   <div className="flex flex-col sm:flex-row justify-center gap-8">
-                    <button onClick={startOrder} className="bg-brand-black text-brand-white px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-gray-900 transition-all font-bold">
+                    <button onClick={startOrder} className="bg-brand-red text-brand-white px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-brand-red/90 transition-all shadow-2xl">
                       Order Now
                     </button>
-                    <a href="tel:8062747200" className="bg-transparent border-4 border-brand-black text-brand-black px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-brand-black/10 transition-all text-center">
+                    <a href="tel:8062747200" className="bg-transparent border-4 border-brand-neon text-brand-neon px-20 py-8 text-3xl font-display uppercase tracking-widest hover:bg-brand-neon hover:text-brand-black transition-all text-center">
                       Call Now
                     </a>
                   </div>
                 </div>
-            </div>
+                <div className="absolute inset-0 pointer-events-none opacity-[0.03] select-none flex items-center justify-center">
+                   <h2 className="font-display text-[30rem] leading-none uppercase">JESSE</h2>
+                </div>
+            </section>
 
             <footer className="bg-brand-black py-12 px-8 border-t border-white/5 flex flex-col items-center gap-8">
               <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 text-[10px] font-black uppercase tracking-[0.3em]">
                 <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Home</button>
                 <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Browse Menu</button>
-                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">About Our Story</button>
-                <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Locations</a>
+                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white border-b border-brand-neon pb-1">About Our Story</button>
+                <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white" onClick={(e) => { e.preventDefault(); setView('home'); setTimeout(() => { document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}>Locations</a>
               </div>
               <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20 text-brand-white">
                 © 2026 Jesse's Pizza Co. • Locally Owned & Operated
@@ -1058,7 +1155,7 @@ export default function App() {
                   
                   {/* HERO SECTION FOR MENU */}
                   <div className="text-center mb-20 max-w-3xl mx-auto">
-                    <h1 className="font-display text-5xl md:text-7xl lg:text-8xl mb-4 leading-none uppercase text-brand-neon">Pick Your Pizza. We’ll Handle the Rest.</h1>
+                    <h1 className="font-display text-4xl md:text-7xl lg:text-8xl mb-4 leading-none uppercase text-brand-neon">Pick Your Pizza. We’ll Handle the Rest.</h1>
                     <p className="text-xl md:text-2xl text-brand-white/60 font-medium mb-12 uppercase tracking-wide">Loaded toppings. Big portions. Built to actually satisfy.</p>
                   </div>
 
@@ -1066,7 +1163,7 @@ export default function App() {
                     {MENU_CATEGORIES.map((category) => (
                       <section key={category.id}>
                         <div className="text-center mb-16 px-4">
-                          <h2 className="font-display text-5xl md:text-8xl lg:text-9xl uppercase mb-3 text-brand-neon">{category.title}</h2>
+                          <h2 className="font-display text-4xl md:text-8xl lg:text-9xl uppercase mb-3 text-brand-neon">{category.title}</h2>
                           <p className="text-sm font-black uppercase tracking-[0.3em] opacity-40 text-brand-white">{category.subtext}</p>
                         </div>
                         
@@ -1560,7 +1657,7 @@ export default function App() {
       </AnimatePresence>
 
       {/* STICKY MOBILE CTA (Only on home) */}
-      {view === 'home' && (
+      {view === 'home' && !isMenuOpen && (
         <div className="md:hidden fixed bottom-6 left-6 right-6 z-50">
           <button onClick={startOrder} className="w-full bg-brand-red text-brand-white py-5 rounded-none font-display text-2xl uppercase tracking-widest shadow-[0_20px_50px_rgba(214,40,40,0.3)] flex items-center justify-center gap-3 active:scale-95 transition-all">
             Order Now <ChevronRight />
