@@ -421,7 +421,7 @@ export default function App() {
                   
                   <motion.h1 
                     variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
-                    className="font-display text-6xl md:text-8xl lg:text-[10rem] mb-8 leading-[0.8] uppercase text-brand-neon flex flex-col items-center"
+                    className="font-display text-6xl md:text-8xl lg:text-[10rem] mb-8 leading-[0.95] uppercase text-brand-neon flex flex-col items-center"
                   >
                     <span>BORGER'S</span>
                     <span>MOST LOADED</span>
@@ -664,7 +664,7 @@ export default function App() {
               {/* SECTION 8: FINAL CLOSE */}
               <section className="bg-brand-black px-6 py-48 md:py-72 noise-overlay border-b border-white/5">
                 <div className="max-w-4xl mx-auto text-center">
-                  <h1 className="font-display text-6xl md:text-9xl lg:text-[10rem] mb-12 leading-[0.8] uppercase text-brand-neon flex flex-col items-center">
+                  <h1 className="font-display text-6xl md:text-9xl lg:text-[10rem] mb-12 leading-[0.95] uppercase text-brand-neon flex flex-col items-center">
                     <span>YOU'RE GOING</span>
                     <span>TO EAT</span>
                     <span>TONIGHT</span>
@@ -776,7 +776,7 @@ export default function App() {
                 
                 <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
                   <p className="text-brand-white font-black uppercase tracking-[0.4em] mb-6 text-sm">Borger & Fritch, TX</p>
-                  <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] mb-8 leading-[0.8] uppercase text-brand-neon flex flex-col items-center">
+                  <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] mb-8 leading-[0.95] uppercase text-brand-neon flex flex-col items-center">
                     <span>THE MENU.</span>
                     <span>NO SHORTCUTS.</span>
                     <span>NO SKIMPING.</span>
@@ -846,7 +846,7 @@ export default function App() {
               <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-6xl md:text-9xl mb-6 text-brand-neon uppercase leading-[0.8]">
+                    <h2 className="font-display text-6xl md:text-9xl mb-6 text-brand-neon uppercase leading-[0.95]">
                       MORE FOOD.<br/>BETTER VALUE.<br/>LESS THINKING.
                     </h2>
                     <p className="text-xl md:text-3xl text-brand-white font-black uppercase tracking-widest italic">
@@ -895,7 +895,7 @@ export default function App() {
               <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="mb-24 px-4 bg-brand-concrete/20 py-12 border-l-4 border-brand-neon">
-                    <h2 className="font-display text-5xl md:text-8xl mb-6 text-brand-neon uppercase">SPECIALTY PIZZAS.<br/>BUILT TO IMPRESS.</h2>
+                    <h2 className="font-display text-5xl md:text-8xl mb-6 text-brand-neon uppercase leading-[0.95]">SPECIALTY PIZZAS.<br/>BUILT TO IMPRESS.</h2>
                     <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-widest">
                       Every one made to order. Every one loaded the way it should be.
                     </p>
@@ -953,7 +953,7 @@ export default function App() {
               <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-5xl md:text-8xl mb-6 text-brand-neon uppercase leading-[0.8]">SIDES AND WINGS.<br/>BECAUSE PIZZA ALONE<br/>IS JUST THE START.</h2>
+                    <h2 className="font-display text-5xl md:text-8xl mb-8 text-brand-neon uppercase leading-[0.95]">SIDES AND WINGS.<br/>BECAUSE PIZZA ALONE<br/>IS JUST THE START.</h2>
                   </div>
                   
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -997,7 +997,7 @@ export default function App() {
               <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-4xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-5xl md:text-8xl mb-6 text-brand-neon uppercase leading-[0.8]">SALADS.<br/>FOR WHEN YOU NEED<br/>TO BALANCE IT OUT.</h2>
+                    <h2 className="font-display text-5xl md:text-8xl mb-6 text-brand-neon uppercase leading-[0.95]">SALADS.<br/>FOR WHEN YOU NEED<br/>TO BALANCE IT OUT.</h2>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1073,7 +1073,7 @@ export default function App() {
               <section className="bg-brand-black px-6 py-48 md:py-72 noise-overlay border-b border-white/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-brand-neon/5 pointer-events-none" />
                 <div className="max-w-4xl mx-auto text-center relative z-10">
-                  <h1 className="font-display text-6xl md:text-9xl lg:text-[10rem] mb-12 leading-[0.8] uppercase text-brand-neon flex flex-col items-center">
+                  <h1 className="font-display text-6xl md:text-9xl lg:text-[10rem] mb-12 leading-[0.95] uppercase text-brand-neon flex flex-col items-center">
                     <span>KNOW WHAT</span>
                     <span>YOU WANT.</span>
                     <span>NOW ORDER IT.</span>
@@ -1153,7 +1153,7 @@ export default function App() {
             {/* SECTION 1: HERO */}
             <section className="px-6 py-24 md:py-48 text-center bg-brand-black border-b border-white/5 noise-overlay relative">
               <div className="max-w-4xl mx-auto relative z-10">
-                <h1 className="font-display text-4xl md:text-8xl lg:text-9xl mb-8 leading-[0.8] uppercase text-brand-neon break-words">
+                <h1 className="font-display text-4xl md:text-8xl lg:text-9xl mb-8 leading-[0.95] uppercase text-brand-neon break-words">
                   THIS ISN'T A CHAIN.<br/>THIS IS JESSE'S.
                 </h1>
                 <p className="text-xl md:text-3xl text-brand-white opacity-90 font-medium max-w-2xl mx-auto uppercase tracking-wide leading-tight">
@@ -1319,7 +1319,7 @@ export default function App() {
             {/* SECTION 9: FINAL CTA */}
             <section className="bg-brand-black py-40 md:py-60 px-6 overflow-hidden relative border-y-4 border-brand-red noise-overlay">
                 <div className="max-w-4xl mx-auto text-center relative z-10">
-                  <h2 className="font-display text-7xl md:text-[12rem] uppercase leading-[0.8] mb-12 text-brand-neon italic">IF YOU KNOW, YOU KNOW.</h2>
+                  <h2 className="font-display text-7xl md:text-[12rem] uppercase leading-[0.95] mb-12 text-brand-neon italic">IF YOU KNOW, YOU KNOW.</h2>
                   <p className="text-xl md:text-3xl font-black uppercase tracking-[0.4em] mb-20 opacity-90 text-brand-white leading-tight">
                     If you haven't tried it yet, now's a good time to fix that.
                   </p>
@@ -1504,7 +1504,7 @@ export default function App() {
                   {/* FINAL CTA ON MENU */}
                   <div className="bg-brand-red text-brand-white py-32 px-6 mt-40 overflow-hidden text-center relative noise-overlay">
                     <div className="max-w-4xl mx-auto relative z-10">
-                      <h2 className="font-display text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.8] mb-6">Ready to Order?</h2>
+                      <h2 className="font-display text-5xl md:text-7xl lg:text-8xl uppercase leading-[0.95] mb-6">Ready to Order?</h2>
                       <p className="text-xl md:text-2xl font-black uppercase tracking-widest mb-16 opacity-80">
                         Skip the chains. Get pizza that actually delivers.
                       </p>
@@ -1899,7 +1899,7 @@ export default function App() {
                   <div className="w-32 h-32 bg-brand-neon mx-auto rounded-full flex items-center justify-center text-brand-black mb-12 shadow-[0_0_50px_rgba(184,240,0,0.3)]">
                     <Check size={80} strokeWidth={4} />
                   </div>
-                  <h1 className="font-display text-7xl md:text-9xl mb-6 leading-[0.8] uppercase italic text-brand-neon">ORDER FIRE!</h1>
+                  <h1 className="font-display text-7xl md:text-9xl mb-6 leading-[0.95] uppercase italic text-brand-neon">ORDER FIRE!</h1>
                   <h2 className="text-2xl md:text-4xl font-black uppercase tracking-[0.2em] mb-12 text-brand-white opacity-80">We're on it.</h2>
                   
                   <div className="grid md:grid-cols-2 gap-4 bg-white/5 p-8 border border-white/5 mb-16 text-left relative z-10">

@@ -18,17 +18,17 @@
 
   h1 {
     font-family: 'Anton', sans-serif;
-    @apply uppercase tracking-tight text-brand-neon;
+    @apply uppercase tracking-normal text-brand-neon;
   }
 
   h2 {
     font-family: 'Anton', sans-serif;
-    @apply uppercase tracking-tight text-brand-white;
+    @apply uppercase tracking-normal text-brand-white;
   }
 
   h3 {
     font-family: 'Anton', sans-serif;
-    @apply uppercase tracking-tight text-brand-white;
+    @apply uppercase tracking-normal text-brand-white;
   }
 }
 
