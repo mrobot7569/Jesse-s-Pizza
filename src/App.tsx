@@ -23,7 +23,8 @@ import {
   Check,
   CreditCard,
   User,
-  Truck
+  Truck,
+  ChevronUp
 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 
@@ -309,19 +310,19 @@ export default function App() {
 
       <div className="hidden md:flex items-center gap-8 lg:gap-10 font-display text-lg uppercase tracking-wider text-brand-white">
         <button 
-          onClick={() => { window.scrollTo(0, 0); setView('menu-browse'); }} 
+          onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setView('menu-browse'); }} 
           className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'menu-browse' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
         >
           MENU
         </button>
         <button 
-          onClick={() => { window.scrollTo(0, 0); setView('about'); }} 
+          onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setView('about'); }} 
           className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'about' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
         >
           ABOUT
         </button>
         <button 
-          onClick={() => { window.scrollTo(0, 0); setView('careers'); }} 
+          onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setView('careers'); }} 
           className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'careers' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
         >
           CAREERS
@@ -330,7 +331,7 @@ export default function App() {
           LOCATIONS
         </a>
         <button 
-          onClick={() => { window.scrollTo(0, 0); setView('contact'); }} 
+          onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setView('contact'); }} 
           className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'contact' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
         >
           CONTACT
@@ -356,6 +357,42 @@ export default function App() {
       />
     </nav>
   );
+
+  const ScrollToTop = () => {
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+      const toggleVisibility = () => {
+        if (window.scrollY > 500) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      };
+      window.addEventListener('scroll', toggleVisibility);
+      return () => window.removeEventListener('scroll', toggleVisibility);
+    }, []);
+
+    return (
+      <AnimatePresence>
+        {isVisible && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: 20 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-8 right-8 z-[100] bg-brand-neon text-brand-black p-4 rounded-none shadow-[0_10px_30px_rgba(184,240,0,0.3)] hover:scale-110 active:scale-95 transition-all group"
+            aria-label="Scroll to top"
+          >
+            <div className="relative">
+              <ChevronUp size={24} className="group-hover:-translate-y-1 transition-transform" />
+              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-brand-black opacity-20" />
+            </div>
+          </motion.button>
+        )}
+      </AnimatePresence>
+    );
+  };
 
   const addToCart = (item: CartItem) => {
     setCart(prev => {
@@ -410,6 +447,7 @@ export default function App() {
     <div className="min-h-screen bg-brand-black text-brand-white selection:bg-brand-neon selection:text-brand-black font-sans overflow-x-hidden">
       
       {isMarketingView && <MainNavigation />}
+      {isMarketingView && <ScrollToTop />}
 
       <AnimatePresence mode="wait">
         {view === 'home' ? (
@@ -1207,7 +1245,15 @@ export default function App() {
             {/* SECTION 2: THE OWNER STORY */}
             <section className="px-6 py-32 md:py-48 bg-brand-black border-b border-white/5 noise-overlay">
               <div className="max-w-3xl mx-auto relative z-10">
-                <h2 className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon">HOW IT STARTED</h2>
+                <motion.h2 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon"
+                >
+                  HOW IT STARTED
+                </motion.h2>
                 <div className="space-y-10 text-xl md:text-2xl text-brand-white leading-relaxed font-bold uppercase tracking-tight">
                   <p>Jesse didn't set out to build a pizza brand.</p>
                   <p className="text-brand-neon italic">He got tired of bad pizza.</p>
@@ -1225,7 +1271,15 @@ export default function App() {
             {/* SECTION 3: THE STANDARD */}
             <section className="px-6 py-32 md:py-48 bg-brand-concrete border-b border-white/5 noise-overlay">
               <div className="max-w-4xl mx-auto relative z-10">
-                <h2 className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon">THE STANDARD HASN'T CHANGED</h2>
+                <motion.h2 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon"
+                >
+                  THE STANDARD HASN'T CHANGED
+                </motion.h2>
                 <div className="grid md:grid-cols-2 gap-16 items-center">
                   <div className="space-y-8 text-xl md:text-2xl text-brand-white font-bold uppercase tracking-tight">
                     <p>Every pizza that leaves this kitchen gets the same treatment as the first one.</p>
@@ -1251,7 +1305,15 @@ export default function App() {
             {/* SECTION 4: WHY IT MATTERS */}
             <section className="px-6 py-32 md:py-48 bg-brand-black border-b border-white/5 noise-overlay">
               <div className="max-w-3xl mx-auto text-center relative z-10">
-                <h2 className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon">WHY WE'RE NOT LIKE THE REST</h2>
+                <motion.h2 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon"
+                >
+                  WHY WE'RE NOT LIKE THE REST
+                </motion.h2>
                 <div className="space-y-10 text-xl md:text-2xl text-brand-white font-bold uppercase tracking-tight">
                   <p>Chains are built to be consistent across thousands of locations.</p>
                   <p className="text-brand-red">That means everything gets optimized for cost, not quality.</p>
@@ -1266,7 +1328,15 @@ export default function App() {
             {/* SECTION 5: LOCATIONS */}
             <section className="px-6 py-32 md:py-48 bg-brand-concrete border-b border-white/5 noise-overlay">
               <div className="max-w-7xl mx-auto relative z-10">
-                <h2 className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon text-center">TWO LOCATIONS. ONE STANDARD.</h2>
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="font-display text-5xl md:text-7xl mb-16 uppercase tracking-tight text-brand-neon text-center"
+                >
+                  TWO LOCATIONS. ONE STANDARD.
+                </motion.h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {/* Borger */}
                   <div className="bg-brand-black p-10 flex flex-col justify-between border-4 border-brand-concrete">
@@ -1301,7 +1371,15 @@ export default function App() {
             {/* SECTION 6: TEAM */}
             <section className="px-6 py-32 md:py-48 bg-brand-black border-b border-white/5 noise-overlay">
               <div className="max-w-7xl mx-auto relative z-10 text-center">
-                <h2 className="font-display text-5xl md:text-7xl mb-6 uppercase tracking-tight text-brand-neon">THE PEOPLE BEHIND IT</h2>
+                <motion.h2 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="font-display text-5xl md:text-7xl mb-6 uppercase tracking-tight text-brand-neon"
+                >
+                  THE PEOPLE BEHIND IT
+                </motion.h2>
                 <p className="text-xl md:text-2xl text-brand-white/40 font-black uppercase tracking-widest mb-24 italic">Good pizza doesn't happen by accident. These are the people who make it happen every day.</p>
                 <div className="grid md:grid-cols-2 gap-10 text-left">
                   {[
@@ -1327,7 +1405,15 @@ export default function App() {
             <section className="bg-brand-black border-b border-white/5 noise-overlay overflow-hidden">
                <div className="relative group">
                   <div className="absolute top-12 left-12 z-20">
-                     <h2 className="font-display text-4xl text-brand-neon uppercase tracking-tighter">OUR CREW</h2>
+                     <motion.h2 
+                       initial={{ opacity: 0, x: -20 }}
+                       whileInView={{ opacity: 1, x: 0 }}
+                       viewport={{ once: true }}
+                       transition={{ duration: 0.8, delay: 0.2 }}
+                       className="font-display text-4xl text-brand-neon uppercase tracking-tighter"
+                     >
+                       OUR CREW
+                     </motion.h2>
                   </div>
                   <div className="grid md:grid-cols-1 gap-0">
                     <div className="relative group overflow-hidden">
@@ -1347,7 +1433,15 @@ export default function App() {
             {/* SECTION 8: SOCIAL PROOF */}
             <section className="px-6 py-32 md:py-48 bg-brand-black border-b border-white/5 noise-overlay">
               <div className="max-w-5xl mx-auto relative z-10 text-center">
-                <h2 className="font-display text-5xl md:text-7xl mb-24 uppercase tracking-tight text-brand-neon">WHAT LOCALS SAY</h2>
+                <motion.h2 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="font-display text-5xl md:text-7xl mb-24 uppercase tracking-tight text-brand-neon"
+                >
+                  WHAT LOCALS SAY
+                </motion.h2>
                 <div className="space-y-20 font-display text-4xl md:text-6xl lg:text-7xl uppercase leading-none italic text-brand-white">
                   <p className="hover:text-brand-neon transition-colors cursor-default">“Best pizza in Borger. Not even close.”</p>
                   <p className="hover:text-brand-neon transition-colors cursor-default">“Loaded every single time. Never disappointed.”</p>
@@ -1360,7 +1454,15 @@ export default function App() {
             {/* SECTION 9: FINAL CTA */}
             <section className="bg-brand-black py-40 md:py-60 px-6 overflow-hidden relative border-y-4 border-brand-red noise-overlay">
                 <div className="max-w-4xl mx-auto text-center relative z-10">
-                  <h2 className="font-display text-7xl md:text-[12rem] uppercase leading-[0.95] mb-12 text-brand-neon italic">IF YOU KNOW, YOU KNOW.</h2>
+                  <motion.h2 
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    className="font-display text-7xl md:text-[12rem] uppercase leading-[0.95] mb-12 text-brand-neon italic"
+                  >
+                    IF YOU KNOW, YOU KNOW.
+                  </motion.h2>
                   <p className="text-xl md:text-3xl font-black uppercase tracking-[0.4em] mb-20 opacity-90 text-brand-white leading-tight">
                     If you haven't tried it yet, now's a good time to fix that.
                   </p>
