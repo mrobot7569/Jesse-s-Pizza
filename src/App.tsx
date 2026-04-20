@@ -299,11 +299,10 @@ export default function App() {
   const marketingViews = ['home', 'menu-browse', 'about', 'careers', 'contact'];
   const isMarketingView = marketingViews.includes(view);
 
-  const PromoStrip = () => (
-    <div className="hidden lg:flex fixed bottom-0 left-0 right-0 z-[100] bg-brand-neon h-10 items-center justify-center border-t border-brand-black/20 overflow-hidden">
-      <div className="absolute inset-0 noise-overlay pointer-events-none" />
-      <div className="flex items-center gap-8 relative z-10">
-        <span className="font-display text-brand-black text-xs uppercase tracking-[0.4em] font-black italic">
+  const PromoStrip = () => {
+    const MarqueeContent = () => (
+      <div className="flex items-center gap-8 px-4">
+        <span className="font-display text-brand-black text-xs uppercase tracking-[0.4em] font-black italic whitespace-nowrap">
           READY TO EAT THE BEST PIZZA IN THE TEXAS PANHANDLE?
         </span>
         <button 
@@ -313,8 +312,20 @@ export default function App() {
           ORDER NOW
         </button>
       </div>
-    </div>
-  );
+    );
+
+    return (
+      <div className="hidden lg:flex fixed bottom-0 left-0 right-0 z-[100] bg-brand-neon h-10 items-center border-t border-brand-black/20 overflow-hidden">
+        <div className="absolute inset-0 noise-overlay pointer-events-none" />
+        <div className="flex w-fit animate-marquee">
+          <MarqueeContent />
+          <MarqueeContent />
+          <MarqueeContent />
+          <MarqueeContent />
+        </div>
+      </div>
+    );
+  };
 
   const MainNavigation = () => (
     <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 overflow-hidden">
@@ -435,6 +446,90 @@ export default function App() {
         </div>
       ))}
     </div>
+  );
+
+  const Footer = () => (
+    <footer className="bg-[#0D0D0D] pt-32 pb-16 px-6 border-t border-white/5 relative overflow-hidden">
+      <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="mb-32 overflow-hidden py-10 border-y border-white/10">
+          <div className="flex w-fit animate-marquee grayscale hover:grayscale-0 transition-all duration-700">
+            {[1, 2, 3, 4].map((_, idx) => (
+              <h2 key={idx} className="font-display text-7xl md:text-[8rem] text-brand-neon leading-none whitespace-nowrap px-8 uppercase">
+                STILL HUNGRY? WE'RE STILL LOADIN'. <span className="text-brand-red">•</span>
+              </h2>
+            ))}
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-32 px-6">
+          <div>
+            <p className="text-brand-white/60 text-xl font-bold uppercase tracking-tight max-w-md mb-12">
+              Family owned. Grit fueled. Borger's favorite pizza since 2012. We don't do small, and we don't do slow.
+            </p>
+            <button 
+              onClick={startOrder} 
+              className="bg-brand-red text-brand-white px-12 py-6 font-display text-2xl uppercase tracking-widest hover:bg-brand-neon hover:text-brand-black transition-all shadow-[0_20px_50px_rgba(214,40,40,0.2)] active:scale-95"
+            >
+              Order Now
+            </button>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
+            <div className="flex flex-col gap-6">
+              <span className="text-brand-neon text-[10px] font-black uppercase tracking-[0.4em]">QUICK LINKS</span>
+              <div className="flex flex-col gap-4 text-brand-white/80 font-bold uppercase text-sm">
+                <button onClick={() => { window.scrollTo(0, 0); setView('home'); }} className="hover:text-brand-neon text-left transition-colors">Home</button>
+                <button onClick={() => { window.scrollTo(0, 0); setView('menu-browse'); }} className="hover:text-brand-neon text-left transition-colors">Menu</button>
+                <button onClick={() => { window.scrollTo(0, 0); setView('about'); }} className="hover:text-brand-neon text-left transition-colors">Our Story</button>
+                <button onClick={() => { window.scrollTo(0, 0); setView('careers'); }} className="hover:text-brand-neon text-left transition-colors">Careers</button>
+                <button onClick={() => { window.scrollTo(0, 0); setView('contact'); }} className="hover:text-brand-neon text-left transition-colors">Contact</button>
+              </div>
+            </div>
+            
+            <div className="flex flex-col gap-6">
+              <span className="text-brand-neon text-[10px] font-black uppercase tracking-[0.4em]">LOCATIONS</span>
+              <div className="flex flex-col gap-6 text-brand-white/80 font-bold uppercase text-sm">
+                <div>
+                  <span className="text-brand-white block mb-1">BORGER MAIN</span>
+                  <p className="text-xs opacity-60 leading-relaxed font-medium">806.273.7431<br/>123 N MAIN ST</p>
+                </div>
+                <div>
+                  <span className="text-brand-white block mb-1">FRITCH HUB</span>
+                  <p className="text-xs opacity-60 leading-relaxed font-medium">806.857.2514<br/>456 W TEXAS BLVD</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-6 col-span-2 md:col-span-1">
+              <span className="text-brand-neon text-[10px] font-black uppercase tracking-[0.4em]">KEEP IT LOADED</span>
+              <div className="flex flex-col gap-4 text-brand-white/80 font-bold uppercase text-sm">
+                <div className="flex items-center gap-2">
+                  <Star size={14} fill="#B8F000" className="text-brand-neon" />
+                  <span className="text-xs">4.6 RATING (867 REVIEWS)</span>
+                </div>
+                <p className="text-[10px] opacity-40 leading-relaxed">
+                  Borger's most loaded pizza. No shortcuts. No skimping. Period.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-3">
+            <Pizza className="text-brand-neon w-8 h-8" />
+            <span className="font-display text-2xl uppercase tracking-tighter">Jesse's Pizza Co.</span>
+          </div>
+          
+          <div className="flex flex-col items-center md:items-end gap-2 text-[10px] font-black uppercase tracking-[0.2em] opacity-30 text-[#F5F5F5]">
+            <span>© 2026 Jesse's Pizza Co. • All Rights Reserved</span>
+            <span>Design by Jesse's Pizza Co.</span>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 
   const FunnelHeader = ({ title, showBack = true, onBack }: { title: string, showBack?: boolean, onBack?: () => void }) => (
@@ -675,21 +770,25 @@ export default function App() {
               </section>
 
               {/* SECTION 6: SPECIFICITY STRIP */}
-              <section className="bg-[#B8F000] py-16 overflow-hidden border-none text-[#0D0D0D]">
+              <section className="bg-brand-neon py-16 overflow-hidden border-none text-brand-black">
                 <div className="relative flex overflow-x-hidden">
-                  <div className="animate-marquee whitespace-nowrap flex items-center justify-around w-full px-6">
-                    <span className="text-[18px] font-black uppercase tracking-widest flex items-center gap-6">
-                      47 Jalapeño Poppers ordered last Friday alone. <span className="text-[#D62828] text-4xl leading-none">•</span>
-                    </span>
-                    <span className="text-[18px] font-black uppercase tracking-widest flex items-center gap-6">
-                      The Jumbo feeds five. Most people order two anyway. <span className="text-[#D62828] text-4xl leading-none">•</span>
-                    </span>
-                    <span className="text-[18px] font-black uppercase tracking-widest flex items-center gap-6">
-                      Same toppings on the 8" as the 18". No skimping. <span className="text-[#D62828] text-4xl leading-none">•</span>
-                    </span>
-                    <span className="text-[18px] font-black uppercase tracking-widest flex items-center gap-6 text-[#0D0D0D]">
-                      Ready in 20 minutes or we'll tell you before you order. <span className="text-[#D62828] text-4xl leading-none md:hidden">•</span>
-                    </span>
+                  <div className="flex w-fit animate-marquee py-2">
+                    {[1, 2, 3].map((_, idx) => (
+                      <div key={idx} className="flex items-center gap-12 px-6">
+                        <span className="text-[20px] font-black uppercase tracking-widest flex items-center gap-6 whitespace-nowrap">
+                          47 Jalapeño Poppers ordered last Friday alone. <span className="text-brand-red text-5xl leading-none">•</span>
+                        </span>
+                        <span className="text-[20px] font-black uppercase tracking-widest flex items-center gap-6 whitespace-nowrap">
+                          The Jumbo feeds five. Most people order two anyway. <span className="text-brand-red text-5xl leading-none">•</span>
+                        </span>
+                        <span className="text-[20px] font-black uppercase tracking-widest flex items-center gap-6 whitespace-nowrap">
+                          Same toppings on the 8" as the 18". No skimping. <span className="text-brand-red text-5xl leading-none">•</span>
+                        </span>
+                        <span className="text-[20px] font-black uppercase tracking-widest flex items-center gap-6 whitespace-nowrap">
+                          Ready in 20 minutes or we'll tell you before you order. <span className="text-brand-red text-5xl leading-none">•</span>
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </section>
@@ -842,17 +941,7 @@ export default function App() {
               </section>
             </main>
 
-            <footer className="bg-[#0D0D0D] py-24 px-8 border-t border-white/5 flex flex-col items-center gap-12">
-              <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[12px] font-black uppercase tracking-[0.4em] text-[#F5F5F5]">
-                <button onClick={() => { window.scrollTo(0, 0); setView('home'); }} className="hover:text-[#B8F000] transition-colors opacity-60 hover:opacity-100">Home</button>
-                <button onClick={() => { window.scrollTo(0, 0); setView('menu-browse'); }} className="hover:text-[#B8F000] transition-colors opacity-60 hover:opacity-100">Browse Menu</button>
-                <button onClick={() => { window.scrollTo(0, 0); setView('about'); }} className="hover:text-[#B8F000] transition-colors opacity-60 hover:opacity-100">About Our Story</button>
-                <a href="#locations" className="hover:text-[#B8F000] transition-colors opacity-60 hover:opacity-100">Locations</a>
-              </div>
-              <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20 text-[#F5F5F5]">
-                © 2026 Jesse's Pizza Co. • All Rights Reserved
-              </div>
-            </footer>
+            <Footer />
           </motion.div>
         ) : view === 'menu-browse' ? (
           <motion.div 
@@ -1223,19 +1312,7 @@ export default function App() {
               </section>
             </main>
 
-            <footer className="bg-brand-black py-20 px-8 border-t border-white/5 flex flex-col items-center gap-12">
-              <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-xs font-black uppercase tracking-[0.4em]">
-                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Home</button>
-                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Browse Menu</button>
-                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">About Our Story</button>
-                <button onClick={() => { setView('careers'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Careers</button>
-                <button onClick={() => { setView('contact'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Contact Us</button>
-                <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white" onClick={(e) => { e.preventDefault(); setView('home'); setTimeout(() => { document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}>Locations</a>
-              </div>
-              <div className="text-[12px] font-black uppercase tracking-[0.3em] opacity-30 text-brand-white">
-                © 2026 Jesse's Pizza Co. • Built for the Texas Panhandle
-              </div>
-            </footer>
+            <Footer />
           </motion.div>
 
         ) : view === 'about' ? (
@@ -1499,18 +1576,7 @@ export default function App() {
                 </div>
             </section>
 
-            <footer className="bg-brand-black py-12 px-8 border-t border-white/5 flex flex-col items-center gap-8">
-              <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 text-[10px] font-black uppercase tracking-[0.3em]">
-                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Home</button>
-                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Browse Menu</button>
-                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white border-b border-brand-neon pb-1">About Our Story</button>
-                <button onClick={() => { setView('contact'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Contact Us</button>
-                <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white" onClick={(e) => { e.preventDefault(); setView('home'); setTimeout(() => { document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}>Locations</a>
-              </div>
-              <div className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20 text-brand-white">
-                © 2026 Jesse's Pizza Co. • Locally Owned & Operated
-              </div>
-            </footer>
+            <Footer />
           </motion.div>
 
         ) : view === 'careers' ? (
@@ -1747,19 +1813,7 @@ export default function App() {
               </div>
             </section>
 
-            <footer className="bg-brand-black py-20 px-8 border-t border-white/5 flex flex-col items-center gap-12">
-              <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-xs font-black uppercase tracking-[0.4em]">
-                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Home</button>
-                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Browse Menu</button>
-                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">About Our Story</button>
-                <button onClick={() => { setView('careers'); window.scrollTo(0,0); }} className="text-brand-neon transition-colors border-b border-brand-neon pb-1">Careers</button>
-                <button onClick={() => { setView('contact'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Contact Us</button>
-                <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white" onClick={(e) => { e.preventDefault(); setView('home'); setTimeout(() => { document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}>Locations</a>
-              </div>
-              <div className="text-[12px] font-black uppercase tracking-[0.3em] opacity-30 text-brand-white">
-                © 2026 Jesse's Pizza Co. • Built for the Texas Panhandle
-              </div>
-            </footer>
+            <Footer />
           </motion.div>
 
         ) : view === 'contact' ? (
@@ -1962,19 +2016,7 @@ export default function App() {
               </section>
             </main>
 
-            <footer className="bg-brand-black py-20 px-8 border-t border-white/5 flex flex-col items-center gap-12">
-              <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-xs font-black uppercase tracking-[0.4em]">
-                <button onClick={() => { setView('home'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Home</button>
-                <button onClick={() => { setView('menu-browse'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Browse Menu</button>
-                <button onClick={() => { setView('about'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">About Our Story</button>
-                <button onClick={() => { setView('careers'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white">Careers</button>
-                <button onClick={() => { setView('contact'); window.scrollTo(0,0); }} className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white border-b border-brand-neon pb-1">Contact Us</button>
-                <a href="#locations" className="hover:text-brand-neon transition-colors opacity-60 hover:opacity-100 text-brand-white" onClick={(e) => { e.preventDefault(); setView('home'); setTimeout(() => { document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' }); }, 100); }}>Locations</a>
-              </div>
-              <div className="text-[12px] font-black uppercase tracking-[0.3em] opacity-30 text-brand-white">
-                © 2026 Jesse's Pizza Co. • Built for the Texas Panhandle
-              </div>
-            </footer>
+            <Footer />
           </motion.div>
 
         ) : (
