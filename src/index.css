@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700;900&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -18,17 +19,17 @@
 
   h1 {
     font-family: 'Anton', sans-serif;
-    @apply uppercase tracking-normal text-brand-neon;
+    @apply uppercase tracking-normal text-brand-neon font-bold;
   }
 
   h2 {
     font-family: 'Anton', sans-serif;
-    @apply uppercase tracking-normal text-brand-white;
+    @apply uppercase tracking-normal text-brand-white font-bold;
   }
 
   h3 {
     font-family: 'Anton', sans-serif;
-    @apply uppercase tracking-normal text-brand-white;
+    @apply uppercase tracking-normal text-brand-white font-bold;
   }
 }
 
