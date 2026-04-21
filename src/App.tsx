@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 
-type FunnelStep = 'home' | 'menu-browse' | 'about' | 'contact' | 'careers' | 'locations' | 'borger-location' | 'fritch-location' | 'order-start' | 'menu' | 'product' | 'upsell' | 'cart' | 'checkout' | 'success';
+type FunnelStep = 'home' | 'menu-browse' | 'specials' | 'about' | 'contact' | 'careers' | 'locations' | 'borger-location' | 'fritch-location' | 'privacy' | 'terms' | 'order-start' | 'menu' | 'product' | 'upsell' | 'cart' | 'checkout' | 'success';
 
 type CartItem = {
   id: string;
@@ -193,9 +193,10 @@ const MobileMenu = ({ isOpen, onClose, setView, currentView }: { isOpen: boolean
   const menuItems = [
     { label: 'HOME', id: 'home' as FunnelStep },
     { label: 'MENU', id: 'menu-browse' as FunnelStep },
-    { label: 'LOCATIONS', id: 'locations' as FunnelStep },
     { label: 'ABOUT', id: 'about' as FunnelStep },
+    { label: 'LOCATIONS', id: 'locations' as FunnelStep },
     { label: 'CAREERS', id: 'careers' as FunnelStep },
+    { label: 'SPECIALS', id: 'specials' as FunnelStep },
     { label: 'CONTACT', id: 'contact' as FunnelStep },
   ];
 
@@ -287,18 +288,19 @@ export default function App() {
   const goToMenu = () => setView('menu');
   const backToHome = () => setView('home');
 
-  const marketingViews = ['home', 'menu-browse', 'about', 'careers', 'locations', 'borger-location', 'fritch-location', 'contact'];
+  const marketingViews = ['home', 'menu-browse', 'specials', 'about', 'careers', 'locations', 'borger-location', 'fritch-location', 'contact', 'privacy', 'terms'];
   const isMarketingView = marketingViews.includes(view);
 
   const PromoStrip = () => (
-    <div className="hidden lg:flex fixed bottom-0 left-0 right-0 z-[100] bg-brand-neon h-10 items-center justify-center border-t border-white/10 overflow-hidden">
-      <div className="flex items-center gap-8 relative z-10">
-        <span className="font-display text-brand-black text-[11px] uppercase tracking-[0.1em] font-bold">
+    <div className="hidden lg:flex fixed bottom-0 left-0 right-0 z-[100] bg-[#B8F000] h-16 items-center justify-center border-t-2 border-[#D62828]/20 overflow-hidden shadow-[0_-10px_40px_rgba(184,240,0,0.2)]">
+      <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
+      <div className="flex items-center gap-12 relative z-10">
+        <span className="font-display text-[#0D0D0D] text-[18px] md:text-[22px] uppercase tracking-[0.2em] font-black">
           READY TO EAT THE BEST PIZZA IN THE TEXAS PANHANDLE?
         </span>
         <button 
           onClick={startOrder} 
-          className="bg-brand-red text-brand-white px-5 py-1 flex items-center text-[10px] font-black uppercase tracking-[.1em] hover:bg-brand-black hover:text-brand-neon transition-all active:scale-95"
+          className="bg-[#D62828] text-[#F5F5F5] px-10 py-3 flex items-center text-[16px] font-black uppercase tracking-[.15em] hover:bg-[#0D0D0D] hover:text-[#B8F000] transition-all active:scale-95 shadow-xl"
         >
           ORDER NOW
         </button>
@@ -340,6 +342,12 @@ export default function App() {
           className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'careers' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
         >
           CAREERS
+        </button>
+        <button 
+          onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setView('specials'); }} 
+          className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'specials' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
+        >
+          SPECIALS
         </button>
         <button 
           onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setView('contact'); }} 
@@ -464,10 +472,16 @@ export default function App() {
               <div className="flex flex-col gap-4 text-brand-white/80 font-bold uppercase text-sm">
                 <button onClick={() => { window.scrollTo(0, 0); setView('home'); }} className="hover:text-brand-neon text-left transition-colors">Home</button>
                 <button onClick={() => { window.scrollTo(0, 0); setView('menu-browse'); }} className="hover:text-brand-neon text-left transition-colors">Menu</button>
-                <button onClick={() => { window.scrollTo(0, 0); setView('locations'); }} className="hover:text-brand-neon text-left transition-colors">Locations</button>
                 <button onClick={() => { window.scrollTo(0, 0); setView('about'); }} className="hover:text-brand-neon text-left transition-colors">Our Story</button>
+                <button onClick={() => { window.scrollTo(0, 0); setView('locations'); }} className="hover:text-brand-neon text-left transition-colors">Locations</button>
                 <button onClick={() => { window.scrollTo(0, 0); setView('careers'); }} className="hover:text-brand-neon text-left transition-colors">Careers</button>
+                <button onClick={() => { window.scrollTo(0, 0); setView('specials'); }} className="hover:text-brand-neon text-left transition-colors">Specials</button>
                 <button onClick={() => { window.scrollTo(0, 0); setView('contact'); }} className="hover:text-brand-neon text-left transition-colors">Contact</button>
+                <div className="flex gap-4 mt-2">
+                  <button onClick={() => { window.scrollTo(0, 0); setView('privacy'); }} className="hover:text-brand-neon text-left transition-colors text-[12px] opacity-60">Privacy Policy</button>
+                  <span className="text-[12px] opacity-20">|</span>
+                  <button onClick={() => { window.scrollTo(0, 0); setView('terms'); }} className="hover:text-brand-neon text-left transition-colors text-[12px] opacity-60">Terms of Service</button>
+                </div>
               </div>
             </div>
             
@@ -960,7 +974,7 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-brand-white font-black uppercase tracking-[0.4em] mb-4 text-sm">Borger & Fritch, TX</p>
+                  <p className="text-brand-white font-black uppercase tracking-[0.6em] mb-4 text-[12px]">Borger & Fritch, TX</p>
                   
                   <div className="flex items-center gap-4 mb-10 bg-white/5 backdrop-blur-sm px-6 py-3 border border-white/10 rounded-full shadow-2xl">
                     <span className="text-4xl font-display text-brand-white">4.6</span>
@@ -1321,7 +1335,7 @@ export default function App() {
               </div>
               
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
-                <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block text-center">OUR STORY</span>
+                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">OUR STORY</span>
                 <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center pt-2">
                   <span>THIS ISN'T</span>
                   <span>A CHAIN. THIS IS</span>
@@ -1337,7 +1351,7 @@ export default function App() {
             {/* SECTION 2: THE STORY — VISUAL TIMELINE */}
             <section className="bg-brand-concrete py-[120px] px-6 noise-overlay border-y border-white/5">
               <div className="max-w-[1200px] mx-auto">
-                <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block text-center">THE BEGINNING</span>
+                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">THE BEGINNING</span>
                 <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
                   HOW IT STARTED.
                 </h2>
@@ -1371,7 +1385,7 @@ export default function App() {
             {/* SECTION 4: THE STANDARD */}
             <section className="bg-brand-black py-[160px] px-6 noise-overlay">
               <div className="max-w-[1200px] mx-auto text-center">
-                <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block text-center">OUR CODE</span>
+                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">OUR CODE</span>
                 <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-24 uppercase max-w-[800px] mx-auto">
                   THE STANDARD.
                 </h2>
@@ -1405,7 +1419,7 @@ export default function App() {
             <section className="bg-brand-concrete py-[120px] px-6 noise-overlay border-y border-white/5">
               <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div className="lg:pr-20 lg:border-r-2 border-brand-neon">
-                  <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block">MISSION</span>
+                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block">MISSION</span>
                   <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-8 uppercase max-w-[800px]">
                     WHY WE EXIST.
                   </h2>
@@ -1432,7 +1446,7 @@ export default function App() {
             {/* SECTION 6: LOCATIONS */}
             <section className="bg-brand-black py-[120px] px-6 noise-overlay border-b border-white/5">
               <div className="max-w-[1200px] mx-auto">
-                <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block text-center">FIND US</span>
+                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">FIND US</span>
                 <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
                   TWO LOCATIONS.<br/>ONE STANDARD.
                 </h2>
@@ -1457,7 +1471,7 @@ export default function App() {
                         <p className="text-brand-white text-[15px] font-[400] opacity-60 mb-4">{loc.address}</p>
                         <a href={`tel:${loc.phone.replace(/\D/g,'')}`} className="text-brand-white text-[16px] md:text-[18px] font-[400] leading-[1.7] tracking-[0px] hover:text-brand-neon transition-colors block underline decoration-2 underline-offset-4">{loc.phone}</a>
                       </div>
-                      <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-12 block italic">Ready in 20 minutes</span>
+                      <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-12 block italic">Ready in 20 minutes</span>
                       
                       <div className="flex flex-col sm:flex-row gap-4">
                         <button onClick={startOrder} className="bg-brand-red text-brand-white px-8 py-5 text-[15px] font-[700] uppercase tracking-[1px] flex-1 hover:brightness-110 active:scale-95 transition-all shadow-xl">ORDER ONLINE</button>
@@ -1483,7 +1497,7 @@ export default function App() {
             <section className="bg-brand-concrete py-[120px] px-6 noise-overlay border-b border-white/5">
               <div className="max-w-[1200px] mx-auto">
                 <div className="text-center mb-24">
-                  <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block text-center">THE CREW</span>
+                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">THE CREW</span>
                   <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-8 uppercase max-w-[800px] mx-auto">
                     THE PEOPLE BEHIND IT.
                   </h2>
@@ -1524,7 +1538,7 @@ export default function App() {
 
             {/* SECTION 9: TEAM PHOTOS */}
             <section className="bg-brand-black py-[120px] px-0 noise-overlay border-b border-white/5">
-              <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block text-center">GALLERY</span>
+              <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">GALLERY</span>
               <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase px-6 max-w-[800px] mx-auto">
                 OUR CREW.
               </h2>
@@ -1533,13 +1547,13 @@ export default function App() {
                 <div className="relative h-[300px] md:h-[500px] overflow-hidden group">
                   <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105" alt="Borger Team" referrerPolicy="no-referrer" />
                   <div className="absolute bottom-0 left-0 right-0 bg-brand-black/80 py-4 px-6 text-center">
-                    <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase block">BORGER TEAM</span>
+                    <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase block">BORGER TEAM</span>
                   </div>
                 </div>
                 <div className="relative h-[300px] md:h-[500px] overflow-hidden group">
                   <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105" alt="Fritch Team" referrerPolicy="no-referrer" />
                   <div className="absolute bottom-0 left-0 right-0 bg-brand-black/80 py-4 px-6 text-center">
-                    <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase block">FRITCH TEAM</span>
+                    <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase block">FRITCH TEAM</span>
                   </div>
                 </div>
               </div>
@@ -1547,7 +1561,7 @@ export default function App() {
 
             <section className="bg-brand-concrete py-[120px] px-6 noise-overlay border-b border-white/5">
               <div className="max-w-[1200px] mx-auto">
-                <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block text-center">REVIEWS</span>
+                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">REVIEWS</span>
                 <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
                   WHAT LOCALS SAY.
                 </h2>
@@ -1588,7 +1602,7 @@ export default function App() {
                     <Star key={i} className="w-5 h-5 fill-brand-neon text-brand-neon" />
                   ))}
                 </div>
-                <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block text-center">NEXT STEPS</span>
+                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">NEXT STEPS</span>
                 <h1 className="font-display text-[52px] md:text-[80px] lg:text-[96px] font-[900] tracking-[-2px] leading-[0.9] text-brand-neon mb-12 uppercase text-center mx-auto italic">
                   IF YOU HAVEN'T<br/><span className="text-brand-red">TRIED IT</span> YET,<br/>NOW'S THE TIME.
                 </h1>
@@ -1645,7 +1659,7 @@ export default function App() {
                 </div>
                 
                 <div className="w-full mx-auto text-center relative z-10 px-6">
-                  <span className="text-[#F5F5F5] text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">BORGER & FRITCH, TX</span>
+                  <span className="text-[#F5F5F5] text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">BORGER & FRITCH, TX</span>
                   <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
                     FIND YOUR<br/>LOCATION.
                   </h1>
@@ -1677,7 +1691,7 @@ export default function App() {
                         </div>
                         
                         <div className="mt-8">
-                          <span className="text-brand-neon text-[13px] font-[600] tracking-[4px] uppercase">READY IN 20 MINUTES</span>
+                          <span className="text-brand-neon text-[12px] font-black tracking-[0.6em] uppercase">READY IN 20 MINUTES</span>
                         </div>
                       </div>
 
@@ -1729,7 +1743,7 @@ export default function App() {
                         </div>
                         
                         <div className="mt-8">
-                          <span className="text-brand-neon text-[13px] font-[600] tracking-[4px] uppercase">READY IN 20 MINUTES</span>
+                          <span className="text-brand-neon text-[12px] font-black tracking-[0.6em] uppercase">READY IN 20 MINUTES</span>
                         </div>
                       </div>
 
@@ -1904,7 +1918,7 @@ export default function App() {
                 </div>
                 
                 <div className="w-full mx-auto text-center relative z-10 px-6">
-                  <span className="text-[#B8F000] text-[14px] font-black tracking-[0.5em] uppercase mb-4 block text-center">FRITCH, TX</span>
+                  <span className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase mb-4 block text-center">FRITCH, TX</span>
                   <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
                     FRITCH KNOWS<br/>GOOD PIZZA.<br/>THIS IS IT. <span className="text-[#D62828]">PERIOD.</span>
                   </h1>
@@ -2107,7 +2121,7 @@ export default function App() {
                         <h3 className="font-display text-[32px] text-white uppercase mb-4">Jesse's Pizza Company</h3>
                         <p className="text-[18px] opacity-80 mb-6">424 E Broadway St<br/>Fritch, TX 79036</p>
                         <a href="tel:8068570098" className="block text-[24px] font-[700] text-white hover:text-[#B8F000] transition-colors mb-6">(806) 857-0098</a>
-                        <p className="text-[#B8F000] text-[13px] font-[600] tracking-[4px] uppercase mb-10">READY IN 20 MINUTES.</p>
+                        <p className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase mb-10">READY IN 20 MINUTES.</p>
                       </div>
 
                       <div className="h-[280px] w-full bg-[#0D0D0D] relative overflow-hidden grayscale brightness-75">
@@ -2240,7 +2254,7 @@ export default function App() {
                 </div>
                 
                 <div className="w-full mx-auto text-center relative z-10 px-6">
-                  <span className="text-brand-neon text-[14px] font-black tracking-[0.5em] uppercase mb-4 block text-center">BORGER, TX</span>
+                  <span className="text-brand-neon text-[12px] font-black tracking-[0.6em] uppercase mb-4 block text-center">BORGER, TX</span>
                   <h1 className="font-display text-[56px] md:text-[88px] lg:text-[112px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
                     NAME A BETTER<br/>PIZZA IN<br/>BORGER.<br/>WE'LL <span className="text-brand-red">WAIT.</span>
                   </h1>
@@ -2468,7 +2482,7 @@ export default function App() {
                         <h3 className="font-display text-[32px] text-brand-white uppercase mb-4">Jesse's Pizza Company</h3>
                         <p className="text-[18px] opacity-80 mb-6">530 W 3rd St<br/>Borger, TX 79007</p>
                         <a href="tel:8062747200" className="block text-[24px] font-[700] text-brand-white hover:text-brand-neon transition-colors mb-6">(806) 274-7200</a>
-                        <p className="text-brand-neon text-[13px] font-[600] tracking-[4px] uppercase mb-10">READY IN 20 MINUTES.</p>
+                        <p className="text-brand-neon text-[12px] font-black tracking-[0.6em] uppercase mb-10">READY IN 20 MINUTES.</p>
                       </div>
 
                       <div className="h-[280px] w-full bg-brand-black relative overflow-hidden grayscale brightness-75">
@@ -2592,7 +2606,7 @@ export default function App() {
             {/* SECTION 1: HERO */}
             <section className="px-6 pt-12 pb-32 md:pb-60 bg-brand-black noise-overlay border-b border-white/5 overflow-hidden relative">
               <div className="w-full mx-auto flex flex-col items-center text-center relative z-10">
-                <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">CAREERS</span>
+                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">CAREERS</span>
                 <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] mb-12 leading-[0.95] tracking-[0.05em] uppercase text-brand-neon flex flex-col">
                   <span>COME WORK</span>
                   <span>WHERE THE PIZZA</span>
@@ -2621,7 +2635,7 @@ export default function App() {
             <section className="bg-brand-black px-6 py-32 md:py-48 border-b border-white/5 noise-overlay">
               <div className="w-full">
                 <div className="text-center mb-24">
-                  <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">CULTURE</span>
+                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">CULTURE</span>
                   <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">WHAT YOU'RE SIGNING UP <span className="text-brand-red">FOR</span>.</h2>
                   <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">No sugarcoating. Here's what working at Jesse's actually means.</p>
                 </div>
@@ -2663,7 +2677,7 @@ export default function App() {
             <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
               <div className="w-full">
                 <div className="text-center mb-24">
-                  <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">OPPORTUNITY</span>
+                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">OPPORTUNITY</span>
                   <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">WE'RE <span className="text-brand-red">HIRING</span>.</h2>
                   <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">Both locations. Multiple positions. If you're reliable and ready to work, we want to hear from you.</p>
                 </div>
@@ -2713,7 +2727,7 @@ export default function App() {
             <section className="bg-brand-concrete px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
               <div className="w-full">
                 <div className="text-center mb-16">
-                  <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">TRAITS</span>
+                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">TRAITS</span>
                   <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">WHAT WE ACTUALLY CARE <span className="text-brand-red">ABOUT</span>.</h2>
                 </div>
                 <div className="max-w-[640px] mx-auto text-center space-y-8 text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7]">
@@ -2736,7 +2750,7 @@ export default function App() {
             <section id="apply" className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
               <div className="w-full">
                 <div className="text-center mb-24">
-                  <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">JOIN THE CREW</span>
+                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">JOIN THE CREW</span>
                   <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">APPLY <span className="text-brand-red">NOW</span>.</h2>
                   <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">Fill this out and we'll be in touch. Simple as that.</p>
                 </div>
@@ -2806,7 +2820,7 @@ export default function App() {
             {/* SECTION 6: FINAL CTA */}
             <section className="bg-brand-black py-40 md:py-60 px-6 noise-overlay border-t-4 border-brand-red relative overflow-hidden">
               <div className="w-full text-center relative z-10">
-                <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">FINAL CALL</span>
+                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">FINAL CALL</span>
                 <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] uppercase leading-[0.95] tracking-[0.05em] mb-12 text-brand-neon shadow-none [text-shadow:none]">READY TO <span className="text-brand-red">APPLY</span>?</h2>
                 <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mb-20">
                   We're hiring at both locations right now. Fill out the form above or call us directly.
@@ -2834,6 +2848,294 @@ export default function App() {
             <Footer />
           </motion.div>
 
+        ) : view === 'specials' ? (
+          <motion.div 
+            key="specials"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="bg-[#0D0D0D] min-h-screen"
+          >
+            {/* SECTION 1: HERO */}
+            <section className="relative h-[calc(100vh-64px)] flex items-center justify-center bg-[#0D0D0D] overflow-hidden noise-overlay">
+              <div className="absolute inset-0 z-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
+                  alt="Loaded Pizza Close-up"
+                  className="w-full h-full object-cover opacity-40 grayscale-[0.3]"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-[#0D0D0D]/60" />
+              </div>
+              
+              <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
+                <span className="text-[#F5F5F5] text-[12px] font-black tracking-[0.6em] uppercase mb-2">BORGER & FRITCH, TX</span>
+                <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                  REAL DEALS.<br />
+                  NO STRINGS.<br />
+                  <span className="text-[#D62828]">JUST.</span> ORDER.
+                </h1>
+                
+                <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[500px] mx-auto text-center mb-12">
+                  Location specific specials running every week. Find your location and order before it's gone.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+                  <button onClick={startOrder} className="bg-[#D62828] text-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]">
+                    Order Now — Borger
+                  </button>
+                  <button onClick={startOrder} className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px]">
+                    Order Now — Fritch
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 2: TRUST STRIP */}
+            <section className="bg-[#B8F000] py-12 px-6 overflow-hidden">
+              <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 font-black text-[#0D0D0D] text-[16px] uppercase text-center md:text-left">
+                <span>"Real specials. Not watered down deals."</span>
+                <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                <span>"Location specific. Check yours below."</span>
+                <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                <span>"Same loaded standard. Better price."</span>
+                <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                <span>"Every week. No exceptions."</span>
+              </div>
+            </section>
+
+            {/* SECTION 3: BORGER SPECIALS */}
+            <section id="borger-specials" className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-32">
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">BORGER<br/>SPECIALS.</h2>
+                  <span className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">530 W 3RD ST — BORGER, TX 79007</span>
+                  <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mt-8">These deals run every week at our Borger location. Order online or call to take advantage.</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Card 1 */}
+                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">MONDAY</span>
+                    <h3 className="text-brand-white font-black text-[20px] mb-2 uppercase">Monday Pizza Deal</h3>
+                    <p className="text-brand-white text-[16px] mb-4">Large 1 Topping Pizza</p>
+                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">Discounted Monday pricing</p>
+                    <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">One of Borger's most popular weekly deals. Call or order online for current pricing.</p>
+                    <div className="mt-auto">
+                      <button onClick={startOrder} className="w-full bg-[#D62828] text-white py-6 font-display text-xl uppercase tracking-widest hover:brightness-110 mb-6">Order Now — Borger</button>
+                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">BORGER ONLY</span>
+                    </div>
+                  </div>
+
+                  {/* Card 2 */}
+                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">MONDAY</span>
+                    <h3 className="text-brand-white font-black text-[20px] mb-2 uppercase">Free Dine-In Drink</h3>
+                    <p className="text-brand-white text-[16px] mb-4">Free fountain drink with dine-in order</p>
+                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">Free with qualifying order</p>
+                    <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">Dine in on Monday and your drink is on us.</p>
+                    <div className="mt-auto">
+                      <button onClick={startOrder} className="w-full bg-[#D62828] text-white py-6 font-display text-xl uppercase tracking-widest hover:brightness-110 mb-6">Order Now — Borger</button>
+                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">BORGER ONLY</span>
+                    </div>
+                  </div>
+
+                  {/* Card 3 */}
+                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">DAILY</span>
+                    <h3 className="text-brand-white font-black text-[20px] mb-2 uppercase">Family Deal</h3>
+                    <p className="text-brand-white text-[16px] mb-4">18" Jumbo + Cheezy Bread + 2 Liter</p>
+                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">$34.99</p>
+                    <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">Best value on the menu. Available every day, not just Mondays.</p>
+                    <div className="mt-auto">
+                      <button onClick={startOrder} className="w-full bg-[#D62828] text-white py-6 font-display text-xl uppercase tracking-widest hover:brightness-110 mb-6">Order Now — Borger</button>
+                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">BORGER AND FRITCH</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 4: FULL BLEED IMAGE BREAK */}
+            <section className="relative h-[250px] md:h-[400px] w-full overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000" 
+                alt="Loaded Specialty Pizza"
+                className="w-full h-full object-cover grayscale-[0.2] brightness-90 shadow-2xl"
+                referrerPolicy="no-referrer"
+              />
+            </section>
+
+            {/* SECTION 5: FRITCH SPECIALS */}
+            <section id="fritch-specials" className="bg-[#2A2A2A] px-6 py-32 md:py-48 noise-overlay">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-32">
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">FRITCH<br/>SPECIALS.</h2>
+                  <span className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">424 E BROADWAY ST — FRITCH, TX 79036</span>
+                  <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mt-8">These deals run every week at our Fritch location. Order online or call to take advantage.</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Card 1 */}
+                  <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">TUESDAY</span>
+                    <h3 className="text-brand-white font-black text-[20px] mb-2 uppercase">Jumbo Tuesday</h3>
+                    <p className="text-brand-white text-[16px] mb-4">18" Jumbo 1 Topping Pizza</p>
+                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">Tuesday special pricing</p>
+                    <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">Fritch's most popular weekly deal. The Jumbo at a price that makes it even harder to say no. Call or order online for current pricing.</p>
+                    <div className="mt-auto">
+                      <button onClick={startOrder} className="w-full bg-[#D62828] text-white py-6 font-display text-xl uppercase tracking-widest hover:brightness-110 mb-6">Order Now — Fritch</button>
+                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">FRITCH ONLY</span>
+                    </div>
+                  </div>
+
+                  {/* Card 2 */}
+                  <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">WEEKLY</span>
+                    <h3 className="text-brand-white font-black text-[20px] mb-2 uppercase">Family Wings Deal</h3>
+                    <p className="text-brand-white text-[16px] mb-4">Wings + 2 Liter Drink</p>
+                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">Weekly special pricing</p>
+                    <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">Fritch's go-to wings combo. Hot, crispy, and ready when you are. Call or order online for current pricing.</p>
+                    <div className="mt-auto">
+                      <button onClick={startOrder} className="w-full bg-[#D62828] text-white py-6 font-display text-xl uppercase tracking-widest hover:brightness-110 mb-6">Order Now — Fritch</button>
+                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">FRITCH ONLY</span>
+                    </div>
+                  </div>
+
+                  {/* Card 3 */}
+                  <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">DAILY</span>
+                    <h3 className="text-brand-white font-black text-[20px] mb-2 uppercase">Game Night Pack</h3>
+                    <p className="text-brand-white text-[16px] mb-4">2 Large Pizzas + Wings (12 ct)</p>
+                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">$45.99</p>
+                    <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">Built for a crowd. Available every day at both locations.</p>
+                    <div className="mt-auto">
+                      <button onClick={startOrder} className="w-full bg-[#D62828] text-white py-6 font-display text-xl uppercase tracking-widest hover:brightness-110 mb-6">Order Now — Fritch</button>
+                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">BORGER AND FRITCH</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 6: FULL BLEED IMAGE BREAK */}
+            <section className="relative h-[250px] md:h-[400px] w-full overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1541658016709-82535e94bc71?auto=format&fit=crop&q=80&w=2000" 
+                alt="Wings Close-up"
+                className="w-full h-full object-cover contrast-125 grayscale-[0.3]"
+                referrerPolicy="no-referrer"
+              />
+            </section>
+
+            {/* SECTION 7: EVERYDAY VALUE */}
+            <section className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-32">
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">EVERYDAY<br/>VALUE.</h2>
+                  <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mt-8">No specific day required. These are available every day at both Borger and Fritch.</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Card 1 */}
+                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">FAMILY DEAL</span>
+                    <div className="text-[#F5F5F5] text-[16px] space-y-2 mb-8 leading-relaxed">
+                      <p>18" Jumbo Pizza</p>
+                      <p>Cheezy Bread</p>
+                      <p>2 Liter Drink</p>
+                    </div>
+                    <p className="text-[#F5F5F5] text-2xl font-black mb-4">$34.99</p>
+                    <p className="text-[#B8F000] text-[14px] italic mb-12">Nobody goes home hungry.</p>
+                    <button onClick={startOrder} className="mt-auto w-full bg-[#D62828] text-white py-6 font-display text-xl uppercase tracking-widest hover:brightness-110 transition-all">Order Now</button>
+                  </div>
+
+                  {/* Card 2 */}
+                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">GAME NIGHT PACK</span>
+                    <div className="text-[#F5F5F5] text-[16px] space-y-2 mb-8 leading-relaxed">
+                      <p>2 Large Pizzas</p>
+                      <p>Wings (12 ct)</p>
+                    </div>
+                    <p className="text-[#F5F5F5] text-2xl font-black mb-4">$45.99</p>
+                    <p className="text-[#B8F000] text-[14px] italic mb-12">Built for a crowd. Gone fast.</p>
+                    <button onClick={startOrder} className="mt-auto w-full bg-[#D62828] text-white py-6 font-display text-xl uppercase tracking-widest hover:brightness-110 transition-all">Order Now</button>
+                  </div>
+
+                  {/* Card 3 */}
+                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">QUICK MEAL</span>
+                    <div className="text-[#F5F5F5] text-[16px] space-y-2 mb-8 leading-relaxed">
+                      <p>Medium Pizza</p>
+                      <p>Drink</p>
+                    </div>
+                    <p className="text-[#F5F5F5] text-2xl font-black mb-4">$19.99</p>
+                    <p className="text-[#B8F000] text-[14px] italic mb-12">Fast. Simple. Hits the spot.</p>
+                    <button onClick={startOrder} className="mt-auto w-full bg-[#D62828] text-white py-6 font-display text-xl uppercase tracking-widest hover:brightness-110 transition-all">Order Now</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* SECTION 8: NEVER MISS A DEAL */}
+            <section className="bg-[#2A2A2A] px-6 py-32 md:py-48 noise-overlay border-t border-white/5 text-center">
+              <div className="max-w-[600px] mx-auto">
+                <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">NEVER MISS<br/>A DEAL.</h2>
+                <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] mb-16">
+                  The best way to stay on top of our latest specials is to follow us on social media or call your nearest location directly.
+                </p>
+                
+                <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-16">
+                  <div>
+                    <span className="text-[#F5F5F5] block mb-2 uppercase text-xs tracking-widest opacity-60">BORGER</span>
+                    <a href="tel:8062747200" className="text-[#B8F000] text-2xl font-black hover:brightness-110 pointer-events-auto transition-all">(806) 274-7200</a>
+                  </div>
+                  <div className="hidden md:block w-px h-12 bg-white/10" />
+                  <div>
+                    <span className="text-[#F5F5F5] block mb-2 uppercase text-xs tracking-widest opacity-60">FRITCH</span>
+                    <a href="tel:8068570098" className="text-[#B8F000] text-2xl font-black hover:brightness-110 pointer-events-auto transition-all">(806) 857-0098</a>
+                  </div>
+                </div>
+                
+                <p className="text-[#F5F5F5] text-[16px] mb-8">Follow Jesse's Pizza Company on Facebook for the latest deals, updates, and specials.</p>
+                <button className="bg-[#D62828] text-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl mx-auto block">Find Us on Facebook</button>
+              </div>
+            </section>
+
+            {/* SECTION 9: FINAL CTA */}
+            <section className="relative h-screen flex items-center justify-center bg-[#0D0D0D] overflow-hidden">
+              <div className="absolute inset-0 z-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
+                  alt="Final Pizza Shot"
+                  className="w-full h-full object-cover opacity-40 grayscale-[0.5]"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-[#0D0D0D]/85" />
+              </div>
+              
+              <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
+                <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                  TODAY'S A<br />GOOD DAY<br />TO ORDER.
+                </h1>
+                
+                <p className="text-[20px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto mb-16 px-4">
+                  Check your location's specials above. Pick your deal. Order in 60 seconds.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row justify-center gap-8 w-full sm:w-auto">
+                  <button onClick={startOrder} className="bg-[#D62828] text-white px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]">
+                    Order Now — Borger
+                  </button>
+                  <button onClick={startOrder} className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px]">
+                    Order Now — Fritch
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <Footer />
+          </motion.div>
         ) : view === 'contact' ? (
           <motion.div 
             key="contact"
@@ -2856,7 +3158,7 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
-                  <span className="text-[#F5F5F5] text-[13px] font-[600] tracking-[4px] uppercase mb-2 block">BORGER & FRITCH, TX</span>
+                  <span className="text-[#F5F5F5] text-[12px] font-black tracking-[0.6em] uppercase mb-2 block">BORGER & FRITCH, TX</span>
                   
                   <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] mb-8 leading-[0.95] tracking-[0.05em] uppercase text-[#B8F000]">
                     SKIP THE FORM.<br />
@@ -2901,7 +3203,7 @@ export default function App() {
                           Borger, TX 79007
                         </p>
                         <a href="tel:8062747200" className="block text-[#F5F5F5] text-[24px] font-[700] hover:text-[#B8F000] transition-colors">(806) 274-7200</a>
-                        <p className="text-[#B8F000] text-[13px] font-[600] tracking-[4px] uppercase pt-4">READY IN 20 MINUTES</p>
+                        <p className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase pt-4">READY IN 20 MINUTES</p>
                       </div>
                       <div className="mt-auto space-y-4">
                         <div className="h-px bg-[#B8F000]/20 w-full mb-4" />
@@ -2927,7 +3229,7 @@ export default function App() {
                           Fritch, TX 79036
                         </p>
                         <a href="tel:8068570098" className="block text-[#F5F5F5] text-[24px] font-[700] hover:text-[#B8F000] transition-colors">(806) 857-0098</a>
-                        <p className="text-[#B8F000] text-[13px] font-[600] tracking-[4px] uppercase pt-4">READY IN 20 MINUTES</p>
+                        <p className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase pt-4">READY IN 20 MINUTES</p>
                       </div>
                       <div className="mt-auto space-y-4">
                         <div className="h-px bg-[#B8F000]/20 w-full mb-4" />
@@ -3060,6 +3362,437 @@ export default function App() {
                 </div>
               </section>
             </main>
+
+            <Footer />
+          </motion.div>
+        ) : view === 'terms' ? (
+          <motion.div 
+            key="terms"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="bg-[#0D0D0D] min-h-screen"
+          >
+            {/* SECTION 1: PAGE HEADER */}
+            <header className="bg-[#0D0D0D] py-20 px-6 text-center border-b border-white/5 relative overflow-hidden">
+              <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
+              <div className="max-w-[1200px] mx-auto relative z-10">
+                <span className="text-[#F5F5F5] text-[13px] font-black tracking-[0.4em] uppercase mb-4 block text-center">Jesse's Pizza Company</span>
+                <h1 className="font-display text-[48px] md:text-[64px] text-[#B8F000] uppercase leading-[0.95] tracking-[-2px] mb-4">Terms of<br/>Service.</h1>
+                <p className="text-[#F5F5F5] text-[14px] opacity-60">Last updated: April 2026</p>
+              </div>
+            </header>
+
+            <main className="px-6 py-20">
+              {/* SECTION 2: TERMS CONTENT */}
+              <div className="max-w-[800px] mx-auto bg-[#2A2A2A] p-8 md:p-12 border border-white/5 noise-overlay">
+                <div className="space-y-12">
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Acceptance of Terms</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>By accessing or using the Jesse's Pizza Company website at jessespizzacompany.com, placing an online order, or interacting with our services, you agree to be bound by these Terms of Service.</p>
+                      <p>If you do not agree to these terms, please do not use our website or services.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Use of Website</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>You agree to use this website only for lawful purposes and in a manner that does not infringe the rights of others.</p>
+                      <p>You may not:</p>
+                      <div className="space-y-2 py-2">
+                        <p>• Use the website for any fraudulent purpose</p>
+                        <p>• Attempt to gain unauthorized access to any part of our systems</p>
+                        <p>• Transmit harmful or malicious code</p>
+                        <p>• Scrape or copy content without permission</p>
+                        <p>• Misrepresent your identity or affiliation</p>
+                      </div>
+                      <p className="pt-4">We reserve the right to restrict or terminate access to the website for any violation of these terms.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Online Ordering</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>When you place an order through our website or third party ordering platforms, you agree to:</p>
+                      <div className="space-y-4 py-4">
+                        <p>• Provide accurate and complete information</p>
+                        <p>• Pay all charges associated with your order</p>
+                        <p>• Pick up your order within a reasonable time</p>
+                        <p>• Contact us directly if you have issues with your order</p>
+                      </div>
+                      <p>All orders are subject to availability. We reserve the right to refuse or cancel any order at our discretion.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Pricing and Payment</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>All prices displayed on our website are in US dollars and subject to change without notice.</p>
+                      <p>We accept major credit cards and other payment methods as displayed at checkout.</p>
+                      <p>All payments are processed through secure third party payment processors. Jesse's Pizza Company does not store full payment card information.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Refunds and Cancellations</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-6">
+                      <p>If you are unsatisfied with your order, contact us directly at your nearest location.</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-2">
+                        <div className="p-4 bg-[#0D0D0D]/50 border border-white/5">
+                          <span className="text-[#B8F000] font-black text-xs block mb-1 uppercase tracking-widest">Borger</span>
+                          <a href="tel:8062747200" className="text-[#F5F5F5] font-bold">(806) 274-7200</a>
+                        </div>
+                        <div className="p-4 bg-[#0D0D0D]/50 border border-white/5">
+                          <span className="text-[#B8F000] font-black text-xs block mb-1 uppercase tracking-widest">Fritch</span>
+                          <a href="tel:8068570098" className="text-[#F5F5F5] font-bold">(806) 857-0098</a>
+                        </div>
+                      </div>
+                      <p>We will work with you to make it right. Refunds and credits are handled on a case by case basis at our discretion.</p>
+                      <p className="font-black text-[#B8F000]">We'd rather fix the problem than lose a customer.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Intellectual Property</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>All content on this website including text, images, logos, graphics, and design is the property of Jesse's Pizza Company and may not be reproduced, distributed, or used without written permission.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Third Party Links and Services</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>Our website may contain links to third party websites or use third party services for ordering and payment processing.</p>
+                      <p>We are not responsible for the content, privacy practices, or terms of any third party websites or services.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Disclaimer of Warranties</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>This website and its content are provided on an as is basis without warranties of any kind, either express or implied.</p>
+                      <p>We do not warrant that the website will be uninterrupted, error free, or free of viruses or other harmful components.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Limitation of Liability</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>To the fullest extent permitted by law, Jesse's Pizza Company shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of this website or our services.</p>
+                      <p>Our total liability to you for any claim arising from your use of this website shall not exceed the amount you paid for the order in question.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Governing Law</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>These Terms of Service are governed by the laws of the State of Texas.</p>
+                      <p>Any disputes arising from these terms or your use of our website shall be resolved in the courts of Texas.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Changes to these Terms</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>We may update these Terms of Service from time to time.</p>
+                      <p>We will notify you of significant changes by updating the date at the top of this page.</p>
+                      <p>Continued use of our website after changes constitutes acceptance of the updated terms.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Contact Us</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-8">
+                      <p>If you have questions about these Terms of Service, contact us directly:</p>
+                      
+                      <div className="space-y-1 block">
+                        <span className="font-display text-[#B8F000] text-xl block uppercase">Jesse's Pizza Company</span>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                          <span className="text-brand-neon font-black text-xs tracking-widest block mb-2 uppercase">Borger Location</span>
+                          <p className="opacity-80">530 W 3rd St, Borger, TX 79007</p>
+                          <a href="tel:8062747200" className="text-brand-neon font-bold mt-1 block hover:brightness-110 transition-all">(806) 274-7200</a>
+                        </div>
+                        <div>
+                          <span className="text-brand-neon font-black text-xs tracking-widest block mb-2 uppercase">Fritch Location</span>
+                          <p className="opacity-80">424 E Broadway St, Fritch, TX 79036</p>
+                          <a href="tel:8068570098" className="text-brand-neon font-bold mt-1 block hover:brightness-110 transition-all">(806) 857-0098</a>
+                        </div>
+                      </div>
+
+                      <p className="pt-4">Website: <span className="text-brand-neon font-bold">jessespizzacompany.com</span></p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </main>
+
+            {/* SECTION 3: FINAL CTA */}
+            <section className="bg-[#0D0D0D] py-20 px-6 text-center border-t border-white/5 noise-overlay">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="font-display text-[64px] md:text-[80px] text-[#B8F000] uppercase mb-8 leading-none">Questions?</h2>
+                <p className="text-[18px] text-[#F5F5F5] mb-12 max-w-[500px] mx-auto text-center">Reach out to us directly. We're a real local business and we'll give you a real answer.</p>
+                <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+                  <button onClick={() => { window.scrollTo(0, 0); setView('contact'); }} className="bg-[#D62828] text-white px-12 py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[240px]">Contact Us</button>
+                  <button onClick={startOrder} className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[240px]">Order Now</button>
+                </div>
+              </div>
+            </section>
+
+            <Footer />
+          </motion.div>
+        ) : view === 'privacy' ? (
+          <motion.div 
+            key="privacy"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="bg-[#0D0D0D] min-h-screen"
+          >
+            {/* SECTION 1: PAGE HEADER */}
+            <header className="bg-[#0D0D0D] py-20 px-6 text-center border-b border-white/5 relative overflow-hidden">
+              <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
+              <div className="max-w-[1200px] mx-auto relative z-10">
+                <span className="text-[#F5F5F5] text-[13px] font-black tracking-[0.4em] uppercase mb-4 block text-center">Jesse's Pizza Company</span>
+                <h1 className="font-display text-[48px] md:text-[64px] text-[#B8F000] uppercase leading-[0.95] tracking-[-2px] mb-4">Privacy Policy.</h1>
+                <p className="text-[#F5F5F5] text-[14px] opacity-60">Last updated: April 2026</p>
+              </div>
+            </header>
+
+            <main className="px-6 py-20">
+              {/* SECTION 2: POLICY CONTENT */}
+              <div className="max-w-[800px] mx-auto bg-[#2A2A2A] p-8 md:p-12 border border-white/5 noise-overlay">
+                <div className="space-y-12">
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Introduction</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>Jesse's Pizza Company operates the website jessespizzacompany.com and is committed to protecting your personal information.</p>
+                      <p>This Privacy Policy explains what information we collect, how we use it, and your rights regarding that information.</p>
+                      <p>By using our website or placing an order, you agree to the terms of this Privacy Policy.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Information We Collect</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>We may collect the following information when you use our website or order online:</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B8F000]" />
+                          <span>Name</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B8F000]" />
+                          <span>Email address</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B8F000]" />
+                          <span>Phone number</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B8F000]" />
+                          <span>Delivery address</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B8F000]" />
+                          <span>Payment information</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B8F000]" />
+                          <span>Order history</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B8F000]" />
+                          <span>Device and browser information</span>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#B8F000]" />
+                          <span>IP address</span>
+                        </div>
+                      </div>
+                      <p className="pt-4">We collect this information when you:</p>
+                      <div className="space-y-2 py-2">
+                        <p>• Place an order online</p>
+                        <p>• Contact us through our website</p>
+                        <p>• Sign up for promotions or updates</p>
+                        <p>• Browse our website</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">How We Use Your Information</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>We use your information to:</p>
+                      <div className="space-y-4 py-4">
+                        <p>• Process and fulfill your orders</p>
+                        <p>• Send order confirmations and updates</p>
+                        <p>• Respond to your questions or messages</p>
+                        <p>• Improve our website and ordering experience</p>
+                        <p>• Send promotional offers if you have opted in</p>
+                        <p>• Comply with legal obligations</p>
+                      </div>
+                      <p className="font-black text-[#B8F000] pt-4">We do not sell your personal information to third parties. Ever.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Payment Information</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>All payment transactions are processed through secure third party payment processors.</p>
+                      <p>Jesse's Pizza Company does not store your full credit card information on our servers.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Cookies and Tracking</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>Our website uses cookies to improve your browsing experience.</p>
+                      <p>Cookies are small files stored on your device that help us remember your preferences and understand how you use our site.</p>
+                      <p>You can disable cookies in your browser settings at any time. Some features of our website may not function properly without cookies.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Third Party Services</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>We may use third party services including:</p>
+                      <div className="space-y-4 py-4">
+                        <p>• Google Analytics for website traffic analysis</p>
+                        <p>• Online ordering platforms to process orders</p>
+                        <p>• Payment processors to handle transactions</p>
+                        <p>• Email marketing platforms for promotions</p>
+                      </div>
+                      <p>These services have their own privacy policies and we encourage you to review them.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Data Retention</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>We retain your personal information for as long as necessary to fulfill orders, comply with legal obligations, and improve our services.</p>
+                      <p>You may request deletion of your personal information at any time by contacting us.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Your Rights</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>You have the right to:</p>
+                      <div className="space-y-4 py-4">
+                        <p>• Access the personal information we hold about you</p>
+                        <p>• Request correction of inaccurate information</p>
+                        <p>• Request deletion of your personal information</p>
+                        <p>• Opt out of marketing communications at any time</p>
+                        <p>• File a complaint with relevant authorities</p>
+                      </div>
+                      <p>To exercise any of these rights contact us at: jessespizzacompany.com or call your nearest location.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Children's Privacy</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>Our website is not directed at children under the age of 13.</p>
+                      <p>We do not knowingly collect personal information from children under 13.</p>
+                      <p>If you believe we have collected information from a child under 13, please contact us and we will delete it promptly.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Changes to this Policy</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
+                      <p>We may update this Privacy Policy from time to time.</p>
+                      <p>We will notify you of significant changes by updating the date at the top of this page.</p>
+                      <p>Continued use of our website after changes constitutes acceptance of the updated policy.</p>
+                    </div>
+                  </section>
+
+                  <div className="h-px bg-[#B8F000]/10 w-full" />
+
+                  <section>
+                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">Contact Us</h2>
+                    <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-8">
+                      <p>If you have questions about this Privacy Policy or how we handle your information, contact us:</p>
+                      
+                      <div className="space-y-1 block">
+                        <span className="font-display text-[#B8F000] text-xl block uppercase">Jesse's Pizza Company</span>
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                          <span className="text-brand-neon font-black text-xs tracking-widest block mb-2 uppercase">Borger Location</span>
+                          <p className="opacity-80">530 W 3rd St, Borger, TX 79007</p>
+                          <a href="tel:8062747200" className="text-brand-neon font-bold mt-1 block hover:brightness-110 transition-all">(806) 274-7200</a>
+                        </div>
+                        <div>
+                          <span className="text-brand-neon font-black text-xs tracking-widest block mb-2 uppercase">Fritch Location</span>
+                          <p className="opacity-80">424 E Broadway St, Fritch, TX 79036</p>
+                          <a href="tel:8068570098" className="text-brand-neon font-bold mt-1 block hover:brightness-110 transition-all">(806) 857-0098</a>
+                        </div>
+                      </div>
+
+                      <p className="pt-4">Website: <span className="text-brand-neon font-bold">jessespizzacompany.com</span></p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </main>
+
+            {/* SECTION 3: FINAL CTA */}
+            <section className="bg-[#0D0D0D] py-20 px-6 text-center border-t border-white/5 noise-overlay">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="font-display text-[64px] md:text-[80px] text-[#B8F000] uppercase mb-8 leading-none">Questions?</h2>
+                <p className="text-[18px] text-[#F5F5F5] mb-12 max-w-[500px] mx-auto text-center">Reach out to us directly. We're a real local business and we'll give you a real answer.</p>
+                <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+                  <button onClick={() => { window.scrollTo(0, 0); setView('contact'); }} className="bg-[#D62828] text-white px-12 py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[240px]">Contact Us</button>
+                  <button onClick={startOrder} className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[240px]">Order Now</button>
+                </div>
+              </div>
+            </section>
 
             <Footer />
           </motion.div>
