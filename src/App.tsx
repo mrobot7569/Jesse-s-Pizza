@@ -981,8 +981,10 @@ export default function App() {
                     <span>NO SHORTCUTS.</span>
                     <span>NO SKIMPING.</span>
                   </h1>
-                  <p className="text-lg md:text-2xl max-w-2xl mx-auto text-brand-white mb-16 leading-relaxed uppercase tracking-widest font-sans font-black">
-                    Every item on this menu is built the same way: loaded, fresh, and worth ordering again. Pick what you want. We'll handle the rest.
+                  <p className="text-lg md:text-2xl max-w-4xl mx-auto text-brand-white mb-16 leading-tight uppercase tracking-widest font-sans font-black">
+                    Every item on this menu is built the same way:<br />
+                    Loaded, fresh, and worth ordering again.<br />
+                    Pick what you want. We'll handle the rest.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-6">
                     <button onClick={startOrder} className="bg-brand-red text-brand-white px-16 py-8 text-3xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
