@@ -2847,193 +2847,220 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="bg-brand-black min-h-screen noise-overlay"
+            className="bg-[#0D0D0D] min-h-screen noise-overlay"
           >
-            {/* Persistence: nav removed */}
-
-            <main className="bg-brand-black">
+            <main>
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-[60vh] flex items-center justify-center bg-brand-black px-6 pt-16 pb-20 overflow-hidden noise-overlay">
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                  <h1 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-12 leading-[0.95] uppercase text-brand-neon flex flex-col items-center">
-                    <span>GET IN TOUCH.</span>
-                    <span>OR JUST ORDER.</span>
+              <section className="relative h-[calc(100vh-64px)] flex items-center justify-center bg-[#0D0D0D] overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
+                    alt="Close-up Pizza Hero"
+                    className="w-full h-full object-cover opacity-60"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-[#0D0D0D]/60" />
+                </div>
+                
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
+                  <span className="text-[#F5F5F5] text-[13px] font-[600] tracking-[4px] uppercase mb-2 block">BORGER & FRITCH, TX</span>
+                  
+                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] mb-8 leading-[0.95] tracking-[-2px] uppercase text-[#B8F000]">
+                    SKIP THE FORM.<br />
+                    <span className="text-[#D62828]">JUST</span> ORDER.
                   </h1>
                   
-                  <p className="text-xl md:text-3xl font-black uppercase tracking-[0.2em] mb-16 text-brand-white opacity-90 leading-tight">
-                    Fastest way to reach us is a phone call.<br/>
-                    Fastest way to eat is ordering online.<br/>
-                    Either way we've got you covered.
+                  <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[500px] mx-auto mb-12">
+                    Fastest way to reach us is a phone call. Fastest way to eat is ordering online. Either way we've got you covered.
                   </p>
                   
-                  <div className="flex flex-col sm:flex-row justify-center gap-6">
-                    <button onClick={startOrder} className="bg-brand-red text-brand-white px-16 py-6 text-2xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                  <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+                    <button onClick={startOrder} className="bg-[#D62828] text-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]">
                       Order Now
                     </button>
-                    <a href="tel:8062747200" className="bg-brand-red text-brand-white px-16 py-6 text-2xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl text-center">
+                    <a href="tel:8062747200" className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px] text-center">
                       Call Now
                     </a>
                   </div>
                 </div>
               </section>
 
-              {/* SECTION 2: LOCATION CONTACT BLOCKS */}
-              <section className="bg-brand-black px-6 py-32 md:py-48 border-y border-white/5 noise-overlay">
+              {/* SECTION 2: LOCATION CARDS */}
+              <section className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-6xl md:text-8xl text-brand-neon uppercase mb-8 leading-tight">FIND YOUR LOCATION.</h2>
-                    <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-widest italic">Two locations. Both ready to hear from you.</p>
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">
+                      TWO LOCATIONS.<br />BOTH READY.
+                    </h2>
+                    <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
+                      Pick the one closest to you. Order online or call. Done in 30 seconds.
+                    </p>
                   </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-12">
-                    {/* Borger */}
-                    <div className="flex flex-col gap-10">
-                      <div className="bg-brand-concrete p-10 border border-white/5">
-                        <h3 className="font-display text-4xl mb-6 text-brand-neon uppercase tracking-widest">Borger Location</h3>
-                        <div className="text-brand-white text-xl font-bold uppercase tracking-widest space-y-2 mb-10">
-                          <p>Jesse's Pizza Company</p>
-                          <p>530 W 3rd St</p>
-                          <p>Borger, TX 79007</p>
-                          <p className="text-3xl font-display mt-6 pt-6 border-t border-white/10">(806) 274-7200</p>
-                        </div>
-                        <div className="flex flex-col gap-4">
-                          <a href="tel:8062747200" className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all text-center">Call Now</a>
-                          <button onClick={startOrder} className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all">Order Online</button>
-                          <a href="https://maps.google.com/?q=Jesse's+Pizza+Company+Borger" target="_blank" rel="noopener noreferrer" className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all text-center">Get Directions</a>
-                        </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* BORGER CARD */}
+                    <div className="bg-[#2A2A2A] p-8 md:p-12 border border-white/5 noise-overlay relative flex flex-col h-full">
+                      <h3 className="font-display text-[36px] text-[#B8F000] leading-[1.1] tracking-[-0.5px] uppercase mb-4">BORGER</h3>
+                      <div className="mb-8 space-y-2">
+                        <p className="text-[#F5F5F5] text-[18px] font-[400] leading-relaxed">
+                          Jesse's Pizza Company<br />
+                          530 W 3rd St<br />
+                          Borger, TX 79007
+                        </p>
+                        <a href="tel:8062747200" className="block text-[#F5F5F5] text-[24px] font-[700] hover:text-[#B8F000] transition-colors">(806) 274-7200</a>
+                        <p className="text-[#B8F000] text-[13px] font-[600] tracking-[4px] uppercase pt-4">READY IN 20 MINUTES</p>
                       </div>
-                      <div className="aspect-video w-full bg-brand-concrete relative overflow-hidden grayscale brightness-50">
-                        <iframe 
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.062828282828!2d-101.389!3d35.66!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDM5JzM2LjAiTiAxMDHCsDIzJzIwLjQiVw!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
-                          className="w-full h-full border-0"
-                          allowFullScreen
-                          loading="lazy"
-                          title="Jesse's Pizza Borger Map"
-                        ></iframe>
+                      <div className="mt-auto space-y-4">
+                        <div className="h-px bg-[#B8F000]/20 w-full mb-4" />
+                        <button onClick={startOrder} className="w-full bg-[#D62828] text-white py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center">
+                          Order Online
+                        </button>
+                        <a href="tel:8062747200" className="block w-full border-2 border-[#B8F000] text-[#B8F000] py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all text-center">
+                          Call Now
+                        </a>
+                        <a href="https://maps.google.com/?q=Jesse's+Pizza+Company+Borger" target="_blank" rel="noopener noreferrer" className="block text-center text-[#F5F5F5] hover:text-[#B8F000] transition-colors uppercase text-[12px] font-bold tracking-widest py-2">
+                          Get Directions
+                        </a>
                       </div>
                     </div>
 
-                    {/* Fritch */}
-                    <div className="flex flex-col gap-10">
-                      <div className="bg-brand-concrete p-10 border border-white/5">
-                        <h3 className="font-display text-4xl mb-6 text-brand-neon uppercase tracking-widest">Fritch Location</h3>
-                        <div className="text-brand-white text-xl font-bold uppercase tracking-widest space-y-2 mb-10">
-                          <p>Jesse's Pizza Company</p>
-                          <p>424 E Broadway St</p>
-                          <p>Fritch, TX 79036</p>
-                          <p className="text-3xl font-display mt-6 pt-6 border-t border-white/10">(806) 857-0098</p>
-                        </div>
-                        <div className="flex flex-col gap-4">
-                          <a href="tel:8068570098" className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all text-center">Call Now</a>
-                          <button onClick={startOrder} className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all">Order Online</button>
-                          <a href="https://maps.google.com/?q=Jesse's+Pizza+Company+Fritch" target="_blank" rel="noopener noreferrer" className="bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all text-center">Get Directions</a>
-                        </div>
+                    {/* FRITCH CARD */}
+                    <div className="bg-[#2A2A2A] p-8 md:p-12 border border-white/5 noise-overlay relative flex flex-col h-full">
+                      <h3 className="font-display text-[36px] text-[#B8F000] leading-[1.1] tracking-[-0.5px] uppercase mb-4">FRITCH</h3>
+                      <div className="mb-8 space-y-2">
+                        <p className="text-[#F5F5F5] text-[18px] font-[400] leading-relaxed">
+                          Jesse's Pizza Company<br />
+                          424 E Broadway St<br />
+                          Fritch, TX 79036
+                        </p>
+                        <a href="tel:8068570098" className="block text-[#F5F5F5] text-[24px] font-[700] hover:text-[#B8F000] transition-colors">(806) 857-0098</a>
+                        <p className="text-[#B8F000] text-[13px] font-[600] tracking-[4px] uppercase pt-4">READY IN 20 MINUTES</p>
                       </div>
-                      <div className="aspect-video w-full bg-brand-concrete relative overflow-hidden grayscale brightness-50">
-                        <iframe 
-                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.062828282828!2d-101.6!3d35.64!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDM4JzI0LjAiTiAxMDHCsDM2JzAwLjAiVw!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
-                          className="w-full h-full border-0"
-                          allowFullScreen
-                          loading="lazy"
-                          title="Jesse's Pizza Fritch Map"
-                        ></iframe>
+                      <div className="mt-auto space-y-4">
+                        <div className="h-px bg-[#B8F000]/20 w-full mb-4" />
+                        <button onClick={startOrder} className="w-full bg-[#D62828] text-white py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center">
+                          Order Online
+                        </button>
+                        <a href="tel:8068570098" className="block w-full border-2 border-[#B8F000] text-[#B8F000] py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all text-center">
+                          Call Now
+                        </a>
+                        <a href="https://maps.google.com/?q=Jesse's+Pizza+Company+Fritch" target="_blank" rel="noopener noreferrer" className="block text-center text-[#F5F5F5] hover:text-[#B8F000] transition-colors uppercase text-[12px] font-bold tracking-widest py-2">
+                          Get Directions
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               </section>
 
-              {/* SECTION 3: CONTACT FORM */}
-              <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
-                <div className="max-w-3xl mx-auto">
+              {/* SECTION 3: HOURS */}
+              <section className="bg-[#2A2A2A] px-6 py-32 noise-overlay">
+                <div className="max-w-4xl mx-auto">
                   <div className="text-center mb-16">
-                    <h2 className="font-display text-6xl md:text-8xl text-brand-neon uppercase mb-8 leading-tight">SEND US A MESSAGE.</h2>
-                    <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-widest italic leading-tight">
-                      Not the fastest way to reach us.<br/>
-                      But if you've got a question that needs more than a phone call,<br/>
-                      we'll get back to you.
-                    </p>
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">HOURS.</h2>
                   </div>
                   
-                  <div className="bg-brand-concrete p-8 md:p-16 border border-white/5 shadow-2xl">
-                    <form className="space-y-8" onSubmit={(e) => { e.preventDefault(); alert('Message sent!'); }}>
-                      <div className="grid md:grid-cols-2 gap-8">
-                        <div className="flex flex-col gap-3">
-                          <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Name (Required)</label>
-                          <input required type="text" className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors" />
-                        </div>
-                        <div className="flex flex-col gap-3">
-                          <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Email (Required)</label>
-                          <input required type="email" className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors" />
-                        </div>
+                  <div className="grid md:grid-cols-2 gap-16 md:gap-24 text-center">
+                    <div>
+                      <h3 className="font-display text-[28px] text-[#B8F000] uppercase mb-4 tracking-[-0.5px]">BORGER</h3>
+                      <p className="text-[#F5F5F5] text-[18px] mb-4">Monday through Saturday<br />11:00 AM to 10:00 PM</p>
+                      <p className="text-[#D62828] text-[16px] font-bold">Sunday: Closed</p>
+                    </div>
+                    <div>
+                      <h3 className="font-display text-[28px] text-[#B8F000] uppercase mb-4 tracking-[-0.5px]">FRITCH</h3>
+                      <p className="text-[#F5F5F5] text-[18px] mb-4">Monday through Saturday<br />11:00 AM to 9:00 PM</p>
+                      <p className="text-[#D62828] text-[16px] font-bold">Sunday: Closed</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 4: FULL BLEED IMAGE BREAK */}
+              <section className="h-[250px] md:h-[400px] w-full overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&q=80&w=2000" 
+                  alt="High Contrast Pizza Detail"
+                  className="w-full h-full object-cover grayscale-[0.1] contrast-125"
+                  referrerPolicy="no-referrer"
+                />
+              </section>
+
+              {/* SECTION 5: CONTACT FORM */}
+              <section className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay">
+                <div className="max-w-[640px] mx-auto">
+                  <div className="text-center mb-16">
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">
+                      SEND US A<br />MESSAGE.
+                    </h2>
+                    <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] text-center">
+                      Not the fastest way to reach us. But if you need to send us something, we'll get back to you.
+                    </p>
+                  </div>
+
+                  <div className="bg-[#2A2A2A] p-8 md:p-12 border border-white/5 noise-overlay">
+                    <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert('Message sent!'); }}>
+                      <div className="flex flex-col gap-2">
+                        <label className="text-white text-[14px] uppercase font-bold tracking-wider">Name (required)</label>
+                        <input required type="text" className="bg-[#1A1A1A] border border-[#2A2A2A] p-4 text-[#F5F5F5] placeholder-[#666666] outline-none focus:border-[#B8F000] transition-colors" placeholder="Full name" />
                       </div>
-                      <div className="grid md:grid-cols-2 gap-8">
-                        <div className="flex flex-col gap-3">
-                          <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Phone (Optional)</label>
-                          <input type="tel" className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors" />
-                        </div>
-                        <div className="flex flex-col gap-3">
-                          <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Location</label>
-                          <select className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors appearance-none px-4">
-                            <option>Borger</option>
-                            <option>Fritch</option>
-                          </select>
-                        </div>
+                      
+                      <div className="flex flex-col gap-2">
+                        <label className="text-white text-[14px] uppercase font-bold tracking-wider">Email (required)</label>
+                        <input required type="email" className="bg-[#1A1A1A] border border-[#2A2A2A] p-4 text-[#F5F5F5] placeholder-[#666666] outline-none focus:border-[#B8F000] transition-colors" placeholder="Email address" />
                       </div>
-                      <div className="flex flex-col gap-3">
-                        <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">Message (Required)</label>
-                        <textarea required rows={6} className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors resize-none"></textarea>
+                      
+                      <div className="flex flex-col gap-2">
+                        <label className="text-white text-[14px] uppercase font-bold tracking-wider">Phone (optional)</label>
+                        <input type="tel" className="bg-[#1A1A1A] border border-[#2A2A2A] p-4 text-[#F5F5F5] placeholder-[#666666] outline-none focus:border-[#B8F000] transition-colors" placeholder="Phone number" />
                       </div>
-                      <button type="submit" className="w-full bg-brand-red text-brand-white py-6 text-2xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-2xl mt-12">
-                        Send Message
+
+                      <div className="flex flex-col gap-2">
+                        <label className="text-white text-[14px] uppercase font-bold tracking-wider">Location</label>
+                        <select className="bg-[#1A1A1A] border border-[#2A2A2A] p-4 text-[#F5F5F5] outline-none focus:border-[#B8F000] transition-colors appearance-none cursor-pointer">
+                          <option>Borger</option>
+                          <option>Fritch</option>
+                        </select>
+                      </div>
+
+                      <div className="flex flex-col gap-2">
+                        <label className="text-white text-[14px] uppercase font-bold tracking-wider">Message (required)</label>
+                        <textarea required rows={5} className="bg-[#1A1A1A] border border-[#2A2A2A] p-4 text-[#F5F5F5] placeholder-[#666666] outline-none focus:border-[#B8F000] transition-colors resize-none" placeholder="Your message..."></textarea>
+                      </div>
+
+                      <button type="submit" className="w-full bg-[#D62828] text-white py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all mt-6 shadow-2xl">
+                        SEND MESSAGE
                       </button>
                     </form>
                   </div>
                 </div>
               </section>
 
-              {/* SECTION 4: HOURS */}
-              <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
-                <div className="max-w-4xl mx-auto">
-                  <div className="text-center mb-24">
-                    <h2 className="font-display text-6xl md:text-8xl text-brand-neon uppercase mb-8 leading-tight">HOURS.</h2>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-24">
-                    {/* Borger */}
-                    <div className="text-center md:text-left">
-                      <h3 className="font-display text-5xl mb-8 text-brand-neon uppercase tracking-widest">Borger</h3>
-                      <div className="text-brand-white text-2xl font-black uppercase tracking-widest space-y-4">
-                        <p>Monday through Saturday</p>
-                        <p className="text-brand-neon text-4xl">11:00 AM — 10:00 PM</p>
-                        <p className="mt-12 pt-8 border-t border-white/10 text-brand-red opacity-80">Sunday: Closed</p>
-                      </div>
-                    </div>
-                    {/* Fritch */}
-                    <div className="text-center md:text-left">
-                      <h3 className="font-display text-5xl mb-8 text-brand-neon uppercase tracking-widest">Fritch</h3>
-                      <div className="text-brand-white text-2xl font-black uppercase tracking-widest space-y-4">
-                        <p>Monday through Saturday</p>
-                        <p className="text-brand-neon text-4xl">11:00 AM — 9:00 PM</p>
-                        <p className="mt-12 pt-8 border-t border-white/10 text-brand-red opacity-80">Sunday: Closed</p>
-                      </div>
-                    </div>
-                  </div>
+              {/* SECTION 6: FINAL CTA */}
+              <section className="relative h-screen flex items-center justify-center bg-[#0D0D0D] overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
+                    alt="Loaded Pizza Texture"
+                    className="w-full h-full object-cover opacity-40 grayscale-[0.5]"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-[#0D0D0D]/60" />
                 </div>
-              </section>
-
-              {/* SECTION 5: FINAL CTA */}
-              <section className="bg-brand-black py-40 md:py-60 px-6 noise-overlay border-t border-brand-red relative overflow-hidden">
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                  <h2 className="font-display text-7xl md:text-[10rem] uppercase leading-[0.95] mb-12 text-brand-neon italic">READY TO ORDER?</h2>
-                  <p className="text-xl md:text-3xl font-black uppercase tracking-[0.4em] mb-20 opacity-90 text-brand-white leading-tight">
-                    Skip the form. Just order.<br/>Pick it up in 20 minutes.
+                
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
+                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                    READY TO<br />ORDER?
+                  </h1>
+                  
+                  <p className="text-[20px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto mb-16 px-4">
+                    Skip the form. Skip the wait. Order online and pick it up in 20 minutes.
                   </p>
-                  <div className="flex flex-col sm:flex-row justify-center gap-8">
-                    <button onClick={() => { setView('order-start'); window.scrollTo(0,0); }} className="bg-brand-red text-brand-white px-16 py-8 text-3xl font-display uppercase tracking-widest hover:bg-brand-red/90 transition-all shadow-2xl">
+                  
+                  <div className="flex flex-col sm:flex-row justify-center gap-8 w-full sm:w-auto">
+                    <button onClick={startOrder} className="bg-[#D62828] text-white px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]">
                       Order Now — Borger
                     </button>
-                    <button onClick={() => { setView('order-start'); window.scrollTo(0,0); }} className="bg-brand-red text-brand-white px-16 py-8 text-3xl font-display uppercase tracking-widest hover:bg-brand-red/90 transition-all shadow-2xl">
+                    <button onClick={startOrder} className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px]">
                       Order Now — Fritch
                     </button>
                   </div>
@@ -3043,7 +3070,6 @@ export default function App() {
 
             <Footer />
           </motion.div>
-
         ) : (
 
           <motion.div 
