@@ -630,22 +630,13 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-4 text-[12px]">Borger & Fritch, TX</p>
-                  
-                  <div className="flex items-center gap-4 mb-2 bg-white/5 backdrop-blur-sm px-6 py-3 border border-white/10 rounded-full shadow-2xl">
-                    <span className="text-4xl font-display text-[#F5F5F5] tracking-[0.05em]">4.6</span>
-                    <div className="flex gap-1 text-[#B8F000]">
-                      <Star size={22} fill="#B8F000" />
-                      <Star size={22} fill="#B8F000" />
-                      <Star size={22} fill="#B8F000" />
-                      <Star size={22} fill="#B8F000" />
-                      <div className="relative w-[13px] overflow-hidden">
-                        <Star size={22} fill="#B8F000" />
-                      </div>
-                      <Star size={22} className="text-white/20 -ml-[13px]" />
-                    </div>
-                    <span className="text-[14px] font-bold uppercase tracking-widest text-[#F5F5F5]">867 COMBINED REVIEWS</span>
+                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-[#2A2A2A] rounded-[40px] px-5 py-[10px] whitespace-nowrap mb-[12px] gap-2 w-auto max-w-[280px]">
+                    <Star size={18} fill="#FFB800" className="text-[#FFB800] shrink-0" />
+                    <span className="text-[16px] font-bold text-white leading-none">4.6</span>
+                    <span className="text-[14px] font-medium text-[#F5F5F5] leading-none uppercase">867 REVIEWS</span>
                   </div>
+
+                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-[8px] text-[12px]">Borger & Fritch, TX</p>
                   
                   <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center pt-2 tracking-[0.05em]">
                     <span>BORGER'S</span>
