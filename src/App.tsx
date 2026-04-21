@@ -1327,8 +1327,9 @@ export default function App() {
                   <span>A CHAIN. THIS IS</span>
                   <span><span className="text-brand-red">JESSE'S</span>.</span>
                 </h1>
-                <p className="text-brand-white text-[18px] md:text-[22px] max-w-[440px] mx-auto text-center font-bold uppercase tracking-tight leading-relaxed">
-                  Built from the ground up with one goal: make pizza people actually come back for.
+                <p className="text-brand-white text-[18px] md:text-[22px] max-w-2xl mx-auto text-center font-sans font-black uppercase tracking-widest leading-relaxed">
+                  Built from the ground up with one goal:<br />
+                  make pizza people actually come back for.
                 </p>
               </div>
             </section>
@@ -2592,7 +2593,7 @@ export default function App() {
             <section className="px-6 pt-12 pb-32 md:pb-60 bg-brand-black noise-overlay border-b border-white/5 overflow-hidden relative">
               <div className="w-full mx-auto flex flex-col items-center text-center relative z-10">
                 <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">CAREERS</span>
-                <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] mb-12 leading-[0.95] tracking-[0.1em] uppercase text-brand-neon flex flex-col">
+                <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] mb-12 leading-[0.95] tracking-[0.05em] uppercase text-brand-neon flex flex-col">
                   <span>COME WORK</span>
                   <span>WHERE THE PIZZA</span>
                   <span>ACTUALLY <span className="text-brand-red">HITS</span>.</span>
@@ -2621,7 +2622,7 @@ export default function App() {
               <div className="w-full">
                 <div className="text-center mb-24">
                   <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">CULTURE</span>
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.1em] shadow-none [text-shadow:none]">WHAT YOU'RE SIGNING UP <span className="text-brand-red">FOR</span>.</h2>
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">WHAT YOU'RE SIGNING UP <span className="text-brand-red">FOR</span>.</h2>
                   <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">No sugarcoating. Here's what working at Jesse's actually means.</p>
                 </div>
                 
@@ -2647,7 +2648,7 @@ export default function App() {
                     const isLongTitle = point.title.split(' ').length > 2;
                     return (
                       <div key={i} className="bg-brand-concrete p-12 border border-white/5 noise-overlay group hover:border-brand-neon transition-colors">
-                        <h3 className={`font-display mb-6 text-brand-neon uppercase tracking-[0.1em] leading-[1.1] ${isLongTitle ? 'text-[28px]' : 'text-[28px] md:text-[36px]'}`}>
+                        <h3 className={`font-display mb-6 text-brand-neon uppercase tracking-[0.05em] leading-[1.1] ${isLongTitle ? 'text-[28px]' : 'text-[28px] md:text-[36px]'}`}>
                           {point.title}
                         </h3>
                         <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px]">{point.body}</p>
@@ -2663,7 +2664,7 @@ export default function App() {
               <div className="w-full">
                 <div className="text-center mb-24">
                   <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">OPPORTUNITY</span>
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.1em] shadow-none [text-shadow:none]">WE'RE <span className="text-brand-red">HIRING</span>.</h2>
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">WE'RE <span className="text-brand-red">HIRING</span>.</h2>
                   <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">Both locations. Multiple positions. If you're reliable and ready to work, we want to hear from you.</p>
                 </div>
                 
@@ -2694,7 +2695,7 @@ export default function App() {
                     return (
                       <div key={i} className="bg-brand-concrete p-12 border border-white/5 noise-overlay flex flex-col justify-between">
                         <div>
-                          <h3 className={`font-display mb-2 text-brand-neon uppercase tracking-[0.1em] leading-[1.1] ${isLongTitle ? 'text-[28px]' : 'text-[28px] md:text-[36px]'}`}>
+                          <h3 className={`font-display mb-2 text-brand-neon uppercase tracking-[0.05em] leading-[1.1] ${isLongTitle ? 'text-[28px]' : 'text-[28px] md:text-[36px]'}`}>
                             {pos.title}
                           </h3>
                           <p className="text-brand-neon text-[13px] font-[600] tracking-[8px] uppercase mb-8">{pos.subtitle}</p>
@@ -2713,7 +2714,7 @@ export default function App() {
               <div className="w-full">
                 <div className="text-center mb-16">
                   <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">TRAITS</span>
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.1em] shadow-none [text-shadow:none]">WHAT WE ACTUALLY CARE <span className="text-brand-red">ABOUT</span>.</h2>
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">WHAT WE ACTUALLY CARE <span className="text-brand-red">ABOUT</span>.</h2>
                 </div>
                 <div className="max-w-[640px] mx-auto text-center space-y-8 text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7]">
                   <p>We're not looking for a perfect resume.</p>
@@ -2736,7 +2737,7 @@ export default function App() {
               <div className="w-full">
                 <div className="text-center mb-24">
                   <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">JOIN THE CREW</span>
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.1em] shadow-none [text-shadow:none]">APPLY <span className="text-brand-red">NOW</span>.</h2>
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">APPLY <span className="text-brand-red">NOW</span>.</h2>
                   <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">Fill this out and we'll be in touch. Simple as that.</p>
                 </div>
                 
@@ -2806,7 +2807,7 @@ export default function App() {
             <section className="bg-brand-black py-40 md:py-60 px-6 noise-overlay border-t-4 border-brand-red relative overflow-hidden">
               <div className="w-full text-center relative z-10">
                 <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">FINAL CALL</span>
-                <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] uppercase leading-[0.95] tracking-[0.1em] mb-12 text-brand-neon shadow-none [text-shadow:none]">READY TO <span className="text-brand-red">APPLY</span>?</h2>
+                <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] uppercase leading-[0.95] tracking-[0.05em] mb-12 text-brand-neon shadow-none [text-shadow:none]">READY TO <span className="text-brand-red">APPLY</span>?</h2>
                 <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mb-20">
                   We're hiring at both locations right now. Fill out the form above or call us directly.
                 </p>
