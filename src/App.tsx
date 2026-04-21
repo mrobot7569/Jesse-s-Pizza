@@ -508,7 +508,7 @@ export default function App() {
           
           <div className="flex flex-col items-center md:items-end gap-2 text-[10px] font-black uppercase tracking-[0.2em] opacity-30 text-[#F5F5F5]">
             <span>© 2026 Jesse's Pizza Co. • All Rights Reserved</span>
-            <span>Design by Jesse's Pizza Co.</span>
+            <span>Design by Plato Restaurant Platform</span>
           </div>
         </div>
       </div>
