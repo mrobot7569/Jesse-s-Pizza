@@ -592,7 +592,7 @@ export default function App() {
                     <span>PIZZA. <span className="text-[#D62828]">PERIOD.</span></span>
                   </h1>
                   
-                  <p className="text-[18px] md:text-[22px] max-w-[400px] mx-auto text-[#F5F5F5] mb-16 leading-relaxed uppercase font-black tracking-widest font-sans">
+                  <p className="text-[18px] md:text-[22px] max-w-[600px] mx-auto text-[#F5F5F5] mb-16 leading-tight uppercase font-black tracking-widest font-sans">
                     18 inches. Edge to edge toppings.<br />
                     Ready in 20 minutes.<br />
                     Two locations. Zero shortcuts.
@@ -1319,16 +1319,6 @@ export default function App() {
               </div>
               
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
-                <div className="flex items-center gap-4 mb-4 bg-white/5 backdrop-blur-sm px-6 py-3 border border-white/10 rounded-full shadow-2xl">
-                  <span className="text-4xl font-display text-brand-white">4.6</span>
-                  <div className="flex gap-1 text-brand-neon">
-                    <Star size={22} fill="currentColor" />
-                    <Star size={22} fill="currentColor" />
-                    <Star size={22} fill="currentColor" />
-                    <Star size={22} fill="currentColor" />
-                    <Star size={22} fill="currentColor" className="opacity-50" />
-                  </div>
-                </div>
                 <span className="text-brand-white text-[13px] font-[600] tracking-[4px] uppercase mb-8 block text-center">OUR STORY</span>
                 <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center pt-2">
                   <span>THIS ISN'T</span>
