@@ -292,15 +292,18 @@ export default function App() {
   const isMarketingView = marketingViews.includes(view);
 
   const PromoStrip = () => (
-    <div className="hidden lg:flex fixed bottom-0 left-0 right-0 z-[100] bg-[#B8F000] h-16 items-center justify-center border-t-2 border-[#D62828]/20 overflow-hidden shadow-[0_-10px_40px_rgba(184,240,0,0.2)]">
-      <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
-      <div className="flex items-center gap-12 relative z-10">
-        <span className="font-display text-[#0D0D0D] text-[18px] md:text-[22px] uppercase tracking-[0.2em] font-black">
+    <div className="fixed bottom-0 left-0 right-0 z-[100] bg-[#B8F000] h-[52px] flex items-center px-4 md:px-10 shadow-[0_-10px_40px_rgba(184,240,0,0.2)]">
+      <div className="absolute inset-0 noise-overlay opacity-20 pointer-events-none" />
+      <div className="max-w-7xl mx-auto w-full flex items-center justify-between relative z-10">
+        <span className="hidden md:block font-display text-[#0D0D0D] text-[14px] font-bold uppercase tracking-[2px]">
           READY TO EAT THE BEST PIZZA IN THE TEXAS PANHANDLE?
+        </span>
+        <span className="md:hidden font-display text-[#0D0D0D] text-[12px] font-bold uppercase tracking-[1px]">
+          READY TO EAT?
         </span>
         <button 
           onClick={startOrder} 
-          className="bg-[#D62828] text-[#F5F5F5] px-10 py-3 flex items-center text-[16px] font-black uppercase tracking-[.15em] hover:bg-[#0D0D0D] hover:text-[#B8F000] transition-all active:scale-95 shadow-xl"
+          className="bg-[#D62828] text-white px-6 md:px-8 py-2 md:py-3 text-[14px] font-bold uppercase tracking-[1px] hover:invert transition-all active:scale-95 shadow-lg"
         >
           ORDER NOW
         </button>
@@ -439,90 +442,133 @@ export default function App() {
   );
 
   const Footer = () => (
-    <footer className="bg-[#0D0D0D] pt-32 pb-16 px-6 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-[#0D0D0D] relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-[#B8F000] opacity-50 z-20" />
       <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-32 overflow-hidden py-10 border-y border-white/10">
-          <div className="flex w-fit animate-marquee grayscale hover:grayscale-0 transition-all duration-700">
-            {[1, 2, 3, 4].map((_, idx) => (
-              <h2 key={idx} className="font-display text-7xl md:text-[8rem] text-brand-neon leading-none whitespace-nowrap px-8 uppercase">
-                STILL HUNGRY? WE'RE STILL LOADIN'. <span className="text-brand-red">•</span>
-              </h2>
-            ))}
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-32 px-6">
-          <div>
-            <p className="text-brand-white/60 text-xl font-bold uppercase tracking-tight max-w-md mb-12">
-              Family owned. Grit fueled. Borger's favorite pizza since 2012. We don't do small, and we don't do slow.
-            </p>
+      <div className="max-w-[1200px] mx-auto pt-20 pb-16 px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* COLUMN 1: BRAND */}
+          <div className="max-w-[280px]">
+            <div className="flex items-center gap-3 mb-8 cursor-pointer" onClick={() => { window.scrollTo(0, 0); setView('home'); }}>
+              <Pizza className="text-brand-neon w-10 h-10" />
+              <span className="font-display text-3xl uppercase tracking-tighter text-[#F5F5F5]">Jesse's Pizza Co.</span>
+            </div>
+            <h3 className="font-display text-2xl font-bold uppercase tracking-[-1px] text-[#F5F5F5] leading-[1.1] mb-8">
+              FAMILY OWNED.<br />
+              GRIT FUELED.<br />
+              BORGER'S PIZZA.<br />
+              DONE RIGHT.
+            </h3>
             <button 
               onClick={startOrder} 
-              className="bg-brand-red text-brand-white px-12 py-6 font-display text-2xl uppercase tracking-widest hover:bg-brand-neon hover:text-brand-black transition-all shadow-[0_20px_50px_rgba(214,40,40,0.2)] active:scale-95"
+              className="w-full bg-[#D62828] text-white py-4 font-bold uppercase tracking-[2px] transition-all hover:bg-red-700 active:scale-95 shadow-xl"
             >
-              Order Now
+              ORDER NOW
             </button>
           </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
-            <div className="flex flex-col gap-6">
-              <span className="text-brand-neon text-[10px] font-black uppercase tracking-[0.4em]">QUICK LINKS</span>
-              <div className="flex flex-col gap-4 text-brand-white/80 font-bold uppercase text-sm">
-                <button onClick={() => { window.scrollTo(0, 0); setView('home'); }} className="hover:text-brand-neon text-left transition-colors">Home</button>
-                <button onClick={() => { window.scrollTo(0, 0); setView('menu-browse'); }} className="hover:text-brand-neon text-left transition-colors">Menu</button>
-                <button onClick={() => { window.scrollTo(0, 0); setView('about'); }} className="hover:text-brand-neon text-left transition-colors">Our Story</button>
-                <button onClick={() => { window.scrollTo(0, 0); setView('locations'); }} className="hover:text-brand-neon text-left transition-colors">Locations</button>
-                <button onClick={() => { window.scrollTo(0, 0); setView('careers'); }} className="hover:text-brand-neon text-left transition-colors">Careers</button>
-                <button onClick={() => { window.scrollTo(0, 0); setView('specials'); }} className="hover:text-brand-neon text-left transition-colors">Specials</button>
-                <button onClick={() => { window.scrollTo(0, 0); setView('contact'); }} className="hover:text-brand-neon text-left transition-colors">Contact</button>
-                <div className="flex gap-4 mt-2">
-                  <button onClick={() => { window.scrollTo(0, 0); setView('privacy'); }} className="hover:text-brand-neon text-left transition-colors text-[12px] opacity-60">Privacy Policy</button>
-                  <span className="text-[12px] opacity-20">|</span>
-                  <button onClick={() => { window.scrollTo(0, 0); setView('terms'); }} className="hover:text-brand-neon text-left transition-colors text-[12px] opacity-60">Terms of Service</button>
-                </div>
-              </div>
-            </div>
+
+          {/* COLUMN 2: QUICK LINKS */}
+          <div className="flex flex-col">
+            <h4 className="font-display text-[20px] font-bold tracking-[2px] uppercase text-[#B8F000] mb-8">QUICK LINKS</h4>
+            <nav className="flex flex-col gap-[12px]">
+              {['home', 'menu-browse', 'about', 'locations', 'specials', 'careers', 'contact'].map((link) => (
+                <button 
+                  key={link}
+                  onClick={() => { window.scrollTo(0, 0); setView(link as FunnelStep); }} 
+                  className="text-[15px] font-semibold uppercase tracking-[1px] text-[#F5F5F5] hover:text-[#B8F000] text-left transition-colors"
+                >
+                  {link.replace('-', ' ')}
+                </button>
+              ))}
+              <button 
+                onClick={() => { window.scrollTo(0, 0); setView('privacy'); }} 
+                className="text-[15px] font-semibold uppercase tracking-[1px] text-[#F5F5F5] hover:text-[#B8F000] text-left transition-colors"
+              >
+                PRIVACY POLICY
+              </button>
+              <button 
+                onClick={() => { window.scrollTo(0, 0); setView('terms'); }} 
+                className="text-[15px] font-semibold uppercase tracking-[1px] text-[#F5F5F5] hover:text-[#B8F000] text-left transition-colors"
+              >
+                TERMS OF SERVICE
+              </button>
+            </nav>
+          </div>
+
+          {/* COLUMN 3: LOCATIONS */}
+          <div className="flex flex-col gap-8">
+            <h4 className="font-display text-[20px] font-bold tracking-[2px] uppercase text-[#B8F000]">LOCATIONS</h4>
             
-            <div className="flex flex-col gap-6">
-              <span className="text-brand-neon text-[10px] font-black uppercase tracking-[0.4em]">LOCATIONS</span>
-              <div className="flex flex-col gap-6 text-brand-white/80 font-bold uppercase text-sm">
-                <div>
-                  <span className="text-brand-white block mb-1">BORGER MAIN</span>
-                  <p className="text-xs opacity-60 leading-relaxed font-medium">806.274.7200<br/>530 W 3rd St</p>
-                </div>
-                <div>
-                  <span className="text-brand-white block mb-1">FRITCH HUB</span>
-                  <p className="text-xs opacity-60 leading-relaxed font-medium">806.857.0098<br/>424 E Broadway St</p>
-                </div>
-              </div>
+            <div className="flex flex-col gap-1">
+              <span className="font-display text-[16px] text-[#B8F000] uppercase mb-2">BORGER</span>
+              <p className="text-[#F5F5F5] text-[15px] font-semibold uppercase tracking-[1px]">530 W 3RD ST</p>
+              <p className="text-[#F5F5F5] text-[15px] font-semibold uppercase tracking-[1px] mb-2">BORGER, TX 79007</p>
+              <a href="tel:8062747200" className="font-display text-[18px] text-[#B8F000] uppercase hover:brightness-110 transition-all">(806) 274-7200</a>
             </div>
 
-            <div className="flex flex-col gap-6 col-span-2 md:col-span-1">
-              <span className="text-brand-neon text-[10px] font-black uppercase tracking-[0.4em]">KEEP IT LOADED</span>
-              <div className="flex flex-col gap-4 text-brand-white/80 font-bold uppercase text-sm">
-                <div className="flex items-center gap-2">
-                  <Star size={14} fill="#B8F000" className="text-brand-neon" />
-                  <span className="text-xs">4.6 RATING (867 REVIEWS)</span>
-                </div>
-                <p className="text-[10px] opacity-40 leading-relaxed">
-                  Borger's most loaded pizza. No shortcuts. No skimping. Period.
-                </p>
+            <div className="flex flex-col gap-1">
+              <span className="font-display text-[16px] text-[#B8F000] uppercase mb-2">FRITCH</span>
+              <p className="text-[#F5F5F5] text-[15px] font-semibold uppercase tracking-[1px]">424 E BROADWAY ST</p>
+              <p className="text-[#F5F5F5] text-[15px] font-semibold uppercase tracking-[1px] mb-2">FRITCH, TX 79036</p>
+              <a href="tel:8068570098" className="font-display text-[18px] text-[#B8F000] uppercase hover:brightness-110 transition-all">(806) 857-0098</a>
+            </div>
+          </div>
+
+          {/* COLUMN 4: KEEP IT LOADED */}
+          <div className="flex flex-col gap-8">
+            <h4 className="font-display text-[20px] font-bold tracking-[2px] uppercase text-[#B8F000]">KEEP IT LOADED</h4>
+            
+            <div>
+              <div className="flex items-center gap-1 mb-2">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <Star key={s} size={16} fill={s <= 4 ? "#FFB800" : "none"} className={s <= 4 ? "text-[#FFB800]" : "text-white/20"} />
+                ))}
+              </div>
+              <h5 className="font-display text-[18px] text-[#F5F5F5] uppercase">4.6 RATING</h5>
+              <span className="text-[12px] font-bold text-white/40 uppercase tracking-widest">867 COMBINED REVIEWS</span>
+            </div>
+
+            <p className="font-display text-[16px] text-[#F5F5F5] uppercase leading-relaxed tracking-[1px]">
+              BORGER'S MOST LOADED PIZZA.<br />
+              NO SHORTCUTS.<br />
+              NO SKIMPING.<br />
+              PERIOD.
+            </p>
+
+            <div>
+              <span className="font-display text-[14px] text-[#B8F000] uppercase tracking-[2px] block mb-4">FOLLOW US</span>
+              <div className="flex gap-6">
+                <a href="#" className="text-[14px] font-bold uppercase tracking-[1px] text-[#F5F5F5] hover:text-[#B8F000] transition-colors">FACEBOOK</a>
+                <a href="#" className="text-[14px] font-bold uppercase tracking-[1px] text-[#F5F5F5] hover:text-[#B8F000] transition-colors">INSTAGRAM</a>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3">
-            <Pizza className="text-brand-neon w-8 h-8" />
-            <span className="font-display text-2xl uppercase tracking-tighter">Jesse's Pizza Co.</span>
+      <div className="h-[1px] w-full bg-[#B8F000] opacity-20" />
+      
+      {/* SUB-FOOTER */}
+      <div className="bg-[#2A2A2A] py-6 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 noise-overlay opacity-10 pointer-events-none" />
+        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+          <div className="text-[12px] font-semibold uppercase tracking-[2px] text-[#666666] text-center md:text-left">
+            © 2026 JESSE'S PIZZA CO. • ALL RIGHTS RESERVED.
           </div>
-          
-          <div className="flex flex-col items-center md:items-end gap-2 text-[10px] font-black uppercase tracking-[0.2em] opacity-30 text-[#F5F5F5]">
-            <span>© 2026 Jesse's Pizza Co. • All Rights Reserved</span>
-            <span>Design by Plato Restaurant Platform</span>
+          <div className="flex gap-8">
+            <button 
+              onClick={() => { window.scrollTo(0, 0); setView('privacy'); }} 
+              className="text-[12px] font-semibold uppercase tracking-[2px] text-[#666666] hover:text-[#F5F5F5] transition-colors"
+            >
+              PRIVACY POLICY
+            </button>
+            <button 
+              onClick={() => { window.scrollTo(0, 0); setView('terms'); }} 
+              className="text-[12px] font-semibold uppercase tracking-[2px] text-[#666666] hover:text-[#F5F5F5] transition-colors"
+            >
+              TERMS OF SERVICE
+            </button>
           </div>
         </div>
       </div>
