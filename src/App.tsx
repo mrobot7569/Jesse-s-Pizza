@@ -442,7 +442,7 @@ export default function App() {
   );
 
   const Footer = () => (
-    <footer className="bg-[#0D0D0D] relative overflow-hidden">
+    <footer className="bg-[#0D0D0D] relative overflow-hidden pb-[52px]">
       <div className="absolute top-0 left-0 w-full h-[1px] bg-[#B8F000] opacity-50 z-20" />
       <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
       
@@ -550,22 +550,23 @@ export default function App() {
       <div className="h-[1px] w-full bg-[#B8F000] opacity-20" />
       
       {/* SUB-FOOTER */}
-      <div className="bg-[#2A2A2A] py-6 px-6 relative overflow-hidden">
+      <div className="bg-[#2A2A2A] py-[20px] px-6 relative overflow-hidden">
         <div className="absolute inset-0 noise-overlay opacity-10 pointer-events-none" />
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
           <div className="text-[12px] font-semibold uppercase tracking-[2px] text-[#666666] text-center md:text-left">
-            © 2026 JESSE'S PIZZA CO. • ALL RIGHTS RESERVED.
+            © 2026 JESSE'S PIZZA CO. ALL RIGHTS RESERVED.
           </div>
-          <div className="flex gap-8">
+          <div className="flex items-center gap-4 text-[12px] font-semibold uppercase tracking-[2px] text-[#666666]">
             <button 
               onClick={() => { window.scrollTo(0, 0); setView('privacy'); }} 
-              className="text-[12px] font-semibold uppercase tracking-[2px] text-[#666666] hover:text-[#F5F5F5] transition-colors"
+              className="hover:text-[#F5F5F5] transition-colors"
             >
               PRIVACY POLICY
             </button>
+            <span className="opacity-100">|</span>
             <button 
               onClick={() => { window.scrollTo(0, 0); setView('terms'); }} 
-              className="text-[12px] font-semibold uppercase tracking-[2px] text-[#666666] hover:text-[#F5F5F5] transition-colors"
+              className="hover:text-[#F5F5F5] transition-colors"
             >
               TERMS OF SERVICE
             </button>
