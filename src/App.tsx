@@ -999,8 +999,8 @@ export default function App() {
               <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-32">
-                    <h2 className="font-display text-6xl md:text-9xl mb-12 text-brand-neon uppercase leading-tight">START HERE.</h2>
-                    <p className="text-xl md:text-3xl text-brand-white font-black uppercase tracking-widest italic">
+                    <h2 className="font-display text-6xl md:text-9xl mb-12 text-brand-neon uppercase leading-tight tracking-[0.05em]">START HERE.</h2>
+                    <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-[0.2em] italic">
                       These are the ones people order on repeat. There's a reason for that.
                     </p>
                   </div>
@@ -1008,35 +1008,35 @@ export default function App() {
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                     {/* Item 1 */}
                     <div className="bg-brand-concrete p-10 flex flex-col noise-overlay border-none relative group">
-                      <div className="absolute top-0 right-0 bg-brand-red text-brand-white font-black text-xs uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-y-[-50%]">Most Popular</div>
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold">The Jalapeño Popper Pizza</h3>
-                      <p className="text-brand-white text-lg font-display font-bold uppercase leading-snug mb-4 flex-1 text-pretty">
+                      <div className="absolute top-0 right-0 bg-brand-red text-brand-white font-black text-[10px] uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-y-[-50%] tracking-widest">Most Popular</div>
+                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em] relative z-10">The Jalapeño Popper Pizza</h3>
+                      <p className="text-brand-white text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty relative z-10">
                         Creamy base. Fresh jalapeños. Loaded every time. Not because of the name. Because of what's on it.
                       </p>
-                      <p className="text-brand-white text-xl font-display mb-8 font-bold">12" — $18.29 | 14" — $23.29</p>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all">Order Now</button>
+                      <p className="text-brand-white text-xl font-display mb-8 font-bold tracking-wide relative z-10">12" — $18.29 | 14" — $23.29</p>
+                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all relative z-10">Order Now</button>
                     </div>
                     
                     {/* Item 2 */}
                     <div className="bg-brand-concrete p-10 flex flex-col noise-overlay border-none relative group">
-                      <div className="absolute top-0 right-0 bg-brand-red text-brand-white font-black text-xs uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-y-[-50%]">Most Popular</div>
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold">The Chicken Bacon Ranch</h3>
-                      <p className="text-brand-white text-lg font-display font-bold uppercase leading-snug mb-4 flex-1 text-pretty">
+                      <div className="absolute top-0 right-0 bg-brand-red text-brand-white font-black text-[10px] uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-y-[-50%] tracking-widest">Most Popular</div>
+                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em] relative z-10">The Chicken Bacon Ranch</h3>
+                      <p className="text-brand-white text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty relative z-10">
                         Bacon. Ranch. Chicken. All of it. Not a suggestion of those things. Actually loaded.
                       </p>
-                      <p className="text-brand-white text-xl font-display mb-8 font-bold">12" — $18.29 | 14" — $23.29 | 18" — $26.99</p>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all">Order Now</button>
+                      <p className="text-brand-white text-xl font-display mb-8 font-bold tracking-wide relative z-10">12" — $18.29 | 14" — $23.29 | 18" — $26.99</p>
+                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all relative z-10">Order Now</button>
                     </div>
 
                     {/* Item 3 */}
                     <div className="bg-brand-concrete p-10 flex flex-col noise-overlay border-none relative group">
-                      <div className="absolute top-0 right-0 bg-brand-red text-brand-white font-black text-xs uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-y-[-50%]">Best Value</div>
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold">The 18" Jumbo Pizza</h3>
-                      <p className="text-brand-white text-lg font-display font-bold uppercase leading-snug mb-4 flex-1 text-pretty">
+                      <div className="absolute top-0 right-0 bg-brand-red text-brand-white font-black text-[10px] uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-y-[-50%] tracking-widest">Best Value</div>
+                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em] relative z-10">The 18" Jumbo Pizza</h3>
+                      <p className="text-brand-white text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty relative z-10">
                         18 inches. Edge to edge toppings. Feeds a family of five with slices left over. Same toppings as every other size. No skimping.
                       </p>
-                      <p className="text-brand-white text-xl font-display mb-8 font-bold">From $21.50</p>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all">Order Now</button>
+                      <p className="text-brand-white text-xl font-display mb-8 font-bold tracking-wide relative z-10">From $21.50</p>
+                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all relative z-10">Order Now</button>
                     </div>
                   </div>
                 </div>
@@ -2310,7 +2310,7 @@ export default function App() {
               <section className="bg-brand-concrete px-6 py-32 md:py-48 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[-2px]">HERE'S EXACTLY<br/>WHAT YOU'RE<br/>GETTING.</h2>
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[0.05em]">HERE'S EXACTLY<br/>WHAT YOU'RE<br/>GETTING.</h2>
                     <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto">Not "great pizza." Here's what that actually means.</p>
                   </div>
 
@@ -2327,9 +2327,9 @@ export default function App() {
                         <div className="absolute top-0 right-0 bg-brand-red text-brand-white text-[10px] font-black px-4 py-2 uppercase tracking-widest italic z-10">BEST VALUE</div>
                       </div>
                       <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[-0.5px] mb-2">THE 18" JUMBO</h3>
-                        <p className="text-[15px] text-[#F5F5F5] mb-2 font-[400]">Loaded edge to edge. Feeds everyone.</p>
-                        <p className="text-[15px] text-[#F5F5F5] mb-8 font-[400]">From $21.50</p>
+                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">THE 18" JUMBO</h3>
+                        <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">Loaded edge to edge. Feeds everyone.</p>
+                        <p className="text-[16px] text-brand-white mb-8 font-display font-bold tracking-wide relative z-10">From $21.50</p>
                         <button onClick={startOrder} className="mt-auto bg-brand-red text-brand-white py-5 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center">Order Now</button>
                       </div>
                     </div>
@@ -2346,9 +2346,9 @@ export default function App() {
                         <div className="absolute top-0 right-0 bg-brand-red text-brand-white text-[10px] font-black px-4 py-2 uppercase tracking-widest italic z-10">MOST POPULAR</div>
                       </div>
                       <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[-0.5px] mb-2">JALAPEÑO POPPER</h3>
-                        <p className="text-[15px] text-[#F5F5F5] mb-2 font-[400]">Creamy heat. Serious kick. Always loaded.</p>
-                        <p className="text-[15px] text-[#F5F5F5] mb-8 font-[400]">12" — $18.29 | 14" — $23.29</p>
+                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">JALAPEÑO POPPER</h3>
+                        <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">Creamy heat. Serious kick. Always loaded.</p>
+                        <p className="text-[16px] text-brand-white mb-8 font-display font-bold tracking-wide relative z-10">12" — $18.29 | 14" — $23.29</p>
                         <button onClick={startOrder} className="mt-auto bg-brand-red text-brand-white py-5 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center">Order Now</button>
                       </div>
                     </div>
@@ -2365,9 +2365,9 @@ export default function App() {
                         <div className="absolute top-0 right-0 bg-brand-red text-brand-white text-[10px] font-black px-4 py-2 uppercase tracking-widest italic z-10">MOST POPULAR</div>
                       </div>
                       <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[-0.5px] mb-2">CHICKEN BACON RANCH</h3>
-                        <p className="text-[15px] text-[#F5F5F5] mb-2 font-[400]">Bacon. Ranch. Chicken. Actually loaded.</p>
-                        <p className="text-[15px] text-[#F5F5F5] mb-8 font-[400]">12" — $18.29 | 14" — $23.29 | 18" — $26.99</p>
+                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">CHICKEN BACON RANCH</h3>
+                        <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">Bacon. Ranch. Chicken. Actually loaded.</p>
+                        <p className="text-[16px] text-brand-white mb-8 font-display font-bold tracking-wide relative z-10">12" — $18.29 | 14" — $23.29 | 18" — $26.99</p>
                         <button onClick={startOrder} className="mt-auto bg-brand-red text-brand-white py-5 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center">Order Now</button>
                       </div>
                     </div>
@@ -2384,9 +2384,9 @@ export default function App() {
                         <div className="absolute top-0 right-0 bg-brand-red text-brand-white text-[10px] font-black px-4 py-2 uppercase tracking-widest italic z-10">BEST VALUE</div>
                       </div>
                       <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[-0.5px] mb-2">THE FAMILY DEAL</h3>
-                        <p className="text-[15px] text-[#F5F5F5] mb-2 font-[400]">18" Jumbo + Cheezy Bread + 2 Liter.</p>
-                        <p className="text-[15px] text-[#F5F5F5] mb-8 font-[400]">$34.99</p>
+                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">THE FAMILY DEAL</h3>
+                        <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">18" Jumbo + Cheezy Bread + 2 Liter.</p>
+                        <p className="text-[16px] text-brand-white mb-8 font-display font-bold tracking-wide relative z-10">$34.99</p>
                         <button onClick={startOrder} className="mt-auto bg-brand-red text-brand-white py-5 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center">Order Now</button>
                       </div>
                     </div>
@@ -2410,7 +2410,7 @@ export default function App() {
               {/* SECTION 7: OBJECTION REMOVAL */}
               <section className="bg-brand-black px-6 py-[160px] noise-overlay text-center">
                 <div className="max-w-[600px] mx-auto">
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[-2px]">STILL NOT<br/>SURE?</h2>
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.05em]">STILL NOT<br/>SURE?</h2>
                   
                   <div className="space-y-4 mb-16 text-[20px] text-brand-white font-[400] leading-relaxed">
                     <p>Order once from our Borger location.</p>
@@ -2442,7 +2442,7 @@ export default function App() {
               <section className="bg-brand-concrete px-6 py-32 md:py-48 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[-2px]">WHAT BORGER<br/>IS SAYING.</h2>
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[0.05em]">WHAT BORGER<br/>IS SAYING.</h2>
                     <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto">These are aren't cherry picked. This is just what happens when the food is good.</p>
                   </div>
 
@@ -2466,7 +2466,7 @@ export default function App() {
               <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-20">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase leading-[0.95] tracking-[-2px]">FIND US IN<br/>BORGER.</h2>
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase leading-[0.95] tracking-[0.05em]">FIND US IN<br/>BORGER.</h2>
                   </div>
 
                   <div className="max-w-[700px] mx-auto bg-brand-concrete border border-white/5 noise-overlay overflow-hidden">
@@ -2865,7 +2865,7 @@ export default function App() {
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
                   <span className="text-[#F5F5F5] text-[13px] font-[600] tracking-[4px] uppercase mb-2 block">BORGER & FRITCH, TX</span>
                   
-                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] mb-8 leading-[0.95] tracking-[-2px] uppercase text-[#B8F000]">
+                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] mb-8 leading-[0.95] tracking-[0.05em] uppercase text-[#B8F000]">
                     SKIP THE FORM.<br />
                     <span className="text-[#D62828]">JUST</span> ORDER.
                   </h1>
@@ -2889,7 +2889,7 @@ export default function App() {
               <section className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[0.05em]">
                       TWO LOCATIONS.<br />BOTH READY.
                     </h2>
                     <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
@@ -2957,7 +2957,7 @@ export default function App() {
               <section className="bg-[#2A2A2A] px-6 py-32 noise-overlay">
                 <div className="max-w-4xl mx-auto">
                   <div className="text-center mb-16">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">HOURS.</h2>
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[0.05em]">HOURS.</h2>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-16 md:gap-24 text-center">
@@ -2989,7 +2989,7 @@ export default function App() {
               <section className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay">
                 <div className="max-w-[640px] mx-auto">
                   <div className="text-center mb-16">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[0.05em]">
                       SEND US A<br />MESSAGE.
                     </h2>
                     <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] text-center">
