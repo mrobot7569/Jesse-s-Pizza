@@ -4407,14 +4407,6 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* STICKY MOBILE CTA (Only on home) */}
-      {view === 'home' && !isMenuOpen && (
-        <div className="md:hidden fixed bottom-6 left-6 right-6 z-50">
-          <button onClick={startOrder} className="w-full bg-brand-red text-brand-white py-5 rounded-none font-display text-2xl uppercase tracking-widest flex items-center justify-center gap-3 active:scale-95 transition-all">
-            Order Now <ChevronRight />
-          </button>
-        </div>
-      )}
       {isMarketingView && <PromoStrip />}
     </div>
   );
