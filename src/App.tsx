@@ -28,7 +28,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 
-type FunnelStep = 'home' | 'menu-browse' | 'about' | 'contact' | 'careers' | 'locations' | 'borger-location' | 'order-start' | 'menu' | 'product' | 'upsell' | 'cart' | 'checkout' | 'success';
+type FunnelStep = 'home' | 'menu-browse' | 'about' | 'contact' | 'careers' | 'locations' | 'borger-location' | 'fritch-location' | 'order-start' | 'menu' | 'product' | 'upsell' | 'cart' | 'checkout' | 'success';
 
 type CartItem = {
   id: string;
@@ -209,11 +209,14 @@ const MobileMenu = ({ isOpen, onClose, setView, currentView }: { isOpen: boolean
           className="md:hidden fixed inset-0 bg-brand-black z-[300] flex flex-col overflow-hidden"
         >
           <div className="flex-1 flex flex-col p-8 sm:p-12 relative z-10">
-            <div className="flex justify-between items-center mb-16">
-              <div className="font-display text-xl tracking-tight text-brand-neon">JP CO.</div>
+            <div className="flex items-center mb-16">
+              <div className="flex items-center gap-2 text-brand-neon">
+                <Pizza size={24} />
+                <span className="font-display text-xl tracking-tight uppercase">Jesse's Pizza Co.</span>
+              </div>
               <button 
                 onClick={onClose}
-                className="group flex items-center gap-3 bg-white/5 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors border border-white/5"
+                className="ml-auto group flex items-center gap-3 bg-white/5 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors border border-white/5"
               >
                 <span className="font-black text-[10px] uppercase tracking-widest group-hover:text-brand-neon transition-colors">Close</span>
                 <X size={18} className="text-brand-neon" />
@@ -284,19 +287,18 @@ export default function App() {
   const goToMenu = () => setView('menu');
   const backToHome = () => setView('home');
 
-  const marketingViews = ['home', 'menu-browse', 'about', 'careers', 'locations', 'borger-location', 'contact'];
+  const marketingViews = ['home', 'menu-browse', 'about', 'careers', 'locations', 'borger-location', 'fritch-location', 'contact'];
   const isMarketingView = marketingViews.includes(view);
 
   const PromoStrip = () => (
-    <div className="hidden lg:flex fixed bottom-0 left-0 right-0 z-[100] bg-brand-neon h-10 items-center justify-center border-t border-brand-black/20 overflow-hidden">
-      <div className="absolute inset-0 noise-overlay pointer-events-none" />
+    <div className="hidden lg:flex fixed bottom-0 left-0 right-0 z-[100] bg-brand-neon h-10 items-center justify-center border-t border-white/10 overflow-hidden">
       <div className="flex items-center gap-8 relative z-10">
-        <span className="font-display text-brand-black text-xs uppercase tracking-[0.4em] font-black italic">
+        <span className="font-display text-brand-black text-[11px] uppercase tracking-[0.1em] font-bold">
           READY TO EAT THE BEST PIZZA IN THE TEXAS PANHANDLE?
         </span>
         <button 
           onClick={startOrder} 
-          className="bg-brand-red text-brand-white px-5 py-1 flex items-center text-[10px] font-black uppercase tracking-[.25em] hover:bg-brand-black hover:text-brand-neon transition-all shadow-xl active:scale-95"
+          className="bg-brand-red text-brand-white px-5 py-1 flex items-center text-[10px] font-black uppercase tracking-[.1em] hover:bg-brand-black hover:text-brand-neon transition-all active:scale-95"
         >
           ORDER NOW
         </button>
@@ -305,16 +307,16 @@ export default function App() {
   );
 
   const MainNavigation = () => (
-    <nav className="flex justify-between items-center px-4 md:px-8 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 overflow-hidden">
+    <nav className="flex items-center px-4 md:px-6 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 overflow-hidden">
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
-      <div className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0 relative z-10" onClick={() => { window.scrollTo(0, 0); setView('home'); }}>
+      <div className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0 relative z-10 shrink-0" onClick={() => { window.scrollTo(0, 0); setView('home'); }}>
         <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8 shrink-0" />
         <span className="font-display text-base sm:text-2xl md:text-3xl uppercase truncate text-brand-neon">
           Jesse's Pizza Co.
         </span>
       </div>
 
-      <div className="hidden md:flex items-center gap-8 lg:gap-10 font-display text-lg uppercase tracking-wider text-brand-white">
+      <div className="hidden md:flex ml-auto items-center gap-8 lg:gap-10 font-display text-lg uppercase tracking-wider text-brand-white relative z-10">
         <button 
           onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setView('menu-browse'); }} 
           className={`hover:text-brand-neon transition-colors tracking-widest ${view === 'menu-browse' ? 'text-brand-neon border-b border-brand-neon' : ''}`}
@@ -351,7 +353,7 @@ export default function App() {
       </div>
 
       <button 
-        className="md:hidden text-brand-neon p-2 hover:bg-white/5 rounded-sm transition-colors"
+        className="ml-auto md:hidden text-brand-neon p-2 hover:bg-white/5 rounded-sm transition-colors relative z-10"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         aria-label="Toggle menu"
       >
@@ -1628,13 +1630,25 @@ export default function App() {
               {/* SECTION 1: HERO */}
               <section className="relative h-[calc(100vh-80px)] flex items-center justify-center bg-brand-black overflow-hidden noise-overlay">
                 <div className="absolute inset-0 z-0">
-                  <img 
-                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000" 
-                    alt="Delicious Pizza Background"
-                    className="w-full h-full object-cover opacity-50 grayscale-[0.2]"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-brand-black/40" />
+                  {/* Desktop Background Video */}
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
+                    <iframe
+                      src="https://www.youtube.com/embed/cW45-Li_Xlg?autoplay=1&mute=1&controls=0&loop=1&playlist=cW45-Li_Xlg&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
+                      className="w-[100%] h-[100%] md:w-[150%] md:h-[150%] lg:w-[200%] lg:h-[200%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full opacity-40 grayscale-[0.3] scale-[1.2] md:scale-[1.1]"
+                      allow="autoplay; encrypted-media"
+                      title="Pizza Background Video"
+                    ></iframe>
+                  </div>
+                  {/* Mobile Static Fallback */}
+                  <div className="absolute inset-0 md:hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=1200" 
+                      alt="Delicious Pizza Fallback"
+                      className="w-full h-full object-cover opacity-40 grayscale-[0.2]"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-brand-black/50 backdrop-blur-[2px]" />
                 </div>
                 
                 <div className="w-full mx-auto text-center relative z-10 px-6">
@@ -1749,7 +1763,7 @@ export default function App() {
                           <a href="https://maps.google.com/?q=Jesse's+Pizza+Company+Fritch" target="_blank" rel="noopener noreferrer" className="block text-[#F5F5F5] hover:text-brand-neon transition-colors uppercase text-[12px] font-bold tracking-widest">
                             Get Directions
                           </a>
-                          <button onClick={() => { window.scrollTo(0, 0); setView('locations'); }} className="block text-[#F5F5F5]/60 hover:text-brand-white transition-colors text-[14px] mx-auto">
+                          <button onClick={() => { window.scrollTo(0, 0); setView('fritch-location'); }} className="block text-[#F5F5F5]/60 hover:text-brand-white transition-colors text-[14px] mx-auto">
                             View full Fritch location page →
                           </button>
                         </div>
@@ -1875,6 +1889,342 @@ export default function App() {
             <Footer />
           </motion.div>
 
+        ) : view === 'fritch-location' ? (
+          <motion.div 
+            key="fritch-location"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="bg-[#0D0D0D] min-h-screen noise-overlay"
+          >
+            <main className="bg-[#0D0D0D]">
+              {/* SECTION 1: HERO */}
+              <section className="relative min-h-[calc(100vh-64px)] flex items-center justify-center bg-[#0D0D0D] overflow-hidden pt-20 pb-12">
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000" 
+                    alt="Fritch Pizza Close-up"
+                    className="w-full h-full object-cover opacity-40 grayscale-[0.2]"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-[#0D0D0D]/60" />
+                </div>
+                
+                <div className="w-full mx-auto text-center relative z-10 px-6">
+                  <span className="text-[#B8F000] text-[14px] font-black tracking-[0.5em] uppercase mb-4 block text-center">FRITCH, TX</span>
+                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                    FRITCH KNOWS<br/>GOOD PIZZA.<br/>THIS IS IT. <span className="text-[#D62828]">PERIOD.</span>
+                  </h1>
+                  <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto text-center mb-12">
+                    Fresh. Loaded edge to edge. Ready in 20 minutes. No shortcuts. No skimping. Ever.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row justify-center gap-6">
+                    <button onClick={startOrder} className="bg-[#D62828] text-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]">
+                      Order Now — Fritch
+                    </button>
+                    <a href="tel:8068570098" className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px] text-center">
+                      Call (806) 857-0098
+                    </a>
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 2: TRUST STRIP */}
+              <section className="bg-[#B8F000] py-12 px-6 overflow-hidden">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 font-black text-[#0D0D0D] text-[16px] uppercase text-center md:text-left">
+                  <span>"Fritch's go-to pizza spot."</span>
+                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                  <span>"Loaded every single time."</span>
+                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                  <span>"Ready in 20 minutes or we'll tell you."</span>
+                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                  <span>"No chains. No shortcuts. Ever."</span>
+                </div>
+              </section>
+
+              {/* SECTION 3: ENEMY SECTION */}
+              <section className="bg-[#0D0D0D] px-6 py-[140px] noise-overlay">
+                <div className="max-w-7xl mx-auto text-center">
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-16 leading-[0.95] tracking-[-2px]">YOU ALREADY<br/>KNOW.</h2>
+                  
+                  <div className="space-y-[40px] mb-16">
+                    <p className="text-[32px] font-bold text-[#F5F5F5] uppercase">You've waited 45 minutes for it.</p>
+                    <p className="text-[32px] font-bold text-[#F5F5F5] uppercase">Opened the box and felt let down.</p>
+                    <p className="text-[32px] font-bold text-[#B8F000] uppercase">That ends here.</p>
+                  </div>
+                  
+                  <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[500px] mx-auto text-center">
+                    Jesse's Fritch location is built for people who are done settling for pizza that doesn't deliver.
+                  </p>
+                </div>
+              </section>
+
+              {/* SECTION 4: FULL BLEED IMAGE BREAK */}
+              <section className="relative h-[250px] md:h-[400px] bg-[#0D0D0D] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1593504049359-7b7d92c72857?auto=format&fit=crop&q=80&w=2000" 
+                  alt="High Contrast Pizza"
+                  className="w-full h-full object-cover grayscale-[0.2]"
+                  referrerPolicy="no-referrer"
+                />
+              </section>
+
+              {/* SECTION 5: OFFER SECTION */}
+              <section className="bg-[#2A2A2A] px-6 py-32 noise-overlay">
+                <div className="max-w-7xl mx-auto">
+                  <div className="text-center mb-24">
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-6 leading-[0.95] tracking-[-2px]">HERE'S EXACTLY<br/>WHAT YOU'RE<br/>GETTING.</h2>
+                    <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">Not "great pizza." Here's what that actually means.</p>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {[
+                      {
+                        title: "THE 18\" JUMBO",
+                        desc: "Loaded edge to edge. Feeds everyone.",
+                        price: "From $21.50",
+                        badge: "BEST VALUE",
+                        img: "https://i.imgur.com/oz3N4dm.jpeg"
+                      },
+                      {
+                        title: "WINGS",
+                        desc: "Crispy, hot, and full of flavor.",
+                        price: "8 ct $11.99 | 12 ct $16.99 | 18 ct $23.99",
+                        badge: "MOST POPULAR",
+                        img: "https://picsum.photos/seed/wingsfit/600/600"
+                      },
+                      {
+                        title: "JALAPEÑO POPPER",
+                        desc: "Creamy heat. Serious kick. Always loaded.",
+                        price: "12\" — $18.29 | 14\" — $23.29",
+                        badge: "MOST POPULAR",
+                        img: "https://picsum.photos/seed/poppaf/600/600"
+                      },
+                      {
+                        title: "WINGS + PIZZA DEAL",
+                        desc: "Wings (12 ct) + Large Pizza.",
+                        price: "$45.99",
+                        badge: "BEST VALUE",
+                        img: "https://picsum.photos/seed/famfit/600/600"
+                      }
+                    ].map((card, i) => (
+                      <div key={i} className="bg-[#0D0D0D] border border-white/5 noise-overlay relative flex flex-col group overflow-hidden">
+                        <div className="h-[240px] relative overflow-hidden">
+                          <img 
+                            src={card.img} 
+                            alt={card.title} 
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            referrerPolicy="no-referrer"
+                          />
+                          <div className="absolute top-0 right-0 bg-[#D62828] text-white px-4 py-2 font-black text-[12px] tracking-widest uppercase">
+                            {card.badge}
+                          </div>
+                        </div>
+                        <div className="p-8 md:p-12 flex-1 flex flex-col">
+                          <h3 className="font-display text-[28px] md:text-[36px] text-[#B8F000] leading-[1.1] tracking-[-0.5px] uppercase mb-4">{card.title}</h3>
+                          <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] mb-4">{card.desc}</p>
+                          <p className="text-[#B8F000] font-bold text-[20px] mb-12 uppercase italic">{card.price}</p>
+                          <button onClick={startOrder} className="mt-auto w-full bg-[#D62828] text-white py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all">Order Now</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 6: SPECIFICITY STRIP */}
+              <section className="bg-[#2A2A2A] py-12 px-6 overflow-hidden border-t border-white/5">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 font-bold text-[#B8F000] text-[16px] uppercase text-center md:text-left">
+                  <span>"Fritch's go-to pizza spot for a reason."</span>
+                  <div className="hidden md:block w-2 h-2 rounded-full bg-[#D62828]" />
+                  <span>"The Jumbo feeds five. Most people order two."</span>
+                  <div className="hidden md:block w-2 h-2 rounded-full bg-[#D62828]" />
+                  <span>"Same toppings on the 8\" as the 18\". No skimping."</span>
+                  <div className="hidden md:block w-2 h-2 rounded-full bg-[#D62828]" />
+                  <span>"Ready in 20 minutes or we'll tell you first."</span>
+                </div>
+              </section>
+
+              {/* SECTION 7: OBJECTION REMOVAL */}
+              <section className="bg-[#0D0D0D] px-6 py-[160px] noise-overlay">
+                <div className="max-w-[600px] mx-auto text-center">
+                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-16 leading-[0.95] tracking-[-2px]">STILL NOT<br/>SURE?</h2>
+                  
+                  <div className="space-y-6 mb-16">
+                    <p className="text-[20px] text-[#F5F5F5]">Order once from our Fritch location.</p>
+                    <p className="text-[20px] text-[#F5F5F5]">If it's not the best pizza you've had in town, call us and tell us.</p>
+                    <p className="text-[20px] text-[#F5F5F5]">We'd rather hear it than lose you.</p>
+                  </div>
+                  
+                  <p className="text-[14px] text-[#F5F5F5] mb-16 opacity-60">
+                    That's not a guarantee written by a lawyer. That's just how we operate.
+                  </p>
+                  
+                  <button onClick={startOrder} className="bg-[#D62828] text-white px-16 py-8 text-[18px] font-[700] uppercase tracking-[2px] shadow-2xl hover:scale-105 active:scale-95 transition-all w-full md:w-auto">
+                    Order Now and Find Out
+                  </button>
+                </div>
+              </section>
+
+              {/* SECTION 8: FULL BLEED IMAGE BREAK */}
+              <section className="relative h-[250px] md:h-[400px] bg-[#0D0D0D] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1541658016709-82535e94bc71?auto=format&fit=crop&q=80&w=2000" 
+                  alt="Wings Close-up Action"
+                  className="w-full h-full object-cover contrast-125"
+                  referrerPolicy="no-referrer"
+                />
+              </section>
+
+              {/* SECTION 9: SOCIAL PROOF */}
+              <section className="bg-[#2A2A2A] px-6 py-32 noise-overlay">
+                <div className="max-w-7xl mx-auto">
+                  <div className="text-center mb-24">
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-6 leading-[0.95] tracking-[-2px]">WHAT FRITCH<br/>IS SAYING.</h2>
+                    <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">These aren't cherry picked. This is just what happens when the food is good.</p>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {[
+                      "Best pizza around. Worth every drive from Sanford.",
+                      "Wings always crispy. Pizza always loaded. Never had a bad order.",
+                      "Chains are done for me. Once you eat here you can't go back.",
+                      "Consistently good. Every single visit. That's all you can ask for."
+                    ].map((review, i) => (
+                      <div key={i} className="bg-[#0D0D0D] p-12 md:p-16 border border-white/5 noise-overlay relative flex flex-col items-center text-center">
+                        <span className="font-display text-[#B8F000] text-[80px] leading-none mb-6">"</span>
+                        <p className="text-[24px] text-[#F5F5F5] font-[400] leading-relaxed mb-6 italic">{review}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 10: LOCATION INFO */}
+              <section className="bg-[#0D0D0D] px-6 py-32 noise-overlay">
+                <div className="max-w-7xl mx-auto">
+                  <div className="text-center mb-20">
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-6 leading-[0.95] tracking-[-2px]">FIND US IN<br/>FRITCH.</h2>
+                  </div>
+
+                  <div className="max-w-[700px] mx-auto bg-[#2A2A2A] border border-white/5 noise-overlay overflow-hidden">
+                    <div className="p-8 md:p-12 space-y-8">
+                      <div className="text-[#F5F5F5] text-center">
+                        <h3 className="font-display text-[32px] text-white uppercase mb-4">Jesse's Pizza Company</h3>
+                        <p className="text-[18px] opacity-80 mb-6">424 E Broadway St<br/>Fritch, TX 79036</p>
+                        <a href="tel:8068570098" className="block text-[24px] font-[700] text-white hover:text-[#B8F000] transition-colors mb-6">(806) 857-0098</a>
+                        <p className="text-[#B8F000] text-[13px] font-[600] tracking-[4px] uppercase mb-10">READY IN 20 MINUTES.</p>
+                      </div>
+
+                      <div className="h-[280px] w-full bg-[#0D0D0D] relative overflow-hidden grayscale brightness-75">
+                        <iframe 
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.062828282828!2d-101.6!3d35.64!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDM4JzI0LjAiTiAxMDHCsDM2JzAwLjAiVw!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                          className="w-full h-full border-0 absolute inset-0"
+                          allowFullScreen
+                          loading="lazy"
+                          title="Jesse's Pizza Fritch Map Location"
+                        ></iframe>
+                      </div>
+
+                      <div className="space-y-4">
+                        <button onClick={startOrder} className="w-full bg-[#D62828] text-white py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center">Order Online</button>
+                        <a href="tel:8068570098" className="block w-full border-2 border-[#B8F000] text-[#B8F000] py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all text-center">Call Now</a>
+                        <a href="https://maps.google.com/?q=Jesse's+Pizza+Company+Fritch" target="_blank" rel="noopener noreferrer" className="block text-[#F5F5F5] hover:text-[#B8F000] transition-colors uppercase text-[12px] font-bold tracking-widest text-center">Get Directions</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="mt-12 text-[#F5F5F5] opacity-60 text-[14px] text-center max-w-[600px] mx-auto uppercase tracking-widest leading-loose">
+                    Serving Fritch, Sanford, Borger, Stinnett, and Lake Meredith Area.
+                  </p>
+                </div>
+              </section>
+
+              {/* SECTION 11: FAQ */}
+              <section className="bg-[#2A2A2A] px-6 py-32 noise-overlay border-t border-white/5">
+                <div className="max-w-[800px] mx-auto">
+                  <div className="text-center mb-24">
+                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">FRITCH PIZZA<br/>QUESTIONS.<br/>ANSWERED.</h2>
+                  </div>
+
+                  <div className="space-y-16">
+                    {[
+                      {
+                        q: "What is the best pizza in Fritch, TX?",
+                        a: "If you want loaded toppings, big portions, and pizza worth ordering again, Jesse's on E Broadway St is Fritch's go-to spot."
+                      },
+                      {
+                        q: "How fast is pickup at the Fritch location?",
+                        a: "Most orders ready in 20 minutes or less. Order online or call ahead."
+                      },
+                      {
+                        q: "What makes Jesse's different from chains?",
+                        a: "We make pizza for the people in Fritch. Loaded toppings. Fresh dough. Consistent quality every single time."
+                      },
+                      {
+                        q: "Do you deliver in Fritch?",
+                        a: "Check our online ordering system for current delivery availability in your area."
+                      },
+                      {
+                        q: "Where is Jesse's Pizza Company in Fritch?",
+                        a: "424 E Broadway St, Fritch, TX 79036. Right on Broadway. Hard to miss."
+                      }
+                    ].map((item, i) => (
+                      <div key={i} className="space-y-4">
+                        <h3 className="font-display text-[#B8F000] text-[20px] uppercase leading-tight tracking-wide">{item.q}</h3>
+                        <p className="text-[#F5F5F5] text-[16px] font-[400] leading-[1.7]">{item.a}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              {/* SECTION 12: FINAL CLOSE */}
+              <section className="relative h-screen flex items-center justify-center bg-[#0D0D0D] overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                  <img 
+                    src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2002" 
+                    alt="Loaded Pizza Close-Up Final"
+                    className="w-full h-full object-cover opacity-40 grayscale-[0.5]"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-[#0D0D0D]/85" />
+                </div>
+                
+                <div className="w-full mx-auto text-center relative z-10 px-6">
+                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                    YOU'RE GOING<br/>TO EAT TONIGHT<br/>ANYWAY.
+                  </h1>
+                  <p className="text-[20px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto text-center mb-16 px-4">
+                    The only question is whether it's going to be worth it. Order from our Fritch location. Pick it up in 20 minutes.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row justify-center gap-8">
+                    <button onClick={startOrder} className="bg-[#D62828] text-white px-16 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]">
+                      Order Now — Fritch
+                    </button>
+                    <a href="tel:8068570098" className="border-2 border-[#B8F000] text-[#B8F000] px-16 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px] text-center">
+                      Call (806) 857-0098
+                    </a>
+                  </div>
+                </div>
+              </section>
+            </main>
+
+            <Footer />
+            
+            {/* MOBILE STICKY CTA */}
+            <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100] p-4 bg-[#0D0D0D]/90 backdrop-blur-md border-t border-white/10 pointer-events-none">
+              <button 
+                onClick={startOrder} 
+                className="w-full bg-[#D62828] text-white py-6 font-display text-2xl uppercase tracking-[0.1em] hover:scale-[1.02] active:scale-95 transition-all pointer-events-auto"
+              >
+                ORDER NOW — FRITCH
+              </button>
+            </div>
+          </motion.div>
+
         ) : view === 'borger-location' ? (
           <motion.div 
             key="borger-location"
@@ -1885,7 +2235,7 @@ export default function App() {
           >
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative h-[calc(100vh-64px)] flex items-center justify-center bg-brand-black overflow-hidden noise-overlay">
+              <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center bg-brand-black overflow-hidden noise-overlay pt-32 pb-24">
                 <div className="absolute inset-0 z-0">
                   <img 
                     src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000" 
@@ -1897,19 +2247,19 @@ export default function App() {
                 </div>
                 
                 <div className="w-full mx-auto text-center relative z-10 px-6">
-                  <span className="text-[#F5F5F5] text-[13px] font-[600] tracking-[4px] uppercase mb-2 block text-center">BORGER, TX</span>
-                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
-                    BORGER'S MOST<br/>LOADED PIZZA.<br/>RIGHT HERE ON<br/>W 3RD. <span className="text-brand-red">PERIOD.</span>
+                  <span className="text-brand-neon text-[14px] font-black tracking-[0.5em] uppercase mb-4 block text-center">BORGER, TX</span>
+                  <h1 className="font-display text-[56px] md:text-[88px] lg:text-[112px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
+                    NAME A BETTER<br/>PIZZA IN<br/>BORGER.<br/>WE'LL <span className="text-brand-red">WAIT.</span>
                   </h1>
                   <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto text-center mb-12">
                     Fresh. Loaded edge to edge. Ready in 20 minutes. No shortcuts. No skimping. Ever.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row justify-center gap-6">
-                    <button onClick={startOrder} className="bg-brand-red text-brand-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[240px]">
+                    <button onClick={startOrder} className="bg-brand-red text-brand-white px-10 py-5 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[240px]">
                       Order Now — Borger
                     </button>
-                    <a href="tel:8062747200" className="border-2 border-brand-neon text-brand-neon px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-brand-neon hover:text-brand-black transition-all shadow-2xl min-w-[240px] text-center">
+                    <a href="tel:8062747200" className="border-2 border-brand-neon text-brand-neon px-10 py-5 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-brand-neon hover:text-brand-black transition-all shadow-2xl min-w-[240px] text-center">
                       Call (806) 274-7200
                     </a>
                   </div>
@@ -2226,10 +2576,10 @@ export default function App() {
             <Footer />
             
             {/* MOBILE STICKY CTA */}
-            <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100] p-4 bg-gradient-to-t from-brand-black to-transparent pointer-events-none">
+            <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100] p-4 bg-brand-black/90 backdrop-blur-md border-t border-white/10 pointer-events-none">
               <button 
                 onClick={startOrder} 
-                className="w-full bg-brand-red text-brand-white py-6 font-display text-2xl uppercase tracking-[0.2em] shadow-[0_10px_30px_rgba(214,40,40,0.3)] hover:scale-[1.02] active:scale-95 transition-all pointer-events-auto"
+                className="w-full bg-brand-red text-brand-white py-6 font-display text-2xl uppercase tracking-[0.1em] hover:scale-[1.02] active:scale-95 transition-all pointer-events-auto"
               >
                 ORDER NOW — BORGER
               </button>
@@ -3270,7 +3620,7 @@ export default function App() {
       {/* STICKY MOBILE CTA (Only on home) */}
       {view === 'home' && !isMenuOpen && (
         <div className="md:hidden fixed bottom-6 left-6 right-6 z-50">
-          <button onClick={startOrder} className="w-full bg-brand-red text-brand-white py-5 rounded-none font-display text-2xl uppercase tracking-widest shadow-[0_20px_50px_rgba(214,40,40,0.3)] flex items-center justify-center gap-3 active:scale-95 transition-all">
+          <button onClick={startOrder} className="w-full bg-brand-red text-brand-white py-5 rounded-none font-display text-2xl uppercase tracking-widest flex items-center justify-center gap-3 active:scale-95 transition-all">
             Order Now <ChevronRight />
           </button>
         </div>
