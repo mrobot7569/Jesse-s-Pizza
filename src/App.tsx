@@ -346,10 +346,10 @@ const MobileMenu = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="md:hidden fixed inset-0 bg-brand-black z-[300] flex flex-col overflow-hidden"
+          className="md:hidden fixed inset-0 bg-brand-black z-[300] flex flex-col overflow-y-auto"
         >
-          <div className="flex-1 flex flex-col p-8 sm:p-12 relative z-10">
-            <div className="flex items-center mb-16">
+          <div className="flex-1 flex flex-col p-8 sm:p-12 relative z-10 pb-24">
+            <div className="flex items-center mb-8">
               <div className="flex items-center gap-2 text-brand-neon">
                 <Pizza size={24} />
                 <span className="font-display text-xl tracking-tight uppercase">
@@ -6880,7 +6880,7 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {isMarketingView && <PromoStrip />}
+      {isMarketingView && !isMenuOpen && <PromoStrip />}
     </div>
   );
 }
