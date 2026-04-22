@@ -191,7 +191,6 @@ const MENU_CATEGORIES = [
 
 const MobileMenu = ({ isOpen, onClose, setView, currentView }: { isOpen: boolean, onClose: () => void, setView: (v: FunnelStep) => void, currentView: FunnelStep }) => {
   const menuItems = [
-    { label: 'HOME', id: 'home' as FunnelStep },
     { label: 'MENU', id: 'menu-browse' as FunnelStep },
     { label: 'ABOUT', id: 'about' as FunnelStep },
     { label: 'LOCATIONS', id: 'locations' as FunnelStep },
@@ -284,7 +283,7 @@ export default function App() {
   const total = subtotal + tax + deliveryFee;
 
   // Navigation handlers
-  const startOrder = () => setView('order-start');
+  const startOrder = () => window.location.href = 'https://jessespizzacompany.com/order';
   const goToMenu = () => setView('menu');
   const backToHome = () => setView('home');
 
@@ -630,15 +629,28 @@ export default function App() {
                 </div>
                 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
-                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-[#2A2A2A] rounded-[40px] px-5 py-[10px] whitespace-nowrap mb-[12px] gap-2 w-auto max-w-[280px]">
-                    <Star size={18} fill="#FFB800" className="text-[#FFB800] shrink-0" />
-                    <span className="text-[16px] font-bold text-white leading-none">4.6</span>
-                    <span className="text-[14px] font-medium text-[#F5F5F5] leading-none uppercase">867 REVIEWS</span>
-                  </div>
+                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-4 text-[12px] opacity-90">Borger & Fritch, TX</p>
 
-                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-[8px] text-[12px]">Borger & Fritch, TX</p>
+                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-white/10 rounded-full px-6 py-3 whitespace-nowrap mb-4 gap-4 w-auto shadow-2xl relative overflow-hidden group">
+                    <div className="absolute inset-0 noise-overlay opacity-10 pointer-events-none" />
+                    <span className="font-display text-4xl text-white leading-none pt-1">4.6</span>
+                    
+                    <div className="flex items-center gap-1">
+                      {[1, 2, 3, 4].map((i) => (
+                        <Star key={i} size={22} fill="#B8F000" className="text-[#B8F000] shrink-0" />
+                      ))}
+                      <div className="relative">
+                        <Star size={22} className="text-white/20 shrink-0" />
+                        <div className="absolute inset-0 overflow-hidden w-[60%]">
+                          <Star size={22} fill="#B8F000" className="text-[#B8F000] shrink-0" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <span className="text-[14px] font-black text-white leading-none uppercase tracking-[2px]">867 Combined Reviews</span>
+                  </div>
                   
-                  <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center pt-2 tracking-[0.05em]">
+                  <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center tracking-[0.05em]">
                     <span>BORGER'S</span>
                     <span>MOST LOADED</span>
                     <span>PIZZA. <span className="text-[#D62828]">PERIOD.</span></span>
@@ -1000,13 +1012,14 @@ export default function App() {
 
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-[80vh] flex items-center justify-center bg-brand-black px-6 pt-16 pb-20 overflow-hidden noise-overlay border-b border-white/5">
+              <section className="relative min-h-[80vh] flex items-center justify-center bg-brand-black px-5 py-[60px] md:px-6 md:pt-16 md:pb-20 overflow-hidden noise-overlay border-b border-white/5">
                 <div className="absolute inset-0 z-0">
                   <img 
                     src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000" 
                     alt="Menu Pizza"
                     className="w-full h-full object-cover opacity-10 grayscale"
                     referrerPolicy="no-referrer"
+                    loading="eager"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-brand-black" />
                 </div>
@@ -1028,7 +1041,7 @@ export default function App() {
                     </div>
                     <span className="text-[14px] font-bold uppercase tracking-widest text-brand-white">867 COMBINED REVIEWS</span>
                   </div>
-                  <h1 className="font-display text-7xl md:text-9xl lg:text-[10rem] mb-8 leading-none uppercase text-brand-neon flex flex-col items-center tracking-[0.05em]">
+                  <h1 className="font-display text-[80px] md:text-9xl lg:text-[10rem] mb-8 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-[-2px]">
                     <span>THE MENU.</span>
                     <span>NO SHORTCUTS.</span>
                     <span>NO SKIMPING.</span>
@@ -1038,11 +1051,11 @@ export default function App() {
                     Loaded, fresh, and worth ordering again.<br />
                     Pick what you want. We'll handle the rest.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-6">
-                    <button onClick={startOrder} className="bg-brand-red text-brand-white px-16 py-8 text-3xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                  <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto px-5 sm:px-0">
+                    <button onClick={startOrder} className="bg-brand-red text-brand-white w-full sm:px-16 py-8 text-3xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
                       Order Now
                     </button>
-                    <a href="tel:8062747200" className="bg-transparent border-4 border-brand-neon text-brand-neon px-16 py-8 text-3xl font-display uppercase tracking-widest text-center hover:bg-brand-neon hover:text-brand-black transition-all">
+                    <a href="tel:8062747200" className="bg-transparent border-4 border-brand-neon text-brand-neon w-full sm:px-16 py-8 text-3xl font-display uppercase tracking-widest text-center hover:bg-brand-neon hover:text-brand-black transition-all">
                       Call Now
                     </a>
                   </div>
@@ -1050,57 +1063,69 @@ export default function App() {
               </section>
 
               {/* SECTION 2: MOST POPULAR */}
-              <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
+              <section className="bg-brand-black px-5 py-[60px] md:px-6 md:py-48 noise-overlay border-b border-white/5">
                 <div className="max-w-7xl mx-auto">
-                  <div className="text-center mb-32">
+                  <div className="text-center mb-24 md:mb-32">
                     <h2 className="font-display text-6xl md:text-9xl mb-12 text-brand-neon uppercase leading-tight tracking-[0.05em]">START HERE.</h2>
-                    <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-[0.2em] italic">
+                    <p className="text-xl md:text-2xl text-brand-white font-black uppercase tracking-[0.2em] italic px-4">
                       These are the ones people order on repeat. There's a reason for that.
                     </p>
                   </div>
                   
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                    {/* Item 1 */}
-                    <div className="bg-brand-concrete p-10 flex flex-col noise-overlay border-none relative group">
-                      <div className="absolute top-0 right-0 bg-brand-red text-brand-white font-black text-[10px] uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-y-[-50%] tracking-widest">Most Popular</div>
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em] relative z-10">The Jalapeño Popper Pizza</h3>
-                      <p className="text-brand-white text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty relative z-10">
-                        Creamy base. Fresh jalapeños. Loaded every time. Not because of the name. Because of what's on it.
-                      </p>
-                      <p className="text-brand-white text-xl font-display mb-8 font-bold tracking-wide relative z-10">12" — $18.29 | 14" — $23.29</p>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all relative z-10">Order Now</button>
-                    </div>
-                    
-                    {/* Item 2 */}
-                    <div className="bg-brand-concrete p-10 flex flex-col noise-overlay border-none relative group">
-                      <div className="absolute top-0 right-0 bg-brand-red text-brand-white font-black text-[10px] uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-y-[-50%] tracking-widest">Most Popular</div>
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em] relative z-10">The Chicken Bacon Ranch</h3>
-                      <p className="text-brand-white text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty relative z-10">
-                        Bacon. Ranch. Chicken. All of it. Not a suggestion of those things. Actually loaded.
-                      </p>
-                      <p className="text-brand-white text-xl font-display mb-8 font-bold tracking-wide relative z-10">12" — $18.29 | 14" — $23.29 | 18" — $26.99</p>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all relative z-10">Order Now</button>
-                    </div>
-
-                    {/* Item 3 */}
-                    <div className="bg-brand-concrete p-10 flex flex-col noise-overlay border-none relative group">
-                      <div className="absolute top-0 right-0 bg-brand-red text-brand-white font-black text-[10px] uppercase px-6 py-3 z-20 skew-x-[-12deg] translate-y-[-50%] tracking-widest">Best Value</div>
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em] relative z-10">The 18" Jumbo Pizza</h3>
-                      <p className="text-brand-white text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty relative z-10">
-                        18 inches. Edge to edge toppings. Feeds a family of five with slices left over. Same toppings as every other size. No skimping.
-                      </p>
-                      <p className="text-brand-white text-xl font-display mb-8 font-bold tracking-wide relative z-10">From $21.50</p>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all relative z-10">Order Now</button>
-                    </div>
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-12">
+                    {[
+                      {
+                        name: "The Jalapeño Popper Pizza",
+                        desc: "Creamy base. Fresh jalapeños. Loaded every time. Not because of the name. Because of what's on it.",
+                        price: "12\" — $18.29 | 14\" — $23.29",
+                        badge: "Most Popular",
+                        image: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&q=80&w=1000"
+                      },
+                      {
+                        name: "The Chicken Bacon Ranch",
+                        desc: "Bacon. Ranch. Chicken. All of it. Not a suggestion of those things. Actually loaded.",
+                        price: "12\" — $18.29 | 14\" — $23.29 | 18\" — $26.99",
+                        badge: "Most Popular",
+                        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1000"
+                      },
+                      {
+                        name: "The 18\" Jumbo Pizza",
+                        desc: "18 inches. Edge to edge toppings. Feeds a family of five with slices left over. Same toppings as every other size. No skimping.",
+                        price: "From $21.50",
+                        badge: "Best Value",
+                        image: "https://i.imgur.com/oz3N4dm.jpeg"
+                      }
+                    ].map((item, i) => (
+                      <div key={i} className="bg-brand-concrete flex flex-col noise-overlay border-none relative group overflow-hidden">
+                        <div className="relative h-[200px] md:h-[240px] w-full block overflow-hidden bg-[#2A2A2A]">
+                          <img 
+                            src={item.image} 
+                            alt={item.name} 
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" 
+                            referrerPolicy="no-referrer"
+                            loading={i === 0 ? "eager" : "lazy"}
+                          />
+                          <div className="absolute top-4 right-0 bg-brand-red text-brand-white font-black text-[10px] uppercase px-6 py-2 z-20 skew-x-[-12deg] tracking-widest leading-none flex items-center justify-center">{item.badge}</div>
+                        </div>
+                        <div className="p-8 md:p-10 flex flex-col flex-1">
+                          <h3 className="text-brand-neon font-display text-3xl md:text-4xl mb-4 uppercase font-bold tracking-[0.05em]">{item.name}</h3>
+                          <p className="text-brand-white text-[15px] md:text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty italic">
+                            {item.desc}
+                          </p>
+                          <p className="text-brand-white text-xl font-display mb-8 font-bold tracking-wide">{item.price}</p>
+                          <button onClick={startOrder} className="bg-brand-red text-brand-white w-full h-[52px] min-h-[52px] text-[15px] font-display font-bold uppercase tracking-widest hover:scale-105 transition-all">Order Now</button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </section>
 
               {/* SECTION 3: COMBOS */}
-              <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
+              <section className="bg-brand-black px-5 py-[60px] md:px-6 md:py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-6xl md:text-9xl mb-6 text-brand-neon uppercase leading-[0.95] font-bold">
+                    <h2 className="font-display text-5xl md:text-9xl mb-6 text-brand-neon uppercase leading-[0.95] font-bold">
                       MORE FOOD.<br/>BETTER VALUE.<br/>LESS THINKING.
                     </h2>
                     <p className="text-xl md:text-2xl text-brand-white font-sans font-black uppercase tracking-[0.2em] italic">
@@ -1108,66 +1133,77 @@ export default function App() {
                     </p>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Combo 1 */}
-                    <div className="bg-brand-concrete p-10 flex flex-col noise-overlay">
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold">Family Deal</h3>
-                      <div className="text-brand-white space-y-4 mb-8 flex-1">
-                        <p className="font-sans font-black text-[16px] uppercase leading-tight tracking-wider">18" Jumbo + Cheezy Bread + 2 Liter Drink</p>
-                        <p className="text-brand-neon text-3xl font-sans font-black tracking-[0.05em]">$34.99</p>
-                        <p className="opacity-80 italic uppercase font-sans font-black text-[12px] tracking-widest">Nobody goes home hungry. Better value than ordering separately.</p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center md:text-left">
+                    {[
+                      {
+                        name: "Family Deal",
+                        content: "18\" Jumbo + Cheezy Bread + 2 Liter Drink",
+                        price: "$34.99",
+                        detail: "Nobody goes home hungry. Better value than ordering separately.",
+                        image: "https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=1000"
+                      },
+                      {
+                        name: "Game Night Pack",
+                        content: "2 Large Pizzas + Wings (12 ct)",
+                        price: "$45.99",
+                        detail: "Built for a crowd. Gone faster than you'd think.",
+                        image: "https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&q=80&w=1000"
+                      },
+                      {
+                        name: "Quick Meal",
+                        content: "Medium Pizza + Drink",
+                        price: "$19.99",
+                        detail: "Fast. Simple. Hits the spot. In and out in 20 minutes.",
+                        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=1000"
+                      }
+                    ].map((combo, i) => (
+                      <div key={i} className="bg-brand-concrete flex flex-col noise-overlay overflow-hidden">
+                        <div className="h-[200px] md:h-[220px] w-full block overflow-hidden bg-[#2A2A2A]">
+                          <img src={combo.image} alt={combo.name} className="w-full h-full object-cover opacity-80" loading="lazy" referrerPolicy="no-referrer" />
+                        </div>
+                        <div className="p-8 md:p-10 flex flex-col flex-1">
+                          <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold">{combo.name}</h3>
+                          <div className="text-brand-white space-y-4 mb-8 flex-1">
+                            <p className="font-sans font-black text-[16px] uppercase leading-tight tracking-wider">{combo.content}</p>
+                            <p className="text-brand-neon text-3xl font-sans font-black tracking-[0.05em]">{combo.price}</p>
+                            <p className="opacity-80 italic uppercase font-sans font-black text-[12px] tracking-widest">{combo.detail}</p>
+                          </div>
+                          <button onClick={startOrder} className="bg-brand-red text-brand-white w-full h-[52px] min-h-[52px] font-display text-[15px] font-bold uppercase tracking-widest hover:scale-105 transition-all">Order This</button>
+                        </div>
                       </div>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-4 font-display text-xl uppercase tracking-widest hover:scale-105 transition-all">Order This</button>
-                    </div>
-                    
-                    {/* Combo 2 */}
-                    <div className="bg-brand-concrete p-10 flex flex-col noise-overlay">
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold">Game Night Pack</h3>
-                      <div className="text-brand-white space-y-4 mb-8 flex-1">
-                        <p className="font-sans font-black text-[16px] uppercase leading-tight tracking-wider">2 Large Pizzas + Wings (12 ct)</p>
-                        <p className="text-brand-neon text-3xl font-sans font-black tracking-[0.05em]">$45.99</p>
-                        <p className="opacity-80 italic uppercase font-sans font-black text-[12px] tracking-widest">Built for a crowd. Gone faster than you'd think.</p>
-                      </div>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-4 font-display text-xl uppercase tracking-widest hover:scale-105 transition-all">Order This</button>
-                    </div>
-
-                    {/* Combo 3 */}
-                    <div className="bg-brand-concrete p-10 flex flex-col noise-overlay">
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold">Quick Meal</h3>
-                      <div className="text-brand-white space-y-4 mb-8 flex-1">
-                        <p className="font-sans font-black text-[16px] uppercase leading-tight tracking-wider">Medium Pizza + Drink</p>
-                        <p className="text-brand-neon text-3xl font-sans font-black tracking-[0.05em]">$19.99</p>
-                        <p className="opacity-80 italic uppercase font-sans font-black text-[12px] tracking-widest">Fast. Simple. Hits the spot. In and out in 20 minutes.</p>
-                      </div>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-4 font-display text-xl uppercase tracking-widest hover:scale-105 transition-all">Order This</button>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </section>
 
               {/* SECTION 4: SPECIALTY PIZZAS */}
-              <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
+              <section className="bg-brand-black px-5 py-[60px] md:px-6 md:py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-7xl mx-auto">
-                  <div className="mb-24 px-4 bg-brand-concrete/20 py-12 border-l-4 border-brand-neon">
+                  <div className="mb-16 md:mb-24 px-4 md:px-12 bg-brand-concrete/20 py-10 md:py-12 border-l-4 border-brand-neon">
                     <h2 className="font-display text-5xl md:text-8xl mb-6 text-brand-neon uppercase leading-[0.95] font-bold">SPECIALTY PIZZAS.<br/>BUILT TO IMPRESS.</h2>
                     <p className="text-xl md:text-2xl text-brand-white font-display font-bold uppercase tracking-widest">
                       Every one made to order. Every one loaded the way it should be.
                     </p>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {[
-                      { name: "Jalapeño Popper", desc: "Creamy heat with a serious kick.", prices: "8\" — $10.29 | 12\" — $18.29 | 14\" — $23.29" },
-                      { name: "Chicken Bacon Ranch", desc: "Loaded with bacon and creamy ranch flavor.", prices: "8\" — $10.29 | 12\" — $18.29 | 14\" — $23.29 | 18\" — $26.99" },
-                      { name: "Closed on Sunday", desc: "Bold, hearty, and packed with toppings.", prices: "12\" — $18.29 | 14\" — $23.29 | 18\" — $26.99" },
-                      { name: "Meat Eater", desc: "All the meat. No holding back.", prices: "12\" — $18.29 | 14\" — $23.29 | 18\" — $26.99" },
-                      { name: "Pepperoni", desc: "Classic. Loaded. Always hits.", prices: "12\" — $16.50 | 14\" — $18.50 | 18\" — $21.50" }
+                      { name: "Jalapeño Popper", desc: "Creamy heat with a serious kick.", prices: "8\" — $10.29 | 12\" — $18.29 | 14\" — $23.29", image: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e" },
+                      { name: "Chicken Bacon Ranch", desc: "Loaded with bacon and creamy ranch flavor.", prices: "8\" — $10.29 | 12\" — $18.29 | 14\" — $23.29 | 18\" — $26.99", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" },
+                      { name: "Closed on Sunday", desc: "Bold, hearty, and packed with toppings.", prices: "12\" — $18.29 | 14\" — $23.29 | 18\" — $26.99", image: "https://images.unsplash.com/photo-1590947132387-155cc02f3212" },
+                      { name: "Meat Eater", desc: "All the meat. No holding back.", prices: "12\" — $18.29 | 14\" — $23.29 | 18\" — $26.99", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591" },
+                      { name: "Pepperoni", desc: "Classic. Loaded. Always hits.", prices: "12\" — $16.50 | 14\" — $18.50 | 18\" — $21.50", image: "https://images.unsplash.com/photo-1541745537411-b8046dc6d66c" }
                     ].map((pizza, i) => (
-                      <div key={i} className="bg-brand-concrete p-12 text-left flex flex-col noise-overlay transition-colors hover:bg-brand-concrete/80">
-                         <h3 className="font-display text-4xl mb-4 text-brand-neon uppercase font-bold tracking-[0.05em]">{pizza.name}</h3>
-                         <p className="text-brand-white text-[16px] uppercase font-sans font-black mb-6 flex-1 italic tracking-wider leading-relaxed">{pizza.desc}</p>
-                         <p className="text-brand-white font-sans text-xl mb-10 font-black tracking-wide">{pizza.prices}</p>
-                         <button onClick={startOrder} className="bg-brand-red text-brand-white py-5 px-8 font-display text-xl uppercase tracking-widest hover:scale-105 transition-all text-center">Order Now</button>
+                      <div key={i} className="bg-brand-concrete flex flex-col md:flex-row noise-overlay transition-colors hover:bg-brand-concrete/80 overflow-hidden">
+                         <div className="w-full md:w-1/3 h-[200px] md:h-auto overflow-hidden bg-[#2A2A2A]">
+                            <img src={`${pizza.image}?auto=format&fit=crop&q=80&w=600`} alt={pizza.name} className="w-full h-full object-cover opacity-80" loading="lazy" referrerPolicy="no-referrer" />
+                         </div>
+                         <div className="p-8 md:p-12 flex-1 flex flex-col text-left">
+                            <h3 className="font-display text-4xl mb-4 text-brand-neon uppercase font-bold tracking-[0.05em]">{pizza.name}</h3>
+                            <p className="text-brand-white text-[15px] md:text-[16px] uppercase font-sans font-black mb-6 flex-1 italic tracking-wider leading-relaxed">{pizza.desc}</p>
+                            <p className="text-brand-white font-sans text-xl mb-10 font-black tracking-wide">{pizza.prices}</p>
+                            <button onClick={startOrder} className="bg-brand-red text-brand-white w-full h-[52px] min-h-[52px] font-display text-[15px] font-bold uppercase tracking-widest hover:scale-105 transition-all text-center">Order Now</button>
+                         </div>
                       </div>
                     ))}
                   </div>
@@ -1175,126 +1211,151 @@ export default function App() {
               </section>
 
               {/* SECTION 5: BUILD YOUR OWN */}
-              <section className="bg-brand-concrete px-6 py-32 border-b border-white/5 noise-overlay">
-                <div className="max-w-4xl mx-auto text-center">
-                  <h2 className="font-display text-6xl md:text-9xl mb-8 text-brand-neon uppercase font-bold">MAKE IT YOURS.</h2>
-                  <p className="text-xl md:text-3xl text-brand-white font-sans font-black uppercase tracking-[0.2em] mb-20 italic">
-                    Pick your size. Pick your toppings. No compromises. No guessing. Exactly what you want, built fresh.
-                  </p>
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-                    {[
-                      { size: "8\"", price: "$7.25" },
-                      { size: "12\"", price: "$16.50" },
-                      { size: "14\"", price: "$18.50" },
-                      { size: "18\"", price: "$21.50", label: "Best Value — Same toppings, more pizza." }
-                    ].map((item, i) => (
-                      <div key={i} className={`p-8 border-2 ${item.label ? 'border-brand-neon bg-brand-neon/5' : 'border-white/10'} flex flex-col gap-2 relative`}>
-                        {item.label && <div className="absolute top-0 inset-x-0 bg-brand-neon text-brand-black font-black text-[8px] uppercase py-2 -translate-y-full tracking-tighter sm:tracking-[0.2em] font-sans">{item.label}</div>}
-                        <span className="font-display text-3xl text-brand-white font-bold tracking-[0.05em]">{item.size}</span>
-                        <span className="font-sans font-black text-brand-neon text-xl tracking-[0.05em]">{item.price}</span>
+              <section className="bg-brand-concrete px-0 py-0 border-b border-white/5 noise-overlay">
+                <div className="flex flex-col md:flex-row items-stretch">
+                   <div className="w-full md:w-1/2 h-[250px] md:h-auto overflow-hidden bg-[#2A2A2A]">
+                      <img 
+                        src="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&q=80&w=2000" 
+                        alt="Build Your Own Pizza" 
+                        className="w-full h-full object-cover grayscale-[0.2]"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                      />
+                   </div>
+                   <div className="w-full md:w-1/2 px-5 py-[60px] md:p-24 flex flex-col justify-center text-center md:text-left">
+                      <h2 className="font-display text-6xl md:text-9xl mb-8 text-brand-neon uppercase font-bold">MAKE IT YOURS.</h2>
+                      <p className="text-xl md:text-3xl text-brand-white font-sans font-black uppercase tracking-[0.2em] mb-12 md:mb-20 italic">
+                        No compromises. No guessing.<br className="hidden md:block" />Exactly what you want.
+                      </p>
+                      
+                      <div className="flex flex-col gap-4 mb-12 md:mb-20">
+                        {[
+                          { size: "8\"", price: "$7.25" },
+                          { size: "12\"", price: "$16.50" },
+                          { size: "14\"", price: "$18.50" },
+                          { size: "18\"", price: "$21.50", label: "Best Value" }
+                        ].map((item, i) => (
+                          <div key={i} className={`h-[60px] md:h-auto p-4 md:p-8 flex items-center justify-between border-2 ${item.label ? 'border-brand-neon bg-brand-neon/5' : 'border-white/10'} relative`}>
+                            {item.label && <div className="absolute top-0 right-4 bg-brand-neon text-brand-black font-black text-[10px] uppercase px-3 py-1 -translate-y-1/2 tracking-widest font-sans">{item.label}</div>}
+                            <span className="font-display text-3xl text-brand-white font-bold tracking-[0.05em]">{item.size}</span>
+                            <span className="font-sans font-black text-brand-neon text-xl tracking-[0.05em]">{item.price}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                  
-                  <button onClick={startOrder} className="bg-brand-red text-brand-white px-24 py-8 text-3xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
-                    Start Building
-                  </button>
+                      
+                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full h-[64px] md:h-auto md:px-24 md:py-8 text-3xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                        Start Building
+                      </button>
+                   </div>
                 </div>
               </section>
 
               {/* SECTION 6: SIDES AND WINGS */}
-              <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
+              <section className="bg-brand-black px-5 py-[60px] md:px-6 md:py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-7xl mx-auto">
-                  <div className="text-center mb-24">
-                    <h2 className="font-display text-5xl md:text-8xl mb-8 text-brand-neon uppercase leading-[0.95] font-bold">SIDES AND WINGS.<br/>BECAUSE PIZZA ALONE<br/>IS JUST THE START.</h2>
+                  <div className="text-center mb-16 md:mb-24">
+                    <h2 className="font-display text-5xl md:text-8xl mb-8 text-brand-neon uppercase leading-[0.95] font-bold">SIDES AND WINGS.<br className="hidden md:block" />BECAUSE PIZZA ALONE IS JUST THE START.</h2>
                   </div>
                   
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Sides 1 */}
-                    <div className="bg-brand-concrete p-10 flex flex-col noise-overlay">
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em]">Cheezy Bread</h3>
-                      <p className="text-brand-white text-[16px] font-sans font-black uppercase mb-4 italic flex-1 tracking-wider">
-                        Hot, cheesy, and built to share. Not an afterthought. A reason to order more.
-                      </p>
-                      <p className="text-brand-white text-xl font-sans mb-10 font-black tracking-wide">10" — $9.00 | 12" — $14.00 | 14" — $16.00</p>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all">Order Now</button>
-                    </div>
-                    
-                    {/* Sides 2 */}
-                    <div className="bg-brand-concrete p-10 flex flex-col noise-overlay">
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em]">Wings</h3>
-                      <p className="text-brand-white text-[16px] font-sans font-black uppercase mb-4 italic flex-1 tracking-wider">
-                        Crispy, hot, and full of flavor.
-                      </p>
-                      <p className="text-brand-white text-xl font-sans mb-10 font-black tracking-wide">8 ct — $11.99 | 12 ct — $16.99 | 18 ct — $23.99</p>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all">Order Now</button>
-                    </div>
-
-                    {/* Sides 3 */}
-                    <div className="bg-brand-concrete p-10 flex flex-col noise-overlay">
-                      <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em]">Calzones</h3>
-                      <p className="text-brand-white text-[16px] font-sans font-black uppercase mb-4 italic flex-1 tracking-wider">
-                        Packed, baked, and loaded inside.
-                      </p>
-                      <p className="text-brand-white text-[14px] font-sans font-black uppercase mb-10 space-y-1 block tracking-widest">
-                        <span>2-Topping Medium | 2-Topping Large</span><br/>
-                        <span>Specialty Medium | Specialty Large</span>
-                      </p>
-                      <button onClick={startOrder} className="bg-brand-red text-brand-white w-full py-5 text-xl font-display uppercase tracking-widest hover:scale-105 transition-all">Order Now</button>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* SECTION 7: SALADS */}
-              <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
-                <div className="max-w-4xl mx-auto">
-                  <div className="text-center mb-24">
-                    <h2 className="font-display text-5xl md:text-8xl mb-6 text-brand-neon uppercase leading-[0.95]">SALADS.<br/>FOR WHEN YOU NEED<br/>TO BALANCE IT OUT.</h2>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
                     {[
-                      { name: "Garden Salad", desc: "Fresh, simple, and crisp.", price: "$7.75" },
-                      { name: "Chicken Salad", desc: "Fresh greens with hearty chicken on top.", price: "$9.00" },
-                      { name: "Chef Salad", desc: "Loaded and built to actually fill you up.", price: "$8.25" },
-                      { name: "Build Your Own Salad", desc: "Make it exactly how you want it.", price: "" }
-                    ].map((salad, i) => (
-                      <div key={i} className="bg-brand-concrete p-8 flex flex-col noise-overlay">
-                         <div className="flex justify-between items-start mb-2">
-                           <h3 className="font-display text-3xl text-brand-neon uppercase tracking-[0.05em]">{salad.name}</h3>
-                           <span className="text-xl font-sans font-black text-brand-white tracking-widest">{salad.price}</span>
-                         </div>
-                         <p className="text-brand-white text-[14px] font-sans font-black uppercase italic opacity-80 leading-snug tracking-wider">{salad.desc}</p>
+                      {
+                        name: "Cheezy Bread",
+                        desc: "Hot, cheesy, and built to share. Not an afterthought. A reason to order more.",
+                        prices: "10\" — $9.00 | 12\" — $14.00 | 14\" — $16.00",
+                        image: "https://images.unsplash.com/photo-1541745537411-b8046dc6d66c"
+                      },
+                      {
+                        name: "Wings",
+                        desc: "Crispy, hot, and full of flavor. Hand-tossed in your favorite sauce.",
+                        prices: "8 ct — $11.99 | 12 ct — $16.99 | 18 ct — $23.99",
+                        image: "https://images.unsplash.com/photo-1608039755401-742074f0548d?auto=format&fit=crop&q=80&w=600"
+                      },
+                      {
+                        name: "Calzones",
+                        desc: "Packed, baked, and loaded inside. Hand-folded standard.",
+                        prices: "Medium — $12.99 | Large — $16.99",
+                        image: "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&q=80&w=600"
+                      }
+                    ].map((item, i) => (
+                      <div key={i} className="bg-brand-concrete flex flex-col noise-overlay overflow-hidden">
+                        <div className="h-[200px] w-full block overflow-hidden bg-[#2A2A2A]">
+                          <img src={`${item.image}?auto=format&fit=crop&q=80&w=600`} alt={item.name} className="w-full h-full object-cover opacity-80" loading="lazy" referrerPolicy="no-referrer" />
+                        </div>
+                        <div className="p-8 md:p-10 flex flex-col flex-1">
+                          <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em]">{item.name}</h3>
+                          <p className="text-brand-white text-[15px] md:text-[16px] font-sans font-black uppercase mb-4 italic flex-1 tracking-wider">
+                            {item.desc}
+                          </p>
+                          <p className="text-brand-white text-xl font-sans mb-10 font-black tracking-wide">{item.prices}</p>
+                          <button onClick={startOrder} className="bg-brand-red text-brand-white w-full h-[52px] min-h-[52px] font-display text-[15px] font-bold uppercase tracking-widest hover:scale-105 transition-all">Order Now</button>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
               </section>
 
-              {/* SECTION 8: DESSERT */}
-              <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
-                <div className="max-w-4xl mx-auto">
-                  <div className="text-center mb-16">
-                    <h2 className="font-display text-6xl md:text-9xl mb-8 text-brand-neon uppercase">FINISH STRONG.</h2>
-                  </div>
-                  
-                  <div className="bg-brand-concrete p-12 flex flex-col md:flex-row items-center gap-10 noise-overlay">
-                    <div className="flex-1 text-left">
-                       <h3 className="text-brand-neon font-display text-5xl mb-4 uppercase font-bold tracking-[0.05em]">Cinna Bread</h3>
-                       <p className="text-brand-white text-[18px] font-sans font-black uppercase mb-6 italic tracking-widest">
-                          Warm, sweet, and worth saving room for. Not an afterthought. A proper finish.
-                       </p>
-                       <p className="text-brand-white text-2xl font-sans mb-10 font-black tracking-widest">10" — $9.00 | 12" — $14.00 | 14" — $16.00</p>
-                       <button onClick={startOrder} className="bg-brand-red text-brand-white px-16 py-6 text-2xl font-display uppercase tracking-widest hover:scale-105 transition-all w-full md:w-auto">Order Now</button>
-                    </div>
-                  </div>
+              {/* SECTION 7: SALADS AND DESSERT SPLIT */}
+              <section className="bg-brand-black border-b border-white/5 noise-overlay">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch">
+                   {/* Salads Column */}
+                   <div className="w-full md:w-2/3 px-5 py-[60px] md:p-24 border-b md:border-b-0 md:border-r border-white/10">
+                      <div className="text-center md:text-left mb-16">
+                        <h2 className="font-display text-5xl md:text-7xl mb-6 text-brand-neon uppercase leading-[0.95]">SALADS.</h2>
+                        <p className="text-xl md:text-2xl text-brand-white font-display font-bold uppercase tracking-widest italic">FOR WHEN YOU NEED BALANCE.</p>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 gap-6">
+                        {[
+                          { name: "Garden Salad", desc: "Fresh, simple, and crisp.", price: "$7.75" },
+                          { name: "Chicken Salad", desc: "Fresh greens with hearty chicken on top.", price: "$9.00" },
+                          { name: "Chef Salad", desc: "Loaded and built to actually fill you up.", price: "$8.25" },
+                          { name: "Build Your Own Salad", desc: "Make it exactly how you want it.", price: "FROM $7.25" }
+                        ].map((salad, i) => (
+                          <div key={i} className="bg-brand-concrete p-8 flex flex-col noise-overlay group hover:bg-brand-concrete/80 transition-all">
+                             <div className="flex justify-between items-start mb-2">
+                               <h3 className="font-display text-3xl text-brand-neon uppercase tracking-[0.05em]">{salad.name}</h3>
+                               <span className="text-xl font-sans font-black text-brand-white tracking-widest">{salad.price}</span>
+                             </div>
+                             <p className="text-brand-white text-[14px] md:text-[16px] font-sans font-black uppercase italic opacity-80 leading-snug tracking-wider">{salad.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+                   </div>
+
+                   {/* Dessert Column */}
+                   <div className="w-full md:w-1/3 px-5 py-[60px] md:p-24 bg-brand-concrete/5 flex flex-col justify-center">
+                      <div className="text-center md:text-left mb-16">
+                        <h2 className="font-display text-5xl md:text-7xl mb-6 text-brand-neon uppercase">DESSERT.</h2>
+                        <p className="text-xl md:text-2xl text-brand-white font-display font-bold uppercase tracking-widest italic">FINISH STRONG.</p>
+                      </div>
+                      
+                      <div className="bg-brand-concrete flex flex-col noise-overlay overflow-hidden">
+                        <div className="h-[200px] w-full block overflow-hidden bg-[#2A2A2A]">
+                           <img 
+                              src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&q=80&w=600" 
+                              alt="Dessert" 
+                              className="w-full h-full object-cover opacity-80" 
+                              loading="lazy" 
+                              referrerPolicy="no-referrer" 
+                            />
+                        </div>
+                        <div className="p-8 md:p-12 flex flex-col flex-1">
+                           <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em]">Cinna Bread</h3>
+                           <p className="text-brand-white text-[15px] md:text-[18px] font-sans font-black uppercase mb-6 italic tracking-widest leading-tight">
+                              Warm, sweet, and worth saving room for. A proper finish.
+                           </p>
+                           <p className="text-brand-white text-xl md:text-2xl font-sans mb-10 font-black tracking-widest">FROM $9.00</p>
+                           <button onClick={startOrder} className="bg-brand-red text-brand-white w-full h-[52px] min-h-[52px] font-display text-[15px] font-bold uppercase tracking-widest hover:scale-105 transition-all">Order Now</button>
+                        </div>
+                      </div>
+                   </div>
                 </div>
               </section>
 
               {/* SECTION 9: DRINKS AND EXTRAS */}
-              <section className="bg-brand-black px-6 py-32 border-b border-white/5 noise-overlay">
+              <section className="bg-brand-black px-5 py-[60px] md:px-6 md:py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-4xl mx-auto">
                   <h2 className="font-display text-5xl md:text-8xl mb-16 text-brand-neon uppercase text-center tracking-[0.05em]">DRINKS AND EXTRAS.</h2>
                   
@@ -1324,10 +1385,10 @@ export default function App() {
               </section>
 
               {/* SECTION 10: FINAL CTA */}
-              <section className="bg-brand-black px-6 py-48 md:py-72 noise-overlay border-b border-white/5 relative overflow-hidden">
+              <section className="bg-brand-black px-5 py-[60px] md:px-6 md:py-72 noise-overlay border-b border-white/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-brand-neon/5 pointer-events-none" />
                 <div className="max-w-4xl mx-auto text-center relative z-10">
-                  <h1 className="font-display text-6xl md:text-9xl lg:text-[10rem] mb-12 leading-[0.95] uppercase text-brand-neon flex flex-col items-center">
+                  <h1 className="font-display text-[80px] md:text-9xl lg:text-[10rem] mb-12 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-[-2px]">
                     <span>KNOW WHAT</span>
                     <span>YOU WANT.</span>
                     <span>NOW ORDER IT.</span>
