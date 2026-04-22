@@ -1494,16 +1494,6 @@ export default function App() {
             exit={{ opacity: 0 }}
             className="pb-32 bg-brand-black min-h-screen overflow-x-hidden"
           >
-            {/* STICKY ORDER BUTTON FOR MOBILE */}
-            <div className="fixed bottom-6 left-6 right-6 z-[100] md:hidden">
-              <button
-                onClick={startOrder}
-                className="w-full bg-brand-red text-brand-white py-6 font-display text-2xl uppercase tracking-widest shadow-[0_20px_50px_rgba(214,40,40,0.4)] active:scale-95 transition-all"
-              >
-                Order Now
-              </button>
-            </div>
-
             {/* STANDALONE MENU HEADER REMOVED FOR PERSISTENCE */}
 
             <main className="bg-brand-black">
