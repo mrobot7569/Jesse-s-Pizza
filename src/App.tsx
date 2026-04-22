@@ -960,34 +960,30 @@ export default function App() {
                     Borger & Fritch, TX
                   </p>
 
-                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-white/10 rounded-full px-6 py-3 whitespace-nowrap mb-4 gap-4 w-auto shadow-2xl relative overflow-hidden group">
+                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-white/10 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 whitespace-nowrap mb-4 gap-2 sm:gap-4 w-auto max-w-[calc(100vw-2rem)] shadow-2xl relative overflow-hidden group">
                     <div className="absolute inset-0 noise-overlay opacity-10 pointer-events-none" />
-                    <span className="font-display text-4xl text-white leading-none pt-1">
+                    <span className="font-display text-2xl sm:text-4xl text-white leading-none pt-1">
                       4.6
                     </span>
 
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-0.5 sm:gap-1">
                       {[1, 2, 3, 4].map((i) => (
                         <Star
                           key={i}
-                          size={22}
-                          fill="#B8F000"
-                          className="text-[#B8F000] shrink-0"
+                          className="w-4 h-4 sm:w-[22px] sm:h-[22px] fill-[#B8F000] text-[#B8F000] shrink-0"
                         />
                       ))}
                       <div className="relative">
-                        <Star size={22} className="text-white/20 shrink-0" />
+                        <Star className="w-4 h-4 sm:w-[22px] sm:h-[22px] text-white/20 shrink-0" />
                         <div className="absolute inset-0 overflow-hidden w-[60%]">
                           <Star
-                            size={22}
-                            fill="#B8F000"
-                            className="text-[#B8F000] shrink-0"
+                            className="w-4 h-4 sm:w-[22px] sm:h-[22px] fill-[#B8F000] text-[#B8F000] shrink-0"
                           />
                         </div>
                       </div>
                     </div>
 
-                    <span className="text-[14px] font-black text-white leading-none uppercase tracking-[2px]">
+                    <span className="text-[10px] sm:text-[14px] font-black text-white leading-none uppercase tracking-[1px] sm:tracking-[2px]">
                       867 Combined Reviews
                     </span>
                   </div>
@@ -1529,21 +1525,21 @@ export default function App() {
                     Borger & Fritch, TX
                   </p>
 
-                  <div className="flex items-center gap-4 mb-10 bg-white/5 backdrop-blur-sm px-6 py-3 border border-white/10 rounded-full shadow-2xl">
-                    <span className="text-4xl font-display text-brand-white">
+                  <div className="flex items-center gap-2 sm:gap-4 mb-10 bg-white/5 backdrop-blur-sm px-4 py-2 sm:px-6 sm:py-3 border border-white/10 rounded-full shadow-2xl max-w-[calc(100vw-2rem)] whitespace-nowrap overflow-hidden">
+                    <span className="text-2xl sm:text-4xl font-display text-brand-white">
                       4.6
                     </span>
-                    <div className="flex gap-1 text-brand-neon">
-                      <Star size={22} fill="currentColor" />
-                      <Star size={22} fill="currentColor" />
-                      <Star size={22} fill="currentColor" />
-                      <Star size={22} fill="currentColor" />
-                      <div className="relative w-[13px] overflow-hidden">
-                        <Star size={22} fill="currentColor" />
+                    <div className="flex gap-0.5 sm:gap-1 text-brand-neon">
+                      <Star className="w-4 h-4 sm:w-[22px] sm:h-[22px]" fill="currentColor" />
+                      <Star className="w-4 h-4 sm:w-[22px] sm:h-[22px]" fill="currentColor" />
+                      <Star className="w-4 h-4 sm:w-[22px] sm:h-[22px]" fill="currentColor" />
+                      <Star className="w-4 h-4 sm:w-[22px] sm:h-[22px]" fill="currentColor" />
+                      <div className="relative w-[9px] sm:w-[13px] overflow-hidden">
+                        <Star className="w-4 h-4 sm:w-[22px] sm:h-[22px]" fill="currentColor" />
                       </div>
-                      <Star size={22} className="text-white/20 -ml-[13px]" />
+                      <Star className="w-4 h-4 sm:w-[22px] sm:h-[22px] text-white/20 -ml-[9px] sm:-ml-[13px]" />
                     </div>
-                    <span className="text-[14px] font-bold uppercase tracking-widest text-brand-white">
+                    <span className="text-[10px] sm:text-[14px] font-bold uppercase tracking-widest text-brand-white">
                       867 COMBINED REVIEWS
                     </span>
                   </div>
