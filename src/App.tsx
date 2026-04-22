@@ -1635,7 +1635,7 @@ export default function App() {
                           <h3 className="text-brand-neon font-display text-3xl md:text-4xl mb-4 uppercase font-bold tracking-[0.05em]">
                             {item.name}
                           </h3>
-                          <p className="text-brand-white text-[15px] md:text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty italic">
+                          <p className="text-brand-white text-[15px] md:text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty">
                             {item.desc}
                           </p>
                           <p className="text-brand-white text-xl font-display mb-8 font-normal tracking-wide">
@@ -1725,7 +1725,7 @@ export default function App() {
                             <p className="text-brand-neon text-3xl font-sans font-normal tracking-[0.05em]">
                               {combo.price}
                             </p>
-                            <p className="opacity-80 italic uppercase font-sans font-black text-[12px] tracking-widest">
+                            <p className="opacity-80 uppercase font-sans font-black text-[12px] tracking-widest">
                               {combo.detail}
                             </p>
                           </div>
@@ -1795,6 +1795,13 @@ export default function App() {
                         image:
                           "https://images.unsplash.com/photo-1541745537411-b8046dc6d66c",
                       },
+                      {
+                        name: "The Crustless",
+                        desc: "All the toppings. None of the bread. Built for the keto crowd or anyone who just wants the good stuff.",
+                        prices: 'One Size — $9.29',
+                        image:
+                          "https://images.unsplash.com/photo-1544982503-9f984c14501a",
+                      },
                     ].map((pizza, i) => (
                       <div
                         key={i}
@@ -1813,7 +1820,7 @@ export default function App() {
                           <h3 className="font-display text-4xl mb-4 text-brand-neon uppercase font-bold tracking-[0.05em]">
                             {pizza.name}
                           </h3>
-                          <p className="text-brand-white text-[15px] md:text-[16px] uppercase font-sans font-black mb-6 flex-1 italic tracking-wider leading-relaxed">
+                          <p className="text-brand-white text-[15px] md:text-[16px] uppercase font-sans font-black mb-6 flex-1 tracking-wider leading-relaxed">
                             {pizza.desc}
                           </p>
                           <p className="text-brand-white font-sans text-xl mb-10 font-normal tracking-wide">
@@ -1943,7 +1950,7 @@ export default function App() {
                           <h3 className="text-brand-neon font-display text-4xl mb-4 uppercase font-bold tracking-[0.05em]">
                             {item.name}
                           </h3>
-                          <p className="text-brand-white text-[15px] md:text-[16px] font-sans font-black uppercase mb-4 italic flex-1 tracking-wider">
+                          <p className="text-brand-white text-[15px] md:text-[16px] font-sans font-black uppercase mb-4 flex-1 tracking-wider">
                             {item.desc}
                           </p>
                           <p className="text-brand-white text-xl font-sans mb-10 font-normal tracking-wide">
