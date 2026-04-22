@@ -1503,11 +1503,11 @@ export default function App() {
                   <img
                     src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000"
                     alt="Menu Pizza"
-                    className="w-full h-full object-cover opacity-40 grayscale-[0.2]"
+                    className="w-full h-full object-cover opacity-30 grayscale"
                     referrerPolicy="no-referrer"
                     loading="eager"
                   />
-                  <div className="absolute inset-0 bg-brand-black/60" />
+                  <div className="absolute inset-0 bg-brand-black/80" />
                 </div>
 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
@@ -1538,7 +1538,7 @@ export default function App() {
                       867 Combined Reviews
                     </span>
                   </div>
-                  <h1 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-tighter md:tracking-[0.05em] font-bold">
+                  <h1 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-tighter md:tracking-[0.05em] font-bold drop-shadow-[0_2px_40px_rgba(0,0,0,0.95)]">
                     <span>THE MENU.</span>
                     <span>NO SHORTCUTS.</span>
                     <span>NO SKIMPING.</span>
@@ -2060,15 +2060,15 @@ export default function App() {
                   <img
                     src="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&q=80&w=2000"
                     alt="Final Pizza Shot"
-                    className="w-full h-full object-cover opacity-40 grayscale-[0.2]"
+                    className="w-full h-full object-cover opacity-30 grayscale"
                     referrerPolicy="no-referrer"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-brand-black/70" />
+                  <div className="absolute inset-0 bg-brand-black/80" />
                 </div>
 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
-                  <h2 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-tighter md:tracking-[0.05em] font-bold">
+                  <h2 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-tighter md:tracking-[0.05em] font-bold drop-shadow-[0_2px_40px_rgba(0,0,0,0.95)]">
                     <span>YOU HUNGRY?</span>
                     <span>THEN ORDER.</span>
                   </h2>
