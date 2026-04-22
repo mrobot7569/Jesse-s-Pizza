@@ -26,17 +26,17 @@
 
   h1 {
     font-family: 'Anton', sans-serif;
-    @apply uppercase tracking-normal text-brand-neon font-bold leading-[0.95];
+    @apply uppercase tracking-normal text-brand-neon leading-[0.95];
   }
 
   h2 {
     font-family: 'Anton', sans-serif;
-    @apply uppercase tracking-normal text-brand-white font-bold leading-[0.95];
+    @apply uppercase tracking-normal text-brand-white leading-[0.95];
   }
 
   h3 {
     font-family: 'Anton', sans-serif;
-    @apply uppercase tracking-normal text-brand-white font-bold leading-[0.95];
+    @apply uppercase tracking-normal text-brand-white leading-[0.95];
   }
 }
 

@@ -687,7 +687,7 @@ export default function App() {
                 Jesse's Pizza Co.
               </span>
             </div>
-            <h3 className="font-display text-2xl font-bold uppercase tracking-[-1px] text-[#F5F5F5] leading-[1.1] mb-8">
+            <h3 className="font-display text-2xl font-normal uppercase tracking-tight text-[#F5F5F5] leading-[1.1] mb-8">
               FAMILY OWNED.
               <br />
               GRIT FUELED.
@@ -1638,12 +1638,12 @@ export default function App() {
                           <p className="text-brand-white text-[15px] md:text-[16px] font-sans font-black uppercase leading-tight tracking-wider mb-6 flex-1 text-pretty italic">
                             {item.desc}
                           </p>
-                          <p className="text-brand-white text-xl font-display mb-8 font-bold tracking-wide">
+                          <p className="text-brand-white text-xl font-display mb-8 font-normal tracking-wide">
                             {item.price}
                           </p>
                           <button
                             onClick={startOrder}
-                            className="bg-brand-red text-brand-white w-full h-[52px] min-h-[52px] text-[15px] font-display font-bold uppercase tracking-widest hover:scale-105 transition-all"
+                            className="bg-brand-red text-brand-white w-full h-[52px] min-h-[52px] text-[15px] font-display uppercase tracking-widest hover:scale-105 transition-all"
                           >
                             Order Now
                           </button>
@@ -1722,7 +1722,7 @@ export default function App() {
                             <p className="font-sans font-black text-[16px] uppercase leading-tight tracking-wider">
                               {combo.content}
                             </p>
-                            <p className="text-brand-neon text-3xl font-sans font-black tracking-[0.05em]">
+                            <p className="text-brand-neon text-3xl font-sans font-normal tracking-[0.05em]">
                               {combo.price}
                             </p>
                             <p className="opacity-80 italic uppercase font-sans font-black text-[12px] tracking-widest">
@@ -1751,7 +1751,7 @@ export default function App() {
                       <br />
                       BUILT TO IMPRESS.
                     </h2>
-                    <p className="text-xl md:text-2xl text-brand-white font-display font-bold uppercase tracking-widest">
+                    <p className="text-xl md:text-2xl text-brand-white font-display uppercase tracking-widest">
                       Every one made to order. Every one loaded the way it
                       should be.
                     </p>
@@ -1816,7 +1816,7 @@ export default function App() {
                           <p className="text-brand-white text-[15px] md:text-[16px] uppercase font-sans font-black mb-6 flex-1 italic tracking-wider leading-relaxed">
                             {pizza.desc}
                           </p>
-                          <p className="text-brand-white font-sans text-xl mb-10 font-black tracking-wide">
+                          <p className="text-brand-white font-sans text-xl mb-10 font-normal tracking-wide">
                             {pizza.prices}
                           </p>
                           <button
@@ -1873,7 +1873,7 @@ export default function App() {
                           <span className="font-display text-3xl text-brand-white font-bold tracking-[0.05em]">
                             {item.size}
                           </span>
-                          <span className="font-sans font-black text-brand-neon text-xl tracking-[0.05em]">
+                          <span className="font-sans font-normal text-brand-neon text-xl tracking-[0.05em]">
                             {item.price}
                           </span>
                         </div>
@@ -1946,7 +1946,7 @@ export default function App() {
                           <p className="text-brand-white text-[15px] md:text-[16px] font-sans font-black uppercase mb-4 italic flex-1 tracking-wider">
                             {item.desc}
                           </p>
-                          <p className="text-brand-white text-xl font-sans mb-10 font-black tracking-wide">
+                          <p className="text-brand-white text-xl font-sans mb-10 font-normal tracking-wide">
                             {item.prices}
                           </p>
                           <button
@@ -1969,7 +1969,7 @@ export default function App() {
                     <h2 className="font-display text-5xl md:text-8xl mb-6 text-brand-neon uppercase leading-[0.95] font-bold">
                       SALADS.
                     </h2>
-                    <p className="text-xl md:text-2xl text-brand-white font-display font-bold uppercase tracking-widest italic">
+                    <p className="text-xl md:text-2xl text-brand-white font-display uppercase tracking-widest italic">
                       FOR WHEN YOU NEED BALANCE.
                     </p>
                   </div>
@@ -2005,7 +2005,7 @@ export default function App() {
                           <h3 className="font-display text-3xl text-brand-neon uppercase tracking-[0.05em] font-bold">
                             {salad.name}
                           </h3>
-                          <span className="text-xl font-sans font-black text-brand-white tracking-widest">
+                          <span className="text-xl font-sans font-normal text-brand-white tracking-widest">
                             {salad.price}
                           </span>
                         </div>
@@ -2025,7 +2025,7 @@ export default function App() {
                     <h2 className="font-display text-5xl md:text-8xl mb-6 text-brand-neon uppercase font-bold">
                       DESSERT.
                     </h2>
-                    <p className="text-xl md:text-2xl text-brand-white font-display font-bold uppercase tracking-widest italic">
+                    <p className="text-xl md:text-2xl text-brand-white font-display uppercase tracking-widest italic">
                       FINISH STRONG.
                     </p>
                   </div>
@@ -2048,7 +2048,7 @@ export default function App() {
                         Warm, sweet, and worth saving room for. A proper finish.
                       </p>
                       <div className="mt-auto w-full">
-                        <p className="text-brand-white text-3xl md:text-4xl font-sans mb-12 font-black tracking-widest leading-none">
+                        <p className="text-brand-white text-3xl md:text-4xl font-sans mb-12 font-normal tracking-widest leading-none">
                           FROM $9.00
                         </p>
                         <button
@@ -2076,7 +2076,7 @@ export default function App() {
                       <span className="font-display text-3xl text-brand-white uppercase font-bold tracking-[0.05em]">
                         2 Liter Drinks
                       </span>
-                      <span className="font-sans font-black text-brand-white text-2xl tracking-widest">
+                      <span className="font-sans font-normal text-brand-white text-2xl tracking-widest">
                         $3.25
                       </span>
                     </div>
@@ -2108,7 +2108,7 @@ export default function App() {
                       <span className="font-display text-3xl text-brand-white uppercase font-bold tracking-[0.05em]">
                         Side of Jalapeños
                       </span>
-                      <span className="font-sans font-black text-brand-white text-2xl tracking-widest">
+                      <span className="font-sans font-normal text-brand-white text-2xl tracking-widest">
                         $1.99
                       </span>
                     </div>
@@ -3568,7 +3568,7 @@ export default function App() {
                         <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">
                           Loaded edge to edge. Feeds everyone.
                         </p>
-                        <p className="text-[16px] text-brand-white mb-8 font-display font-bold tracking-wide relative z-10">
+                        <p className="text-[16px] text-brand-white mb-8 font-display tracking-wide relative z-10">
                           From $21.50
                         </p>
                         <button
@@ -3600,7 +3600,7 @@ export default function App() {
                         <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">
                           Creamy heat. Serious kick. Always loaded.
                         </p>
-                        <p className="text-[16px] text-brand-white mb-8 font-display font-bold tracking-wide relative z-10">
+                        <p className="text-[16px] text-brand-white mb-8 font-display tracking-wide relative z-10">
                           12" — $18.29 | 14" — $23.29
                         </p>
                         <button
@@ -3632,7 +3632,7 @@ export default function App() {
                         <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">
                           Bacon. Ranch. Chicken. Actually loaded.
                         </p>
-                        <p className="text-[16px] text-brand-white mb-8 font-display font-bold tracking-wide relative z-10">
+                        <p className="text-[16px] text-brand-white mb-8 font-display tracking-wide relative z-10">
                           12" — $18.29 | 14" — $23.29 | 18" — $26.99
                         </p>
                         <button
@@ -3664,7 +3664,7 @@ export default function App() {
                         <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">
                           18" Jumbo + Cheezy Bread + 2 Liter.
                         </p>
-                        <p className="text-[16px] text-brand-white mb-8 font-display font-bold tracking-wide relative z-10">
+                        <p className="text-[16px] text-brand-white mb-8 font-display tracking-wide relative z-10">
                           $34.99
                         </p>
                         <button
