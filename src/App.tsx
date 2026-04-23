@@ -644,22 +644,22 @@ export default function App() {
     return (
       <AnimatePresence>
         {isVisible && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.5, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.5, y: 20 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-8 right-8 z-[100] bg-brand-neon text-brand-black p-4 rounded-none shadow-[0_10px_30px_rgba(184,240,0,0.3)] hover:scale-110 active:scale-95 transition-all group"
-            aria-label="Scroll to top"
-          >
-            <div className="relative">
-              <ChevronUp
-                size={24}
-                className="group-hover:-translate-y-1 transition-transform"
-              />
-              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-brand-black opacity-20" />
-            </div>
-          </motion.button>
+            <motion.button
+              initial={{ opacity: 0, scale: 0.5, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.5, y: 20 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="fixed bottom-8 right-8 z-[100] bg-[#B8F000] text-[#0D0D0D] p-5 rounded-none shadow-[0_10px_30px_rgba(184,240,0,0.5)] hover:scale-110 active:scale-95 transition-all group border-2 border-black/10"
+              aria-label="Scroll to top"
+            >
+              <div className="flex items-center justify-center">
+                <ChevronUp
+                  size={32}
+                  strokeWidth={3.5}
+                  className="group-hover:-translate-y-1 transition-transform"
+                />
+              </div>
+            </motion.button>
         )}
       </AnimatePresence>
     );
@@ -2649,9 +2649,8 @@ export default function App() {
                   <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 w-full sm:w-auto px-6 sm:px-0">
                     <button
                       onClick={() => {
-                        setLocation("borger");
-                        setCurrentPage("borger");
-                        window.scrollTo(0, 0);
+                        setLocation("Borger");
+                        startOrder();
                       }}
                       className="bg-brand-red text-brand-white w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl"
                     >
@@ -2659,9 +2658,8 @@ export default function App() {
                     </button>
                     <button
                       onClick={() => {
-                        setLocation("fritch");
-                        setCurrentPage("fritch");
-                        window.scrollTo(0, 0);
+                        setLocation("Fritch");
+                        startOrder();
                       }}
                       className="border-2 border-brand-neon text-brand-neon w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:bg-brand-neon hover:text-brand-black transition-all shadow-2xl text-center"
                     >
