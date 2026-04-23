@@ -3987,8 +3987,8 @@ export default function App() {
             {/* SECTION 1: HERO */}
             <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 pt-0 pb-20 bg-brand-black noise-overlay border-b border-white/5 overflow-visible">
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
-                <span className="text-brand-white text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
-                  CAREERS
+                <span className="text-[#F5F5F5] text-[16px] font-bold tracking-[4px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                  BORGER & FRITCH, TX
                 </span>
                 <h1 className="font-display text-[64px] sm:text-[96px] lg:text-[128px] xl:text-[160px] mb-12 leading-[0.95] tracking-[0.05em] uppercase text-brand-neon flex flex-col w-full break-normal text-center mt-0">
                   <span>COME WORK</span>
@@ -4026,11 +4026,35 @@ export default function App() {
               </div>
             </section>
 
+            {/* NEW: SOCIAL PROOF BAR */}
+            <section className="bg-[#111111] border-y border-[#B8F000]/30 py-12 px-6">
+              <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+                <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                  <span className="font-display text-[48px] text-[#B8F000] leading-none mb-2">2</span>
+                  <span className="text-white text-[14px] font-bold uppercase tracking-[4px]">
+                    LOCATIONS HIRING NOW
+                  </span>
+                </div>
+                <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                  <span className="font-display text-[48px] text-[#B8F000] leading-none mb-2">4</span>
+                  <span className="text-white text-[14px] font-bold uppercase tracking-[4px]">
+                    OPEN POSITIONS
+                  </span>
+                </div>
+                <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                  <span className="font-display text-[48px] text-[#B8F000] leading-none mb-2">DAY 1</span>
+                  <span className="text-white text-[14px] font-bold uppercase tracking-[4px]">
+                    BENEFITS START
+                  </span>
+                </div>
+              </div>
+            </section>
+
             {/* SECTION 2: WHY WORK HERE */}
-            <section className="bg-brand-black px-6 py-32 lg:py-48 border-b border-white/5 noise-overlay">
+            <section className="bg-[#0D0D0D] px-6 py-32 lg:py-48 border-t border-[#B8F000] noise-overlay">
               <div className="w-full">
                 <div className="text-center mb-24">
-                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
+                  <span className="text-[#B8F000] text-[16px] font-bold tracking-[4px] uppercase mb-2 block text-center">
                     CULTURE
                   </span>
                   <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
@@ -4048,33 +4072,40 @@ export default function App() {
                     {
                       title: "Real Work.",
                       body: "This isn't a place that runs itself. We move fast, we stay consistent, and we hold a standard. If that's the kind of environment you thrive in, you'll fit right in.",
+                      quote: "\"Show up. We'll handle the rest.\"",
                     },
                     {
                       title: "Local Pride.",
                       body: "You're not working for a franchise. You're part of a team that Borger and Fritch actually care about. That means something.",
+                      quote: "\"Borger and Fritch actually notice.\"",
                     },
                     {
                       title: "Room to Grow.",
                       body: "We promote from inside. Marc and Tyler both started where most of our team members start. If you're good at what you do, we notice.",
+                      quote: "\"Marc started where you're starting.\"",
                     },
                     {
                       title: "Pure Management.",
                       body: "No games. No politics. You know where you stand. You know what's expected. That's it.",
+                      quote: "\"No surprises. Ever.\"",
                     },
                   ].map((point, i) => {
                     const isLongTitle = point.title.split(" ").length > 2;
                     return (
                       <div
                         key={i}
-                        className="bg-brand-concrete p-12 border border-white/5 noise-overlay group hover:border-brand-neon transition-colors"
+                        className="bg-[#2A2A2A] p-12 border-l-[3px] border-[#B8F000] border-y border-r border-white/5 noise-overlay group hover:border-[#B8F000] transition-colors flex flex-col"
                       >
                         <h3
                           className={`font-display mb-6 text-brand-neon uppercase tracking-[0.05em] leading-[1.1] ${isLongTitle ? "text-[28px]" : "text-[28px] lg:text-[36px]"}`}
                         >
                           {point.title}
                         </h3>
-                        <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px]">
+                        <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] flex-1 mb-8">
                           {point.body}
+                        </p>
+                        <p className="text-[#B8F000] font-bold italic tracking-wide text-lg">
+                          {point.quote}
                         </p>
                       </div>
                     );
@@ -4084,19 +4115,26 @@ export default function App() {
             </section>
 
             {/* SECTION 3: OPEN POSITIONS */}
-            <section className="bg-brand-black px-6 py-32 lg:py-48 noise-overlay border-b border-white/5">
+            <section className="bg-[#111111] px-6 py-32 lg:py-48 noise-overlay border-b border-white/5">
               <div className="w-full">
                 <div className="text-center mb-24">
-                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
+                  <span className="text-[#B8F000] text-[16px] font-bold tracking-[4px] uppercase mb-2 block text-center">
                     OPPORTUNITY
                   </span>
                   <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
                     WE'RE <span className="text-brand-red">HIRING</span>.
                   </h2>
-                  <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
+                  <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mb-12">
                     Both locations. Multiple positions. If you're reliable and
                     ready to work, we want to hear from you.
                   </p>
+                  
+                  {/* URGENCY BAR */}
+                  <div className="bg-[#D62828] py-4 w-full">
+                    <p className="text-white font-display text-[20px] lg:text-[24px] uppercase tracking-[4px] text-center">
+                      POSITIONS FILLING FAST — APPLY TODAY
+                    </p>
+                  </div>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
@@ -4106,31 +4144,41 @@ export default function App() {
                       subtitle: "Borger and Fritch",
                       details:
                         "Full time and part time available. You'll be making the product this town runs on. Attention to detail matters here.",
+                      location: "both",
                     },
                     {
                       title: "Counter Specialist",
                       subtitle: "Borger and Fritch",
                       details:
                         "Full time and part time available. You're the first thing customers see. Be good at it.",
+                      location: "both",
                     },
                     {
                       title: "Kitchen Prep",
                       subtitle: "Borger and Fritch",
                       details:
                         "Full time and part time available. The kitchen runs because of prep. If you're fast, clean, and consistent, this is your spot.",
+                      location: "both",
                     },
                     {
                       title: "Delivery Driver",
                       subtitle: "Borger and Fritch",
                       details:
                         "Part time available. Reliable vehicle required. You're the last impression before the customer opens the box. Make it count.",
+                      location: "both",
                     },
                   ].map((pos, i) => {
                     const isLongTitle = pos.title.split(" ").length > 2;
+                    let borderClass = "";
+                    if (pos.location === "borger") borderClass = "border-t-[3px] border-[#B8F000]";
+                    else if (pos.location === "fritch") borderClass = "border-t-[3px] border-[#D62828]";
+                    else borderClass = "border-t-[3px] border-image-[linear-gradient(to_right,#B8F000,#D62828)] border-brand-neon"; // Simplified for CSS
+
                     return (
                       <div
                         key={i}
-                        className="bg-brand-concrete p-12 border border-white/5 noise-overlay flex flex-col justify-between"
+                        style={pos.location === "both" ? { borderTop: '3px solid', borderImageSource: 'linear-gradient(to right, #B8F000, #D62828)', borderImageSlice: 1 } : {}}
+                        className={`bg-[#2A2A2A] p-12 border-x border-b border-white/5 noise-overlay flex flex-col justify-between ${pos.location !== "both" ? borderClass : ""}`}
                       >
                         <div>
                           <h3
@@ -4159,210 +4207,176 @@ export default function App() {
             </section>
 
             {/* SECTION 4: WHAT WE LOOK FOR */}
-            <section className="bg-brand-concrete px-6 py-32 lg:py-48 noise-overlay border-b border-white/5">
+            <section className="bg-[#0A0A0A] px-6 py-32 lg:py-48 noise-overlay border-b border-white/5">
               <div className="w-full">
                 <div className="text-center mb-16">
-                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
-                    TRAITS
+                  <span className="text-[#B8F000] text-[16px] font-bold tracking-[4px] uppercase mb-2 block text-center">
+                    STANDARDS
                   </span>
                   <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
                     WHAT WE ACTUALLY CARE{" "}
                     <span className="text-brand-red">ABOUT</span>.
                   </h2>
                 </div>
-                <div className="max-w-[640px] mx-auto text-center space-y-8 text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7]">
-                  <p>We're not looking for a perfect resume.</p>
-                  <p className="font-[700] text-brand-neon uppercase italic tracking-wider">
-                    We're looking for people who:
-                  </p>
-                  <div className="space-y-4 py-8 border-y border-white/10">
-                    <p>Show up on time. Every time.</p>
-                    <p>Take the job seriously without being told to.</p>
-                    <p>Care about what goes out the door.</p>
-                    <p>Work well with the people around them.</p>
-                    <p>
-                      Want to be part of something the community actually
-                      respects.
-                    </p>
-                  </div>
-                  <p className="pt-12 text-brand-neon uppercase font-bold italic tracking-wide">
-                    If that sounds like you, apply.
-                  </p>
-                  <p className="opacity-40">
-                    If it doesn't, that's okay too. We'd rather know upfront.
-                  </p>
+                <div className="max-w-4xl mx-auto space-y-0">
+                  {[
+                    "Show up on time. Every time.",
+                    "Take the job seriously without being told to.",
+                    "Care about what goes out the door.",
+                    "Work well with the people around them.",
+                    "Want to be part of something the community actually respects.",
+                  ].map((statement, idx) => {
+                    const num = `0${idx + 1}`;
+                    const isLast = idx === 4;
+                    return (
+                      <div key={idx} className="group">
+                        <div className="flex items-baseline py-8">
+                          <span className="text-[#B8F000] font-sans text-[16px] font-bold mr-8 shrink-0">
+                            {num}
+                          </span>
+                          <p className={`text-[28px] font-bold leading-tight ${isLast ? "text-[#B8F000]" : "text-white"}`}>
+                            {statement}
+                          </p>
+                        </div>
+                        <div className="h-[1px] w-full bg-[#B8F000]/30" />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </section>
 
-            {/* SECTION 5: APPLICATION FORM */}
+            {/* SECTION 5: THE FINAL CLOSE (MERGED APPLICATION & FINAL CTA) */}
             <section
               id="apply"
-              className="bg-brand-black px-6 py-32 lg:py-48 noise-overlay border-b border-white/5"
+              className="relative min-h-screen lg:min-h-[140vh] bg-brand-black flex flex-col justify-center overflow-hidden"
             >
-              <div className="w-full">
-                <div className="text-center mb-24">
-                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
-                    JOIN THE CREW
-                  </span>
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
-                    APPLY <span className="text-brand-red">NOW</span>.
-                  </h2>
-                  <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
-                    Fill this out and we'll be in touch. Simple as that.
-                  </p>
+              {/* Background Image */}
+               <div className="absolute inset-0 z-0">
+                  <img
+                    src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000"
+                    alt="Pizza Kitchen"
+                    className="w-full h-full object-cover opacity-40 grayscale-[0.5]"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-brand-black/60" />
                 </div>
 
-                <div className="bg-brand-concrete p-8 lg:p-16 border border-white/5 shadow-2xl noise-overlay max-w-3xl mx-auto">
+              <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 relative z-10 w-full items-center">
+                
+                {/* Left Side: Content */}
+                <div className="flex flex-col text-center lg:text-left">
+                  <span className="text-[#B8F000] text-[16px] font-bold tracking-[4px] uppercase mb-6 block">
+                    JOIN THE CREW
+                  </span>
+                  <h2 className="font-display text-[80px] lg:text-[140px] uppercase leading-[0.9] text-brand-neon mb-12">
+                    ONE LAST<br />THING.
+                  </h2>
+                  <p className="text-white text-[18px] lg:text-[22px] leading-relaxed mb-12 max-w-md mx-auto lg:mx-0">
+                    If you made it this far you're probably the kind of person we want. Fill out the form and we'll be in touch.
+                  </p>
+                  
+                  <div className="space-y-4">
+                     <div className="flex flex-col">
+                        <span className="text-[12px] font-black tracking-[3px] text-[#B8F000] uppercase mb-1">BORGER</span>
+                        <a href="tel:8062747200" className="text-white font-display text-[32px] lg:text-[48px] hover:text-[#B8F000] transition-colors">(806) 274-7200</a>
+                     </div>
+                     <div className="flex flex-col">
+                        <span className="text-[12px] font-black tracking-[3px] text-[#B8F000] uppercase mb-1">FRITCH</span>
+                        <a href="tel:8068570098" className="text-white font-display text-[32px] lg:text-[48px] hover:text-[#B8F000] transition-colors">(806) 857-0098</a>
+                     </div>
+                  </div>
+                </div>
+
+                {/* Right Side: Form */}
+                <div className="bg-[#1A1A1A] p-8 lg:p-12 border-l-[4px] border-[#B8F000] shadow-2xl noise-overlay w-full">
                   <form
-                    className="space-y-10"
+                    className="space-y-6"
                     onSubmit={(e) => {
                       e.preventDefault();
                       alert("Application submitted!");
                     }}
                   >
-                    <div className="grid lg:grid-cols-2 gap-10">
-                      <div className="flex flex-col gap-3">
-                        <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
+                    <div className="grid grid-cols-1 gap-6">
+                      <div className="flex flex-col gap-2">
+                        <label className="text-brand-white text-xs font-black uppercase tracking-[0.2em]">
                           Full Name (Required)
                         </label>
                         <input
                           required
                           type="text"
-                          className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors"
+                          placeholder="Your Name"
+                          className="bg-brand-black border border-white/10 p-4 text-brand-white outline-none focus:border-brand-neon transition-colors"
                         />
                       </div>
-                      <div className="flex flex-col gap-3">
-                        <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
+                      <div className="flex flex-col gap-2">
+                        <label className="text-brand-white text-xs font-black uppercase tracking-[0.2em]">
                           Phone Number (Required)
                         </label>
                         <input
                           required
                           type="tel"
-                          className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors"
+                          placeholder="806-555-5555"
+                          className="bg-brand-black border border-white/10 p-4 text-brand-white outline-none focus:border-brand-neon transition-colors"
                         />
                       </div>
-                    </div>
-
-                    <div className="grid lg:grid-cols-2 gap-10">
-                      <div className="flex flex-col gap-3">
-                        <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
+                      <div className="flex flex-col gap-2">
+                        <label className="text-brand-white text-xs font-black uppercase tracking-[0.2em]">
                           Email (Required)
                         </label>
                         <input
                           required
                           type="email"
-                          className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors"
+                          placeholder="name@email.com"
+                          className="bg-brand-black border border-white/10 p-4 text-brand-white outline-none focus:border-brand-neon transition-colors"
                         />
                       </div>
-                      <div className="flex flex-col gap-3">
-                        <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
-                          Location Preference
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="flex flex-col gap-2">
+                        <label className="text-brand-white text-xs font-black uppercase tracking-[0.2em]">
+                          Location
                         </label>
-                        <select className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors appearance-none px-4">
+                        <select className="bg-brand-black border border-white/10 p-4 text-brand-white outline-none focus:border-brand-neon transition-colors appearance-none">
                           <option>Borger</option>
                           <option>Fritch</option>
                           <option>Either</option>
                         </select>
                       </div>
-                    </div>
-
-                    <div className="grid lg:grid-cols-2 gap-10">
-                      <div className="flex flex-col gap-3">
-                        <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
-                          Position Applying For
+                      <div className="flex flex-col gap-2">
+                        <label className="text-brand-white text-xs font-black uppercase tracking-[0.2em]">
+                          Position
                         </label>
-                        <select className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors appearance-none px-4">
+                        <select className="bg-brand-black border border-white/10 p-4 text-brand-white outline-none focus:border-brand-neon transition-colors appearance-none">
                           <option>Pizza Maker</option>
-                          <option>Counter and Customer Service</option>
-                          <option>Kitchen Prep</option>
-                          <option>Delivery Driver</option>
-                          <option>Open to Any</option>
-                        </select>
-                      </div>
-                      <div className="flex flex-col gap-3">
-                        <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
-                          Availability
-                        </label>
-                        <select className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors appearance-none px-4">
-                          <option>Full Time</option>
-                          <option>Part Time</option>
-                          <option>Either</option>
+                          <option>Counter</option>
+                          <option>Prep</option>
+                          <option>Driver</option>
                         </select>
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-3">
-                      <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
-                        Tell us why you want to work at Jesse's (Recommended)
+                    <div className="flex flex-col gap-2">
+                      <label className="text-brand-white text-xs font-black uppercase tracking-[0.2em]">
+                        Your Story
                       </label>
                       <textarea
-                        rows={5}
-                        className="bg-brand-black border border-white/10 p-5 text-brand-white outline-none focus:border-brand-neon transition-colors resize-none"
+                        rows={3}
+                        placeholder="Tell us about yourself..."
+                        className="bg-brand-black border border-white/10 p-4 text-brand-white outline-none focus:border-brand-neon transition-colors resize-none"
                       ></textarea>
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full bg-brand-red text-brand-white py-7 text-2xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-2xl mt-12"
+                      className="w-full bg-brand-red text-brand-white py-5 text-xl font-display uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-2xl"
                     >
                       Submit Application
                     </button>
                   </form>
                 </div>
-              </div>
-            </section>
 
-            {/* SECTION 6: FINAL CTA */}
-            <section className="bg-brand-black py-40 lg:py-60 px-6 noise-overlay border-t-4 border-brand-red relative overflow-hidden">
-              <div className="w-full text-center relative z-10">
-                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
-                  FINAL CALL
-                </span>
-                <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] uppercase leading-[0.95] tracking-[0.05em] mb-12 text-brand-neon shadow-none [text-shadow:none]">
-                  READY TO <span className="text-brand-red">APPLY</span>?
-                </h2>
-                <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mb-20">
-                  We're hiring at both locations right now. Fill out the form
-                  above or call us directly.
-                </p>
-
-                <div className="grid lg:grid-cols-2 gap-12 mb-20 font-display text-[48px] lg:text-[64px] text-brand-white tracking-[-1px]">
-                  <a
-                    href={`tel:${LOCATIONS_DATA["Borger"].phoneRaw}`}
-                    className={`hover:text-brand-neon transition-colors ${location === "Borger" ? "text-brand-neon underline underline-offset-8" : ""}`}
-                    onClick={() => setLocation("Borger")}
-                  >
-                    BORGER: {LOCATIONS_DATA["Borger"].phone}
-                  </a>
-                  <a
-                    href={`tel:${LOCATIONS_DATA["Fritch"].phoneRaw}`}
-                    className={`hover:text-brand-neon transition-colors ${location === "Fritch" ? "text-brand-neon underline underline-offset-8" : ""}`}
-                    onClick={() => setLocation("Fritch")}
-                  >
-                    FRITCH: {LOCATIONS_DATA["Fritch"].phone}
-                  </a>
-                </div>
-
-                <div className="flex flex-col sm:flex-row justify-center gap-8">
-                  <a
-                    href="#apply"
-                    className="bg-brand-red text-brand-white px-16 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl text-center min-w-[280px]"
-                  >
-                    Apply Now — Borger
-                  </a>
-                  <a
-                    href="#apply"
-                    className="bg-brand-red text-brand-white px-16 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl text-center min-w-[280px]"
-                  >
-                    Apply Now — Fritch
-                  </a>
-                </div>
-              </div>
-              <div className="absolute inset-0 pointer-events-none opacity-[0.03] select-none flex items-center justify-center">
-                <h2 className="font-display text-[25rem] leading-none uppercase shadow-none [text-shadow:none] tracking-normal">
-                  JOIN US
-                </h2>
               </div>
             </section>
 
