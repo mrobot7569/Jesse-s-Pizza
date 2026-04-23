@@ -986,7 +986,7 @@ export default function App() {
           >
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-screen bg-brand-black px-6 pt-8 pb-20 noise-overlay">
+              <section className="relative min-h-[100svh] flex flex-col items-center justify-center bg-brand-black px-6 py-[100px] noise-overlay overflow-visible">
                 <div className="absolute inset-0 z-0">
                   <img
                     src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000"
@@ -997,12 +997,8 @@ export default function App() {
                   <div className="absolute inset-0 bg-brand-black/60" />
                 </div>
 
-                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
-                  <p className="text-[#F5F5F5] font-black uppercase tracking-[0.6em] mb-4 text-[12px] opacity-90">
-                    Borger & Fritch, TX
-                  </p>
-
-                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-white/10 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 whitespace-nowrap mb-4 gap-2 sm:gap-4 w-auto max-w-[calc(100vw-2rem)] shadow-2xl relative overflow-hidden group">
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4">
+                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-white/10 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 whitespace-nowrap mb-2 gap-2 sm:gap-4 w-auto shadow-2xl relative overflow-hidden group self-center">
                     <div className="absolute inset-0 noise-overlay opacity-10 pointer-events-none" />
                     <span className="font-display text-2xl sm:text-4xl text-white leading-none pt-1">
                       4.6
@@ -1030,7 +1026,11 @@ export default function App() {
                     </span>
                   </div>
 
-                  <h1 className="font-display text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center tracking-[0.05em]">
+                  <span className="text-[#F5F5F5] font-black uppercase tracking-[3px] mb-2 text-[11px] whitespace-nowrap block text-center">
+                    Borger & Fritch, TX
+                  </span>
+
+                  <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center">
                     <span>BORGER'S</span>
                     <span>MOST LOADED</span>
                     <span>
@@ -1038,29 +1038,26 @@ export default function App() {
                     </span>
                   </h1>
 
-                  <p className="text-[18px] lg:text-[22px] max-w-[600px] mx-auto text-[#F5F5F5] mb-16 leading-tight uppercase font-black tracking-widest font-sans">
-                    18 inches. Edge to edge toppings.
-                    <br />
-                    Ready in 20 minutes.
-                    <br />
-                    Two locations. Zero shortcuts.
+                  <p className="text-[16px] lg:text-[22px] leading-[1.6] lg:leading-tight max-w-[320px] lg:max-w-[600px] mx-auto text-[#F5F5F5] font-sans text-center normal-case">
+                    18 inches. Edge to edge toppings. Ready in 20 minutes. Two
+                    locations. Zero shortcuts.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-6">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 w-full sm:w-auto px-6 sm:px-0 mt-4">
                     <button
                       onClick={startOrder}
-                      className="bg-[#D62828] text-[#F5F5F5] px-12 py-8 text-2xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl"
+                      className="bg-[#D62828] text-[#F5F5F5] w-full sm:w-auto px-12 h-[52px] sm:h-auto text-[18px] sm:text-2xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl"
                     >
-                      Order Now — Borger & Fritch
+                      Order Now
                     </button>
                     <button
                       onClick={() => {
                         window.scrollTo(0, 0);
                         setView("menu-browse");
                       }}
-                      className="bg-transparent border-2 border-[#B8F000] text-[#B8F000] px-12 py-8 text-2xl font-display uppercase tracking-widest hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all"
+                      className="bg-transparent border-2 border-[#B8F000] text-[#B8F000] w-full sm:w-auto px-12 h-[52px] sm:h-auto text-[18px] sm:text-2xl font-display uppercase tracking-widest hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all"
                     >
-                      See What Everyone's Ordering
+                      View Full Menu
                     </button>
                   </div>
                 </div>
@@ -1540,7 +1537,7 @@ export default function App() {
 
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-screen flex items-center justify-center bg-brand-black overflow-hidden relative">
+              <section className="relative min-h-[100svh] flex flex-col items-center justify-center bg-brand-black px-6 py-[100px] overflow-visible">
                 <div className="absolute inset-0 z-0">
                   <img
                     src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000"
@@ -1552,8 +1549,8 @@ export default function App() {
                   <div className="absolute inset-0 bg-brand-black/80" />
                 </div>
 
-                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
-                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-white/10 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 whitespace-nowrap mb-6 gap-2 sm:gap-4 w-auto max-w-[calc(100vw-2rem)] shadow-2xl relative overflow-hidden group">
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4">
+                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-white/10 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 whitespace-nowrap mb-2 gap-2 sm:gap-4 w-auto shadow-2xl relative overflow-hidden group self-center">
                     <div className="absolute inset-0 noise-overlay opacity-10 pointer-events-none" />
                     <span className="font-display text-2xl sm:text-4xl text-white leading-none pt-1">
                       4.6
@@ -1580,29 +1577,31 @@ export default function App() {
                       867 Combined Reviews
                     </span>
                   </div>
-                  <h1 className="font-display text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-[0.05em] drop-shadow-[0_2px_40px_rgba(0,0,0,0.95)]">
+
+                  <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] leading-[0.95] uppercase text-brand-neon flex flex-col items-center w-full break-normal text-center drop-shadow-[0_2px_40px_rgba(0,0,0,0.95)]">
                     <span>THE MENU.</span>
                     <span>NO SHORTCUTS.</span>
                     <span>NO SKIMPING.</span>
                   </h1>
-                  <p className="text-lg lg:text-[18px] max-w-[400px] mx-auto text-brand-white mb-16 leading-tight uppercase font-sans font-normal tracking-widest text-center">
-                    Every item built the same way.
-                    <br />
-                    Loaded, fresh, and worth ordering again.
+
+                  <p className="text-[16px] lg:text-[18px] leading-[1.6] max-w-[320px] lg:max-w-[400px] mx-auto text-brand-white font-sans text-center normal-case">
+                    Every item built the same way. Loaded, fresh, and worth
+                    ordering again.
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
+
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 w-full sm:w-auto px-6 sm:px-0 mt-4">
                     <button
                       onClick={startOrder}
-                      className="bg-brand-red text-brand-white px-12 py-6 text-2xl font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl rounded-none border-none"
+                      className="bg-brand-red text-brand-white w-full sm:w-auto px-12 h-[52px] sm:h-auto text-[18px] sm:text-23l font-display uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl rounded-none border-none"
                     >
                       Order Now
                     </button>
                     <button
                       onClick={() => {
-                        const el = document.getElementById('most-popular');
-                        el?.scrollIntoView({ behavior: 'smooth' });
+                        const el = document.getElementById("most-popular");
+                        el?.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className="bg-transparent border-2 border-brand-neon text-brand-neon px-12 py-6 text-2xl font-display uppercase tracking-widest hover:bg-brand-neon hover:text-brand-black transition-all rounded-none"
+                      className="bg-transparent border-2 border-brand-neon text-brand-neon w-full sm:w-auto px-12 h-[52px] sm:h-auto text-[18px] sm:text-2xl font-display uppercase tracking-widest hover:bg-brand-neon hover:text-brand-black transition-all rounded-none"
                     >
                       View Full Menu
                     </button>
@@ -2148,7 +2147,7 @@ export default function App() {
             className="bg-brand-black min-h-screen"
           >
             {/* SECTION 1: HERO */}
-            <section className="relative h-screen flex items-center justify-center bg-brand-black overflow-hidden">
+            <section className="relative min-h-[100svh] flex flex-col items-center justify-center bg-brand-black px-6 py-[100px] overflow-visible">
               <div className="absolute inset-0 z-0">
                 <img
                   src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000"
@@ -2159,21 +2158,20 @@ export default function App() {
                 <div className="absolute inset-0 bg-brand-black/60" />
               </div>
 
-              <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10">
-                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
+              <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4">
+                <span className="text-brand-white text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap">
                   OUR STORY
                 </span>
-                <h1 className="font-display text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center pt-2">
+                <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center w-full break-normal text-center">
                   <span>THIS ISN'T</span>
                   <span>A CHAIN. THIS IS</span>
                   <span>
                     <span className="text-brand-red">JESSE'S</span>.
                   </span>
                 </h1>
-                <p className="text-brand-white text-[18px] lg:text-[22px] max-w-2xl mx-auto text-center font-sans font-black uppercase tracking-widest leading-relaxed">
-                  Built from the ground up with one goal:
-                  <br />
-                  make pizza people actually come back for.
+                <p className="text-brand-white text-[16px] lg:text-[22px] leading-[1.6] max-w-[320px] lg:max-w-2xl mx-auto text-center font-sans normal-case">
+                  Built from the ground up with one goal: make pizza people
+                  actually come back for.
                 </p>
               </div>
             </section>
@@ -2595,7 +2593,7 @@ export default function App() {
 
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-screen bg-brand-black px-6 pt-8 pb-20 overflow-hidden noise-overlay">
+              <section className="relative min-h-[100svh] flex flex-col items-center justify-center bg-brand-black px-6 py-[100px] overflow-visible noise-overlay">
                 <div className="absolute inset-0 z-0">
                   {/* Desktop Background Video */}
                   <div className="absolute inset-0 pointer-events-none overflow-hidden hidden lg:block">
@@ -2618,16 +2616,16 @@ export default function App() {
                   <div className="absolute inset-0 bg-brand-black/50 backdrop-blur-[2px]" />
                 </div>
 
-                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
-                  <span className="text-[#F5F5F5] text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6 w-full gap-4">
+                  <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap">
                     BORGER & FRITCH, TX
                   </span>
-                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
+                  <h1 className="font-display text-[64px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6 w-full text-center">
                     FIND YOUR
                     <br />
                     LOCATION.
                   </h1>
-                  <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto text-center">
+                  <p className="text-[16px] lg:text-[18px] leading-[1.6] max-w-[320px] lg:max-w-[600px] mx-auto text-brand-white font-sans text-center normal-case">
                     Two locations. One standard. Pick the one closest to you and
                     start your order.
                   </p>
@@ -2949,7 +2947,7 @@ export default function App() {
           >
             <main className="bg-[#0D0D0D]">
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-[calc(100vh-64px)] flex items-center justify-center bg-[#0D0D0D] overflow-hidden pt-20 pb-12">
+              <section className="relative min-h-[100svh] flex flex-col items-center justify-center bg-[#0D0D0D] px-6 py-[100px] overflow-visible">
                 <div className="absolute inset-0 z-0">
                   <img
                     src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000"
@@ -2960,32 +2958,32 @@ export default function App() {
                   <div className="absolute inset-0 bg-[#0D0D0D]/60" />
                 </div>
 
-                <div className="w-full mx-auto text-center relative z-10 px-6">
-                  <span className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase mb-4 block text-center">
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4">
+                  <span className="text-[#B8F000] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap">
                     FRITCH, TX
                   </span>
-                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
-                    FRITCH KNOWS
-                    <br />
-                    GOOD PIZZA.
-                    <br />
-                    THIS IS IT. <span className="text-[#D62828]">PERIOD.</span>
+                  <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center">
+                    <span>FRITCH KNOWS</span>
+                    <span>GOOD PIZZA.</span>
+                    <span>
+                      THIS IS IT. <span className="text-[#D62828]">PERIOD.</span>
+                    </span>
                   </h1>
-                  <p className="text-[16px] lg:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto text-center mb-12">
+                  <p className="text-[16px] lg:text-[18px] leading-[1.6] max-w-[320px] lg:max-w-[600px] mx-auto text-[#F5F5F5] font-sans text-center normal-case">
                     Fresh. Loaded edge to edge. Ready in 20 minutes. No
                     shortcuts. No skimping. Ever.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row justify-center gap-6">
+                  <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 w-full sm:w-auto px-6 sm:px-0 mt-4">
                     <button
                       onClick={startOrder}
-                      className="bg-[#D62828] text-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]"
+                      className="bg-[#D62828] text-white w-full sm:w-auto px-12 h-[52px] sm:h-auto text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl"
                     >
                       Order Now — Fritch
                     </button>
                     <a
                       href="tel:8068570098"
-                      className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px] text-center"
+                      className="border-2 border-[#B8F000] text-[#B8F000] w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl text-center"
                     >
                       Call (806) 857-0098
                     </a>
@@ -3417,7 +3415,7 @@ export default function App() {
           >
             <main className="bg-brand-black">
               {/* SECTION 1: HERO */}
-              <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center bg-brand-black overflow-hidden noise-overlay pt-32 pb-24">
+              <section className="relative min-h-[100svh] flex flex-col items-center justify-center bg-brand-black px-6 py-[100px] overflow-visible noise-overlay">
                 <div className="absolute inset-0 z-0">
                   <img
                     src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000"
@@ -3428,34 +3426,33 @@ export default function App() {
                   <div className="absolute inset-0 bg-brand-black/60" />
                 </div>
 
-                <div className="w-full mx-auto text-center relative z-10 px-6">
-                  <span className="text-brand-neon text-[12px] font-black tracking-[0.6em] uppercase mb-4 block text-center">
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4">
+                  <span className="text-brand-neon text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap">
                     BORGER, TX
                   </span>
-                  <h1 className="font-display text-[56px] lg:text-[88px] xl:text-[112px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
-                    NAME A BETTER
-                    <br />
-                    PIZZA IN
-                    <br />
-                    BORGER.
-                    <br />
-                    WE'LL <span className="text-brand-red">WAIT.</span>
+                  <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-brand-neon flex flex-col items-center w-full break-normal text-center">
+                    <span>NAME A BETTER</span>
+                    <span>PIZZA IN</span>
+                    <span>BORGER.</span>
+                    <span>
+                      WE'LL <span className="text-brand-red">WAIT.</span>
+                    </span>
                   </h1>
-                  <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto text-center mb-12">
+                  <p className="text-[16px] lg:text-[18px] leading-[1.6] max-w-[320px] lg:max-w-[600px] mx-auto text-brand-white font-sans text-center normal-case">
                     Fresh. Loaded edge to edge. Ready in 20 minutes. No
                     shortcuts. No skimping. Ever.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row justify-center gap-6">
+                  <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 w-full sm:w-auto px-6 sm:px-0 mt-4">
                     <button
                       onClick={startOrder}
-                      className="bg-brand-red text-brand-white px-10 py-5 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[240px]"
+                      className="bg-brand-red text-brand-white w-full sm:w-auto px-12 h-[52px] sm:h-auto text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl"
                     >
                       Order Now — Borger
                     </button>
                     <a
                       href="tel:8062747200"
-                      className="border-2 border-brand-neon text-brand-neon px-10 py-5 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-brand-neon hover:text-brand-black transition-all shadow-2xl min-w-[240px] text-center"
+                      className="border-2 border-brand-neon text-brand-neon w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:bg-brand-neon hover:text-brand-black transition-all shadow-2xl text-center"
                     >
                       Call (806) 274-7200
                     </a>
@@ -3949,12 +3946,12 @@ export default function App() {
             {/* Persistence: nav removed */}
 
             {/* SECTION 1: HERO */}
-            <section className="px-6 pt-12 pb-32 lg:pb-60 bg-brand-black noise-overlay border-b border-white/5 overflow-hidden relative">
-              <div className="w-full mx-auto flex flex-col items-center text-center relative z-10">
-                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
+            <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 py-[100px] bg-brand-black noise-overlay border-b border-white/5 overflow-visible">
+              <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4">
+                <span className="text-brand-white text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap">
                   CAREERS
                 </span>
-                <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] mb-12 leading-[0.95] tracking-[0.05em] uppercase text-brand-neon flex flex-col">
+                <h1 className="font-display text-[64px] sm:text-[96px] lg:text-[128px] xl:text-[160px] mb-12 leading-[0.95] tracking-[0.05em] uppercase text-brand-neon flex flex-col w-full break-normal text-center">
                   <span>COME WORK</span>
                   <span>WHERE THE PIZZA</span>
                   <span>
@@ -3962,29 +3959,29 @@ export default function App() {
                   </span>
                 </h1>
 
-                <p className="text-[16px] lg:text-[18px] font-[400] leading-[1.7] text-brand-white max-w-[640px] mx-auto mb-16">
+                <p className="text-[16px] lg:text-[18px] leading-[1.6] max-w-[320px] lg:max-w-[640px] mx-auto text-brand-white font-sans text-center normal-case">
                   Jesse's Pizza Company is looking for people who show up, work
                   hard, and take pride in what goes out the door. No corporate
                   nonsense. Just real work at a real local spot.
                 </p>
 
-                <div className="flex flex-col sm:flex-row justify-center gap-6">
+                <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 w-full sm:w-auto px-6 sm:px-0 mt-4">
                   <a
                     href="#apply"
-                    className="bg-brand-red text-brand-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl text-center"
+                    className="bg-brand-red text-brand-white w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl text-center"
                   >
                     Apply Now — Borger
                   </a>
                   <a
                     href="#apply"
-                    className="bg-brand-red text-brand-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl text-center"
+                    className="bg-brand-red text-brand-white w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl text-center"
                   >
                     Apply Now — Fritch
                   </a>
                 </div>
               </div>
               <div className="absolute inset-0 pointer-events-none opacity-[0.03] select-none flex items-center justify-center">
-                <h2 className="font-display text-[40rem] leading-none uppercase shadow-none [text-shadow:none] tracking-normal">
+                <h2 className="font-display text-[20rem] sm:text-[40rem] leading-none uppercase shadow-none [text-shadow:none] tracking-normal">
                   WORK
                 </h2>
               </div>
@@ -4341,7 +4338,7 @@ export default function App() {
             className="bg-[#0D0D0D] min-h-screen"
           >
             {/* SECTION 1: HERO */}
-            <section className="relative h-[calc(100vh-64px)] flex items-center justify-center bg-[#0D0D0D] overflow-hidden noise-overlay">
+            <section className="relative min-h-[100svh] flex flex-col items-center justify-center bg-[#0D0D0D] px-6 py-[100px] overflow-visible noise-overlay">
               <div className="absolute inset-0 z-0">
                 <img
                   src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000"
@@ -4352,37 +4349,37 @@ export default function App() {
                 <div className="absolute inset-0 bg-[#0D0D0D]/60" />
               </div>
 
-              <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
-                <span className="text-[#F5F5F5] text-[12px] font-black tracking-[0.6em] uppercase mb-2">
+              <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4">
+                <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap">
                   {location.toUpperCase()}, TX
                 </span>
-                <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
-                  REAL DEALS.
-                  <br />
-                  NO STRINGS.
-                  <br />
-                  <span className="text-[#D62828]">JUST.</span> ORDER.
+                <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center">
+                  <span>REAL DEALS.</span>
+                  <span>NO STRINGS.</span>
+                  <span>
+                    <span className="text-[#D62828]">JUST.</span> ORDER.
+                  </span>
                 </h1>
 
-                <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[500px] mx-auto text-center mb-12">
+                <p className="text-[16px] lg:text-[18px] leading-[1.6] max-w-[320px] lg:max-w-[500px] mx-auto text-[#F5F5F5] font-sans text-center normal-case">
                   Location specific specials running every week. Find your
                   location and order before it's gone.
                 </p>
 
-                <div className="mb-12">
+                <div className="mb-4">
                   <LocationToggle />
                 </div>
 
-                <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+                <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 w-full sm:w-auto px-6 sm:px-0">
                   <button
                     onClick={startOrder}
-                    className="bg-[#D62828] text-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]"
+                    className="bg-[#D62828] text-white w-full sm:w-auto px-12 h-[52px] sm:h-auto text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl"
                   >
                     Order Now — {location}
                   </button>
                   <a
                     href={`tel:${LOCATIONS_DATA[location].phoneRaw}`}
-                    className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px] text-center"
+                    className="border-2 border-[#B8F000] text-[#B8F000] w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl text-center"
                   >
                     Call {location}
                   </a>
@@ -4861,36 +4858,36 @@ export default function App() {
                   <div className="absolute inset-0 bg-[#0D0D0D]/60" />
                 </div>
 
-                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
-                  <span className="text-[#F5F5F5] text-[12px] font-black tracking-[0.6em] uppercase mb-2 block">
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 px-6">
+                  <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap">
                     BORGER & FRITCH, TX
                   </span>
 
-                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] mb-8 leading-[0.95] tracking-[0.05em] uppercase text-[#B8F000]">
-                    {location === "Borger" ? "BORGER" : "FRITCH"}
+                  <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center">
+                    {location.toUpperCase()}
                     <br />
                     <span className="text-[#D62828] uppercase">CONTACT.</span>
                   </h1>
 
-                  <p className="text-[18px] text-[#F5F5F5] font-black uppercase leading-relaxed tracking-widest max-w-[500px] mx-auto mb-12 font-sans">
+                  <p className="text-[16px] lg:text-[18px] leading-[1.6] max-w-[320px] lg:max-w-[500px] mx-auto text-[#F5F5F5] font-sans text-center normal-case">
                     Fastest way to reach us is a phone call. Or send a message
                     below.
                   </p>
 
-                  <div className="mb-12">
+                  <div className="mb-4">
                     <LocationToggle />
                   </div>
 
-                  <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+                  <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6 w-full sm:w-auto px-6 sm:px-0 mt-4">
                     <button
                       onClick={startOrder}
-                      className="bg-[#D62828] text-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]"
+                      className="bg-[#D62828] text-white w-full sm:w-auto px-12 h-[52px] sm:h-auto text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl"
                     >
                       Order Now — {location}
                     </button>
                     <a
                       href={`tel:${LOCATIONS_DATA[location].phoneRaw}`}
-                      className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px] text-center"
+                      className="border-2 border-[#B8F000] text-[#B8F000] w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl text-center"
                     >
                       Call {location}
                     </a>
@@ -5144,19 +5141,19 @@ export default function App() {
             exit={{ opacity: 0 }}
             className="bg-[#0D0D0D] min-h-screen"
           >
-            {/* SECTION 1: PAGE HEADER */}
-            <header className="bg-[#0D0D0D] py-20 px-6 text-center border-b border-white/5 relative overflow-hidden">
+            {/* SECTION 1: HERO HEADER */}
+            <header className="relative min-h-[100svh] flex flex-col items-center justify-center bg-[#0D0D0D] px-6 py-[100px] text-center border-b border-white/5 overflow-visible">
               <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
-              <div className="max-w-[1200px] mx-auto relative z-10">
-                <span className="text-[#F5F5F5] text-[13px] font-black tracking-[0.4em] uppercase mb-4 block text-center">
+              <div className="max-w-[1200px] mx-auto relative z-10 w-full gap-4 text-center items-center flex flex-col">
+                <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap">
                   Jesse's Pizza Company
                 </span>
-                <h1 className="font-display text-[48px] lg:text-[64px] text-[#B8F000] uppercase leading-[0.95] tracking-[-2px] mb-4">
+                <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center">
                   Terms of
                   <br />
                   Service.
                 </h1>
-                <p className="text-[#F5F5F5] text-[14px] opacity-60">
+                <p className="text-[#F5F5F5] text-[16px] leading-[1.6] max-w-[320px] mx-auto text-center font-sans opacity-60">
                   Last updated: April 2026
                 </p>
               </div>
@@ -5527,17 +5524,17 @@ export default function App() {
             exit={{ opacity: 0 }}
             className="bg-[#0D0D0D] min-h-screen"
           >
-            {/* SECTION 1: PAGE HEADER */}
-            <header className="bg-[#0D0D0D] py-20 px-6 text-center border-b border-white/5 relative overflow-hidden">
+            {/* SECTION 1: HERO HEADER */}
+            <header className="relative min-h-[100svh] flex flex-col items-center justify-center bg-[#0D0D0D] px-6 py-[100px] text-center border-b border-white/5 overflow-visible">
               <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
-              <div className="max-w-[1200px] mx-auto relative z-10">
-                <span className="text-[#F5F5F5] text-[13px] font-black tracking-[0.4em] uppercase mb-4 block text-center">
+              <div className="max-w-[1200px] mx-auto relative z-10 w-full gap-4 text-center items-center flex flex-col">
+                <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap">
                   Jesse's Pizza Company
                 </span>
-                <h1 className="font-display text-[48px] md:text-[64px] text-[#B8F000] uppercase leading-[0.95] tracking-[-2px] mb-4">
+                <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center">
                   Privacy Policy.
                 </h1>
-                <p className="text-[#F5F5F5] text-[14px] opacity-60">
+                <p className="text-[#F5F5F5] text-[16px] leading-[1.6] max-w-[320px] mx-auto text-center font-sans opacity-60">
                   Last updated: April 2026
                 </p>
               </div>
