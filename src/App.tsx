@@ -2595,28 +2595,44 @@ export default function App() {
               {/* SECTION 1: HERO */}
               <section className="relative min-h-[100svh] flex flex-col items-center justify-center bg-brand-black px-6 pt-0 pb-20 overflow-visible noise-overlay">
                 <div className="absolute inset-0 z-0">
-                  {/* Desktop Background Video */}
-                  <div className="absolute inset-0 pointer-events-none overflow-hidden hidden lg:block">
-                    <iframe
-                      src="https://www.youtube.com/embed/cW45-Li_Xlg?autoplay=1&mute=1&controls=0&loop=1&playlist=cW45-Li_Xlg&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
-                      className="w-[100%] h-[100%] lg:w-[150%] lg:h-[150%] xl:w-[200%] xl:h-[200%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full opacity-40 grayscale-[0.3] scale-[1.2] lg:scale-[1.1]"
-                      allow="autoplay; encrypted-media"
-                      title="Pizza Background Video"
-                    ></iframe>
-                  </div>
-                  {/* Mobile Static Fallback */}
-                  <div className="absolute inset-0 lg:hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=1200"
-                      alt="Delicious Pizza Fallback"
-                      className="w-full h-full object-cover opacity-40 grayscale-[0.2]"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-brand-black/50 backdrop-blur-[2px]" />
+                  <img
+                    src="https://images.unsplash.com/photo-1593504049359-74330189a355?auto=format&fit=crop&q=80&w=2000"
+                    alt="Loaded Pizza Close-Up"
+                    className="w-full h-full object-cover opacity-35 grayscale-[0.2]"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-brand-black/65" />
                 </div>
 
-                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6 w-full gap-4 pt-0 mt-0">
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
+                  <div className="inline-flex items-center justify-center bg-[#1A1A1A] border border-white/10 rounded-full px-4 py-2.5 sm:px-6 sm:py-3 whitespace-nowrap mb-3 gap-2 sm:gap-4 w-auto shadow-2xl relative overflow-hidden group self-center mt-0">
+                    <div className="absolute inset-0 noise-overlay opacity-10 pointer-events-none" />
+                    <span className="font-display text-2xl sm:text-4xl text-white leading-none pt-1">
+                      4.6
+                    </span>
+
+                    <div className="flex items-center gap-0.5 sm:gap-1">
+                      {[1, 2, 3, 4].map((i) => (
+                        <Star
+                          key={i}
+                          className="w-4 h-4 sm:w-[22px] sm:h-[22px] fill-[#B8F000] text-[#B8F000] shrink-0"
+                        />
+                      ))}
+                      <div className="relative">
+                        <Star className="w-4 h-4 sm:w-[22px] sm:h-[22px] text-white/20 shrink-0" />
+                        <div className="absolute inset-0 overflow-hidden w-[60%]">
+                          <Star
+                            className="w-4 h-4 sm:w-[22px] sm:h-[22px] fill-[#B8F000] text-[#B8F000] shrink-0"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <span className="text-[10px] sm:text-[14px] font-black text-white leading-none uppercase tracking-[1px] sm:tracking-[2px]">
+                      867 Combined Reviews
+                    </span>
+                  </div>
+
                   <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
                     BORGER & FRITCH, TX
                   </span>
@@ -2625,10 +2641,33 @@ export default function App() {
                     <br />
                     LOCATION.
                   </h1>
-                  <p className="text-[16px] lg:text-[18px] leading-[1.6] max-w-[320px] lg:max-w-[600px] mx-auto text-brand-white font-sans text-center normal-case">
+                  <p className="text-[16px] lg:text-[18px] leading-[1.6] max-w-[320px] lg:max-w-[600px] mx-auto text-brand-white font-sans text-center normal-case mb-4">
                     Two locations. One standard. Pick the one closest to you and
                     start your order.
                   </p>
+
+                  <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 w-full sm:w-auto px-6 sm:px-0">
+                    <button
+                      onClick={() => {
+                        setLocation("borger");
+                        setCurrentPage("borger");
+                        window.scrollTo(0, 0);
+                      }}
+                      className="bg-brand-red text-brand-white w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl"
+                    >
+                      Order Now — Borger
+                    </button>
+                    <button
+                      onClick={() => {
+                        setLocation("fritch");
+                        setCurrentPage("fritch");
+                        window.scrollTo(0, 0);
+                      }}
+                      className="border-2 border-brand-neon text-brand-neon w-full sm:w-auto px-12 h-[52px] sm:h-auto flex items-center justify-center text-[18px] sm:text-[15px] font-[700] uppercase tracking-[1px] hover:bg-brand-neon hover:text-brand-black transition-all shadow-2xl text-center"
+                    >
+                      Order Now — Fritch
+                    </button>
+                  </div>
                 </div>
               </section>
 
