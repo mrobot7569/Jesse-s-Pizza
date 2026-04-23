@@ -510,18 +510,17 @@ export default function App() {
   );
 
   const PromoStrip = () => (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] bg-[#B8F000] h-[64px] flex items-center px-4 lg:px-10 shadow-[0_-10px_40px_rgba(184,240,0,0.2)]">
-      <div className="absolute inset-0 noise-overlay opacity-20 pointer-events-none" />
+    <div className="fixed bottom-0 left-0 right-0 z-[100] bg-[#B8F000] h-[72px] lg:h-[64px] flex items-center px-4 lg:px-10 border-t border-black/10">
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between relative z-10">
-        <span className="hidden lg:block font-display text-[#0D0D0D] text-[16px] font-bold uppercase tracking-[2.5px]">
+        <span className="hidden lg:block font-sans text-[#0D0D0D] text-[15px] font-black uppercase tracking-[1px]">
           READY TO EAT THE BEST PIZZA IN THE TEXAS PANHANDLE?
         </span>
-        <span className="lg:hidden font-display text-[#0D0D0D] text-[16px] font-bold uppercase tracking-[1px]">
-          READY TO EAT?
+        <span className="lg:hidden font-sans text-[#0D0D0D] text-[13px] font-black uppercase tracking-[0.5px]">
+          READY TO EAT THE BEST?
         </span>
         <button
           onClick={startOrder}
-          className="bg-[#D62828] text-white px-8 py-3 text-[16px] font-display font-bold uppercase tracking-[1px] hover:brightness-110 transition-all active:scale-95 shadow-xl"
+          className="bg-brand-red text-white px-8 py-3.5 lg:py-2.5 text-[15px] font-sans font-black uppercase tracking-[1px] hover:scale-105 transition-all active:scale-95 shadow-2xl border border-black/10"
         >
           ORDER NOW
         </button>
