@@ -3220,7 +3220,7 @@ export default function App() {
               {/* SECTION 8: FULL BLEED IMAGE BREAK */}
               <section className="relative h-[250px] lg:h-[400px] bg-[#0D0D0D] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1541658016709-82535e94bc71?auto=format&fit=crop&q=80&w=2000"
+                  src="https://images.unsplash.com/photo-1608039755401-742074f0548d?auto=format&fit=crop&q=80&w=2000"
                   alt="Wings Close-up Action"
                   className="w-full h-full object-cover contrast-125"
                   referrerPolicy="no-referrer"
@@ -4439,6 +4439,39 @@ export default function App() {
               </div>
             </section>
 
+            {/* NEW: WEEKLY DAY INDICATOR STRIP */}
+            <section className="bg-[#1A1A1A] py-6 px-6 border-b border-white/5">
+              <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-7 gap-2">
+                  {["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"].map(
+                    (day, i) => {
+                      const todayIndex =
+                        new Date().getDay() === 0 ? 6 : new Date().getDay() - 1;
+                      const isActive = i === todayIndex;
+                      return (
+                        <div key={day} className="flex flex-col items-center">
+                          <div
+                            className={`w-full h-12 lg:h-16 flex items-center justify-center font-black text-sm lg:text-lg rounded-sm transition-all ${
+                              isActive
+                                ? "bg-[#B8F000] text-[#0D0D0D]"
+                                : "bg-[#2A2A2A] text-[#666666]"
+                            }`}
+                          >
+                            {day}
+                          </div>
+                          {isActive && (
+                            <span className="text-[#B8F000] text-[9px] lg:text-[11px] font-black uppercase tracking-tighter mt-2 whitespace-nowrap">
+                              TODAY'S DEALS
+                            </span>
+                          )}
+                        </div>
+                      );
+                    }
+                  )}
+                </div>
+              </div>
+            </section>
+
             {/* SECTION 3: BORGER SPECIALS */}
             <section
               id="borger-specials"
@@ -4447,22 +4480,25 @@ export default function App() {
               <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-32">
                   <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">
-                    {location.toUpperCase()}
+                    BORGER
                     <br />
                     SPECIALS.
                   </h2>
-                  <span className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
-                    {LOCATIONS_DATA[location].address} — {LOCATIONS_DATA[location].city}
+                  <span className="text-[#B8F000] text-[12px] font-black tracking-[3px] lg:tracking-[0.6em] uppercase mb-8 block text-center">
+                    530 W 3RD ST — BORGER, TX 79007
                   </span>
                   <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mt-8">
-                    These deals run every week at our {location} location. Order
+                    These deals run every week at our Borger location. Order
                     online or call to take advantage.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Card 1 */}
-                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
+                    <span className="text-[#D62828] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                      TODAY ONLY — MONDAYS
+                    </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
                       MONDAY
                     </span>
@@ -4472,9 +4508,12 @@ export default function App() {
                     <p className="text-brand-white text-[16px] mb-4">
                       Large 1 Topping Pizza
                     </p>
-                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">
+                    <p className="text-brand-white text-[16px] font-bold mb-2 italic">
                       Discounted Monday pricing
                     </p>
+                    <span className="text-[#B8F000] text-[13px] font-bold mb-8 block">
+                      Call for today's pricing
+                    </span>
                     <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">
                       One of Borger's most popular weekly deals. Call or order
                       online for current pricing.
@@ -4493,7 +4532,10 @@ export default function App() {
                   </div>
 
                   {/* Card 2 */}
-                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
+                    <span className="text-[#D62828] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                      TODAY ONLY — MONDAYS
+                    </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
                       MONDAY
                     </span>
@@ -4503,9 +4545,12 @@ export default function App() {
                     <p className="text-brand-white text-[16px] mb-4">
                       Free fountain drink with dine-in order
                     </p>
-                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">
+                    <p className="text-brand-white text-[16px] font-bold mb-2 italic">
                       Free with qualifying order
                     </p>
+                    <span className="text-[#B8F000] text-[13px] font-bold mb-8 block">
+                      Save vs. ordering separately
+                    </span>
                     <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">
                       Dine in on Monday and your drink is on us.
                     </p>
@@ -4523,7 +4568,10 @@ export default function App() {
                   </div>
 
                   {/* Card 3 */}
-                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                  <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
+                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                      AVAILABLE EVERY DAY
+                    </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
                       DAILY
                     </span>
@@ -4533,9 +4581,12 @@ export default function App() {
                     <p className="text-brand-white text-[16px] mb-4">
                       18" Jumbo + Cheezy Bread + 2 Liter
                     </p>
-                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">
+                    <p className="text-brand-white text-[16px] font-bold mb-2 italic">
                       $34.99
                     </p>
+                    <span className="text-[#B8F000] text-[13px] font-bold mb-8 block">
+                      Save vs. ordering separately
+                    </span>
                     <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">
                       Best value on the menu. Available every day, not just
                       Mondays.
@@ -4569,7 +4620,7 @@ export default function App() {
             {/* SECTION 5: FRITCH SPECIALS */}
             <section
               id="fritch-specials"
-              className="bg-[#2A2A2A] px-6 py-32 lg:py-48 noise-overlay"
+              className="bg-[#111111] px-6 py-32 lg:py-48 noise-overlay"
             >
               <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-32">
@@ -4578,7 +4629,7 @@ export default function App() {
                     <br />
                     SPECIALS.
                   </h2>
-                  <span className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
+                  <span className="text-[#B8F000] text-[12px] font-black tracking-[3px] lg:tracking-[0.6em] uppercase mb-8 block text-center">
                     424 E BROADWAY ST — FRITCH, TX 79036
                   </span>
                   <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mt-8">
@@ -4589,7 +4640,10 @@ export default function App() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Card 1 */}
-                  <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px]">
+                  <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
+                    <span className="text-[#D62828] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                      TODAY ONLY — TUESDAYS
+                    </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
                       TUESDAY
                     </span>
@@ -4599,9 +4653,12 @@ export default function App() {
                     <p className="text-brand-white text-[16px] mb-4">
                       18" Jumbo 1 Topping Pizza
                     </p>
-                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">
+                    <p className="text-brand-white text-[16px] font-bold mb-2 italic">
                       Tuesday special pricing
                     </p>
+                    <span className="text-[#B8F000] text-[13px] font-bold mb-8 block">
+                      Call for today's pricing
+                    </span>
                     <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">
                       Fritch's most popular weekly deal. The Jumbo at a price
                       that makes it even harder to say no. Call or order online
@@ -4621,7 +4678,10 @@ export default function App() {
                   </div>
 
                   {/* Card 2 */}
-                  <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px]">
+                  <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
+                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                      AVAILABLE EVERY DAY
+                    </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
                       WEEKLY
                     </span>
@@ -4631,9 +4691,12 @@ export default function App() {
                     <p className="text-brand-white text-[16px] mb-4">
                       Wings + 2 Liter Drink
                     </p>
-                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">
+                    <p className="text-brand-white text-[16px] font-bold mb-2 italic">
                       Weekly special pricing
                     </p>
+                    <span className="text-[#B8F000] text-[13px] font-bold mb-8 block">
+                      Save vs. ordering separately
+                    </span>
                     <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">
                       Fritch's go-to wings combo. Hot, crispy, and ready when
                       you are. Call or order online for current pricing.
@@ -4652,7 +4715,10 @@ export default function App() {
                   </div>
 
                   {/* Card 3 */}
-                  <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px]">
+                  <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
+                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                      AVAILABLE EVERY DAY
+                    </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
                       DAILY
                     </span>
@@ -4662,9 +4728,12 @@ export default function App() {
                     <p className="text-brand-white text-[16px] mb-4">
                       2 Large Pizzas + Wings (12 ct)
                     </p>
-                    <p className="text-brand-white text-[16px] font-bold mb-8 italic">
+                    <p className="text-brand-white text-[16px] font-bold mb-2 italic">
                       $45.99
                     </p>
+                    <span className="text-[#B8F000] text-[13px] font-bold mb-8 block">
+                      Save vs. ordering separately
+                    </span>
                     <p className="text-brand-white text-[16px] leading-[1.7] flex-1 mb-12">
                       Built for a crowd. Available every day at both locations.
                     </p>
@@ -4687,7 +4756,7 @@ export default function App() {
             {/* SECTION 6: FULL BLEED IMAGE BREAK */}
             <section className="relative h-[250px] lg:h-[400px] w-full overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1541658016709-82535e94bc71?auto=format&fit=crop&q=80&w=2000"
+                src="https://images.unsplash.com/photo-1608039755401-742074f0548d?auto=format&fit=crop&q=80&w=2000"
                 alt="Wings Close-up"
                 className="w-full h-full object-cover contrast-125 grayscale-[0.3]"
                 referrerPolicy="no-referrer"
@@ -4695,7 +4764,7 @@ export default function App() {
             </section>
 
             {/* SECTION 7: EVERYDAY VALUE */}
-            <section className="bg-[#0D0D0D] px-6 py-32 lg:py-48 noise-overlay">
+            <section className="bg-[#0D0D0D] px-6 py-20 lg:py-32 noise-overlay mt-0 pt-[80px]">
               <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-32">
                   <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">
@@ -4712,17 +4781,23 @@ export default function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Card 1 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                      AVAILABLE EVERY DAY
+                    </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">
                       FAMILY DEAL
                     </span>
-                    <div className="text-[#F5F5F5] text-[16px] space-y-2 mb-8 leading-relaxed">
+                    <div className="text-[#F5F5F5] text-[16px] space-y-2 mb-4 leading-relaxed">
                       <p>18" Jumbo Pizza</p>
                       <p>Cheezy Bread</p>
                       <p>2 Liter Drink</p>
                     </div>
-                    <p className="text-[#F5F5F5] text-2xl font-black mb-4">
+                    <p className="text-[#F5F5F5] text-2xl font-black mb-2">
                       $34.99
                     </p>
+                    <span className="text-[#B8F000] text-[13px] font-bold mb-8 block">
+                      Save vs. ordering separately
+                    </span>
                     <p className="text-[#B8F000] text-[14px] italic mb-12">
                       Nobody goes home hungry.
                     </p>
@@ -4736,16 +4811,22 @@ export default function App() {
 
                   {/* Card 2 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                      AVAILABLE EVERY DAY
+                    </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">
                       GAME NIGHT PACK
                     </span>
-                    <div className="text-[#F5F5F5] text-[16px] space-y-2 mb-8 leading-relaxed">
+                    <div className="text-[#F5F5F5] text-[16px] space-y-2 mb-4 leading-relaxed">
                       <p>2 Large Pizzas</p>
                       <p>Wings (12 ct)</p>
                     </div>
-                    <p className="text-[#F5F5F5] text-2xl font-black mb-4">
+                    <p className="text-[#F5F5F5] text-2xl font-black mb-2">
                       $45.99
                     </p>
+                    <span className="text-[#B8F000] text-[13px] font-bold mb-8 block">
+                      Save vs. ordering separately
+                    </span>
                     <p className="text-[#B8F000] text-[14px] italic mb-12">
                       Built for a crowd. Gone fast.
                     </p>
@@ -4759,16 +4840,22 @@ export default function App() {
 
                   {/* Card 3 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
+                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                      AVAILABLE EVERY DAY
+                    </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">
                       QUICK MEAL
                     </span>
-                    <div className="text-[#F5F5F5] text-[16px] space-y-2 mb-8 leading-relaxed">
+                    <div className="text-[#F5F5F5] text-[16px] space-y-2 mb-4 leading-relaxed">
                       <p>Medium Pizza</p>
                       <p>Drink</p>
                     </div>
-                    <p className="text-[#F5F5F5] text-2xl font-black mb-4">
+                    <p className="text-[#F5F5F5] text-2xl font-black mb-2">
                       $19.99
                     </p>
+                    <span className="text-[#B8F000] text-[13px] font-bold mb-8 block">
+                      Save vs. ordering separately
+                    </span>
                     <p className="text-[#B8F000] text-[14px] italic mb-12">
                       Fast. Simple. Hits the spot.
                     </p>
@@ -4784,7 +4871,7 @@ export default function App() {
             </section>
 
             {/* SECTION 8: NEVER MISS A DEAL */}
-            <section className="bg-[#2A2A2A] px-6 py-32 lg:py-48 noise-overlay border-t border-white/5 text-center">
+            <section className="bg-[#1A1A1A] px-6 py-32 lg:py-48 noise-overlay border-t border-white/5 text-center">
               <div className="max-w-[600px] mx-auto">
                 <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">
                   NEVER MISS
