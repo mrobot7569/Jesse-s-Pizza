@@ -319,6 +319,33 @@ const MENU_CATEGORIES = [
   },
 ];
 
+const LOCATIONS_DATA = {
+  Borger: {
+    name: "BORGER",
+    address: "530 W 3rd St",
+    city: "Borger, TX 79007",
+    phone: "(806) 274-7200",
+    phoneRaw: "8062747200",
+    hours: "Monday through Saturday",
+    time: "11:00 AM to 10:00 PM",
+    sunday: "Sunday: Closed",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.062828282828!2d-101.389!3d35.66!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDM5JzM2LjAiTiAxMDHCsDIzJzIwLjAiVw!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus",
+    directionsUrl: "https://maps.google.com/?q=Jesse's+Pizza+Company+Borger"
+  },
+  Fritch: {
+    name: "FRITCH",
+    address: "424 E Broadway St",
+    city: "Fritch, TX 79036",
+    phone: "(806) 857-0098",
+    phoneRaw: "8068570098",
+    hours: "Monday through Saturday",
+    time: "11:00 AM to 9:00 PM",
+    sunday: "Sunday: Closed",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.062828282828!2d-101.6!3d35.64!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDM4JzI0LjAiTiAxMDHCsDM2JzAwLjAiVw!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus",
+    directionsUrl: "https://maps.google.com/?q=Jesse's+Pizza+Company+Fritch"
+  }
+};
+
 const MobileMenu = ({
   isOpen,
   onClose,
@@ -346,7 +373,7 @@ const MobileMenu = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="md:hidden fixed inset-0 bg-brand-black z-[300] flex flex-col overflow-y-auto"
+          className="lg:hidden fixed inset-0 bg-brand-black z-[300] flex flex-col overflow-y-auto"
         >
           <div className="flex-1 flex flex-col p-8 sm:p-12 relative z-10 pb-24">
             <div className="flex items-center mb-8">
@@ -468,14 +495,28 @@ export default function App() {
   ];
   const isMarketingView = marketingViews.includes(view);
 
+  const LocationToggle = () => (
+    <div className="flex bg-white/5 p-1 rounded-full border border-white/10">
+      {["Borger", "Fritch"].map((loc) => (
+        <button
+          key={loc}
+          onClick={() => setLocation(loc as "Borger" | "Fritch")}
+          className={`px-6 py-2 rounded-full font-display text-sm tracking-widest uppercase transition-all ${location === loc ? "bg-brand-neon text-brand-black shadow-lg" : "text-brand-white/40 hover:text-brand-white"}`}
+        >
+          {loc}
+        </button>
+      ))}
+    </div>
+  );
+
   const PromoStrip = () => (
-    <div className="fixed bottom-0 left-0 right-0 z-[100] bg-[#B8F000] h-[64px] flex items-center px-4 md:px-10 shadow-[0_-10px_40px_rgba(184,240,0,0.2)]">
+    <div className="fixed bottom-0 left-0 right-0 z-[100] bg-[#B8F000] h-[64px] flex items-center px-4 lg:px-10 shadow-[0_-10px_40px_rgba(184,240,0,0.2)]">
       <div className="absolute inset-0 noise-overlay opacity-20 pointer-events-none" />
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between relative z-10">
-        <span className="hidden md:block font-display text-[#0D0D0D] text-[16px] font-bold uppercase tracking-[2.5px]">
+        <span className="hidden lg:block font-display text-[#0D0D0D] text-[16px] font-bold uppercase tracking-[2.5px]">
           READY TO EAT THE BEST PIZZA IN THE TEXAS PANHANDLE?
         </span>
-        <span className="md:hidden font-display text-[#0D0D0D] text-[16px] font-bold uppercase tracking-[1px]">
+        <span className="lg:hidden font-display text-[#0D0D0D] text-[16px] font-bold uppercase tracking-[1px]">
           READY TO EAT?
         </span>
         <button
@@ -489,22 +530,22 @@ export default function App() {
   );
 
   const MainNavigation = () => (
-    <nav className="flex items-center px-4 md:px-6 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 overflow-hidden">
+    <nav className="flex items-center px-4 lg:px-6 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 overflow-hidden">
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
       <div
-        className="flex items-center gap-2 md:gap-3 cursor-pointer min-w-0 relative z-10 shrink-0"
+        className="flex items-center gap-2 lg:gap-3 cursor-pointer min-w-0 relative z-10 shrink-0"
         onClick={() => {
           window.scrollTo(0, 0);
           setView("home");
         }}
       >
-        <Pizza className="text-brand-neon w-6 h-6 md:w-8 md:h-8 shrink-0" />
-        <span className="font-display text-base sm:text-2xl md:text-3xl uppercase truncate text-brand-neon">
+        <Pizza className="text-brand-neon w-6 h-6 lg:w-8 lg:h-8 shrink-0" />
+        <span className="font-display text-base sm:text-2xl lg:text-3xl uppercase truncate text-brand-neon">
           Jesse's Pizza Co.
         </span>
       </div>
 
-      <div className="hidden md:flex ml-auto items-center gap-8 lg:gap-10 font-display text-lg uppercase tracking-wider text-brand-white relative z-10">
+      <div className="hidden lg:flex ml-auto items-center gap-8 xl:gap-10 font-display text-lg uppercase tracking-wider text-brand-white relative z-10">
         <button
           onClick={() => {
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -559,6 +600,7 @@ export default function App() {
         >
           CONTACT
         </button>
+
         <button
           onClick={startOrder}
           className="bg-brand-red text-brand-white font-display uppercase px-8 py-3 tracking-widest transition-all hover:bg-red-700 active:scale-95 rounded-md text-lg"
@@ -568,7 +610,7 @@ export default function App() {
       </div>
 
       <button
-        className="ml-auto md:hidden text-brand-neon p-2 hover:bg-white/5 rounded-sm transition-colors relative z-10"
+        className="ml-auto lg:hidden text-brand-neon p-2 hover:bg-white/5 rounded-sm transition-colors relative z-10"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
         aria-label="Toggle menu"
       >
@@ -672,7 +714,7 @@ export default function App() {
       <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
 
       <div className="max-w-[1200px] mx-auto pt-20 pb-16 px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-12 lg:gap-8">
           {/* COLUMN 1: BRAND */}
           <div className="max-w-[280px]">
             <div
@@ -758,38 +800,38 @@ export default function App() {
             </h4>
 
             <div className="flex flex-col gap-1">
-              <span className="font-display text-[16px] text-[#B8F000] uppercase mb-2">
+              <span className={`font-display text-[16px] uppercase mb-2 ${location === "Borger" ? "text-brand-neon underline underline-offset-4" : "text-[#B8F000]"}`}>
                 BORGER
               </span>
               <p className="text-[#F5F5F5] text-[15px] font-semibold uppercase tracking-[1px]">
-                530 W 3RD ST
+                {LOCATIONS_DATA["Borger"].address}
               </p>
               <p className="text-[#F5F5F5] text-[15px] font-semibold uppercase tracking-[1px] mb-2">
-                BORGER, TX 79007
+                {LOCATIONS_DATA["Borger"].city}
               </p>
               <a
-                href="tel:8062747200"
+                href={`tel:${LOCATIONS_DATA["Borger"].phoneRaw}`}
                 className="font-display text-[18px] text-[#B8F000] uppercase hover:brightness-110 transition-all"
               >
-                (806) 274-7200
+                {LOCATIONS_DATA["Borger"].phone}
               </a>
             </div>
 
             <div className="flex flex-col gap-1">
-              <span className="font-display text-[16px] text-[#B8F000] uppercase mb-2">
+              <span className={`font-display text-[16px] uppercase mb-2 ${location === "Fritch" ? "text-brand-neon underline underline-offset-4" : "text-[#B8F000]"}`}>
                 FRITCH
               </span>
               <p className="text-[#F5F5F5] text-[15px] font-semibold uppercase tracking-[1px]">
-                424 E BROADWAY ST
+                {LOCATIONS_DATA["Fritch"].address}
               </p>
               <p className="text-[#F5F5F5] text-[15px] font-semibold uppercase tracking-[1px] mb-2">
-                FRITCH, TX 79036
+                {LOCATIONS_DATA["Fritch"].city}
               </p>
               <a
-                href="tel:8068570098"
+                href={`tel:${LOCATIONS_DATA["Fritch"].phoneRaw}`}
                 className="font-display text-[18px] text-[#B8F000] uppercase hover:brightness-110 transition-all"
               >
-                (806) 857-0098
+                {LOCATIONS_DATA["Fritch"].phone}
               </a>
             </div>
           </div>
@@ -857,8 +899,8 @@ export default function App() {
       {/* SUB-FOOTER */}
       <div className="bg-[#2A2A2A] py-[20px] px-6 relative overflow-hidden">
         <div className="absolute inset-0 noise-overlay opacity-10 pointer-events-none" />
-        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
-          <div className="text-[12px] font-semibold uppercase tracking-[2px] text-[#666666] text-center md:text-left">
+        <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row justify-between items-center gap-6 relative z-10">
+          <div className="text-[12px] font-semibold uppercase tracking-[2px] text-[#666666] text-center lg:text-left">
             © 2026 JESSE'S PIZZA CO. ALL RIGHTS RESERVED.
           </div>
           <div className="flex items-center gap-4 text-[12px] font-semibold uppercase tracking-[2px] text-[#666666]">
@@ -988,7 +1030,7 @@ export default function App() {
                     </span>
                   </div>
 
-                  <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center tracking-[0.05em]">
+                  <h1 className="font-display text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center tracking-[0.05em]">
                     <span>BORGER'S</span>
                     <span>MOST LOADED</span>
                     <span>
@@ -996,7 +1038,7 @@ export default function App() {
                     </span>
                   </h1>
 
-                  <p className="text-[18px] md:text-[22px] max-w-[600px] mx-auto text-[#F5F5F5] mb-16 leading-tight uppercase font-black tracking-widest font-sans">
+                  <p className="text-[18px] lg:text-[22px] max-w-[600px] mx-auto text-[#F5F5F5] mb-16 leading-tight uppercase font-black tracking-widest font-sans">
                     18 inches. Edge to edge toppings.
                     <br />
                     Ready in 20 minutes.
@@ -1025,26 +1067,26 @@ export default function App() {
               </section>
 
               {/* SECTION 2: TRUST STRIP */}
-              <section className="bg-brand-neon py-10 md:py-14 border-y-4 border-brand-red/20 overflow-hidden relative z-20">
+              <section className="bg-brand-neon py-10 lg:py-14 border-y-4 border-brand-red/20 overflow-hidden relative z-20">
                 <div className="max-w-[1400px] mx-auto px-6">
-                  <div className="flex flex-wrap items-center justify-center gap-y-8 md:gap-y-0">
-                    <div className="w-full sm:w-1/2 md:w-1/4 px-4 text-center border-brand-red/10 md:border-r border-b md:border-b-0 pb-8 md:pb-0">
-                      <span className="text-2xl md:text-3xl font-black text-brand-red uppercase leading-none tracking-widest">
+                  <div className="flex flex-wrap items-center justify-center gap-y-8 lg:gap-y-0">
+                    <div className="w-full sm:w-1/2 lg:w-1/4 px-4 text-center border-brand-red/10 lg:border-r border-b lg:border-b-0 pb-8 lg:pb-0">
+                      <span className="text-2xl lg:text-3xl font-black text-brand-red uppercase leading-none tracking-widest">
                         "LOADED EVERY TIME"
                       </span>
                     </div>
-                    <div className="w-full sm:w-1/2 md:w-1/4 px-4 text-center border-brand-red/10 sm:border-r-0 md:border-r border-b sm:border-b-0 md:border-b-0 pb-8 sm:pb-0 md:pb-0">
-                      <span className="text-2xl md:text-3xl font-black text-brand-red uppercase leading-none tracking-widest">
+                    <div className="w-full sm:w-1/2 lg:w-1/4 px-4 text-center border-brand-red/10 sm:border-r-0 lg:border-r border-b sm:border-b-0 lg:border-b-0 pb-8 sm:pb-0 lg:pb-0">
+                      <span className="text-2xl lg:text-3xl font-black text-brand-red uppercase leading-none tracking-widest">
                         "NO CHAIN. NO SHORTCUTS."
                       </span>
                     </div>
-                    <div className="w-full sm:w-1/2 md:w-1/4 px-4 text-center border-brand-red/10 border-r border-b sm:border-b-0 md:border-b-0 pt-8 sm:pt-0 md:pt-0">
-                      <span className="text-2xl md:text-3xl font-black text-brand-red uppercase leading-none tracking-widest">
+                    <div className="w-full sm:w-1/2 lg:w-1/4 px-4 text-center border-brand-red/10 border-r border-b sm:border-b-0 lg:border-b-0 pt-8 sm:pt-0 lg:pt-0">
+                      <span className="text-2xl lg:text-3xl font-black text-brand-red uppercase leading-none tracking-widest">
                         "BORGER'S GO-TO SPOT"
                       </span>
                     </div>
-                    <div className="w-full sm:w-1/2 md:w-1/4 px-4 text-center pt-8 sm:pt-0 md:pt-0">
-                      <span className="text-2xl md:text-3xl font-black text-brand-red uppercase leading-none tracking-widest">
+                    <div className="w-full sm:w-1/2 lg:w-1/4 px-4 text-center pt-8 sm:pt-0 lg:pt-0">
+                      <span className="text-2xl lg:text-3xl font-black text-brand-red uppercase leading-none tracking-widest">
                         "READY IN 20 MINS"
                       </span>
                     </div>
@@ -1055,23 +1097,23 @@ export default function App() {
               {/* SECTION 3: ENEMY SECTION */}
               <section className="bg-[#0D0D0D] px-6 py-[140px] noise-overlay relative">
                 <div className="max-w-[1200px] mx-auto text-center flex flex-col gap-10">
-                  <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase mb-16 leading-tight">
+                  <h2 className="font-display text-6xl lg:text-8xl text-[#B8F000] uppercase mb-16 leading-tight">
                     YOU ALREADY KNOW.
                   </h2>
 
                   <div className="flex flex-col gap-24">
-                    <p className="text-[60px] md:text-[80px] text-[#F5F5F5] font-display uppercase tracking-tight leading-none bg-[#0D0D0D]">
+                    <p className="text-[60px] lg:text-[80px] text-[#F5F5F5] font-display uppercase tracking-tight leading-none bg-[#0D0D0D]">
                       You've waited 45 minutes for it.
                     </p>
-                    <p className="text-[60px] md:text-[80px] text-[#F5F5F5] font-display uppercase tracking-tight leading-none bg-[#0D0D0D]">
+                    <p className="text-[60px] lg:text-[80px] text-[#F5F5F5] font-display uppercase tracking-tight leading-none bg-[#0D0D0D]">
                       Opened the box and felt let down.
                     </p>
-                    <p className="text-[60px] md:text-[80px] text-[#B8F000] font-display uppercase tracking-tight leading-none bg-[#0D0D0D]">
+                    <p className="text-[60px] lg:text-[80px] text-[#B8F000] font-display uppercase tracking-tight leading-none bg-[#0D0D0D]">
                       That ends here.
                     </p>
                   </div>
 
-                  <p className="text-[18px] md:text-[22px] max-w-[500px] mx-auto text-[#F5F5F5] leading-relaxed uppercase font-medium tracking-tight mt-20">
+                  <p className="text-[18px] lg:text-[22px] max-w-[500px] mx-auto text-[#F5F5F5] leading-relaxed uppercase font-medium tracking-tight mt-20">
                     Jesse's is built for people who are done settling for pizza
                     that doesn't deliver.
                   </p>
@@ -1079,7 +1121,7 @@ export default function App() {
               </section>
 
               {/* SECTION 4: FULL BLEED IMAGE BREAK */}
-              <section className="w-full relative h-[250px] md:h-[400px]">
+              <section className="w-full relative h-[250px] lg:h-[400px]">
                 <img
                   src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000"
                   alt="Pizza Fresh from Oven"
@@ -1089,21 +1131,21 @@ export default function App() {
               </section>
 
               {/* SECTION 5: OFFER SECTION */}
-              <section className="bg-[#2A2A2A] px-6 py-32 md:py-[120px] noise-overlay relative">
+              <section className="bg-[#2A2A2A] px-6 py-32 lg:py-[120px] noise-overlay relative">
                 <div className="max-w-[1200px] mx-auto">
                   <div className="text-center mb-32">
-                    <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase mb-12 leading-tight">
+                    <h2 className="font-display text-6xl lg:text-8xl text-[#B8F000] uppercase mb-12 leading-tight">
                       HERE'S WHAT YOU'RE GETTING.
                     </h2>
-                    <p className="text-lg md:text-xl text-[#F5F5F5] uppercase tracking-widest font-bold">
+                    <p className="text-lg lg:text-xl text-[#F5F5F5] uppercase tracking-widest font-bold">
                       Not "great pizza." Here's what that actually means.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     {/* Card 1 */}
                     <div className="bg-[#0D0D0D] shadow-2xl relative overflow-hidden flex flex-col group border-none">
-                      <div className="h-[240px] md:h-[300px] relative overflow-hidden">
+                      <div className="h-[240px] lg:h-[300px] relative overflow-hidden">
                         <img
                           src="https://i.imgur.com/oz3N4dm.jpeg"
                           alt="18 inch Jumbo Pizza"
@@ -1135,7 +1177,7 @@ export default function App() {
 
                     {/* Card 2 */}
                     <div className="bg-[#0D0D0D] shadow-2xl relative overflow-hidden flex flex-col group border-none">
-                      <div className="h-[240px] md:h-[300px] relative overflow-hidden">
+                      <div className="h-[240px] lg:h-[300px] relative overflow-hidden">
                         <img
                           src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&q=80&w=1000"
                           alt="Jalapeño Popper Pizza"
@@ -1167,7 +1209,7 @@ export default function App() {
 
                     {/* Card 3 */}
                     <div className="bg-[#0D0D0D] shadow-2xl relative overflow-hidden flex flex-col group border-none">
-                      <div className="h-[240px] md:h-[300px] relative overflow-hidden">
+                      <div className="h-[240px] lg:h-[300px] relative overflow-hidden">
                         <img
                           src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1000"
                           alt="Chicken Bacon Ranch Pizza"
@@ -1199,7 +1241,7 @@ export default function App() {
 
                     {/* Card 4 */}
                     <div className="bg-[#0D0D0D] shadow-2xl relative overflow-hidden flex flex-col group border-none">
-                      <div className="h-[240px] md:h-[300px] relative overflow-hidden">
+                      <div className="h-[240px] lg:h-[300px] relative overflow-hidden">
                         <img
                           src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=1000"
                           alt="Pizza Family Deal"
@@ -1270,9 +1312,9 @@ export default function App() {
               </section>
 
               {/* SECTION 7: OBJECTION REMOVAL */}
-              <section className="bg-[#0D0D0D] px-6 py-40 md:py-[160px] noise-overlay relative">
+              <section className="bg-[#0D0D0D] px-6 py-40 lg:py-[160px] noise-overlay relative">
                 <div className="max-w-[600px] mx-auto text-center flex flex-col gap-16">
-                  <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase leading-tight">
+                  <h2 className="font-display text-6xl lg:text-8xl text-[#B8F000] uppercase leading-tight">
                     STILL NOT SURE?
                   </h2>
 
@@ -1301,16 +1343,16 @@ export default function App() {
               </section>
 
               {/* SECTION 8: SOCIAL PROOF */}
-              <section className="bg-[#2A2A2A] px-6 py-32 md:py-[120px] noise-overlay relative">
+              <section className="bg-[#2A2A2A] px-6 py-32 lg:py-[120px] noise-overlay relative">
                 <div className="max-w-[1200px] mx-auto text-center">
-                  <h2 className="font-display text-6xl md:text-8xl text-[#B8F000] uppercase mb-12 leading-tight">
+                  <h2 className="font-display text-6xl lg:text-8xl text-[#B8F000] uppercase mb-12 leading-tight">
                     DON'T TAKE OUR WORD FOR IT.
                   </h2>
-                  <p className="text-lg md:text-xl text-[#F5F5F5] uppercase tracking-widest font-bold mb-32 italic">
+                  <p className="text-lg lg:text-xl text-[#F5F5F5] uppercase tracking-widest font-bold mb-32 italic">
                     Borger and Fritch have been eating here long enough to know.
                   </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {[
                       "Best pizza in Borger. Not even close. I've tried everything else. This is the one.",
                       "Ordered the Jalapeño Popper on a Friday. Ordered it again Sunday. That's all I need to say.",
@@ -1334,7 +1376,7 @@ export default function App() {
               </section>
 
               {/* SECTION 9: FULL BLEED IMAGE BREAK */}
-              <section className="w-full relative h-[220px] md:h-[350px]">
+              <section className="w-full relative h-[220px] lg:h-[350px]">
                 <img
                   src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000"
                   alt="Pizza Sliced Hot"
@@ -1346,10 +1388,10 @@ export default function App() {
               {/* SECTION 10: LOCATIONS */}
               <section
                 id="locations"
-                className="bg-[#0D0D0D] px-6 py-32 md:py-[120px] noise-overlay relative"
+                className="bg-[#0D0D0D] px-6 py-32 lg:py-[120px] noise-overlay relative"
               >
                 <div className="max-w-[1200px] mx-auto text-center">
-                  <h2 className="font-display text-6xl md:text-[5rem] text-[#B8F000] uppercase mb-32 leading-none">
+                  <h2 className="font-display text-6xl lg:text-[5rem] text-[#B8F000] uppercase mb-32 leading-none">
                     PICK YOUR LOCATION.
                     <br />
                     ORDER IN 30 SECONDS.
@@ -1457,8 +1499,8 @@ export default function App() {
                   <div className="absolute inset-0 bg-[#0D0D0D]/60" />
                 </div>
 
-                <div className="max-w-[400px] md:max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
-                  <h1 className="font-display text-6xl md:text-[8rem] lg:text-[10rem] mb-12 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center pt-20">
+                <div className="max-w-[400px] lg:max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
+                  <h1 className="font-display text-6xl lg:text-[8rem] xl:text-[10rem] mb-12 leading-[0.95] uppercase text-[#B8F000] flex flex-col items-center pt-20">
                     <span>YOU'RE GOING</span>
                     <span>TO EAT TONIGHT</span>
                     <span>ANYWAY.</span>
@@ -1538,12 +1580,12 @@ export default function App() {
                       867 Combined Reviews
                     </span>
                   </div>
-                  <h1 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-tighter md:tracking-[0.05em] font-bold drop-shadow-[0_2px_40px_rgba(0,0,0,0.95)]">
+                  <h1 className="font-display text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-[0.05em] drop-shadow-[0_2px_40px_rgba(0,0,0,0.95)]">
                     <span>THE MENU.</span>
                     <span>NO SHORTCUTS.</span>
                     <span>NO SKIMPING.</span>
                   </h1>
-                  <p className="text-lg md:text-[18px] max-w-[400px] mx-auto text-brand-white mb-16 leading-tight uppercase font-sans font-normal tracking-widest text-center">
+                  <p className="text-lg lg:text-[18px] max-w-[400px] mx-auto text-brand-white mb-16 leading-tight uppercase font-sans font-normal tracking-widest text-center">
                     Every item built the same way.
                     <br />
                     Loaded, fresh, and worth ordering again.
@@ -1569,10 +1611,10 @@ export default function App() {
               </section>
 
               {/* SECTION 2: MOST POPULAR */}
-              <section id="most-popular" className="bg-brand-concrete px-5 py-24 md:py-32 noise-overlay border-b border-white/5">
+              <section id="most-popular" className="bg-brand-concrete px-5 py-24 lg:py-32 noise-overlay border-b border-white/5">
                 <div className="max-w-[1200px] mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-6xl md:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
+                    <h2 className="font-display text-6xl lg:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
                       START HERE.
                     </h2>
                     <p className="text-[16px] text-brand-white uppercase font-sans font-normal tracking-widest">
@@ -1644,10 +1686,10 @@ export default function App() {
               </section>
 
               {/* SECTION 3: COMBOS */}
-              <section className="bg-brand-black px-5 py-24 md:py-32 border-b border-white/5 noise-overlay">
+              <section className="bg-brand-black px-5 py-24 lg:py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-[1200px] mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-5xl md:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
+                    <h2 className="font-display text-5xl lg:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
                       MORE FOOD. BETTER VALUE.
                     </h2>
                     <p className="text-[16px] text-brand-white uppercase font-sans font-normal tracking-widest text-center">
@@ -1655,7 +1697,7 @@ export default function App() {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {[
                       {
                         name: "FAMILY DEAL",
@@ -1714,7 +1756,7 @@ export default function App() {
               </section>
 
               {/* SECTION 4: FULL BLEED IMAGE BREAK */}
-              <section className="w-full h-[250px] md:h-[400px] overflow-hidden">
+              <section className="w-full h-[250px] lg:h-[400px] overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000"
                   alt="Specialty Pizza Close-Up"
@@ -1725,10 +1767,10 @@ export default function App() {
               </section>
 
               {/* SECTION 5: SPECIALTY PIZZAS */}
-              <section className="bg-brand-concrete px-5 py-24 md:py-32 border-b border-white/5 noise-overlay">
+              <section className="bg-brand-concrete px-5 py-24 lg:py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-[1200px] mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-5xl md:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
+                    <h2 className="font-display text-5xl lg:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
                       SPECIALTY PIZZAS.
                     </h2>
                     <p className="text-[16px] text-brand-white uppercase font-sans font-normal tracking-widest text-center">
@@ -1736,7 +1778,7 @@ export default function App() {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                     {[
                       {
                         name: "JALAPEÑO POPPER",
@@ -1807,8 +1849,8 @@ export default function App() {
 
               {/* SECTION 6: BUILD YOUR OWN */}
               <section className="bg-brand-black px-0 py-0 border-b border-white/5 noise-overlay">
-                <div className="flex flex-col md:flex-row items-stretch min-h-[600px]">
-                  <div className="w-full md:w-1/2 h-[300px] md:h-auto overflow-hidden">
+                <div className="flex flex-col lg:flex-row items-stretch min-h-[600px]">
+                  <div className="w-full lg:w-1/2 h-[300px] lg:h-auto overflow-hidden">
                     <img
                       src="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&q=80&w=2000"
                       alt="Build Your Own Pizza"
@@ -1817,8 +1859,8 @@ export default function App() {
                       referrerPolicy="no-referrer"
                     />
                   </div>
-                  <div className="w-full md:w-1/2 p-8 md:p-24 flex flex-col justify-center bg-brand-black">
-                    <h2 className="font-display text-5xl md:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
+                  <div className="w-full lg:w-1/2 p-8 lg:p-24 flex flex-col justify-center bg-brand-black">
+                    <h2 className="font-display text-5xl lg:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
                       BUILD YOUR OWN.
                     </h2>
                     <p className="text-[18px] text-brand-white uppercase font-sans font-normal tracking-widest mb-12">
@@ -1862,10 +1904,10 @@ export default function App() {
               </section>
 
               {/* SECTION 7: SIDES AND WINGS */}
-              <section className="bg-brand-concrete px-5 py-24 md:py-32 border-b border-white/5 noise-overlay">
+              <section className="bg-brand-concrete px-5 py-24 lg:py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-[1200px] mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-5xl md:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
+                    <h2 className="font-display text-5xl lg:text-[56px] mb-6 text-brand-neon uppercase font-bold tracking-[0.05em]">
                       SIDES AND WINGS.
                     </h2>
                   </div>
@@ -1928,7 +1970,7 @@ export default function App() {
               </section>
 
               {/* SECTION 8: FULL BLEED IMAGE BREAK */}
-              <section className="w-full h-[220px] md:h-[350px] overflow-hidden">
+              <section className="w-full h-[220px] lg:h-[350px] overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1608039755401-742074f0548d?auto=format&fit=crop&q=80&w=2000"
                   alt="Wings Close-Up"
@@ -1939,10 +1981,10 @@ export default function App() {
               </section>
 
               {/* SECTION 9: SALADS AND DESSERT */}
-              <section className="bg-brand-black px-5 py-24 md:py-32 border-b border-white/5 noise-overlay">
-                <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row gap-12 md:gap-0">
+              <section className="bg-brand-black px-5 py-24 lg:py-32 border-b border-white/5 noise-overlay">
+                <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-0">
                   {/* SALADS */}
-                  <div className="w-full md:w-1/2 md:pr-12 md:border-r border-brand-neon">
+                  <div className="w-full lg:w-1/2 lg:pr-12 lg:border-r border-brand-neon">
                     <h2 className="text-brand-neon font-display text-[20px] font-bold uppercase mb-12 tracking-[0.1em]">
                       SALADS.
                     </h2>
@@ -1965,7 +2007,7 @@ export default function App() {
                   </div>
 
                   {/* DESSERT */}
-                  <div className="w-full md:w-1/2 md:pl-12">
+                  <div className="w-full lg:w-1/2 lg:pl-12">
                     <h2 className="text-brand-neon font-display text-[20px] font-bold uppercase mb-12 tracking-[0.1em]">
                       DESSERT.
                     </h2>
@@ -2003,15 +2045,15 @@ export default function App() {
 
 
               {/* SECTION 10: DRINKS AND EXTRAS */}
-              <section className="bg-brand-concrete px-5 py-24 md:py-32 border-b border-white/5 noise-overlay">
+              <section className="bg-brand-concrete px-5 py-24 lg:py-32 border-b border-white/5 noise-overlay">
                 <div className="max-w-[1200px] mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-5xl md:text-[56px] text-brand-neon uppercase font-bold tracking-[0.05em]">
+                    <h2 className="font-display text-5xl lg:text-[56px] text-brand-neon uppercase font-bold tracking-[0.05em]">
                       DRINKS AND EXTRAS.
                     </h2>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
                     {/* DRINKS */}
                     <div>
                       <h3 className="text-brand-white font-display text-[22px] font-bold uppercase mb-10 tracking-[0.1em] border-b border-white/10 pb-4">
@@ -2068,11 +2110,11 @@ export default function App() {
                 </div>
 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
-                  <h2 className="font-display text-7xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-tighter md:tracking-[0.05em] font-bold drop-shadow-[0_2px_40px_rgba(0,0,0,0.95)]">
+                  <h2 className="font-display text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center tracking-[0.05em] drop-shadow-[0_2px_40px_rgba(0,0,0,0.95)]">
                     <span>YOU HUNGRY?</span>
                     <span>THEN ORDER.</span>
                   </h2>
-                  <p className="text-lg md:text-[18px] max-w-[400px] mx-auto text-brand-white mb-16 leading-tight uppercase font-sans font-normal tracking-widest text-center">
+                  <p className="text-lg lg:text-[18px] max-w-[400px] mx-auto text-brand-white mb-16 leading-tight uppercase font-sans font-normal tracking-widest text-center">
                     Borger and Fritch. Local favorite for a reason.
                     <br />
                     Get it hot, fresh, and delivered.
@@ -2121,14 +2163,14 @@ export default function App() {
                 <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
                   OUR STORY
                 </span>
-                <h1 className="font-display text-8xl md:text-[8rem] lg:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center pt-2">
+                <h1 className="font-display text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center pt-2">
                   <span>THIS ISN'T</span>
                   <span>A CHAIN. THIS IS</span>
                   <span>
                     <span className="text-brand-red">JESSE'S</span>.
                   </span>
                 </h1>
-                <p className="text-brand-white text-[18px] md:text-[22px] max-w-2xl mx-auto text-center font-sans font-black uppercase tracking-widest leading-relaxed">
+                <p className="text-brand-white text-[18px] lg:text-[22px] max-w-2xl mx-auto text-center font-sans font-black uppercase tracking-widest leading-relaxed">
                   Built from the ground up with one goal:
                   <br />
                   make pizza people actually come back for.
@@ -2142,7 +2184,7 @@ export default function App() {
                 <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
                   THE BEGINNING
                 </span>
-                <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
+                <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
                   HOW IT STARTED.
                 </h2>
 
@@ -2184,7 +2226,7 @@ export default function App() {
             </section>
 
             {/* SECTION 3: FULL BLEED IMAGE BREAK */}
-            <section className="w-full relative h-[250px] md:h-[400px] overflow-hidden">
+            <section className="w-full relative h-[250px] lg:h-[400px] overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&q=80&w=2000"
                 alt="Pizza Action"
@@ -2199,28 +2241,28 @@ export default function App() {
                 <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
                   OUR CODE
                 </span>
-                <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-24 uppercase max-w-[800px] mx-auto">
+                <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-24 uppercase max-w-[800px] mx-auto">
                   THE STANDARD.
                 </h2>
 
                 <div className="space-y-12">
                   <div className="py-12 border-t border-brand-neon max-w-[580px] mx-auto">
-                    <p className="text-brand-white text-[18px] md:text-[20px] font-[700] leading-none tracking-[0px]">
+                    <p className="text-brand-white text-[18px] lg:text-[20px] font-[700] leading-none tracking-[0px]">
                       If Jesse wouldn't eat it, it doesn't go out.
                     </p>
                   </div>
                   <div className="py-12 border-t border-brand-neon max-w-[580px] mx-auto">
-                    <p className="text-brand-white text-[18px] md:text-[20px] font-[700] leading-none tracking-[0px]">
+                    <p className="text-brand-white text-[18px] lg:text-[20px] font-[700] leading-none tracking-[0px]">
                       No cutting corners when it gets busy.
                     </p>
                   </div>
                   <div className="py-12 border-t border-brand-neon max-w-[580px] mx-auto">
-                    <p className="text-brand-white text-[18px] md:text-[20px] font-[700] leading-none tracking-[0px]">
+                    <p className="text-brand-white text-[18px] lg:text-[20px] font-[700] leading-none tracking-[0px]">
                       No skimping because nobody's watching.
                     </p>
                   </div>
                   <div className="py-12 border-t border-brand-neon max-w-[580px] mx-auto">
-                    <p className="text-brand-neon text-[18px] md:text-[20px] font-[700] leading-none tracking-[0px]">
+                    <p className="text-brand-neon text-[18px] lg:text-[20px] font-[700] leading-none tracking-[0px]">
                       The standard doesn't move.
                     </p>
                   </div>
@@ -2235,10 +2277,10 @@ export default function App() {
                   <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block">
                     MISSION
                   </span>
-                  <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-8 uppercase max-w-[800px]">
+                  <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-8 uppercase max-w-[800px]">
                     WHY WE EXIST.
                   </h2>
-                  <p className="text-brand-white text-[16px] md:text-[18px] font-[400] leading-[1.7] tracking-[0px] max-w-[580px]">
+                  <p className="text-brand-white text-[16px] lg:text-[18px] font-[400] leading-[1.7] tracking-[0px] max-w-[580px]">
                     For people who are done settling for pizza that doesn't
                     deliver.
                   </p>
@@ -2254,7 +2296,7 @@ export default function App() {
                       <span className="text-brand-neon text-3xl font-black">
                         →
                       </span>
-                      <p className="text-brand-white text-[20px] md:text-[24px] font-[700] leading-tight text-brand-neon">
+                      <p className="text-brand-white text-[20px] lg:text-[24px] font-[700] leading-tight text-brand-neon">
                         {point}
                       </p>
                     </div>
@@ -2269,7 +2311,7 @@ export default function App() {
                 <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
                   FIND US
                 </span>
-                <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
+                <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
                   TWO LOCATIONS.
                   <br />
                   ONE STANDARD.
@@ -2296,7 +2338,7 @@ export default function App() {
                         {loc.city}
                       </h3>
                       <div className="mb-12">
-                        <p className="text-brand-white text-[18px] md:text-[20px] font-[700] mb-1 tracking-[0px]">
+                        <p className="text-brand-white text-[18px] lg:text-[20px] font-[700] mb-1 tracking-[0px]">
                           Jesse's Pizza Company
                         </p>
                         <p className="text-brand-white text-[15px] font-[400] opacity-60 mb-4">
@@ -2304,7 +2346,7 @@ export default function App() {
                         </p>
                         <a
                           href={`tel:${loc.phone.replace(/\D/g, "")}`}
-                          className="text-brand-white text-[16px] md:text-[18px] font-[400] leading-[1.7] tracking-[0px] hover:text-brand-neon transition-colors block underline decoration-2 underline-offset-4"
+                          className="text-brand-white text-[16px] lg:text-[18px] font-[400] leading-[1.7] tracking-[0px] hover:text-brand-neon transition-colors block underline decoration-2 underline-offset-4"
                         >
                           {loc.phone}
                         </a>
@@ -2334,7 +2376,7 @@ export default function App() {
             </section>
 
             {/* SECTION 7: FULL BLEED IMAGE BREAK */}
-            <section className="w-full relative h-[250px] md:h-[400px] overflow-hidden border-b border-white/5">
+            <section className="w-full relative h-[250px] lg:h-[400px] overflow-hidden border-b border-white/5">
               <img
                 src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=2000"
                 alt="Staff Working"
@@ -2350,15 +2392,15 @@ export default function App() {
                   <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
                     THE CREW
                   </span>
-                  <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-8 uppercase max-w-[800px] mx-auto">
+                  <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-8 uppercase max-w-[800px] mx-auto">
                     THE PEOPLE BEHIND IT.
                   </h2>
-                  <p className="text-brand-white text-[16px] md:text-[18px] font-[400] leading-[1.7] tracking-[0px] opacity-80 italic text-center mx-auto max-w-[580px]">
+                  <p className="text-brand-white text-[16px] lg:text-[18px] font-[400] leading-[1.7] tracking-[0px] opacity-80 italic text-center mx-auto max-w-[580px]">
                     Good pizza doesn't happen by accident.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                   {[
                     {
                       name: "Marc Alvarez",
@@ -2422,12 +2464,12 @@ export default function App() {
               <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
                 GALLERY
               </span>
-              <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase px-6 max-w-[800px] mx-auto">
+              <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase px-6 max-w-[800px] mx-auto">
                 OUR CREW.
               </h2>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden">
-                <div className="relative h-[300px] md:h-[500px] overflow-hidden group">
+                <div className="relative h-[300px] lg:h-[500px] overflow-hidden group">
                   <img
                     src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=1200"
                     className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105"
@@ -2440,7 +2482,7 @@ export default function App() {
                     </span>
                   </div>
                 </div>
-                <div className="relative h-[300px] md:h-[500px] overflow-hidden group">
+                <div className="relative h-[300px] lg:h-[500px] overflow-hidden group">
                   <img
                     src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&q=80&w=1200"
                     className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-105"
@@ -2461,11 +2503,11 @@ export default function App() {
                 <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
                   REVIEWS
                 </span>
-                <h2 className="font-display text-[36px] md:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
+                <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
                   WHAT LOCALS SAY.
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                   {[
                     "Best pizza in Borger. Not even close. I've tried everything else. This is the one.",
                     "Ordered the Jalapeño Popper on a Friday. Ordered it again Sunday. That's all I need to say.",
@@ -2479,7 +2521,7 @@ export default function App() {
                       <span className="font-display text-[60px] text-brand-neon leading-none mb-4 italic">
                         "
                       </span>
-                      <p className="text-brand-white text-[16px] md:text-[18px] font-[400] leading-[1.7] tracking-[0px]">
+                      <p className="text-brand-white text-[16px] lg:text-[18px] font-[400] leading-[1.7] tracking-[0px]">
                         {review}
                       </p>
                     </div>
@@ -2512,7 +2554,7 @@ export default function App() {
                 <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
                   NEXT STEPS
                 </span>
-                <h1 className="font-display text-[52px] md:text-[80px] lg:text-[96px] font-[900] tracking-[-2px] leading-[0.9] text-brand-neon mb-12 uppercase text-center mx-auto italic">
+                <h1 className="font-display text-[52px] lg:text-[80px] xl:text-[96px] font-[900] tracking-[-2px] leading-[0.9] text-brand-neon mb-12 uppercase text-center mx-auto italic">
                   IF YOU HAVEN'T
                   <br />
                   <span className="text-brand-red">TRIED IT</span> YET,
@@ -2556,16 +2598,16 @@ export default function App() {
               <section className="relative min-h-screen bg-brand-black px-6 pt-8 pb-20 overflow-hidden noise-overlay">
                 <div className="absolute inset-0 z-0">
                   {/* Desktop Background Video */}
-                  <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden hidden lg:block">
                     <iframe
                       src="https://www.youtube.com/embed/cW45-Li_Xlg?autoplay=1&mute=1&controls=0&loop=1&playlist=cW45-Li_Xlg&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
-                      className="w-[100%] h-[100%] md:w-[150%] md:h-[150%] lg:w-[200%] lg:h-[200%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full opacity-40 grayscale-[0.3] scale-[1.2] md:scale-[1.1]"
+                      className="w-[100%] h-[100%] lg:w-[150%] lg:h-[150%] xl:w-[200%] xl:h-[200%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full opacity-40 grayscale-[0.3] scale-[1.2] lg:scale-[1.1]"
                       allow="autoplay; encrypted-media"
                       title="Pizza Background Video"
                     ></iframe>
                   </div>
                   {/* Mobile Static Fallback */}
-                  <div className="absolute inset-0 md:hidden">
+                  <div className="absolute inset-0 lg:hidden">
                     <img
                       src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=1200"
                       alt="Delicious Pizza Fallback"
@@ -2580,7 +2622,7 @@ export default function App() {
                   <span className="text-[#F5F5F5] text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
                     BORGER & FRITCH, TX
                   </span>
-                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
+                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
                     FIND YOUR
                     <br />
                     LOCATION.
@@ -2597,7 +2639,7 @@ export default function App() {
                 <div className="max-w-[1400px] mx-auto">
                   <div className="grid lg:grid-cols-2 gap-12">
                     {/* BORGER CARD */}
-                    <div className="bg-brand-concrete p-8 md:p-16 border border-white/5 noise-overlay relative flex flex-col h-full">
+                    <div className="bg-brand-concrete p-8 lg:p-16 border border-white/5 noise-overlay relative flex flex-col h-full">
                       <div className="mb-12">
                         <h3 className="font-display text-[36px] text-brand-neon leading-[1.1] tracking-[-0.5px] uppercase mb-1">
                           BORGER
@@ -2676,7 +2718,7 @@ export default function App() {
                     </div>
 
                     {/* FRITCH CARD */}
-                    <div className="bg-brand-concrete p-8 md:p-16 border border-white/5 noise-overlay relative flex flex-col h-full">
+                    <div className="bg-brand-concrete p-8 lg:p-16 border border-white/5 noise-overlay relative flex flex-col h-full">
                       <div className="mb-12">
                         <h3 className="font-display text-[36px] text-brand-neon leading-[1.1] tracking-[-0.5px] uppercase mb-1">
                           FRITCH
@@ -2759,19 +2801,19 @@ export default function App() {
 
               {/* SECTION 3: TRUST STRIP */}
               <section className="bg-brand-neon py-12 px-6 overflow-hidden">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 font-black text-brand-black text-[16px] uppercase">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 font-black text-brand-black text-[16px] uppercase">
                   <span>Same standard. Both locations.</span>
-                  <div className="hidden md:block w-2 h-2 rounded-full bg-brand-red" />
+                  <div className="hidden lg:block w-2 h-2 rounded-full bg-brand-red" />
                   <span>Loaded every time. No exceptions.</span>
-                  <div className="hidden md:block w-2 h-2 rounded-full bg-brand-red" />
+                  <div className="hidden lg:block w-2 h-2 rounded-full bg-brand-red" />
                   <span>Ready in 20 minutes or we'll tell you.</span>
-                  <div className="hidden md:block w-2 h-2 rounded-full bg-brand-red" />
+                  <div className="hidden lg:block w-2 h-2 rounded-full bg-brand-red" />
                   <span>No shortcuts. No skimping. Ever.</span>
                 </div>
               </section>
 
               {/* SECTION 4: IMAGE BREAK */}
-              <section className="h-[250px] md:h-[400px] w-full">
+              <section className="h-[250px] lg:h-[400px] w-full">
                 <img
                   src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&q=80&w=2000"
                   className="w-full h-full object-cover grayscale-[0.1]"
@@ -2781,19 +2823,19 @@ export default function App() {
               </section>
 
               {/* SECTION 5: MOST POPULAR */}
-              <section className="bg-brand-concrete px-6 py-32 md:py-48 noise-overlay">
+              <section className="bg-brand-concrete px-6 py-32 lg:py-48 noise-overlay">
                 <div className="w-full">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[-2px]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[-2px]">
                       WHILE YOU'RE HERE.
                     </h2>
-                    <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
+                    <p className="text-[16px] lg:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
                       These are the pizzas both locations keep running out of
                       first.
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                  <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
                     {[
                       {
                         name: "JALAPEÑO POPPER",
@@ -2833,7 +2875,7 @@ export default function App() {
                           </div>
                         </div>
                         <div className="p-8 flex-1 flex flex-col">
-                          <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[-0.5px] mb-4">
+                          <h3 className="font-display text-[28px] lg:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[-0.5px] mb-4">
                             {item.name}
                           </h3>
                           <p className="text-[15px] text-[#F5F5F5] mb-4 line-clamp-1">
@@ -2868,7 +2910,7 @@ export default function App() {
                 </div>
 
                 <div className="w-full mx-auto text-center relative z-10 px-6">
-                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-8">
+                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-8">
                     READY TO
                     <br />
                     ORDER?
@@ -2922,14 +2964,14 @@ export default function App() {
                   <span className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase mb-4 block text-center">
                     FRITCH, TX
                   </span>
-                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
                     FRITCH KNOWS
                     <br />
                     GOOD PIZZA.
                     <br />
                     THIS IS IT. <span className="text-[#D62828]">PERIOD.</span>
                   </h1>
-                  <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto text-center mb-12">
+                  <p className="text-[16px] lg:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[600px] mx-auto text-center mb-12">
                     Fresh. Loaded edge to edge. Ready in 20 minutes. No
                     shortcuts. No skimping. Ever.
                   </p>
@@ -2953,13 +2995,13 @@ export default function App() {
 
               {/* SECTION 2: TRUST STRIP */}
               <section className="bg-[#B8F000] py-12 px-6 overflow-hidden">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 font-black text-[#0D0D0D] text-[16px] uppercase text-center md:text-left">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 font-black text-[#0D0D0D] text-[16px] uppercase text-center lg:text-left">
                   <span>"Fritch's go-to pizza spot."</span>
-                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                  <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
                   <span>"Loaded every single time."</span>
-                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                  <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
                   <span>"Ready in 20 minutes or we'll tell you."</span>
-                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                  <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
                   <span>"No chains. No shortcuts. Ever."</span>
                 </div>
               </section>
@@ -2967,7 +3009,7 @@ export default function App() {
               {/* SECTION 3: ENEMY SECTION */}
               <section className="bg-[#0D0D0D] px-6 py-[140px] noise-overlay">
                 <div className="max-w-7xl mx-auto text-center">
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-16 leading-[0.95] tracking-[-2px]">
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-16 leading-[0.95] tracking-[-2px]">
                     YOU ALREADY
                     <br />
                     KNOW.
@@ -2993,7 +3035,7 @@ export default function App() {
               </section>
 
               {/* SECTION 4: FULL BLEED IMAGE BREAK */}
-              <section className="relative h-[250px] md:h-[400px] bg-[#0D0D0D] overflow-hidden">
+              <section className="relative h-[250px] lg:h-[400px] bg-[#0D0D0D] overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1593504049359-7b7d92c72857?auto=format&fit=crop&q=80&w=2000"
                   alt="High Contrast Pizza"
@@ -3006,19 +3048,19 @@ export default function App() {
               <section className="bg-[#2A2A2A] px-6 py-32 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-6 leading-[0.95] tracking-[-2px]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-6 leading-[0.95] tracking-[-2px]">
                       HERE'S EXACTLY
                       <br />
                       WHAT YOU'RE
                       <br />
                       GETTING.
                     </h2>
-                    <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
+                    <p className="text-[18px] lg:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
                       Not "great pizza." Here's what that actually means.
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid lg:grid-cols-2 gap-6">
                     {[
                       {
                         title: 'THE 18" JUMBO',
@@ -3064,11 +3106,11 @@ export default function App() {
                             {card.badge}
                           </div>
                         </div>
-                        <div className="p-8 md:p-12 flex-1 flex flex-col">
-                          <h3 className="font-display text-[28px] md:text-[36px] text-[#B8F000] leading-[1.1] tracking-[-0.5px] uppercase mb-4">
+                        <div className="p-8 lg:p-12 flex-1 flex flex-col">
+                          <h3 className="font-display text-[28px] lg:text-[36px] text-[#B8F000] leading-[1.1] tracking-[-0.5px] uppercase mb-4">
                             {card.title}
                           </h3>
-                          <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] mb-4">
+                          <p className="text-[16px] lg:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] mb-4">
                             {card.desc}
                           </p>
                           <p className="text-[#B8F000] font-bold text-[20px] mb-12 uppercase italic">
@@ -3089,15 +3131,15 @@ export default function App() {
 
               {/* SECTION 6: SPECIFICITY STRIP */}
               <section className="bg-[#2A2A2A] py-12 px-6 overflow-hidden border-t border-white/5">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 font-bold text-[#B8F000] text-[16px] uppercase text-center md:text-left">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 font-bold text-[#B8F000] text-[16px] uppercase text-center lg:text-left">
                   <span>"Fritch's go-to pizza spot for a reason."</span>
-                  <div className="hidden md:block w-2 h-2 rounded-full bg-[#D62828]" />
+                  <div className="hidden lg:block w-2 h-2 rounded-full bg-[#D62828]" />
                   <span>"The Jumbo feeds five. Most people order two."</span>
-                  <div className="hidden md:block w-2 h-2 rounded-full bg-[#D62828]" />
+                  <div className="hidden lg:block w-2 h-2 rounded-full bg-[#D62828]" />
                   <span>
                     "Same toppings on the 8\" as the 18\". No skimping."
                   </span>
-                  <div className="hidden md:block w-2 h-2 rounded-full bg-[#D62828]" />
+                  <div className="hidden lg:block w-2 h-2 rounded-full bg-[#D62828]" />
                   <span>"Ready in 20 minutes or we'll tell you first."</span>
                 </div>
               </section>
@@ -3105,7 +3147,7 @@ export default function App() {
               {/* SECTION 7: OBJECTION REMOVAL */}
               <section className="bg-[#0D0D0D] px-6 py-[160px] noise-overlay">
                 <div className="max-w-[600px] mx-auto text-center">
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-16 leading-[0.95] tracking-[-2px]">
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-16 leading-[0.95] tracking-[-2px]">
                     STILL NOT
                     <br />
                     SURE?
@@ -3131,7 +3173,7 @@ export default function App() {
 
                   <button
                     onClick={startOrder}
-                    className="bg-[#D62828] text-white px-16 py-8 text-[18px] font-[700] uppercase tracking-[2px] shadow-2xl hover:scale-105 active:scale-95 transition-all w-full md:w-auto"
+                    className="bg-[#D62828] text-white px-16 py-8 text-[18px] font-[700] uppercase tracking-[2px] shadow-2xl hover:scale-105 active:scale-95 transition-all w-full lg:w-auto"
                   >
                     Order Now and Find Out
                   </button>
@@ -3139,7 +3181,7 @@ export default function App() {
               </section>
 
               {/* SECTION 8: FULL BLEED IMAGE BREAK */}
-              <section className="relative h-[250px] md:h-[400px] bg-[#0D0D0D] overflow-hidden">
+              <section className="relative h-[250px] lg:h-[400px] bg-[#0D0D0D] overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1541658016709-82535e94bc71?auto=format&fit=crop&q=80&w=2000"
                   alt="Wings Close-up Action"
@@ -3152,18 +3194,18 @@ export default function App() {
               <section className="bg-[#2A2A2A] px-6 py-32 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-6 leading-[0.95] tracking-[-2px]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-6 leading-[0.95] tracking-[-2px]">
                       WHAT FRITCH
                       <br />
                       IS SAYING.
                     </h2>
-                    <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
+                    <p className="text-[18px] lg:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
                       These aren't cherry picked. This is just what happens when
                       the food is good.
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid lg:grid-cols-2 gap-8">
                     {[
                       "Best pizza around. Worth every drive from Sanford.",
                       "Wings always crispy. Pizza always loaded. Never had a bad order.",
@@ -3172,7 +3214,7 @@ export default function App() {
                     ].map((review, i) => (
                       <div
                         key={i}
-                        className="bg-[#0D0D0D] p-12 md:p-16 border border-white/5 noise-overlay relative flex flex-col items-center text-center"
+                        className="bg-[#0D0D0D] p-12 lg:p-16 border border-white/5 noise-overlay relative flex flex-col items-center text-center"
                       >
                         <span className="font-display text-[#B8F000] text-[80px] leading-none mb-6">
                           "
@@ -3190,7 +3232,7 @@ export default function App() {
               <section className="bg-[#0D0D0D] px-6 py-32 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-20">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-6 leading-[0.95] tracking-[-2px]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-6 leading-[0.95] tracking-[-2px]">
                       FIND US IN
                       <br />
                       FRITCH.
@@ -3198,7 +3240,7 @@ export default function App() {
                   </div>
 
                   <div className="max-w-[700px] mx-auto bg-[#2A2A2A] border border-white/5 noise-overlay overflow-hidden">
-                    <div className="p-8 md:p-12 space-y-8">
+                    <div className="p-8 lg:p-12 space-y-8">
                       <div className="text-[#F5F5F5] text-center">
                         <h3 className="font-display text-[32px] text-white uppercase mb-4">
                           Jesse's Pizza Company
@@ -3265,7 +3307,7 @@ export default function App() {
               <section className="bg-[#2A2A2A] px-6 py-32 noise-overlay border-t border-white/5">
                 <div className="max-w-[800px] mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">
                       FRITCH PIZZA
                       <br />
                       QUESTIONS.
@@ -3323,7 +3365,7 @@ export default function App() {
                 </div>
 
                 <div className="w-full mx-auto text-center relative z-10 px-6">
-                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
                     YOU'RE GOING
                     <br />
                     TO EAT TONIGHT
@@ -3356,7 +3398,7 @@ export default function App() {
             <Footer />
 
             {/* MOBILE STICKY CTA */}
-            <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100] p-4 bg-[#0D0D0D]/90 backdrop-blur-md border-t border-white/10 pointer-events-none">
+            <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[100] p-4 bg-[#0D0D0D]/90 backdrop-blur-md border-t border-white/10 pointer-events-none">
               <button
                 onClick={startOrder}
                 className="w-full bg-[#D62828] text-white py-6 font-display text-2xl uppercase tracking-[0.1em] hover:scale-[1.02] active:scale-95 transition-all pointer-events-auto"
@@ -3390,7 +3432,7 @@ export default function App() {
                   <span className="text-brand-neon text-[12px] font-black tracking-[0.6em] uppercase mb-4 block text-center">
                     BORGER, TX
                   </span>
-                  <h1 className="font-display text-[56px] md:text-[88px] lg:text-[112px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
+                  <h1 className="font-display text-[56px] lg:text-[88px] xl:text-[112px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6">
                     NAME A BETTER
                     <br />
                     PIZZA IN
@@ -3423,34 +3465,34 @@ export default function App() {
 
               {/* SECTION 2: TRUST STRIP */}
               <section className="bg-brand-neon py-12 px-6 overflow-hidden">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 font-black text-brand-black text-[16px] uppercase text-center md:text-left">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 font-black text-brand-black text-[16px] uppercase text-center lg:text-left">
                   <span>"Borger's go-to pizza spot."</span>
-                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
+                  <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
                   <span>"Loaded every single time."</span>
-                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
+                  <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
                   <span>"Ready in 20 minutes or we'll tell you."</span>
-                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
+                  <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
                   <span>"No chains. No shortcuts. Ever."</span>
                 </div>
               </section>
 
               {/* SECTION 3: ENEMY SECTION */}
-              <section className="bg-brand-black px-6 py-32 md:py-[140px] noise-overlay text-center">
+              <section className="bg-brand-black px-6 py-32 lg:py-[140px] noise-overlay text-center">
                 <div className="max-w-4xl mx-auto">
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-20 leading-[0.95] tracking-[-2px]">
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-20 leading-[0.95] tracking-[-2px]">
                     YOU ALREADY
                     <br />
                     KNOW.
                   </h2>
 
                   <div className="space-y-[40px] mb-20">
-                    <p className="text-brand-white font-bold text-[28px] md:text-[32px] uppercase">
+                    <p className="text-brand-white font-bold text-[28px] lg:text-[32px] uppercase">
                       You've waited 45 minutes for it.
                     </p>
-                    <p className="text-brand-white font-bold text-[28px] md:text-[32px] uppercase">
+                    <p className="text-brand-white font-bold text-[28px] lg:text-[32px] uppercase">
                       Opened the box and felt let down.
                     </p>
-                    <p className="text-brand-neon font-bold text-[28px] md:text-[32px] uppercase">
+                    <p className="text-brand-neon font-bold text-[28px] lg:text-[32px] uppercase">
                       That ends here.
                     </p>
                   </div>
@@ -3463,7 +3505,7 @@ export default function App() {
               </section>
 
               {/* SECTION 4: FULL BLEED IMAGE BREAK */}
-              <section className="h-[250px] md:h-[400px] w-full">
+              <section className="h-[250px] lg:h-[400px] w-full">
                 <img
                   src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2000"
                   className="w-full h-full object-cover"
@@ -3473,22 +3515,22 @@ export default function App() {
               </section>
 
               {/* SECTION 5: OFFER SECTION */}
-              <section className="bg-brand-concrete px-6 py-32 md:py-48 noise-overlay">
+              <section className="bg-brand-concrete px-6 py-32 lg:py-48 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[0.05em]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[0.05em]">
                       HERE'S EXACTLY
                       <br />
                       WHAT YOU'RE
                       <br />
                       GETTING.
                     </h2>
-                    <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto">
+                    <p className="text-[16px] lg:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto">
                       Not "great pizza." Here's what that actually means.
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid lg:grid-cols-2 gap-6">
                     {/* Card 1 */}
                     <div className="bg-brand-black border border-white/5 noise-overlay relative flex flex-col h-full group">
                       <div className="relative h-[240px] overflow-hidden">
@@ -3503,7 +3545,7 @@ export default function App() {
                         </div>
                       </div>
                       <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">
+                        <h3 className="font-display text-[28px] lg:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">
                           THE 18" JUMBO
                         </h3>
                         <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">
@@ -3535,7 +3577,7 @@ export default function App() {
                         </div>
                       </div>
                       <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">
+                        <h3 className="font-display text-[28px] lg:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">
                           JALAPEÑO POPPER
                         </h3>
                         <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">
@@ -3567,7 +3609,7 @@ export default function App() {
                         </div>
                       </div>
                       <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">
+                        <h3 className="font-display text-[28px] lg:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">
                           CHICKEN BACON RANCH
                         </h3>
                         <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">
@@ -3599,7 +3641,7 @@ export default function App() {
                         </div>
                       </div>
                       <div className="p-8 flex-1 flex flex-col">
-                        <h3 className="font-display text-[28px] md:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">
+                        <h3 className="font-display text-[28px] lg:text-[36px] text-brand-neon uppercase leading-[1.1] tracking-[0.05em] mb-4 relative z-10">
                           THE FAMILY DEAL
                         </h3>
                         <p className="text-[16px] text-brand-white mb-2 font-sans font-black uppercase tracking-wider relative z-10">
@@ -3622,15 +3664,15 @@ export default function App() {
 
               {/* SECTION 6: SPECIFICITY STRIP */}
               <section className="bg-brand-concrete py-12 px-6 border-y border-white/5">
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 font-bold text-brand-neon text-[16px] uppercase text-center md:text-left">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 font-bold text-brand-neon text-[16px] uppercase text-center lg:text-left">
                   <span>"Borger's go-to pizza spot for a reason."</span>
-                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
+                  <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
                   <span>"The Jumbo feeds five. Most people order two."</span>
-                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
+                  <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
                   <span>
                     "Same toppings on the 8\" as the 18\". No skimping."
                   </span>
-                  <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
+                  <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-brand-red shrink-0" />
                   <span>"Ready in 20 minutes or we'll tell you first."</span>
                 </div>
               </section>
@@ -3638,7 +3680,7 @@ export default function App() {
               {/* SECTION 7: OBJECTION REMOVAL */}
               <section className="bg-brand-black px-6 py-[160px] noise-overlay text-center">
                 <div className="max-w-[600px] mx-auto">
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.05em]">
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.05em]">
                     STILL NOT
                     <br />
                     SURE?
@@ -3668,7 +3710,7 @@ export default function App() {
               </section>
 
               {/* SECTION 8: FULL BLEED IMAGE BREAK */}
-              <section className="h-[250px] md:h-[400px] w-full">
+              <section className="h-[250px] lg:h-[400px] w-full">
                 <img
                   src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&q=80&w=2001"
                   className="w-full h-full object-cover grayscale-[0.2]"
@@ -3678,21 +3720,21 @@ export default function App() {
               </section>
 
               {/* SECTION 9: SOCIAL PROOF */}
-              <section className="bg-brand-concrete px-6 py-32 md:py-48 noise-overlay">
+              <section className="bg-brand-concrete px-6 py-32 lg:py-48 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[0.05em]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-6 leading-[0.95] tracking-[0.05em]">
                       WHAT BORGER
                       <br />
                       IS SAYING.
                     </h2>
-                    <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto">
+                    <p className="text-[16px] lg:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto">
                       These are aren't cherry picked. This is just what happens
                       when the food is good.
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid lg:grid-cols-2 gap-8">
                     {[
                       "Best pizza in Borger. Not even close. I've tried everything else. This is the one.",
                       "Ordered the Jalapeño Popper on a Friday. Ordered it again Sunday. That's all I need to say.",
@@ -3716,10 +3758,10 @@ export default function App() {
               </section>
 
               {/* SECTION 10: LOCATION INFO */}
-              <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay">
+              <section className="bg-brand-black px-6 py-32 lg:py-48 noise-overlay">
                 <div className="max-w-7xl mx-auto">
                   <div className="text-center mb-20">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase leading-[0.95] tracking-[0.05em]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase leading-[0.95] tracking-[0.05em]">
                       FIND US IN
                       <br />
                       BORGER.
@@ -3727,7 +3769,7 @@ export default function App() {
                   </div>
 
                   <div className="max-w-[700px] mx-auto bg-brand-concrete border border-white/5 noise-overlay overflow-hidden">
-                    <div className="p-8 md:p-12 space-y-8">
+                    <div className="p-8 lg:p-12 space-y-8">
                       <div className="text-brand-white text-center">
                         <h3 className="font-display text-[32px] text-brand-white uppercase mb-4">
                           Jesse's Pizza Company
@@ -3793,10 +3835,10 @@ export default function App() {
               </section>
 
               {/* SECTION 11: FAQ */}
-              <section className="bg-brand-concrete px-6 py-32 md:py-48 noise-overlay">
+              <section className="bg-brand-concrete px-6 py-32 lg:py-48 noise-overlay">
                 <div className="max-w-4xl mx-auto">
                   <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase leading-[0.95] tracking-[-2px]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase leading-[0.95] tracking-[-2px]">
                       BORGER PIZZA
                       <br />
                       QUESTIONS.
@@ -3854,7 +3896,7 @@ export default function App() {
                 </div>
 
                 <div className="w-full mx-auto text-center relative z-10 px-6">
-                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-8">
+                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-8">
                     YOU'RE GOING
                     <br />
                     TO EAT TONIGHT
@@ -3887,7 +3929,7 @@ export default function App() {
             <Footer />
 
             {/* MOBILE STICKY CTA */}
-            <div className="md:hidden fixed bottom-0 left-0 right-0 z-[100] p-4 bg-brand-black/90 backdrop-blur-md border-t border-white/10 pointer-events-none">
+            <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[100] p-4 bg-brand-black/90 backdrop-blur-md border-t border-white/10 pointer-events-none">
               <button
                 onClick={startOrder}
                 className="w-full bg-brand-red text-brand-white py-6 font-display text-2xl uppercase tracking-[0.1em] hover:scale-[1.02] active:scale-95 transition-all pointer-events-auto"
@@ -3907,12 +3949,12 @@ export default function App() {
             {/* Persistence: nav removed */}
 
             {/* SECTION 1: HERO */}
-            <section className="px-6 pt-12 pb-32 md:pb-60 bg-brand-black noise-overlay border-b border-white/5 overflow-hidden relative">
+            <section className="px-6 pt-12 pb-32 lg:pb-60 bg-brand-black noise-overlay border-b border-white/5 overflow-hidden relative">
               <div className="w-full mx-auto flex flex-col items-center text-center relative z-10">
                 <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
                   CAREERS
                 </span>
-                <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] mb-12 leading-[0.95] tracking-[0.05em] uppercase text-brand-neon flex flex-col">
+                <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] mb-12 leading-[0.95] tracking-[0.05em] uppercase text-brand-neon flex flex-col">
                   <span>COME WORK</span>
                   <span>WHERE THE PIZZA</span>
                   <span>
@@ -3920,7 +3962,7 @@ export default function App() {
                   </span>
                 </h1>
 
-                <p className="text-[16px] md:text-[18px] font-[400] leading-[1.7] text-brand-white max-w-[640px] mx-auto mb-16">
+                <p className="text-[16px] lg:text-[18px] font-[400] leading-[1.7] text-brand-white max-w-[640px] mx-auto mb-16">
                   Jesse's Pizza Company is looking for people who show up, work
                   hard, and take pride in what goes out the door. No corporate
                   nonsense. Just real work at a real local spot.
@@ -3949,23 +3991,23 @@ export default function App() {
             </section>
 
             {/* SECTION 2: WHY WORK HERE */}
-            <section className="bg-brand-black px-6 py-32 md:py-48 border-b border-white/5 noise-overlay">
+            <section className="bg-brand-black px-6 py-32 lg:py-48 border-b border-white/5 noise-overlay">
               <div className="w-full">
                 <div className="text-center mb-24">
                   <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
                     CULTURE
                   </span>
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
                     WHAT YOU'RE SIGNING UP{" "}
                     <span className="text-brand-red">FOR</span>.
                   </h2>
-                  <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
+                  <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
                     No sugarcoating. Here's what working at Jesse's actually
                     means.
                   </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
                   {[
                     {
                       title: "Real Work.",
@@ -3991,11 +4033,11 @@ export default function App() {
                         className="bg-brand-concrete p-12 border border-white/5 noise-overlay group hover:border-brand-neon transition-colors"
                       >
                         <h3
-                          className={`font-display mb-6 text-brand-neon uppercase tracking-[0.05em] leading-[1.1] ${isLongTitle ? "text-[28px]" : "text-[28px] md:text-[36px]"}`}
+                          className={`font-display mb-6 text-brand-neon uppercase tracking-[0.05em] leading-[1.1] ${isLongTitle ? "text-[28px]" : "text-[28px] lg:text-[36px]"}`}
                         >
                           {point.title}
                         </h3>
-                        <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px]">
+                        <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px]">
                           {point.body}
                         </p>
                       </div>
@@ -4006,22 +4048,22 @@ export default function App() {
             </section>
 
             {/* SECTION 3: OPEN POSITIONS */}
-            <section className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
+            <section className="bg-brand-black px-6 py-32 lg:py-48 noise-overlay border-b border-white/5">
               <div className="w-full">
                 <div className="text-center mb-24">
                   <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
                     OPPORTUNITY
                   </span>
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
                     WE'RE <span className="text-brand-red">HIRING</span>.
                   </h2>
-                  <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
+                  <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
                     Both locations. Multiple positions. If you're reliable and
                     ready to work, we want to hear from you.
                   </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-12 max-w-7xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
                   {[
                     {
                       title: "Pizza Maker",
@@ -4056,14 +4098,14 @@ export default function App() {
                       >
                         <div>
                           <h3
-                            className={`font-display mb-2 text-brand-neon uppercase tracking-[0.05em] leading-[1.1] ${isLongTitle ? "text-[28px]" : "text-[28px] md:text-[36px]"}`}
+                            className={`font-display mb-2 text-brand-neon uppercase tracking-[0.05em] leading-[1.1] ${isLongTitle ? "text-[28px]" : "text-[28px] lg:text-[36px]"}`}
                           >
                             {pos.title}
                           </h3>
                           <p className="text-brand-neon text-[13px] font-[600] tracking-[8px] uppercase mb-8">
                             {pos.subtitle}
                           </p>
-                          <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] mb-12">
+                          <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] mb-12">
                             {pos.details}
                           </p>
                         </div>
@@ -4081,18 +4123,18 @@ export default function App() {
             </section>
 
             {/* SECTION 4: WHAT WE LOOK FOR */}
-            <section className="bg-brand-concrete px-6 py-32 md:py-48 noise-overlay border-b border-white/5">
+            <section className="bg-brand-concrete px-6 py-32 lg:py-48 noise-overlay border-b border-white/5">
               <div className="w-full">
                 <div className="text-center mb-16">
                   <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
                     TRAITS
                   </span>
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
                     WHAT WE ACTUALLY CARE{" "}
                     <span className="text-brand-red">ABOUT</span>.
                   </h2>
                 </div>
-                <div className="max-w-[640px] mx-auto text-center space-y-8 text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7]">
+                <div className="max-w-[640px] mx-auto text-center space-y-8 text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7]">
                   <p>We're not looking for a perfect resume.</p>
                   <p className="font-[700] text-brand-neon uppercase italic tracking-wider">
                     We're looking for people who:
@@ -4120,7 +4162,7 @@ export default function App() {
             {/* SECTION 5: APPLICATION FORM */}
             <section
               id="apply"
-              className="bg-brand-black px-6 py-32 md:py-48 noise-overlay border-b border-white/5"
+              className="bg-brand-black px-6 py-32 lg:py-48 noise-overlay border-b border-white/5"
             >
               <div className="w-full">
                 <div className="text-center mb-24">
@@ -4135,7 +4177,7 @@ export default function App() {
                   </p>
                 </div>
 
-                <div className="bg-brand-concrete p-8 md:p-16 border border-white/5 shadow-2xl noise-overlay max-w-3xl mx-auto">
+                <div className="bg-brand-concrete p-8 lg:p-16 border border-white/5 shadow-2xl noise-overlay max-w-3xl mx-auto">
                   <form
                     className="space-y-10"
                     onSubmit={(e) => {
@@ -4143,7 +4185,7 @@ export default function App() {
                       alert("Application submitted!");
                     }}
                   >
-                    <div className="grid md:grid-cols-2 gap-10">
+                    <div className="grid lg:grid-cols-2 gap-10">
                       <div className="flex flex-col gap-3">
                         <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
                           Full Name (Required)
@@ -4166,7 +4208,7 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-10">
+                    <div className="grid lg:grid-cols-2 gap-10">
                       <div className="flex flex-col gap-3">
                         <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
                           Email (Required)
@@ -4189,7 +4231,7 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-10">
+                    <div className="grid lg:grid-cols-2 gap-10">
                       <div className="flex flex-col gap-3">
                         <label className="text-brand-white text-sm font-black uppercase tracking-[0.2em]">
                           Position Applying For
@@ -4236,31 +4278,33 @@ export default function App() {
             </section>
 
             {/* SECTION 6: FINAL CTA */}
-            <section className="bg-brand-black py-40 md:py-60 px-6 noise-overlay border-t-4 border-brand-red relative overflow-hidden">
+            <section className="bg-brand-black py-40 lg:py-60 px-6 noise-overlay border-t-4 border-brand-red relative overflow-hidden">
               <div className="w-full text-center relative z-10">
                 <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-2 block text-center">
                   FINAL CALL
                 </span>
-                <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] uppercase leading-[0.95] tracking-[0.05em] mb-12 text-brand-neon shadow-none [text-shadow:none]">
+                <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] uppercase leading-[0.95] tracking-[0.05em] mb-12 text-brand-neon shadow-none [text-shadow:none]">
                   READY TO <span className="text-brand-red">APPLY</span>?
                 </h2>
-                <p className="text-[16px] md:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mb-20">
+                <p className="text-[16px] lg:text-[18px] text-brand-white font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mb-20">
                   We're hiring at both locations right now. Fill out the form
                   above or call us directly.
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-12 mb-20 font-display text-[48px] md:text-[64px] text-brand-white tracking-[-1px]">
+                <div className="grid lg:grid-cols-2 gap-12 mb-20 font-display text-[48px] lg:text-[64px] text-brand-white tracking-[-1px]">
                   <a
-                    href="tel:8062747200"
-                    className="hover:text-brand-neon transition-colors"
+                    href={`tel:${LOCATIONS_DATA["Borger"].phoneRaw}`}
+                    className={`hover:text-brand-neon transition-colors ${location === "Borger" ? "text-brand-neon underline underline-offset-8" : ""}`}
+                    onClick={() => setLocation("Borger")}
                   >
-                    BORGER: (806) 274-7200
+                    BORGER: {LOCATIONS_DATA["Borger"].phone}
                   </a>
                   <a
-                    href="tel:8068570098"
-                    className="hover:text-brand-neon transition-colors"
+                    href={`tel:${LOCATIONS_DATA["Fritch"].phoneRaw}`}
+                    className={`hover:text-brand-neon transition-colors ${location === "Fritch" ? "text-brand-neon underline underline-offset-8" : ""}`}
+                    onClick={() => setLocation("Fritch")}
                   >
-                    FRITCH: (806) 857-0098
+                    FRITCH: {LOCATIONS_DATA["Fritch"].phone}
                   </a>
                 </div>
 
@@ -4310,9 +4354,9 @@ export default function App() {
 
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
                 <span className="text-[#F5F5F5] text-[12px] font-black tracking-[0.6em] uppercase mb-2">
-                  BORGER & FRITCH, TX
+                  {location.toUpperCase()}, TX
                 </span>
-                <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
                   REAL DEALS.
                   <br />
                   NO STRINGS.
@@ -4325,32 +4369,36 @@ export default function App() {
                   location and order before it's gone.
                 </p>
 
+                <div className="mb-12">
+                  <LocationToggle />
+                </div>
+
                 <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
                   <button
                     onClick={startOrder}
                     className="bg-[#D62828] text-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]"
                   >
-                    Order Now — Borger
+                    Order Now — {location}
                   </button>
-                  <button
-                    onClick={startOrder}
-                    className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px]"
+                  <a
+                    href={`tel:${LOCATIONS_DATA[location].phoneRaw}`}
+                    className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px] text-center"
                   >
-                    Order Now — Fritch
-                  </button>
+                    Call {location}
+                  </a>
                 </div>
               </div>
             </section>
 
             {/* SECTION 2: TRUST STRIP */}
             <section className="bg-[#B8F000] py-12 px-6 overflow-hidden">
-              <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 font-black text-[#0D0D0D] text-[16px] uppercase text-center md:text-left">
+              <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 font-black text-[#0D0D0D] text-[16px] uppercase text-center lg:text-left">
                 <span>"Real specials. Not watered down deals."</span>
-                <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
                 <span>"Location specific. Check yours below."</span>
-                <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
                 <span>"Same loaded standard. Better price."</span>
-                <div className="hidden md:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
+                <div className="hidden lg:block w-2.5 h-2.5 rounded-full bg-[#D62828]" />
                 <span>"Every week. No exceptions."</span>
               </div>
             </section>
@@ -4358,25 +4406,25 @@ export default function App() {
             {/* SECTION 3: BORGER SPECIALS */}
             <section
               id="borger-specials"
-              className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay"
+              className="bg-[#0D0D0D] px-6 py-32 lg:py-48 noise-overlay"
             >
               <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-32">
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">
-                    BORGER
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">
+                    {location.toUpperCase()}
                     <br />
                     SPECIALS.
                   </h2>
                   <span className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
-                    530 W 3RD ST — BORGER, TX 79007
+                    {LOCATIONS_DATA[location].address} — {LOCATIONS_DATA[location].city}
                   </span>
                   <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mt-8">
-                    These deals run every week at our Borger location. Order
+                    These deals run every week at our {location} location. Order
                     online or call to take advantage.
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Card 1 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
@@ -4473,7 +4521,7 @@ export default function App() {
             </section>
 
             {/* SECTION 4: FULL BLEED IMAGE BREAK */}
-            <section className="relative h-[250px] md:h-[400px] w-full overflow-hidden">
+            <section className="relative h-[250px] lg:h-[400px] w-full overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=2000"
                 alt="Loaded Specialty Pizza"
@@ -4485,11 +4533,11 @@ export default function App() {
             {/* SECTION 5: FRITCH SPECIALS */}
             <section
               id="fritch-specials"
-              className="bg-[#2A2A2A] px-6 py-32 md:py-48 noise-overlay"
+              className="bg-[#2A2A2A] px-6 py-32 lg:py-48 noise-overlay"
             >
               <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-32">
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">
                     FRITCH
                     <br />
                     SPECIALS.
@@ -4503,7 +4551,7 @@ export default function App() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Card 1 */}
                   <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px]">
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
@@ -4601,7 +4649,7 @@ export default function App() {
             </section>
 
             {/* SECTION 6: FULL BLEED IMAGE BREAK */}
-            <section className="relative h-[250px] md:h-[400px] w-full overflow-hidden">
+            <section className="relative h-[250px] lg:h-[400px] w-full overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1541658016709-82535e94bc71?auto=format&fit=crop&q=80&w=2000"
                 alt="Wings Close-up"
@@ -4611,10 +4659,10 @@ export default function App() {
             </section>
 
             {/* SECTION 7: EVERYDAY VALUE */}
-            <section className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay">
+            <section className="bg-[#0D0D0D] px-6 py-32 lg:py-48 noise-overlay">
               <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-32">
-                  <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">
+                  <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-4 leading-[0.95] tracking-[-2px]">
                     EVERYDAY
                     <br />
                     VALUE.
@@ -4625,7 +4673,7 @@ export default function App() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Card 1 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">
@@ -4700,9 +4748,9 @@ export default function App() {
             </section>
 
             {/* SECTION 8: NEVER MISS A DEAL */}
-            <section className="bg-[#2A2A2A] px-6 py-32 md:py-48 noise-overlay border-t border-white/5 text-center">
+            <section className="bg-[#2A2A2A] px-6 py-32 lg:py-48 noise-overlay border-t border-white/5 text-center">
               <div className="max-w-[600px] mx-auto">
-                <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">
+                <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[-2px]">
                   NEVER MISS
                   <br />A DEAL.
                 </h2>
@@ -4712,7 +4760,7 @@ export default function App() {
                   directly.
                 </p>
 
-                <div className="flex flex-col md:flex-row items-center justify-center gap-12 mb-16">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-16">
                   <div>
                     <span className="text-[#F5F5F5] block mb-2 uppercase text-xs tracking-widest opacity-60">
                       BORGER
@@ -4724,7 +4772,7 @@ export default function App() {
                       (806) 274-7200
                     </a>
                   </div>
-                  <div className="hidden md:block w-px h-12 bg-white/10" />
+                  <div className="hidden lg:block w-px h-12 bg-white/10" />
                   <div>
                     <span className="text-[#F5F5F5] block mb-2 uppercase text-xs tracking-widest opacity-60">
                       FRITCH
@@ -4761,7 +4809,7 @@ export default function App() {
               </div>
 
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
-                <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
                   TODAY'S A<br />
                   GOOD DAY
                   <br />
@@ -4778,14 +4826,14 @@ export default function App() {
                     onClick={startOrder}
                     className="bg-[#D62828] text-white px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]"
                   >
-                    Order Now — Borger
+                    Order Now — {location}
                   </button>
-                  <button
-                    onClick={startOrder}
-                    className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px]"
+                  <a
+                    href={`tel:${LOCATIONS_DATA[location].phoneRaw}`}
+                    className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-8 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px] text-center"
                   >
-                    Order Now — Fritch
-                  </button>
+                    Call {location}
+                  </a>
                 </div>
               </div>
             </section>
@@ -4818,191 +4866,134 @@ export default function App() {
                     BORGER & FRITCH, TX
                   </span>
 
-                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] mb-8 leading-[0.95] tracking-[0.05em] uppercase text-[#B8F000]">
-                    SKIP THE FORM.
+                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] mb-8 leading-[0.95] tracking-[0.05em] uppercase text-[#B8F000]">
+                    {location === "Borger" ? "BORGER" : "FRITCH"}
                     <br />
-                    <span className="text-[#D62828]">JUST</span> ORDER.
+                    <span className="text-[#D62828] uppercase">CONTACT.</span>
                   </h1>
 
                   <p className="text-[18px] text-[#F5F5F5] font-black uppercase leading-relaxed tracking-widest max-w-[500px] mx-auto mb-12 font-sans">
-                    Fastest way to reach us is a phone call. Fastest way to eat
-                    is ordering online. Either way we've got you covered.
+                    Fastest way to reach us is a phone call. Or send a message
+                    below.
                   </p>
+
+                  <div className="mb-12">
+                    <LocationToggle />
+                  </div>
 
                   <div className="flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
                     <button
                       onClick={startOrder}
                       className="bg-[#D62828] text-white px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-105 active:scale-95 transition-all shadow-2xl min-w-[280px]"
                     >
-                      Order Now
+                      Order Now — {location}
                     </button>
                     <a
-                      href="tel:8062747200"
+                      href={`tel:${LOCATIONS_DATA[location].phoneRaw}`}
                       className="border-2 border-[#B8F000] text-[#B8F000] px-12 py-7 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all shadow-2xl min-w-[280px] text-center"
                     >
-                      Call Now
+                      Call {location}
                     </a>
                   </div>
                 </div>
               </section>
 
-              {/* SECTION 2: LOCATION CARDS */}
-              <section className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay">
-                <div className="max-w-7xl mx-auto">
-                  <div className="text-center mb-24">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[0.05em]">
-                      TWO LOCATIONS.
-                      <br />
-                      BOTH READY.
-                    </h2>
-                    <p className="text-[16px] md:text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center">
-                      Pick the one closest to you. Order online or call. Done in
-                      30 seconds.
-                    </p>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {/* BORGER CARD */}
-                    <div className="bg-[#2A2A2A] p-8 md:p-12 border border-white/5 noise-overlay relative flex flex-col h-full">
-                      <h3 className="font-display text-[36px] text-[#B8F000] leading-[1.1] tracking-[-0.5px] uppercase mb-4">
-                        BORGER
-                      </h3>
-                      <div className="mb-8 space-y-2">
-                        <p className="text-[#F5F5F5] text-[18px] font-[400] leading-relaxed">
-                          Jesse's Pizza Company
-                          <br />
-                          530 W 3rd St
-                          <br />
-                          Borger, TX 79007
-                        </p>
-                        <a
-                          href="tel:8062747200"
-                          className="block text-[#F5F5F5] text-[24px] font-[700] hover:text-[#B8F000] transition-colors"
-                        >
-                          (806) 274-7200
-                        </a>
-                        <p className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase pt-4">
-                          READY IN 20 MINUTES
-                        </p>
-                      </div>
-                      <div className="mt-auto space-y-4">
-                        <div className="h-px bg-[#B8F000]/20 w-full mb-4" />
-                        <button
-                          onClick={startOrder}
-                          className="w-full bg-[#D62828] text-white py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center"
-                        >
-                          Order Online
-                        </button>
-                        <a
-                          href="tel:8062747200"
-                          className="block w-full border-2 border-[#B8F000] text-[#B8F000] py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all text-center"
-                        >
-                          Call Now
-                        </a>
-                        <a
-                          href="https://maps.google.com/?q=Jesse's+Pizza+Company+Borger"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block text-center text-[#F5F5F5] hover:text-[#B8F000] transition-colors uppercase text-[12px] font-bold tracking-widest py-2"
-                        >
-                          Get Directions
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* FRITCH CARD */}
-                    <div className="bg-[#2A2A2A] p-8 md:p-12 border border-white/5 noise-overlay relative flex flex-col h-full">
-                      <h3 className="font-display text-[36px] text-[#B8F000] leading-[1.1] tracking-[-0.5px] uppercase mb-4">
-                        FRITCH
-                      </h3>
-                      <div className="mb-8 space-y-2">
-                        <p className="text-[#F5F5F5] text-[18px] font-[400] leading-relaxed">
-                          Jesse's Pizza Company
-                          <br />
-                          424 E Broadway St
-                          <br />
-                          Fritch, TX 79036
-                        </p>
-                        <a
-                          href="tel:8068570098"
-                          className="block text-[#F5F5F5] text-[24px] font-[700] hover:text-[#B8F000] transition-colors"
-                        >
-                          (806) 857-0098
-                        </a>
-                        <p className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase pt-4">
-                          READY IN 20 MINUTES
-                        </p>
-                      </div>
-                      <div className="mt-auto space-y-4">
-                        <div className="h-px bg-[#B8F000]/20 w-full mb-4" />
-                        <button
-                          onClick={startOrder}
-                          className="w-full bg-[#D62828] text-white py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center"
-                        >
-                          Order Online
-                        </button>
-                        <a
-                          href="tel:8068570098"
-                          className="block w-full border-2 border-[#B8F000] text-[#B8F000] py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all text-center"
-                        >
-                          Call Now
-                        </a>
-                        <a
-                          href="https://maps.google.com/?q=Jesse's+Pizza+Company+Fritch"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block text-center text-[#F5F5F5] hover:text-[#B8F000] transition-colors uppercase text-[12px] font-bold tracking-widest py-2"
-                        >
-                          Get Directions
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              {/* SECTION 3: HOURS */}
-              <section className="bg-[#2A2A2A] px-6 py-32 noise-overlay">
+              {/* SECTION 2: LOCATION AND HOURS */}
+              <section className="bg-[#0D0D0D] px-6 py-32 lg:py-48 noise-overlay">
                 <div className="max-w-4xl mx-auto">
-                  <div className="text-center mb-16">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[0.05em]">
-                      HOURS.
-                    </h2>
-                  </div>
+                    <div className="grid lg:grid-cols-2 gap-12">
+                      {/* SELECTED LOCATION CARD */}
+                      <div className="bg-[#2A2A2A] p-8 lg:p-12 border border-white/5 noise-overlay relative flex flex-col h-full shadow-2xl">
+                        <h3 className="font-display text-[36px] text-[#B8F000] leading-[1.1] tracking-[-0.5px] uppercase mb-4">
+                          {location.toUpperCase()}
+                        </h3>
+                        <div className="mb-8 space-y-2">
+                          <p className="text-[#F5F5F5] text-[18px] font-[400] leading-relaxed">
+                            Jesse's Pizza Company
+                            <br />
+                            {LOCATIONS_DATA[location].address}
+                            <br />
+                            {LOCATIONS_DATA[location].city}
+                          </p>
+                          <a
+                            href={`tel:${LOCATIONS_DATA[location].phoneRaw}`}
+                            className="block text-[#F5F5F5] text-[24px] font-[700] hover:text-[#B8F000] transition-colors"
+                          >
+                            {LOCATIONS_DATA[location].phone}
+                          </a>
+                          <p className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase pt-4">
+                            READY IN 20 MINUTES
+                          </p>
+                        </div>
+                        <div className="h-[250px] w-full mb-8 relative overflow-hidden grayscale brightness-75 border border-white/10 text-brand-white">
+                          <iframe
+                            src={LOCATIONS_DATA[location].mapEmbed}
+                            className="w-full h-full border-0 absolute inset-0"
+                            allowFullScreen
+                            loading="lazy"
+                            title={`Jesse's Pizza ${location} Map`}
+                          ></iframe>
+                        </div>
+                        <div className="mt-auto space-y-4">
+                          <div className="h-px bg-[#B8F000]/20 w-full mb-4" />
+                          <button
+                            onClick={startOrder}
+                            className="w-full bg-[#D62828] text-white py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:scale-[1.02] active:scale-95 transition-all text-center"
+                          >
+                            Order Online
+                          </button>
+                          <a
+                            href={`tel:${LOCATIONS_DATA[location].phoneRaw}`}
+                            className="block w-full border-2 border-[#B8F000] text-[#B8F000] py-6 text-[15px] font-[700] uppercase tracking-[1px] hover:bg-[#B8F000] hover:text-[#0D0D0D] transition-all text-center"
+                          >
+                            Call Now
+                          </a>
+                          <a
+                            href={LOCATIONS_DATA[location].directionsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block text-center text-[#F5F5F5] hover:text-[#B8F000] transition-colors uppercase text-[12px] font-bold tracking-widest py-2"
+                          >
+                            Get Directions
+                          </a>
+                        </div>
+                      </div>
 
-                  <div className="grid md:grid-cols-2 gap-16 md:gap-24 text-center">
-                    <div>
-                      <h3 className="font-display text-[28px] text-[#B8F000] uppercase mb-4 tracking-[-0.5px]">
-                        BORGER
-                      </h3>
-                      <p className="text-[#F5F5F5] text-[18px] mb-4">
-                        Monday through Saturday
-                        <br />
-                        11:00 AM to 10:00 PM
-                      </p>
-                      <p className="text-[#D62828] text-[16px] font-bold">
-                        Sunday: Closed
-                      </p>
-                    </div>
-                    <div>
-                      <h3 className="font-display text-[28px] text-[#B8F000] uppercase mb-4 tracking-[-0.5px]">
-                        FRITCH
-                      </h3>
-                      <p className="text-[#F5F5F5] text-[18px] mb-4">
-                        Monday through Saturday
-                        <br />
-                        11:00 AM to 9:00 PM
-                      </p>
-                      <p className="text-[#D62828] text-[16px] font-bold">
-                        Sunday: Closed
-                      </p>
+                      {/* HOURS CARD */}
+                      <div className="bg-[#2A2A2A] p-8 lg:p-12 border border-white/5 noise-overlay relative flex flex-col h-full text-center lg:text-left">
+                        <h3 className="font-display text-[36px] text-[#B8F000] leading-[1.1] tracking-[-0.5px] uppercase mb-8">
+                          HOURS OF OPERATION
+                        </h3>
+                        <div className="space-y-8">
+                          <div>
+                            <span className="block text-[#B8F000] text-[12px] font-black tracking-[0.4em] uppercase mb-3">
+                              {LOCATIONS_DATA[location].hours}
+                            </span>
+                            <p className="text-[#F5F5F5] text-[32px] font-display uppercase leading-tight">
+                              {LOCATIONS_DATA[location].time}
+                            </p>
+                          </div>
+                          <div>
+                            <span className="block text-[#D62828] text-[12px] font-black tracking-[0.4em] uppercase mb-3">
+                              SUNDAY
+                            </span>
+                            <p className="text-[#F5F5F5] text-[32px] font-display uppercase leading-tight">
+                              CLOSED
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="mt-12 p-6 bg-white/5 border border-white/10 italic text-[14px] text-brand-white/60 leading-relaxed uppercase tracking-widest text-center">
+                          "If we're open, we're making the best pizza in the
+                          country. No early closures. No shortcuts."
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
               </section>
 
               {/* SECTION 4: FULL BLEED IMAGE BREAK */}
-              <section className="h-[250px] md:h-[400px] w-full overflow-hidden">
+              <section className="h-[250px] lg:h-[400px] w-full overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&q=80&w=2000"
                   alt="High Contrast Pizza Detail"
@@ -5012,10 +5003,10 @@ export default function App() {
               </section>
 
               {/* SECTION 5: CONTACT FORM */}
-              <section className="bg-[#0D0D0D] px-6 py-32 md:py-48 noise-overlay">
+              <section className="bg-[#0D0D0D] px-6 py-32 lg:py-48 noise-overlay">
                 <div className="max-w-[640px] mx-auto">
                   <div className="text-center mb-16">
-                    <h2 className="font-display text-[80px] md:text-[112px] lg:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[0.05em]">
+                    <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-[#B8F000] uppercase mb-8 leading-[0.95] tracking-[0.05em]">
                       SEND US A<br />
                       MESSAGE.
                     </h2>
@@ -5025,7 +5016,7 @@ export default function App() {
                     </p>
                   </div>
 
-                  <div className="bg-[#2A2A2A] p-8 md:p-12 border border-white/5 noise-overlay">
+                  <div className="bg-[#2A2A2A] p-8 lg:p-12 border border-white/5 noise-overlay">
                     <form
                       className="space-y-6"
                       onSubmit={(e) => {
@@ -5114,7 +5105,7 @@ export default function App() {
                 </div>
 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 px-6">
-                  <h1 className="font-display text-[96px] md:text-[128px] lg:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
+                  <h1 className="font-display text-[96px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] mb-8">
                     READY TO
                     <br />
                     ORDER?
@@ -5160,7 +5151,7 @@ export default function App() {
                 <span className="text-[#F5F5F5] text-[13px] font-black tracking-[0.4em] uppercase mb-4 block text-center">
                   Jesse's Pizza Company
                 </span>
-                <h1 className="font-display text-[48px] md:text-[64px] text-[#B8F000] uppercase leading-[0.95] tracking-[-2px] mb-4">
+                <h1 className="font-display text-[48px] lg:text-[64px] text-[#B8F000] uppercase leading-[0.95] tracking-[-2px] mb-4">
                   Terms of
                   <br />
                   Service.
@@ -5173,10 +5164,10 @@ export default function App() {
 
             <main className="px-6 py-20">
               {/* SECTION 2: TERMS CONTENT */}
-              <div className="max-w-[800px] mx-auto bg-[#2A2A2A] p-8 md:p-12 border border-white/5 noise-overlay">
+              <div className="max-w-[800px] mx-auto bg-[#2A2A2A] p-8 lg:p-12 border border-white/5 noise-overlay">
                 <div className="space-y-12">
                   <section>
-                    <h2 className="font-display text-[22px] md:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">
+                    <h2 className="font-display text-[22px] lg:text-[28px] text-[#B8F000] uppercase mb-6 leading-none">
                       Acceptance of Terms
                     </h2>
                     <div className="text-[#F5F5F5] text-[16px] leading-[1.8] space-y-4">
