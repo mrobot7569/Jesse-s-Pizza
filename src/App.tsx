@@ -377,9 +377,9 @@ const MobileMenu = ({
         >
           <div className="flex-1 flex flex-col p-8 sm:p-12 relative z-10 pb-24">
             <div className="flex items-center mb-8">
-              <div className="flex items-center gap-2 text-brand-neon">
-                <Pizza size={24} />
-                <span className="font-display text-xl tracking-tight uppercase">
+              <div className="flex items-center gap-3 text-brand-neon">
+                <Pizza size={32} />
+                <span className="font-display text-3xl tracking-tight uppercase">
                   Jesse's Pizza Co.
                 </span>
               </div>
@@ -532,14 +532,14 @@ export default function App() {
     <nav className="flex items-center px-4 lg:px-6 py-5 bg-brand-black border-b border-white/10 sticky top-0 z-50 overflow-hidden">
       <div className="absolute inset-0 noise-overlay pointer-events-none" />
       <div
-        className="flex items-center gap-2 lg:gap-3 cursor-pointer min-w-0 relative z-10 shrink-0"
+        className="flex items-center gap-3 lg:gap-3 cursor-pointer min-w-0 relative z-10 shrink-0"
         onClick={() => {
           window.scrollTo(0, 0);
           setView("home");
         }}
       >
-        <Pizza className="text-brand-neon w-6 h-6 lg:w-8 lg:h-8 shrink-0" />
-        <span className="font-display text-base sm:text-2xl lg:text-3xl uppercase truncate text-brand-neon">
+        <Pizza className="text-brand-neon w-8 h-8 lg:w-10 lg:h-10 shrink-0" />
+        <span className="font-display text-2xl sm:text-2xl lg:text-3xl uppercase truncate text-brand-neon">
           Jesse's Pizza Co.
         </span>
       </div>
@@ -1025,7 +1025,7 @@ export default function App() {
                     </span>
                   </div>
 
-                  <span className="text-[#F5F5F5] font-black uppercase tracking-[3px] mb-2 text-[11px] whitespace-nowrap block text-center mt-0">
+                  <span className="eyebrow">
                     Borger & Fritch, TX
                   </span>
 
@@ -2158,7 +2158,7 @@ export default function App() {
               </div>
 
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
-                <span className="text-brand-white text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                <span className="eyebrow">
                   OUR STORY
                 </span>
                 <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] uppercase text-brand-neon flex flex-col items-center w-full break-normal text-center mt-0">
@@ -2178,7 +2178,7 @@ export default function App() {
             {/* SECTION 2: THE STORY — VISUAL TIMELINE */}
             <section className="bg-brand-concrete py-[120px] px-6 noise-overlay border-y border-white/5">
               <div className="max-w-[1200px] mx-auto">
-                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
+                <span className="eyebrow">
                   THE BEGINNING
                 </span>
                 <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
@@ -2235,7 +2235,7 @@ export default function App() {
             {/* SECTION 4: THE STANDARD */}
             <section className="bg-brand-black py-[160px] px-6 noise-overlay">
               <div className="max-w-[1200px] mx-auto text-center">
-                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
+                <span className="eyebrow">
                   OUR CODE
                 </span>
                 <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-24 uppercase max-w-[800px] mx-auto">
@@ -2271,7 +2271,7 @@ export default function App() {
             <section className="bg-brand-concrete py-[120px] px-6 noise-overlay border-y border-white/5">
               <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div className="lg:pr-20 lg:border-r-2 border-brand-neon">
-                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block">
+                  <span className="eyebrow">
                     MISSION
                   </span>
                   <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-8 uppercase max-w-[800px]">
@@ -2305,7 +2305,7 @@ export default function App() {
             {/* SECTION 6: LOCATIONS */}
             <section className="bg-brand-black py-[120px] px-6 noise-overlay border-b border-white/5">
               <div className="max-w-[1200px] mx-auto">
-                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
+                <span className="eyebrow">
                   FIND US
                 </span>
                 <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
@@ -2348,7 +2348,7 @@ export default function App() {
                           {loc.phone}
                         </a>
                       </div>
-                      <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-12 block italic">
+                      <span className="eyebrow">
                         Ready in 20 minutes
                       </span>
 
@@ -2386,7 +2386,7 @@ export default function App() {
             <section className="bg-brand-concrete py-[120px] px-6 noise-overlay border-b border-white/5">
               <div className="max-w-[1200px] mx-auto">
                 <div className="text-center mb-24">
-                  <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
+                  <span className="eyebrow">
                     THE CREW
                   </span>
                   <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon mb-8 uppercase max-w-[800px] mx-auto">
@@ -2458,7 +2458,7 @@ export default function App() {
 
             {/* SECTION 9: TEAM PHOTOS */}
             <section className="bg-brand-black py-[120px] px-0 noise-overlay border-b border-white/5">
-              <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
+              <span className="eyebrow">
                 GALLERY
               </span>
               <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase px-6 max-w-[800px] mx-auto">
@@ -2474,7 +2474,7 @@ export default function App() {
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-brand-black/80 py-4 px-6 text-center">
-                    <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase block">
+                    <span className="eyebrow">
                       BORGER TEAM
                     </span>
                   </div>
@@ -2487,7 +2487,7 @@ export default function App() {
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-brand-black/80 py-4 px-6 text-center">
-                    <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase block">
+                    <span className="eyebrow">
                       FRITCH TEAM
                     </span>
                   </div>
@@ -2497,7 +2497,7 @@ export default function App() {
 
             <section className="bg-brand-concrete py-[120px] px-6 noise-overlay border-b border-white/5">
               <div className="max-w-[1200px] mx-auto">
-                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
+                <span className="eyebrow">
                   REVIEWS
                 </span>
                 <h2 className="font-display text-[36px] lg:text-[52px] font-[800] tracking-[-1px] leading-[1.0] text-brand-neon text-center mb-24 uppercase max-w-[800px] mx-auto">
@@ -2548,7 +2548,7 @@ export default function App() {
                     />
                   ))}
                 </div>
-                <span className="text-brand-white text-[12px] font-black tracking-[0.6em] uppercase mb-8 block text-center">
+                <span className="eyebrow">
                   NEXT STEPS
                 </span>
                 <h1 className="font-display text-[52px] lg:text-[80px] xl:text-[96px] font-[900] tracking-[-2px] leading-[0.9] text-brand-neon mb-12 uppercase text-center mx-auto italic">
@@ -2632,7 +2632,7 @@ export default function App() {
                     </span>
                   </div>
 
-                  <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                  <span className="eyebrow">
                     BORGER & FRITCH, TX
                   </span>
                   <h1 className="font-display text-[64px] lg:text-[128px] xl:text-[160px] leading-[0.95] tracking-[-2px] uppercase text-brand-neon mb-6 w-full text-center mt-0">
@@ -2698,7 +2698,7 @@ export default function App() {
                         </div>
 
                         <div className="mt-8">
-                          <span className="text-brand-neon text-[12px] font-black tracking-[0.6em] uppercase">
+                          <span className="eyebrow">
                             READY IN 20 MINUTES
                           </span>
                         </div>
@@ -2777,7 +2777,7 @@ export default function App() {
                         </div>
 
                         <div className="mt-8">
-                          <span className="text-brand-neon text-[12px] font-black tracking-[0.6em] uppercase">
+                          <span className="eyebrow">
                             READY IN 20 MINUTES
                           </span>
                         </div>
@@ -2995,7 +2995,7 @@ export default function App() {
                 </div>
 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
-                  <span className="text-[#B8F000] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                  <span className="eyebrow">
                     FRITCH, TX
                   </span>
                   <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center mt-0">
@@ -3463,7 +3463,7 @@ export default function App() {
                 </div>
 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
-                  <span className="text-brand-neon text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                  <span className="eyebrow">
                     BORGER, TX
                   </span>
                   <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-brand-neon flex flex-col items-center w-full break-normal text-center mt-0">
@@ -3984,7 +3984,7 @@ export default function App() {
             {/* SECTION 1: HERO */}
             <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 pt-0 pb-20 bg-brand-black noise-overlay border-b border-white/5 overflow-visible">
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
-                <span className="text-[#F5F5F5] text-[16px] font-bold tracking-[4px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                <span className="eyebrow">
                   BORGER & FRITCH, TX
                 </span>
                 <h1 className="font-display text-[64px] sm:text-[96px] lg:text-[128px] xl:text-[160px] mb-12 leading-[0.95] tracking-[0.05em] uppercase text-brand-neon flex flex-col w-full break-normal text-center mt-0">
@@ -4028,19 +4028,19 @@ export default function App() {
               <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
                 <div className="flex flex-col items-center md:items-start text-center md:text-left">
                   <span className="font-display text-[48px] text-[#B8F000] leading-none mb-2">2</span>
-                  <span className="text-white text-[14px] font-bold uppercase tracking-[4px]">
+                  <span className="eyebrow mt-2">
                     LOCATIONS HIRING NOW
                   </span>
                 </div>
                 <div className="flex flex-col items-center md:items-start text-center md:text-left">
                   <span className="font-display text-[48px] text-[#B8F000] leading-none mb-2">4</span>
-                  <span className="text-white text-[14px] font-bold uppercase tracking-[4px]">
+                  <span className="eyebrow mt-2">
                     OPEN POSITIONS
                   </span>
                 </div>
                 <div className="flex flex-col items-center md:items-start text-center md:text-left">
                   <span className="font-display text-[48px] text-[#B8F000] leading-none mb-2">DAY 1</span>
-                  <span className="text-white text-[14px] font-bold uppercase tracking-[4px]">
+                  <span className="eyebrow mt-2">
                     BENEFITS START
                   </span>
                 </div>
@@ -4051,7 +4051,7 @@ export default function App() {
             <section className="bg-[#0D0D0D] px-6 py-32 lg:py-48 border-t border-[#B8F000] noise-overlay">
               <div className="w-full">
                 <div className="text-center mb-24">
-                  <span className="text-[#B8F000] text-[16px] font-bold tracking-[4px] uppercase mb-2 block text-center">
+                  <span className="eyebrow">
                     CULTURE
                   </span>
                   <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
@@ -4115,7 +4115,7 @@ export default function App() {
             <section className="bg-[#111111] px-6 py-32 lg:py-48 noise-overlay border-b border-white/5">
               <div className="w-full">
                 <div className="text-center mb-24">
-                  <span className="text-[#B8F000] text-[16px] font-bold tracking-[4px] uppercase mb-2 block text-center">
+                  <span className="eyebrow">
                     OPPORTUNITY
                   </span>
                   <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-8 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
@@ -4207,7 +4207,7 @@ export default function App() {
             <section className="bg-[#0A0A0A] px-6 py-32 lg:py-48 noise-overlay border-b border-white/5">
               <div className="w-full">
                 <div className="text-center mb-16">
-                  <span className="text-[#B8F000] text-[16px] font-bold tracking-[4px] uppercase mb-2 block text-center">
+                  <span className="eyebrow">
                     STANDARDS
                   </span>
                   <h2 className="font-display text-[80px] lg:text-[112px] xl:text-[140px] text-brand-neon uppercase mb-12 leading-[0.95] tracking-[0.05em] shadow-none [text-shadow:none]">
@@ -4263,7 +4263,7 @@ export default function App() {
                 
                 {/* Left Side: Content */}
                 <div className="flex flex-col text-center lg:text-left">
-                  <span className="text-[#B8F000] text-[16px] font-bold tracking-[4px] uppercase mb-6 block">
+                  <span className="eyebrow mb-6">
                     JOIN THE CREW
                   </span>
                   <h2 className="font-display text-[80px] lg:text-[140px] uppercase leading-[0.9] text-brand-neon mb-12">
@@ -4275,11 +4275,11 @@ export default function App() {
                   
                   <div className="space-y-4">
                      <div className="flex flex-col">
-                        <span className="text-[12px] font-black tracking-[3px] text-[#B8F000] uppercase mb-1">BORGER</span>
+                        <span className="eyebrow mb-1">BORGER</span>
                         <a href="tel:8062747200" className="text-white font-display text-[32px] lg:text-[48px] hover:text-[#B8F000] transition-colors">(806) 274-7200</a>
                      </div>
                      <div className="flex flex-col">
-                        <span className="text-[12px] font-black tracking-[3px] text-[#B8F000] uppercase mb-1">FRITCH</span>
+                        <span className="eyebrow mb-1">FRITCH</span>
                         <a href="tel:8068570098" className="text-white font-display text-[32px] lg:text-[48px] hover:text-[#B8F000] transition-colors">(806) 857-0098</a>
                      </div>
                   </div>
@@ -4400,7 +4400,7 @@ export default function App() {
               </div>
 
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
-                <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                <span className="eyebrow">
                   {location.toUpperCase()}, TX
                 </span>
                 <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center mt-0">
@@ -4495,7 +4495,7 @@ export default function App() {
                     <br />
                     SPECIALS.
                   </h2>
-                  <span className="text-[#B8F000] text-[12px] font-black tracking-[3px] lg:tracking-[0.6em] uppercase mb-8 block text-center">
+                  <span className="eyebrow">
                     530 W 3RD ST — BORGER, TX 79007
                   </span>
                   <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mt-8">
@@ -4507,7 +4507,7 @@ export default function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Card 1 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
-                    <span className="text-[#D62828] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                    <span className="eyebrow text-[#D62828] tracking-[2px] mb-4">
                       TODAY ONLY — MONDAYS
                     </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
@@ -4536,7 +4536,7 @@ export default function App() {
                       >
                         Order Now — Borger
                       </button>
-                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">
+                      <span className="eyebrow text-center">
                         BORGER ONLY
                       </span>
                     </div>
@@ -4544,7 +4544,7 @@ export default function App() {
 
                   {/* Card 2 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
-                    <span className="text-[#D62828] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                    <span className="eyebrow text-[#D62828] tracking-[2px] mb-4">
                       TODAY ONLY — MONDAYS
                     </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
@@ -4572,7 +4572,7 @@ export default function App() {
                       >
                         Order Now — Borger
                       </button>
-                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">
+                      <span className="eyebrow text-center">
                         BORGER ONLY
                       </span>
                     </div>
@@ -4580,7 +4580,7 @@ export default function App() {
 
                   {/* Card 3 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
-                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                    <span className="eyebrow tracking-[2px] mb-4">
                       AVAILABLE EVERY DAY
                     </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
@@ -4609,7 +4609,7 @@ export default function App() {
                       >
                         Order Now — Borger
                       </button>
-                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">
+                      <span className="eyebrow text-center">
                         BORGER AND FRITCH
                       </span>
                     </div>
@@ -4640,7 +4640,7 @@ export default function App() {
                     <br />
                     SPECIALS.
                   </h2>
-                  <span className="text-[#B8F000] text-[12px] font-black tracking-[3px] lg:tracking-[0.6em] uppercase mb-8 block text-center">
+                  <span className="eyebrow">
                     424 E BROADWAY ST — FRITCH, TX 79036
                   </span>
                   <p className="text-[18px] text-[#F5F5F5] font-[400] leading-[1.7] max-w-[640px] mx-auto text-center mt-8">
@@ -4652,7 +4652,7 @@ export default function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Card 1 */}
                   <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
-                    <span className="text-[#D62828] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                    <span className="eyebrow text-[#D62828] tracking-[2px] mb-4">
                       TODAY ONLY — TUESDAYS
                     </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
@@ -4682,7 +4682,7 @@ export default function App() {
                       >
                         Order Now — Fritch
                       </button>
-                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">
+                      <span className="eyebrow text-center">
                         FRITCH ONLY
                       </span>
                     </div>
@@ -4690,7 +4690,7 @@ export default function App() {
 
                   {/* Card 2 */}
                   <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
-                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                    <span className="eyebrow tracking-[2px] mb-4">
                       AVAILABLE EVERY DAY
                     </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
@@ -4719,7 +4719,7 @@ export default function App() {
                       >
                         Order Now — Fritch
                       </button>
-                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">
+                      <span className="eyebrow text-center">
                         FRITCH ONLY
                       </span>
                     </div>
@@ -4727,7 +4727,7 @@ export default function App() {
 
                   {/* Card 3 */}
                   <div className="bg-[#0D0D0D] p-10 flex flex-col noise-overlay min-h-[500px] border border-white/5">
-                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                    <span className="eyebrow tracking-[2px] mb-4">
                       AVAILABLE EVERY DAY
                     </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-6">
@@ -4755,7 +4755,7 @@ export default function App() {
                       >
                         Order Now — Fritch
                       </button>
-                      <span className="text-[#B8F000] text-[13px] font-black tracking-[0.6em] uppercase block text-center">
+                      <span className="eyebrow text-center">
                         BORGER AND FRITCH
                       </span>
                     </div>
@@ -4792,7 +4792,7 @@ export default function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   {/* Card 1 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
-                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                    <span className="eyebrow">
                       AVAILABLE EVERY DAY
                     </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">
@@ -4822,7 +4822,7 @@ export default function App() {
 
                   {/* Card 2 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
-                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                    <span className="eyebrow">
                       AVAILABLE EVERY DAY
                     </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">
@@ -4851,7 +4851,7 @@ export default function App() {
 
                   {/* Card 3 */}
                   <div className="bg-[#2A2A2A] p-10 flex flex-col noise-overlay min-h-[500px]">
-                    <span className="text-[#B8F000] text-[11px] font-black uppercase tracking-[2px] mb-4 block">
+                    <span className="eyebrow">
                       AVAILABLE EVERY DAY
                     </span>
                     <span className="font-display text-[#B8F000] text-[36px] uppercase leading-none mb-8">
@@ -4996,7 +4996,7 @@ export default function App() {
                 </div>
 
                 <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
-                  <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                  <span className="eyebrow">
                     BORGER & FRITCH, TX
                   </span>
 
@@ -5055,7 +5055,7 @@ export default function App() {
                           >
                             {LOCATIONS_DATA[location].phone}
                           </a>
-                          <p className="text-[#B8F000] text-[12px] font-black tracking-[0.6em] uppercase pt-4">
+                          <p className="eyebrow">
                             READY IN 20 MINUTES
                           </p>
                         </div>
@@ -5100,7 +5100,7 @@ export default function App() {
                         </h3>
                         <div className="space-y-8">
                           <div>
-                            <span className="block text-[#B8F000] text-[12px] font-black tracking-[0.4em] uppercase mb-3">
+                            <span className="eyebrow">
                               {LOCATIONS_DATA[location].hours}
                             </span>
                             <p className="text-[#F5F5F5] text-[32px] font-display uppercase leading-tight">
@@ -5108,7 +5108,7 @@ export default function App() {
                             </p>
                           </div>
                           <div>
-                            <span className="block text-[#D62828] text-[12px] font-black tracking-[0.4em] uppercase mb-3">
+                            <span className="eyebrow text-[#D62828]">
                               SUNDAY
                             </span>
                             <p className="text-[#F5F5F5] text-[32px] font-display uppercase leading-tight">
@@ -5282,7 +5282,7 @@ export default function App() {
             <header className="relative min-h-[100svh] flex flex-col items-center justify-center bg-[#0D0D0D] px-6 pt-0 pb-20 text-center border-b border-white/5 overflow-visible">
               <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
-                <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                <span className="eyebrow text-[#F5F5F5] text-center whitespace-nowrap mt-0">
                   Jesse's Pizza Company
                 </span>
                 <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center mt-0">
@@ -5665,7 +5665,7 @@ export default function App() {
             <header className="relative min-h-[100svh] flex flex-col items-center justify-center bg-[#0D0D0D] px-6 pt-0 pb-20 text-center border-b border-white/5 overflow-visible">
               <div className="absolute inset-0 noise-overlay opacity-30 pointer-events-none" />
               <div className="max-w-[1200px] mx-auto flex flex-col items-center text-center relative z-10 w-full gap-4 pt-0 mt-0">
-                <span className="text-[#F5F5F5] text-[11px] font-black tracking-[3px] uppercase mb-2 block text-center whitespace-nowrap mt-0">
+                <span className="eyebrow text-[#F5F5F5] text-center whitespace-nowrap mt-0">
                   Jesse's Pizza Company
                 </span>
                 <h1 className="font-display text-[64px] sm:text-8xl lg:text-[8rem] xl:text-[10rem] mb-10 leading-[0.95] tracking-[-2px] sm:tracking-[0.05em] uppercase text-[#B8F000] flex flex-col items-center w-full break-normal text-center mt-0">
@@ -6139,7 +6139,7 @@ export default function App() {
                           <h2 className="font-display text-4xl md:text-8xl lg:text-9xl uppercase mb-3 text-brand-neon">
                             {category.title}
                           </h2>
-                          <p className="text-sm font-black uppercase tracking-[0.3em] opacity-40 text-brand-white">
+                          <p className="eyebrow opacity-40 text-brand-white">
                             {category.subtext}
                           </p>
                         </div>

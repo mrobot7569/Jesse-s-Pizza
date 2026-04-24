@@ -73,3 +73,14 @@
 .card-concrete {
   @apply bg-brand-concrete border-none shadow-xl transition-all;
 }
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #B8F000;
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.0;
+}
